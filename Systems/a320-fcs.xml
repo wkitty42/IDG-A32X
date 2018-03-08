@@ -213,13 +213,10 @@
 		
 		<fcs_function name="hydraulics/roll-control">
 			<function>
-				<product>
-					<sum>
-						<property>hydraulics/aileron-l/final</property>
-						<property>hydraulics/aileron-r/final</property>
-					</sum>
-					<value>0.5</value>
-				</product>
+				<sum>
+					<property>hydraulics/aileron-l/final</property>
+					<property>hydraulics/aileron-r/final</property>
+				</sum>
 			</function>
 			<clipto>
 				<min>-1.0</min>

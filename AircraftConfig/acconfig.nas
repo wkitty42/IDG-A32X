@@ -97,8 +97,8 @@ var about_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/about/dialog", "Aircraf
 var update_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/update/dialog", "Aircraft/IDG-A32X/AircraftConfig/update.xml");
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A32X/AircraftConfig/error-mismatch.xml");
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A32X/AircraftConfig/groundservices.xml");
-spinning.start();
-init_dlg.open();
+#spinning.start();
+#init_dlg.open();
 
 http.load("https://raw.githubusercontent.com/it0uchpods/IDG-A32X/master/revision.txt").done(func(r) setprop("/systems/acconfig/new-revision", r.response));
 var revisionFile = (getprop("/sim/aircraft-dir")~"/revision.txt");
@@ -138,16 +138,49 @@ var mismatch_chk = func {
 }
 
 setlistener("/sim/signals/fdm-initialized", func {
-	init_dlg.close();
-	if (getprop("/systems/acconfig/out-of-date") == 1) {
-		update_dlg.open();
-		print("System: The IDG-A32X is out of date!");
-	} 
-	mismatch_chk();
-	if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000") {
-		welcome_dlg.open();
-	}
-	spinning.stop();
+#	init_dlg.close();
+#	if (getprop("/systems/acconfig/out-of-date") == 1) {
+#		update_dlg.open();
+#		print("System: The IDG-A32X is out of date!");
+#	} 
+#	mismatch_chk();
+#	if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000") {
+#		welcome_dlg.open();
+#	}
+#	spinning.stop();
+	
+	# Remove these:
+	settimer(func {
+		setprop("/systems/acconfig/autoconfig-running", 1);
+		setprop("/it-fbw/override", 1);
+		setprop("/it-fbw/law", 2);
+		setprop("/controls/electrical/switches/battery1", 1);
+		setprop("/controls/electrical/switches/battery2", 1);
+		setprop("/systems/apu/rpm", 100);
+		setprop("/systems/apu/egt", 352);
+		setprop("/controls/fuel/tank0pump1", 1);
+		setprop("/controls/fuel/tank0pump2", 1);
+		setprop("/controls/fuel/tank1pump1", 1);
+		setprop("/controls/fuel/tank1pump2", 1);
+		setprop("/controls/fuel/tank2pump1", 1);
+		setprop("/controls/fuel/tank2pump2", 1);
+		setprop("/controls/adirs/ir[0]/knob","1");
+		setprop("/controls/adirs/ir[1]/knob","1");
+		setprop("/controls/adirs/ir[2]/knob","1");
+		systems.ADIRS.skip(0);
+		systems.ADIRS.skip(1);
+		systems.ADIRS.skip(2);
+		setprop("/controls/adirs/mcducbtn", 1);
+		settimer(func {
+			systems.fast_start_one();
+			systems.fast_start_two();
+		}, 2);
+		settimer(func {
+			setprop("/systems/apu/rpm", 0);
+			setprop("/systems/apu/egt", 0);
+			setprop("/systems/acconfig/autoconfig-running", 0);
+		}, 5);
+	}, 1);
 });
 
 var saveSettings = func {
