@@ -215,25 +215,10 @@
 			<function>
 				<product>
 					<sum>
-						<product>
-							<sum>
-								<property>hydraulics/aileron-l/final</property>
-								<property>hydraulics/aileron-r/final</property>
-							</sum>
-							<value>1.75</value>
-						</product>
-						<product>
-							<sum>
-								<product>
-									<property>/controls/flight/spoiler-l-sum</property>
-									<value>-1.0</value>
-								</product>
-								<property>/controls/flight/spoiler-r-sum</property>
-							</sum>
-							<value>0.25</value>
-						</product>
+						<property>hydraulics/aileron-l/final</property>
+						<property>hydraulics/aileron-r/final</property>
 					</sum>
-					<value>0.444444</value>
+					<value>0.5</value>
 				</product>
 			</function>
 			<clipto>
@@ -242,11 +227,11 @@
 			</clipto>
 		</fcs_function>
 		
-		<aerosurface_scale name="fcs/roll-pos-rad">
+		<aerosurface_scale name="fcs/roll-pos-deg">
 			<input>hydraulics/roll-control</input>
 			<range>
-				<min>-0.436332</min>
-				<max>0.436332</max>
+				<min>-25</min>
+				<max>25</max>
 			</range>
 		</aerosurface_scale>
 	
@@ -369,26 +354,13 @@
 			</clipto>
 		</fcs_function>
 		
-		<aerosurface_scale name="fcs/pitch-pos-rad">
+		<aerosurface_scale name="fcs/pitch-pos-deg">
 			<input>hydraulics/pitch-control</input>
 			<range>
-				<min>-0.523599</min>
-				<max>0.296706</max>
+				<min>-30</min>
+				<max>17</max>
 			</range>
 		</aerosurface_scale>
-		
-		<scheduled_gain name="fcs/pitch-pos-geared">
-			<input>fcs/pitch-pos-rad</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0     43000
-					0.0  1.00  0.850
-					0.9  0.02  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
 	
 	</channel>
 	
@@ -406,18 +378,6 @@
 			</range>
 		</aerosurface_scale>
 		
-		<aerosurface_scale name="fcs/pitch-trim-pos-rad">
-			<input>/controls/flight/elevator-trim-fdm</input>
-			<domain>
-				<min>-1.00</min>
-				<max>0.32</max>
-			</domain>
-			<range>
-				<min>-0.2181662</min>
-				<max>0.0698132</max>
-			</range>
-		</aerosurface_scale>
-		
 		<aerosurface_scale name="fcs/pitch-trim-pos-deg">
 			<input>/controls/flight/elevator-trim-fdm</input>
 			<domain>
@@ -429,19 +389,6 @@
 				<max>4.0</max>
 			</range>
 		</aerosurface_scale>
-		
-		<scheduled_gain name="fcs/pitch-trim-pos-geared">
-			<input>fcs/pitch-trim-pos-rad</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0     43000
-					0.0  1.00  0.850
-					0.9  0.02  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
 	
 	</channel>
 	
@@ -690,13 +637,12 @@
 			</clipto>
 		</summer>
 		
-		<aerosurface_scale name="rubbish/rudder-pos-rad">
+		<aerosurface_scale name="fcs/yaw-pos-deg">
 			<input>fcs/yaw-sum</input>
 			<range>
-				<min>-0.436332</min>
-				<max>0.436332</max>
+				<min>-25</min>
+				<max>25</max>
 			</range>
-			<output>fcs/rudder-pos-rad</output>
 		</aerosurface_scale>
 	
 	</channel>
@@ -791,6 +737,40 @@
 			<gain>1.0</gain>
 			<output>fcs/speedbrake-pos-norm</output>
 		</pure_gain>
+		
+		<fcs_function name="fcs/speedbrake-left-input">
+			<function>
+				<quotient>
+					<property>/controls/flight/spoiler-l-sum</property>
+					<value>5</value>
+				</quotient>
+			</function>
+		</fcs_function>
+		
+		<aerosurface_scale name="fcs/speedbrake-left-deg">
+			<input>fcs/speedbrake-left-input</input>
+			<range>
+				<min>0</min>
+				<max>35</max>
+			</range>
+		</aerosurface_scale>
+		
+		<fcs_function name="fcs/speedbrake-right-input">
+			<function>
+				<quotient>
+					<property>/controls/flight/spoiler-r-sum</property>
+					<value>5</value>
+				</quotient>
+			</function>
+		</fcs_function>
+		
+		<aerosurface_scale name="fcs/speedbrake-right-deg">
+			<input>fcs/speedbrake-right-input</input>
+			<range>
+				<min>0</min>
+				<max>35</max>
+			</range>
+		</aerosurface_scale>
 	
 	</channel>
 	
