@@ -161,7 +161,7 @@
     <function name="aero/c/CFXDRD">
     <description>DRAG INCREMENT DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
@@ -637,7 +637,7 @@
     <function name="aero/c/CFZDRD">
     <description>LIFT INCREMENT DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
@@ -1203,7 +1203,7 @@
     <function name="aero/c/CMMDRD">
     <description>PITCH MOMENT DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
@@ -1769,7 +1769,7 @@
     <function name="aero/c/CMLDRD">
     <description>ROLLING MOMENT DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
@@ -3085,7 +3085,7 @@
     <function name="aero/c/CYDRD">
     <description>SIDE FORCE DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
@@ -3688,7 +3688,7 @@
     <function name="aero/c/CMNDRD">
     <description>YAWING MOMENT DUE TO RUDDER DEFLECTION</description>
     <product>
-          <property>fcs/rudder-pos-deg</property>
+          <property>fcs/yaw-pos-deg</property>
           <table>
             <independentVar lookup="row">aero/alpha-deg</independentVar>
             <independentVar lookup="column">aero/beta-deg</independentVar>
