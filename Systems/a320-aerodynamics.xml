@@ -101,6 +101,43 @@
           </table>
        </product>
     </function>
+    <function name="aero/c/CFXDFM">
+    <description>DRAG INCREMENT DUE TO FLAPS</description>
+    <product>
+          <property>fcs/flap-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		  -0.00045	
+                     -5		    0.00016	
+                     -2		    0.00056	
+                      0		    0.00084	
+                      1		    0.00098	
+                      2		    0.00113	
+                      3		    0.00129	
+                      4		    0.00144	
+                      5		    0.00156	
+                      6		    0.00165	
+                      7		    0.00173	
+                      8		    0.00177	
+                      9		    0.00179	
+                     10		    0.00177	
+                     11		    0.00173	
+                     12		    0.00168	
+                     13		    0.00163	
+                     14		    0.00159	
+                     15		    0.00155	
+                     16		    0.00151	
+                     17		    0.00148	
+                     18		    0.00147	
+                     19		    0.00147	
+                     20		    0.00149	
+                     30		    0.00188	
+                     60		    0.00200	
+            </tableData>
+          </table>
+       </product>
+    </function>
     <function name="aero/c/CFXDRD">
     <description>DRAG INCREMENT DUE TO RUDDER DEFLECTION</description>
     <product>
@@ -136,6 +173,119 @@
                      20	  -0.00070	  -0.00066	  -0.00039	  -0.00032	  -0.00015	    0.00005	    0.00011	    0.00042	    0.00065	
                      30	  -0.00057	  -0.00039	  -0.00034	  -0.00019	  -0.00009	    0.00001	    0.00016	    0.00024	    0.00054	
                      60	  -0.00001	  -0.00002	  -0.00001	   0.00000	   0.00000	    0.00000	    0.00015	    0.00003	    0.00009	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFXDSM">
+    <description>DRAG INCREMENT DUE TO SLATS</description>
+    <product>
+          <property>fcs/slat-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		  -0.00053	
+                     -5		    0.00002	
+                     -2		    0.00040	
+                      0		    0.00067	
+                      1		    0.00072	
+                      2		    0.00086	
+                      3		    0.00111	
+                      4		    0.00127	
+                      5		    0.00143	
+                      6		    0.00158	
+                      7		    0.00172	
+                      8		    0.00182	
+                      9		    0.00187	
+                     10		    0.00190	
+                     11		    0.00190	
+                     12		    0.00189	
+                     13		    0.00185	
+                     14		    0.00180	
+                     15		    0.00176	
+                     16		    0.00172	
+                     17		    0.00168	
+                     18		    0.00168	
+                     19		    0.00170	
+                     20		    0.00172	
+                     30		    0.00220	
+                     60		    0.00252	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFXDSPL">
+    <description>DRAG INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.01483	    0.02206	
+                     -5	    0.00000	    0.01325	    0.02389	
+                     -2	    0.00000	    0.00917	    0.02245	
+                      0	    0.00000	    0.00658	    0.02067	
+                      1	    0.00000	    0.00534	    0.01925	
+                      2	    0.00000	    0.00411	    0.01736	
+                      3	    0.00000	    0.00288	    0.01520	
+                      4	    0.00000	    0.00164	    0.01295	
+                      5	    0.00000	    0.00040	    0.01066	
+                      6	    0.00000	  -0.00099	    0.00850	
+                      7	    0.00000	  -0.00225	    0.00686	
+                      8	    0.00000	  -0.00337	    0.00518	
+                      9	    0.00000	  -0.00458	    0.00332	
+                     10	    0.00000	  -0.00483	  -0.00323	
+                     11	    0.00000	  -0.00600	  -0.00044	
+                     12	    0.00000	  -0.00783	  -0.00205	
+                     13	    0.00000	  -0.00837	  -0.00346	
+                     14	    0.00000	  -0.00869	  -0.00465	
+                     15	    0.00000	  -0.00861	  -0.00541	
+                     16	    0.00000	  -0.00825	  -0.00599	
+                     17	    0.00000	  -0.00794	  -0.00612	
+                     18	    0.00000	  -0.00706	  -0.00589	
+                     19	    0.00000	  -0.00597	  -0.00549	
+                     20	    0.00000	  -0.00604	  -0.00552	
+                     30	    0.00000	  -0.00681	  -0.01081	
+                     60	    0.00000	  -0.00457	  -0.00915	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFXDSPR">
+    <description>DRAG INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.01483	    0.02206	
+                     -5	    0.00000	    0.01325	    0.02389	
+                     -2	    0.00000	    0.00917	    0.02245	
+                      0	    0.00000	    0.00658	    0.02067	
+                      1	    0.00000	    0.00534	    0.01925	
+                      2	    0.00000	    0.00411	    0.01736	
+                      3	    0.00000	    0.00288	    0.01520	
+                      4	    0.00000	    0.00164	    0.01295	
+                      5	    0.00000	    0.00040	    0.01066	
+                      6	    0.00000	  -0.00099	    0.00850	
+                      7	    0.00000	  -0.00225	    0.00686	
+                      8	    0.00000	  -0.00337	    0.00518	
+                      9	    0.00000	  -0.00458	    0.00332	
+                     10	    0.00000	  -0.00483	  -0.00323	
+                     11	    0.00000	  -0.00600	  -0.00044	
+                     12	    0.00000	  -0.00783	  -0.00205	
+                     13	    0.00000	  -0.00837	  -0.00346	
+                     14	    0.00000	  -0.00869	  -0.00465	
+                     15	    0.00000	  -0.00861	  -0.00541	
+                     16	    0.00000	  -0.00825	  -0.00599	
+                     17	    0.00000	  -0.00794	  -0.00612	
+                     18	    0.00000	  -0.00706	  -0.00589	
+                     19	    0.00000	  -0.00597	  -0.00549	
+                     20	    0.00000	  -0.00604	  -0.00552	
+                     30	    0.00000	  -0.00681	  -0.01081	
+                     60	    0.00000	  -0.00457	  -0.00915	
             </tableData>
           </table>
        </product>
@@ -255,6 +405,43 @@
           </table>
        </product>
     </function>
+    <function name="aero/c/CFZDFM">
+    <description>LIFT INCREMENT DUE TO FLAPS</description>
+    <product>
+          <property>fcs/flap-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		    0.02096	
+                     -5		    0.02305	
+                     -2		    0.02421	
+                      0		    0.02502	
+                      1		    0.02547	
+                      2		    0.02593	
+                      3		    0.02639	
+                      4		    0.02664	
+                      5		    0.02603	
+                      6		    0.02465	
+                      7		    0.02285	
+                      8		    0.02071	
+                      9		    0.01826	
+                     10		    0.01548	
+                     11		    0.01267	
+                     12		    0.01069	
+                     13		    0.00938	
+                     14		    0.00825	
+                     15		    0.00731	
+                     16		    0.00652	
+                     17		    0.00590	
+                     18		    0.00552	
+                     19		    0.00539	
+                     20		    0.00535	
+                     30		    0.00717	
+                     60		    0.00736	
+            </tableData>
+          </table>
+       </product>
+    </function>
     <function name="aero/c/CFZDRD">
     <description>LIFT INCREMENT DUE TO RUDDER DEFLECTION</description>
     <product>
@@ -290,6 +477,119 @@
                      20	  -0.00023	  -0.00029	  -0.00012	  -0.00009	    0.00010	    0.00027	    0.00029	    0.00046	    0.00078	
                      30	  -0.00037	  -0.00008	    0.00011	    0.00020	    0.00021	    0.00016	    0.00007	    0.00015	    0.00061	
                      60	  -0.00002	  -0.00003	  -0.00002	  -0.00001	    0.00000	    0.00001	    0.00004	    0.00006	    0.00016	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFZDSM">
+    <description>LIFT INCREMENT DUE TO SLATS</description>
+    <product>
+          <property>fcs/slat-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		    0.01928	
+                     -5		    0.02095	
+                     -2		    0.02277	
+                      0		    0.02421	
+                      1		    0.02489	
+                      2		    0.02548	
+                      3		    0.02599	
+                      4		    0.02641	
+                      5		    0.02679	
+                      6		    0.02710	
+                      7		    0.02679	
+                      8		    0.02519	
+                      9		    0.02281	
+                     10		    0.01996	
+                     11		    0.01712	
+                     12		    0.01512	
+                     13		    0.01357	
+                     14		    0.01212	
+                     15		    0.01092	
+                     16		    0.00991	
+                     17		    0.00914	
+                     18		    0.00866	
+                     19		    0.00851	
+                     20		    0.00847	
+                     30		    0.01012	
+                     60		    0.00992	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFZDSPL">
+    <description>LIFT INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	  -0.21596	  -0.25589	
+                     -5	    0.00000	  -0.28053	  -0.36684	
+                     -2	    0.00000	  -0.26453	  -0.40448	
+                      0	    0.00000	  -0.25438	  -0.42201	
+                      1	    0.00000	  -0.25205	  -0.42931	
+                      2	    0.00000	  -0.25232	  -0.43258	
+                      3	    0.00000	  -0.25472	  -0.43427	
+                      4	    0.00000	  -0.25837	  -0.43796	
+                      5	    0.00000	  -0.26221	  -0.44462	
+                      6	    0.00000	  -0.26670	  -0.45189	
+                      7	    0.00000	  -0.27009	  -0.45656	
+                      8	    0.00000	  -0.27153	  -0.46210	
+                      9	    0.00000	  -0.27287	  -0.46770	
+                     10	    0.00000	  -0.26819	  -0.47195	
+                     11	    0.00000	  -0.26294	  -0.46686	
+                     12	    0.00000	  -0.24471	  -0.44202	
+                     13	    0.00000	  -0.20970	  -0.40708	
+                     14	    0.00000	  -0.17532	  -0.36920	
+                     15	    0.00000	  -0.14002	  -0.32710	
+                     16	    0.00000	  -0.10297	  -0.28589	
+                     17	    0.00000	  -0.06653	  -0.24298	
+                     18	    0.00000	  -0.03084	  -0.19764	
+                     19	    0.00000	  -0.00287	  -0.15268	
+                     20	    0.00000	    0.00244	  -0.11322	
+                     30	    0.00000	    0.00020	  -0.00359	
+                     60	    0.00000	    0.00379	    0.00102	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFZDSPR">
+    <description>LIFT INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	  -0.21596	  -0.25589	
+                     -5	    0.00000	  -0.28053	  -0.36684	
+                     -2	    0.00000	  -0.26453	  -0.40448	
+                      0	    0.00000	  -0.25438	  -0.42201	
+                      1	    0.00000	  -0.25205	  -0.42931	
+                      2	    0.00000	  -0.25232	  -0.43258	
+                      3	    0.00000	  -0.25472	  -0.43427	
+                      4	    0.00000	  -0.25837	  -0.43796	
+                      5	    0.00000	  -0.26221	  -0.44462	
+                      6	    0.00000	  -0.26670	  -0.45189	
+                      7	    0.00000	  -0.27009	  -0.45656	
+                      8	    0.00000	  -0.27153	  -0.46210	
+                      9	    0.00000	  -0.27287	  -0.46770	
+                     10	    0.00000	  -0.26819	  -0.47195	
+                     11	    0.00000	  -0.26294	  -0.46686	
+                     12	    0.00000	  -0.24471	  -0.44202	
+                     13	    0.00000	  -0.20970	  -0.40708	
+                     14	    0.00000	  -0.17532	  -0.36920	
+                     15	    0.00000	  -0.14002	  -0.32710	
+                     16	    0.00000	  -0.10297	  -0.28589	
+                     17	    0.00000	  -0.06653	  -0.24298	
+                     18	    0.00000	  -0.03084	  -0.19764	
+                     19	    0.00000	  -0.00287	  -0.15268	
+                     20	    0.00000	    0.00244	  -0.11322	
+                     30	    0.00000	    0.00020	  -0.00359	
+                     60	    0.00000	    0.00379	    0.00102	
             </tableData>
           </table>
        </product>
@@ -483,6 +783,43 @@
           </table>
        </product>
     </function>
+    <function name="aero/c/CMMDFM">
+    <description>PITCHING MOMENT INCREMENT DUE TO FLAPS</description>
+    <product>
+          <property>fcs/flap-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		  -0.00748	
+                     -5		  -0.00818	
+                     -2		  -0.00869	
+                      0		  -0.00912	
+                      1		  -0.00936	
+                      2		  -0.00957	
+                      3		  -0.00975	
+                      4		  -0.00976	
+                      5		  -0.00925	
+                      6		  -0.00833	
+                      7		  -0.00726	
+                      8		  -0.00612	
+                      9		  -0.00480	
+                     10		  -0.00349	
+                     11		  -0.00248	
+                     12		  -0.00198	
+                     13		  -0.00176	
+                     14		  -0.00153	
+                     15		  -0.00129	
+                     16		  -0.00107	
+                     17		  -0.00079	
+                     18		  -0.00043	
+                     19		  -0.00005	
+                     20		    0.00038	
+                     30		  -0.00438	
+                     60		  -0.00328	
+            </tableData>
+          </table>
+       </product>
+    </function>
     <function name="aero/c/CMMDRD">
     <description>PITCH MOMENT DUE TO RUDDER DEFLECTION</description>
     <product>
@@ -518,6 +855,119 @@
                      20	    0.00067	    0.00087	    0.00022	  -0.00010	  -0.00021	  -0.00043	  -0.00066	  -0.00143	  -0.00274	
                      30	    0.00125	    0.00029	  -0.00023	  -0.00058	  -0.00063	  -0.00044	  -0.00020	  -0.00036	  -0.00192	
                      60	    0.00004	    0.00007	    0.00005	    0.00002	    0.00000	  -0.00002	  -0.00039	  -0.00016	  -0.00040	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMMDSM">
+    <description>PITCHING MOMENT INCREMENT DUE TO SLATS</description>
+    <product>
+          <property>fcs/slat-pos-deg</property>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <tableData>
+                    -10		  -0.00304	
+                     -5		  -0.00145	
+                     -2		  -0.00067	
+                      0		  -0.00022	
+                      1		    0.00004	
+                      2		    0.00033	
+                      3		    0.00063	
+                      4		    0.00097	
+                      5		    0.00131	
+                      6		    0.00169	
+                      7		    0.00230	
+                      8		    0.00332	
+                      9		    0.00462	
+                     10		    0.00575	
+                     11		    0.00660	
+                     12		    0.00689	
+                     13		    0.00677	
+                     14		    0.00656	
+                     15		    0.00640	
+                     16		    0.00623	
+                     17		    0.00608	
+                     18		    0.00609	
+                     19		    0.00621	
+                     20		    0.00635	
+                     30		    0.00023	
+                     60		    0.00011	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMMDSPL">
+    <description>PITCHING MOMENT INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.02184	    0.01344	
+                     -5	    0.00000	    0.06127	    0.07242	
+                     -2	    0.00000	    0.06896	    0.10540	
+                      0	    0.00000	    0.07245	    0.12434	
+                      1	    0.00000	    0.07480	    0.13443	
+                      2	    0.00000	    0.07857	    0.14205	
+                      3	    0.00000	    0.08316	    0.14610	
+                      4	    0.00000	    0.08784	    0.14882	
+                      5	    0.00000	    0.09150	    0.15639	
+                      6	    0.00000	    0.09676	    0.16191	
+                      7	    0.00000	    0.09912	    0.15726	
+                      8	    0.00000	    0.09598	    0.15421	
+                      9	    0.00000	    0.09361	    0.15263	
+                     10	    0.00000	    0.07578	    0.14666	
+                     11	    0.00000	    0.06920	    0.13517	
+                     12	    0.00000	    0.06993	    0.11909	
+                     13	    0.00000	    0.05609	    0.10284	
+                     14	    0.00000	    0.04560	    0.08601	
+                     15	    0.00000	    0.03945	    0.07165	
+                     16	    0.00000	    0.03316	    0.06157	
+                     17	    0.00000	    0.03409	    0.05601	
+                     18	    0.00000	    0.02416	    0.05396	
+                     19	    0.00000	    0.01238	    0.05412	
+                     20	    0.00000	    0.01368	    0.05500	
+                     30	    0.00000	    0.01622	    0.03222	
+                     60	    0.00000	    0.00844	    0.01311	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMMDSPR">
+    <description>PITCHING MOMENT INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.02184	    0.01344	
+                     -5	    0.00000	    0.06127	    0.07242	
+                     -2	    0.00000	    0.06896	    0.10540	
+                      0	    0.00000	    0.07245	    0.12434	
+                      1	    0.00000	    0.07480	    0.13443	
+                      2	    0.00000	    0.07857	    0.14205	
+                      3	    0.00000	    0.08316	    0.14610	
+                      4	    0.00000	    0.08784	    0.14882	
+                      5	    0.00000	    0.09150	    0.15639	
+                      6	    0.00000	    0.09676	    0.16191	
+                      7	    0.00000	    0.09912	    0.15726	
+                      8	    0.00000	    0.09598	    0.15421	
+                      9	    0.00000	    0.09361	    0.15263	
+                     10	    0.00000	    0.07578	    0.14666	
+                     11	    0.00000	    0.06920	    0.13517	
+                     12	    0.00000	    0.06993	    0.11909	
+                     13	    0.00000	    0.05609	    0.10284	
+                     14	    0.00000	    0.04560	    0.08601	
+                     15	    0.00000	    0.03945	    0.07165	
+                     16	    0.00000	    0.03316	    0.06157	
+                     17	    0.00000	    0.03409	    0.05601	
+                     18	    0.00000	    0.02416	    0.05396	
+                     19	    0.00000	    0.01238	    0.05412	
+                     20	    0.00000	    0.01368	    0.05500	
+                     30	    0.00000	    0.01622	    0.03222	
+                     60	    0.00000	    0.00844	    0.01311	
             </tableData>
           </table>
        </product>
@@ -708,6 +1158,82 @@
                      20	    0.00025	    0.00033	    0.00029	    0.00028	    0.00027	    0.00030	    0.00029	    0.00033	    0.00038	
                      30	    0.00025	    0.00025	    0.00025	    0.00025	    0.00024	    0.00024	    0.00025	    0.00026	    0.00029	
                      60	    0.00000	    0.00001	    0.00001	    0.00001	    0.00001	    0.00001	    0.00004	    0.00002	    0.00003	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMLDSPL">
+    <description>ROLLING MOMENT INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	  -0.03063	  -0.03154	
+                     -5	    0.00000	  -0.05047	  -0.06039	
+                     -2	    0.00000	  -0.04810	  -0.07095	
+                      0	    0.00000	  -0.04611	  -0.07597	
+                      1	    0.00000	  -0.04555	  -0.07778	
+                      2	    0.00000	  -0.04542	  -0.07807	
+                      3	    0.00000	  -0.04578	  -0.07780	
+                      4	    0.00000	  -0.04649	  -0.07794	
+                      5	    0.00000	  -0.04720	  -0.07859	
+                      6	    0.00000	  -0.04828	  -0.07990	
+                      7	    0.00000	  -0.04920	  -0.08119	
+                      8	    0.00000	  -0.05002	  -0.08257	
+                      9	    0.00000	  -0.05083	  -0.08402	
+                     10	    0.00000	  -0.05338	  -0.08565	
+                     11	    0.00000	  -0.05314	  -0.08653	
+                     12	    0.00000	  -0.04632	  -0.08343	
+                     13	    0.00000	  -0.03790	  -0.07615	
+                     14	    0.00000	  -0.03029	  -0.06759	
+                     15	    0.00000	  -0.02385	  -0.05916	
+                     16	    0.00000	  -0.01701	  -0.05157	
+                     17	    0.00000	  -0.01044	  -0.04476	
+                     18	    0.00000	  -0.00437	  -0.03823	
+                     19	    0.00000	  -0.00028	  -0.03200	
+                     20	    0.00000	    0.00047	  -0.02594	
+                     30	    0.00000	  -0.00183	  -0.00347	
+                     60	    0.00000	  -0.00140	  -0.00275	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMLDSPR">
+    <description>ROLLING MOMENT INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.03063	    0.03154	
+                     -5	    0.00000	    0.05047	    0.06039	
+                     -2	    0.00000	    0.04810	    0.07095	
+                      0	    0.00000	    0.04611	    0.07597	
+                      1	    0.00000	    0.04555	    0.07778	
+                      2	    0.00000	    0.04542	    0.07807	
+                      3	    0.00000	    0.04578	    0.07780	
+                      4	    0.00000	    0.04649	    0.07794	
+                      5	    0.00000	    0.04720	    0.07859	
+                      6	    0.00000	    0.04828	    0.07990	
+                      7	    0.00000	    0.04920	    0.08119	
+                      8	    0.00000	    0.05002	    0.08257	
+                      9	    0.00000	    0.05083	    0.08402	
+                     10	    0.00000	    0.05338	    0.08565	
+                     11	    0.00000	    0.05314	    0.08653	
+                     12	    0.00000	    0.04632	    0.08343	
+                     13	    0.00000	    0.03790	    0.07615	
+                     14	    0.00000	    0.03029	    0.06759	
+                     15	    0.00000	    0.02385	    0.05916	
+                     16	    0.00000	    0.01701	    0.05157	
+                     17	    0.00000	    0.01044	    0.04476	
+                     18	    0.00000	    0.00437	    0.03823	
+                     19	    0.00000	    0.00028	    0.03200	
+                     20	    0.00000	  -0.00047	    0.02594	
+                     30	    0.00000	    0.00183	    0.00347	
+                     60	    0.00000	    0.00140	    0.00275	
             </tableData>
           </table>
        </product>
@@ -1112,6 +1638,82 @@
                      30	    0.14133	    0.06083	    0.02970	    0.01197	    0.00000	  -0.01197	  -0.02970	  -0.06083	  -0.14133	
                      60	    0.06301	    0.02710	    0.01271	    0.00494	    0.00000	  -0.00494	  -0.01271	  -0.02710	  -0.06301	
               </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFYDSPL">
+    <description>SIDEFORCE INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.00334	  -0.00663	
+                     -5	    0.00000	    0.01406	    0.00967	
+                     -2	    0.00000	    0.01157	    0.01284	
+                      0	    0.00000	    0.00985	    0.01316	
+                      1	    0.00000	    0.00911	    0.01267	
+                      2	    0.00000	    0.00851	    0.01178	
+                      3	    0.00000	    0.00806	    0.01076	
+                      4	    0.00000	    0.00769	    0.00969	
+                      5	    0.00000	    0.00694	    0.00862	
+                      6	    0.00000	    0.00702	    0.00858	
+                      7	    0.00000	    0.00661	    0.00773	
+                      8	    0.00000	    0.00627	    0.00720	
+                      9	    0.00000	    0.00614	    0.00711	
+                     10	    0.00000	    0.00752	    0.00476	
+                     11	    0.00000	    0.00759	    0.00743	
+                     12	    0.00000	    0.00651	    0.00793	
+                     13	    0.00000	    0.00765	    0.00916	
+                     14	    0.00000	    0.00946	    0.01103	
+                     15	    0.00000	    0.01198	    0.01369	
+                     16	    0.00000	    0.01519	    0.01723	
+                     17	    0.00000	    0.01817	    0.02172	
+                     18	    0.00000	    0.02171	    0.02634	
+                     19	    0.00000	    0.02361	    0.03068	
+                     20	    0.00000	    0.02315	    0.03448	
+                     30	    0.00000	    0.02435	    0.04837	
+                     60	    0.00000	    0.00955	    0.01924	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CFYDSPR">
+    <description>SIDEFORCE INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	  -0.00334	    0.00663	
+                     -5	    0.00000	  -0.01406	  -0.00967	
+                     -2	    0.00000	  -0.01157	  -0.01284	
+                      0	    0.00000	  -0.00985	  -0.01316	
+                      1	    0.00000	  -0.00911	  -0.01267	
+                      2	    0.00000	  -0.00851	  -0.01178	
+                      3	    0.00000	  -0.00806	  -0.01076	
+                      4	    0.00000	  -0.00769	  -0.00969	
+                      5	    0.00000	  -0.00694	  -0.00862	
+                      6	    0.00000	  -0.00702	  -0.00858	
+                      7	    0.00000	  -0.00661	  -0.00773	
+                      8	    0.00000	  -0.00627	  -0.00720	
+                      9	    0.00000	  -0.00614	  -0.00711	
+                     10	    0.00000	  -0.00752	  -0.00476	
+                     11	    0.00000	  -0.00759	  -0.00743	
+                     12	    0.00000	  -0.00651	  -0.00793	
+                     13	    0.00000	  -0.00765	  -0.00916	
+                     14	    0.00000	  -0.00946	  -0.01103	
+                     15	    0.00000	  -0.01198	  -0.01369	
+                     16	    0.00000	  -0.01519	  -0.01723	
+                     17	    0.00000	  -0.01817	  -0.02172	
+                     18	    0.00000	  -0.02171	  -0.02634	
+                     19	    0.00000	  -0.02361	  -0.03068	
+                     20	    0.00000	  -0.02315	  -0.03448	
+                     30	    0.00000	  -0.02435	  -0.04837	
+                     60	    0.00000	  -0.00955	  -0.01924	
+            </tableData>
           </table>
        </product>
     </function>
@@ -1711,6 +2313,82 @@
           </table>
        </product>
     </function>
+    <function name="aero/c/CMNDSPL">
+    <description>YAWING MOMENT INCREMENT DUE TO SPOILERS LEFT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-left-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	  -0.00044	  -0.00423	
+                     -5	    0.00000	  -0.00101	  -0.00472	
+                     -2	    0.00000	  -0.00316	  -0.00755	
+                      0	    0.00000	  -0.00454	  -0.00998	
+                      1	    0.00000	  -0.00519	  -0.01122	
+                      2	    0.00000	  -0.00584	  -0.01237	
+                      3	    0.00000	  -0.00650	  -0.01346	
+                      4	    0.00000	  -0.00718	  -0.01464	
+                      5	    0.00000	  -0.00810	  -0.01603	
+                      6	    0.00000	  -0.00870	  -0.01707	
+                      7	    0.00000	  -0.00947	  -0.01832	
+                      8	    0.00000	  -0.01018	  -0.01951	
+                      9	    0.00000	  -0.01085	  -0.02065	
+                     10	    0.00000	  -0.01123	  -0.02238	
+                     11	    0.00000	  -0.01168	  -0.02277	
+                     12	    0.00000	  -0.01143	  -0.02290	
+                     13	    0.00000	  -0.00992	  -0.02192	
+                     14	    0.00000	  -0.00834	  -0.02045	
+                     15	    0.00000	  -0.00675	  -0.01866	
+                     16	    0.00000	  -0.00486	  -0.01675	
+                     17	    0.00000	  -0.00302	  -0.01478	
+                     18	    0.00000	  -0.00057	  -0.01264	
+                     19	    0.00000	    0.00138	  -0.01044	
+                     20	    0.00000	    0.00175	  -0.00808	
+                     30	    0.00000	    0.00465	    0.00808	
+                     60	    0.00000	    0.00097	    0.00178	
+            </tableData>
+          </table>
+       </product>
+    </function>
+    <function name="aero/c/CMNDSPR">
+    <description>YAWING MOMENT INCREMENT DUE TO SPOILERS RIGHT</description>
+    <product>
+          <table>
+            <independentVar lookup="row">aero/alpha-deg</independentVar>
+            <independentVar lookup="column">fcs/speedbrake-right-deg</independentVar>
+            <tableData>
+                                  0	         20	         50	
+                    -10	    0.00000	    0.00044	    0.00423	
+                     -5	    0.00000	    0.00101	    0.00472	
+                     -2	    0.00000	    0.00316	    0.00755	
+                      0	    0.00000	    0.00454	    0.00998	
+                      1	    0.00000	    0.00519	    0.01122	
+                      2	    0.00000	    0.00584	    0.01237	
+                      3	    0.00000	    0.00650	    0.01346	
+                      4	    0.00000	    0.00718	    0.01464	
+                      5	    0.00000	    0.00810	    0.01603	
+                      6	    0.00000	    0.00870	    0.01707	
+                      7	    0.00000	    0.00947	    0.01832	
+                      8	    0.00000	    0.01018	    0.01951	
+                      9	    0.00000	    0.01085	    0.02065	
+                     10	    0.00000	    0.01123	    0.02238	
+                     11	    0.00000	    0.01168	    0.02277	
+                     12	    0.00000	    0.01143	    0.02290	
+                     13	    0.00000	    0.00992	    0.02192	
+                     14	    0.00000	    0.00834	    0.02045	
+                     15	    0.00000	    0.00675	    0.01866	
+                     16	    0.00000	    0.00486	    0.01675	
+                     17	    0.00000	    0.00302	    0.01478	
+                     18	    0.00000	    0.00057	    0.01264	
+                     19	    0.00000	  -0.00138	    0.01044	
+                     20	    0.00000	  -0.00175	    0.00808	
+                     30	    0.00000	  -0.00465	  -0.00808	
+                     60	    0.00000	  -0.00097	  -0.00178	
+            </tableData>
+          </table>
+       </product>
+    </function>
     <function name="aero/c/CMNP">
     <description>YAW DAMPING DERIVATIVE</description>
     <product>
@@ -1790,6 +2468,10 @@
           <property>aero/c/CFXB</property>
           <property>aero/c/CFXDAD</property>
           <property>aero/c/CFXDRD</property>
+          <property>aero/c/CFXDSM</property>
+          <property>aero/c/CFXDFM</property>
+          <property>aero/c/CFXDSPL</property>
+          <property>aero/c/CFXDSPR</property>
        </sum>
     </function>
   <axis name="DRAG">
@@ -1806,6 +2488,8 @@
           <property>aero/c/CML1</property>
           <property>aero/c/CMLDAD</property>
           <property>aero/c/CMLDRD</property>
+          <property>aero/c/CMLDSPL</property>
+          <property>aero/c/CMLDSPR</property>
           <property>aero/c/CMLBETADOT</property>
           <property>aero/c/CMLP</property>
           <property>aero/c/CMLR</property>
@@ -1825,6 +2509,8 @@
       <sum>
           <property>aero/c/CYDAD</property>
           <property>aero/c/CYDRD</property>
+          <property>aero/c/CFYDSPL</property>
+          <property>aero/c/CFYDSPR</property>
           <property>aero/c/CFYB</property>
           <property>aero/c/CFYP</property>
           <property>aero/c/CFYR</property>
@@ -1843,6 +2529,10 @@
       <sum>
           <property>aero/c/CFZDAD</property>
           <property>aero/c/CFZDRD</property>
+          <property>aero/c/CFZDSM</property>
+          <property>aero/c/CFZDFM</property>
+          <property>aero/c/CFZDSPL</property>
+          <property>aero/c/CFZDSPR</property>
           <property>aero/c/CFZB</property>
           <property>aero/c/CFZDDS</property>
        </sum>
@@ -1860,6 +2550,10 @@
       <sum>
           <property>aero/c/CMMDAD</property>
           <property>aero/c/CMMDRD</property>
+          <property>aero/c/CMMDSM</property>
+          <property>aero/c/CMMDFM</property>
+          <property>aero/c/CMMDSPL</property>
+          <property>aero/c/CMMDSPR</property>
           <property>aero/c/CMM1</property>
           <property>aero/c/CMMDDS</property>
           <property>aero/c/CMMALPHADOT</property>
@@ -1881,6 +2575,8 @@
       <sum>
           <property>aero/c/CMNDAD</property>
           <property>aero/c/CMNDRD</property>
+          <property>aero/c/CMNDSPL</property>
+          <property>aero/c/CMNDSPR</property>
           <property>aero/c/CMN1</property>
           <property>aero/c/CMNBETADOT</property>
           <property>aero/c/CMNP</property>
