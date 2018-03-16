@@ -12,40 +12,41 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
 	<fileheader>
-		<author>Joshua Davidson (it0uchpods)</author>
+		<author>Joshua Davidson (it0uchpods), Richard Harrison</author>
 		<version>Pre V1.0</version>
 		<description>A32X FDE</description>
 	</fileheader>
 
 	<metrics>
-		<wingarea  unit="FT2"> 1319.79 </wingarea>
-		<wingspan  unit="FT" >  117.26 </wingspan>
-		<wing_incidence      >    1.03 </wing_incidence>
-		<chord     unit="FT" >   20.76 </chord>
 		<htailarea unit="FT2">  334.24 </htailarea>
 		<htailarm  unit="FT" >   57.88 </htailarm>
 		<vtailarea unit="FT2">  248.79 </vtailarea>
 		<vtailarm  unit="FT" >   57.33 </vtailarm>
 
-		<location name="AERORP" unit="M">
-			<x> 19.2274 </x>
-			<y> 0 </y>
-			<z> 0.19249 </z>
+		<wingarea unit="M2">141.014</wingarea>
+		<wing_incidence unit="">0</wing_incidence>
+		<wingspan unit="M">37.059</wingspan>
+		<chord unit="">4.82</chord>
+		
+		<location unit="M" name="AERORP">
+			<x>16.1</x>
+			<y>0</y>
+			<z>0</z>
 		</location>
-
+		
 		<location name="EYEPOINT" unit="M">
 			<x> 0 </x>
 			<y> 0 </y>
 			<z> 0 </z>
 		</location>
-
+		
 		<location name="VRP" unit="M">
 			<x> 18.8499 </x>
 			<y> 0 </y>
 			<z> -1.7005004 </z>
 		</location>
 	</metrics>
-
+	
 	<mass_balance>
 		<ixx unit="SLUG*FT2">  611903 </ixx>
 		<iyy unit="SLUG*FT2"> 1735389 </iyy>
@@ -56,16 +57,16 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<iyz unit="SLUG*FT2">       0 </iyz>
 		<emptywt unit="LBS" >   80431 </emptywt>
 
-		<location name="CG" unit="M">
-			<x> 18.8231 </x>
-			<y> 0 </y>
-			<z> 0.19249 </z>
+		<location unit="M" name="CG">
+			<x>15.6957</x>
+			<y>0</y>
+			<z>0.19249</z>
 		</location>
 
 		<pointmass name="Crew">
 			<weight unit="LBS">380</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 5.29845 </x>
+				<x>2.17105</x>
 				<y> 0 </y>
 				<z> -0.66384 </z>
 			</location>
@@ -74,7 +75,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="PAX">
 			<weight unit="LBS">23000</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 18.8231 </x>
+				<x> 15.6957 </x>
 				<y> 0 </y>
 				<z> 0.19249 </z>
 			</location>
@@ -83,7 +84,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="Fwd Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M"> 
-				<x> 13.0849 </x>
+				<x>9.9575</x>
 				<y> 0 </y>
 				<z> -1.18112 </z>
 			</location>
@@ -92,7 +93,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		<pointmass name="Aft Cargo">
 			<weight unit="LBS">3000</weight>
 			<location name="POINTMASS" unit="M">
-				<x> 24.5565 </x>
+				<x> 21.4291 </x>
 				<y> 0 </y>
 				<z> -1.18112 </z>
 			</location>
@@ -102,7 +103,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<ground_reactions>
 		<contact type="BOGEY" name="NOSE_LG">
 			<location unit="M">
-				<x> 7.52385 </x>
+				<x> 4.39645</x>
 				<y> 0 </y>
 				<z> -4.31395 </z>
 			</location>
@@ -117,7 +118,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</contact>
 		<contact type="BOGEY" name="LEFT_MLG">
 			<location unit="M">
-				<x> 20.318 </x>
+				<x> 17.1906 </x>
 				<y> -4.25855 </y>
 				<z> -4.51844 </z>
 			</location>
@@ -132,7 +133,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</contact>
 		<contact type="BOGEY" name="RIGHT_MLG">
 			<location unit="M">
-				<x> 20.318 </x>
+				<x> 17.1906 </x>
 				<y> 4.25855 </y>
 				<z> -4.51844 </z>
 			</location>
@@ -336,7 +337,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<propulsion>
 		<engine file="leap1a26">
 			<location unit="M">
-				<x> 14.3962788 </x>
+				<x> 11.2688788 </x>
 				<y> -5.755 </y>
 				<z> -1.04768 </z>
 			</location>
@@ -348,7 +349,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<feed>3</feed>
 			<thruster file="direct">
 				<location unit="M">
-					<x> 14.3962788 </x>
+					<x> 11.2688788 </x>
 					<y> -5.755 </y>
 					<z> -1.04768 </z>
 				</location>
@@ -362,7 +363,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
 		<engine file="leap1a26">
 			<location unit="M">
-				<x> 14.3962788 </x>
+				<x> 11.2688788 </x>
 				<y> 5.755 </y>
 				<z> -1.04768 </z>
 			</location>
@@ -374,7 +375,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			<feed>4</feed>
 			<thruster file="direct">
 				<location unit="M">
-					<x> 14.3962788 </x>
+					<x> 11.2688788 </x>
 					<y> 5.755 </y>
 					<z> -1.04768 </z>
 				</location>
@@ -401,7 +402,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Center Tank -->
 			<location unit="M">
-				<x> 18.9731 </x>
+				<x> 15.8457 </x>
 				<y> 0 </y>
 				<z> -0.61182 </z>
 			</location>
@@ -414,7 +415,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Right Wing Tank -->
 			<location unit="M">
-				<x> 18.9231 </x>
+				<x> 15.7957</x>
 				<y> 5.1104 </y>
 				<z> -0.61182 </z>
 			</location>
@@ -427,7 +428,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Engine 1 Pipes -->
 			<location unit="M">
-				<x> 18.8231 </x>
+				<x> 15.6957 </x>
 				<y> 0 </y>
 				<z> 0.19249 </z>
 			</location>
@@ -438,7 +439,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 		</tank>
 		<tank type="FUEL">    <!-- Engine 2 Pipes -->
 			<location unit="M">
-				<x> 18.8231 </x>
+				<x> 15.6957 </x>
 				<y> 0 </y>
 				<z> 0.19249 </z>
 			</location>
@@ -455,8 +456,118 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<system file="fmgc" />
 	<system file="a320-fcs" />
 
-	<flight_control name="none"/>
-		
+	<flight_control name="A320-200-FCS">
+		<channel name="extra-aero">
+			<!-- need %Cg in chord for moments [Xcg - Xref)/100] -->
+			<summer name="cg-x-offset-chord-in">
+				<input> inertia/cg-x-in</input>
+				<input> -metrics/aero-rp-x-in</input>
+				<output>inertia/cg-x-offset-chord-in</output>
+			</summer>
+
+			<!-- figure out the factor for the fuel tank aero -->
+			<pure_gain name="cg-x-chord-percent">
+				<description>Percent offset of the CoP from the CG</description>
+				<input>inertia/cg-x-offset-chord-in</input>
+				<gain> -0.01</gain>
+				<clipto>
+					<min> -1 </min>
+					<max> 1 </max>
+				</clipto>
+				<output> inertia/cg-x-mac-percent </output>
+			</pure_gain>
+
+			<fcs_function name="pb">
+				<description>PB Denormalization</description>
+				<function>
+					<quotient>
+						<product>
+							<property>metrics/bw-ft</property>
+							<property>velocities/p-aero-rad_sec</property>
+						</product>
+						<!-- over -->
+						<product>
+							<value>2</value>
+							<property>velocities/vt-fps</property>
+						</product>
+					</quotient>
+				</function>
+				<clipto>
+					<min> -1.00 </min>
+					<max>  1.00 </max>
+				</clipto>
+				<output>aero/pb</output>
+			</fcs_function>
+
+			<fcs_function name="cbarq-2vo">
+				<description>For denormalization</description>
+				<function>
+					<quotient>
+						<product>
+							<property>metrics/cbarw-ft</property>
+							<property>velocities/q-aero-rad_sec</property>
+						</product>
+						<!-- over -->
+						<product>
+							<value>2</value>
+							<property>velocities/vt-fps</property>
+						</product>
+					</quotient>
+				</function>
+				<clipto>
+					<min> -2.01 </min>
+					<max>  2.01 </max>
+				</clipto>
+				<output>aero/qb</output>
+			</fcs_function>
+
+			<fcs_function name="rb-2vo">
+				<description>For denormalization</description>
+				<function>
+					<quotient>
+						<product>
+							<property>metrics/bw-ft</property>
+							<property>velocities/r-aero-rad_sec</property>
+						</product>
+						<!-- over -->
+						<product>
+							<value>2</value>
+							<property>velocities/vt-fps</property>
+						</product>
+					</quotient>
+				</function>
+				<clipto>
+					<min> -1.00 </min>
+					<max>  1.00 </max>
+				</clipto>
+				<output>aero/rb</output>
+			</fcs_function>
+
+
+			<fcs_function name="aero-cos-alpha">
+				<function>
+					<product>
+						<cos>
+							<property>aero/alpha-rad</property>
+						</cos>
+					</product>
+				</function>
+				<output>aero/cos-alpha</output>
+			</fcs_function>
+
+			<fcs_function name="aero-sin-alpha">
+				<function>
+					<product>
+						<sin>
+							<property>aero/alpha-rad</property>
+						</sin>
+					</product>
+				</function>
+				<output>aero/sin-alpha</output>
+			</fcs_function>
+		</channel>
+	</flight_control>
+
 	<aerodynamics file="Systems/a320-aerodynamics.xml" />
 
 	<external_reactions>
