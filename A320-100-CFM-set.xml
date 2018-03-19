@@ -160,16 +160,16 @@
 		</view>
 		
 		<systems n="0">
-            <autopilot n="0">
-                <path>Aircraft/IDG-A32X/Systems/fadec-cfm.xml</path>
-            </autopilot>
+			<autopilot n="0">
+				<path>Aircraft/IDG-A32X/Systems/fadec-cfm.xml</path>
+			</autopilot>
 			<autopilot n="10">
 				<path>Aircraft/IDG-A32X/Systems/cfm56-sound.xml</path>
 			</autopilot>
 		</systems>
 		
 	</sim>
-        
+		
 	<limits>
 		<mass-and-balance> <!--Data source: https://en.wikipedia.org/wiki/Airbus_A320_family#Specifications-->
 			<maximum-takeoff-mass-lbs>172000</maximum-takeoff-mass-lbs>

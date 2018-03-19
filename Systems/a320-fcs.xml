@@ -211,6 +211,19 @@
 	
 	<channel name="Roll">
 		
+		<fcs_function name="hydraulics/roll-control">
+			<function>
+				<sum>
+					<property>hydraulics/aileron-l/final</property>
+					<property>hydraulics/aileron-r/final</property>
+				</sum>
+			</function>
+			<clipto>
+				<min>-1.0</min>
+				<max>1.0</max>
+			</clipto>
+		</fcs_function>
+		
 		<aerosurface_scale name="fcs/roll-pos-left-deg">
 			<input>hydraulics/aileron-l/final</input>
 			<domain>
