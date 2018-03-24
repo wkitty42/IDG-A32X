@@ -432,7 +432,7 @@
 		<mode>looped</mode>
 		<path>FL2070/xabn13.wav</path>
 		<volume>
-			<property>a320/sound/a13</property>
+			<property>a320/sound/a13x</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
@@ -451,6 +451,88 @@
 		<name>xa320_b11</name>
 		<condition>
 			<not><property>sim/current-view/internal</property></not>
+			<and>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>75</value></greater-than>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>280</value></less-than>
+			</and>
+		</condition>
+		<mode>looped</mode>
+		<path>FL2070/xabn11a.wav</path>
+		<volume>
+			<property>a320/sound/b11</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/b11p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>0.0</x>
+			<y>-20</y>
+			<z>0.0</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>xa320_b12</name>
+		<condition>
+			<not><property>sim/current-view/internal</property></not>
+			<and>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>75</value></greater-than>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>280</value></less-than>
+			</and>
+		</condition>
+		<mode>looped</mode>
+		<path>FL2070/xabn12a.wav</path>
+		<volume>
+			<property>a320/sound/b12</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/b12p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>0.0</x>
+			<y>-20</y>
+			<z>0.0</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>xa320_b13</name>
+		<condition>
+			<not><property>sim/current-view/internal</property></not>
+			<and>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>75</value></greater-than>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>280</value></less-than>
+			</and>
+		</condition>
+		<mode>looped</mode>
+		<path>FL2070/xabn13a.wav</path>
+		<volume>
+			<property>a320/sound/b13x</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/b13p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>0.0</x>
+			<y>-20</y>
+			<z>0.0</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>xa320_b11</name>
+		<condition>
+			<not><property>sim/current-view/internal</property></not>
+			<or>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>75</value></less-than>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>280</value></greater-than>
+			</or>
 		</condition>
 		<mode>looped</mode>
 		<path>FL2070/xabn11.wav</path>
@@ -473,6 +555,10 @@
 		<name>xa320_b12</name>
 		<condition>
 			<not><property>sim/current-view/internal</property></not>
+			<or>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>75</value></less-than>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>280</value></greater-than>
+			</or>
 		</condition>
 		<mode>looped</mode>
 		<path>FL2070/xabn12.wav</path>
@@ -495,11 +581,15 @@
 		<name>xa320_b13</name>
 		<condition>
 			<not><property>sim/current-view/internal</property></not>
+			<or>
+				<less-than><property>sim/current-view/heading-offset-deg</property><value>75</value></less-than>
+				<greater-than><property>sim/current-view/heading-offset-deg</property><value>280</value></greater-than>
+			</or>
 		</condition>
 		<mode>looped</mode>
 		<path>FL2070/xabn13.wav</path>
 		<volume>
-			<property>a320/sound/b13</property>
+			<property>a320/sound/b13x</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
@@ -512,6 +602,5 @@
 			<z>0.0</z>
 		</position>
 	</engine>
-	
   </fx>
 </PropertyList>
