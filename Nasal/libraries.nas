@@ -186,6 +186,7 @@ var systemsInit = func {
 	libraries.CVR.start();
 	icing.icingInit();
 	lightsLoop.start();
+	ecam.ECAM_system.init();
 	var autopilot = gui.Dialog.new("sim/gui/dialogs/autopilot/dialog", "Aircraft/IDG-A32X/Systems/autopilot-dlg.xml");
 	setprop("/it-autoflight/input/fd1", 1);
 	setprop("/it-autoflight/input/fd2", 1);
@@ -204,6 +205,7 @@ var systemsLoop = maketimer(0.1, func {
 	systems.FUEL.loop();
 	systems.ADIRS.loop();
 	libraries.ECAM.loop();
+	ecam.ECAM_system.loop();
 	fadec.fadecLoop();
 
 	if ((getprop("/controls/pneumatic/switches/groundair") or getprop("/controls/switches/cart")) and ((getprop("/velocities/groundspeed-kt") > 2) or getprop("/controls/gear/brake-parking") == 0)) {
