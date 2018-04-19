@@ -243,7 +243,8 @@ var systemsLoop = maketimer(0.1, func {
 		setprop("/sim/sounde/pax-view", 1);
 	} else { 
 		setprop("/sim/sounde/pax-view", 0);
-
+	}
+	
 	if ((getprop("/engines/engine[0]/state") == 2 or getprop("/engines/engine[0]/state") == 3) and getprop("/fdm/jsbsim/propulsion/tank[3]/contents-lbs") < 1) {
 		systems.cutoff_one();
 	}
