@@ -10,6 +10,7 @@
 		<name>a320_a1s</name>
 		<mode>looped</mode>
 		<path>FL2070/abn1strt.wav</path>
+		<property>sim/current-view/internal</property>
 		<volume>
 			<property>a320/sound/a1strt</property>
 			<offset>0</offset>
@@ -29,6 +30,7 @@
 		<name>a320_b1s</name>
 		<mode>looped</mode>
 		<path>FL2070/abn1strt.wav</path>
+		<property>sim/current-view/internal</property>
 		<volume>
 			<property>a320/sound/b1strt</property>
 			<offset>0</offset>

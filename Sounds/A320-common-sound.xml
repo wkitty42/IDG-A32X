@@ -82,10 +82,16 @@
 			<mode>once</mode>
 			<path>purserSnacks.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/switches/cabinCall</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/switches/cabinCall</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<factor>8</factor>
@@ -99,10 +105,16 @@
 			<mode>once</mode>
 			<path>mechCall.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/switches/mechCall</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/switches/mechCall</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<factor>8</factor>
@@ -154,6 +166,10 @@
 						<property>/FMGC/status/to-state</property>
 						<value>1</value>
 					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -190,6 +206,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -258,6 +278,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -292,6 +316,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -326,6 +354,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -360,6 +392,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -394,6 +430,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -428,6 +468,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -462,6 +506,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -496,6 +544,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -530,6 +582,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -564,6 +620,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -612,6 +672,10 @@
 							<value>1</value>
 						</equals>
 					</or>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -658,6 +722,10 @@
 						<property>/controls/engines/engine[1]/throttle</property>
 						<value>0.0</value>
 					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -693,6 +761,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -727,6 +799,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -807,6 +883,10 @@
 						<property>/systems/electrical/outputs/mk-viii</property>
 						<value>25</value>
 					</greater-than-equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -833,6 +913,10 @@
 						<property>/it-autoflight/sound/apoffsound</property>
 						<property>/it-autoflight/sound/apoffsound2</property>
 					</or>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -941,10 +1025,16 @@
 			<name>detendaa</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>IDLE</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>IDLE</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -956,10 +1046,16 @@
 			<name>detendba</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>IDLE</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>IDLE</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -971,10 +1067,16 @@
 			<name>detendab</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>MAN</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>MAN</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -986,10 +1088,16 @@
 			<name>detendbb</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>MAN</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>MAN</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1001,10 +1109,16 @@
 			<name>detendac</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>CL</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>CL</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1016,10 +1130,16 @@
 			<name>detendbc</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>CL</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>CL</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1031,10 +1151,16 @@
 			<name>detendad</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>MAN THR</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>MAN THR</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1046,10 +1172,16 @@
 			<name>detendbd</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>MAN THR</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>MAN THR</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1061,10 +1193,16 @@
 			<name>detendae</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>MCT</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>MCT</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1076,10 +1214,16 @@
 			<name>detendbe</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>MCT</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>MCT</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1091,10 +1235,16 @@
 			<name>detendaf</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state1</property>
-					<value>TOGA</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state1</property>
+						<value>TOGA</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1106,10 +1256,16 @@
 			<name>detendbf</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/thrust/state2</property>
-					<value>TOGA</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/thrust/state2</property>
+						<value>TOGA</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1121,10 +1277,16 @@
 			<name>detendag</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/engines/engine[0]/reverser</property>
-					<value>0</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/engines/engine[0]/reverser</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1136,10 +1298,16 @@
 			<name>detendbg</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/engines/engine[1]/reverser</property>
-					<value>0</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/engines/engine[1]/reverser</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1151,10 +1319,16 @@
 			<name>detendah</name>
 			<path>Cockpit/detenta.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/engines/engine[0]/reverser</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/engines/engine[0]/reverser</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1166,10 +1340,16 @@
 			<name>detendbh</name>
 			<path>Cockpit/detentb.wav</path>
 			<condition>
-				<equals>
-					<property>/controls/engines/engine[1]/reverser</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/controls/engines/engine[1]/reverser</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<property>/sim/sound/effects/volume</property>
@@ -1282,6 +1462,10 @@
 						<property>controls/CVR/tone</property>
 						<value>1</value>
 					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -1294,10 +1478,16 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A32X/Sounds/Cockpit/relay-battery.wav</path>
 			<condition>
-				<greater-than>
-					<property>/systems/electrical/battery1-amps</property>
-					<value>25</value>
-				</greater-than>
+				<and>
+					<greater-than>
+						<property>/systems/electrical/battery1-amps</property>
+						<value>25</value>
+					</greater-than>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<factor>0.80</factor>
@@ -1309,10 +1499,16 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A32X/Sounds/Cockpit/relay-battery.wav</path>
 			<condition>
-				<greater-than>
-					<property>/systems/electrical/battery2-amps</property>
-					<value>25</value>
-				</greater-than>
+				<and>
+					<greater-than>
+						<property>/systems/electrical/battery2-amps</property>
+						<value>25</value>
+					</greater-than>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<factor>0.80</factor>
@@ -1333,6 +1529,10 @@
 						<property>/controls/electrical/switches/gen-ext</property>
 						<value>1</value>
 					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>
@@ -1345,10 +1545,16 @@
 			<mode>once</mode>
 			<path>Aircraft/IDG-A32X/Sounds/Cockpit/relay-apu.wav</path>
 			<condition>
-				<equals>
-					<property>/systems/electrical/gen-apu</property>
-					<value>1</value>
-				</equals>
+				<and>
+					<equals>
+						<property>/systems/electrical/gen-apu</property>
+						<value>1</value>
+					</equals>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
+				</and>
 			</condition>
 			<volume>
 				<factor>0.60</factor>
@@ -1372,6 +1578,10 @@
 							<value>110</value>
 						</greater-than>
 					</or>
+					<equals>
+						<property>/sim/sounde/pax-view</property>
+						<value>0</value>
+					</equals>
 				</and>
 			</condition>
 			<volume>

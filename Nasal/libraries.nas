@@ -238,6 +238,12 @@ var systemsLoop = maketimer(0.1, func {
 	} else {
 		setprop("/engines/ready", 0);
 	}
+	
+	if (getprop("/sim/current-view/view-number") == 13 or getprop("/sim/current-view/view-number") == 14 or getprop("/sim/current-view/view-number") == 15) {
+		setprop("/sim/sounde/pax-view", 1);
+	} else { 
+		setprop("/sim/sounde/pax-view", 0);
+	}
 });
 
 setlistener("/options/steep-ils", func {
