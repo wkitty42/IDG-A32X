@@ -42,7 +42,7 @@ var initInputA = func(key) {
 					}
 					setprop("/MCDU[0]/scratchpad-msg", "1");
 					setprop("/MCDU[0]/scratchpad", "NOT ALLOWED");
-				} else if (ci >= 0 and ci <= 999) {
+				} else if (ci >= 0 and ci <= 120) {
 					setprop("/FMGC/internal/cost-index", ci);
 					setprop("/FMGC/internal/cost-index-set", 1);
 					setprop("/MCDU[0]/scratchpad", "");
@@ -108,7 +108,7 @@ var initInputA = func(key) {
 			setprop("/MCDU[0]/scratchpad", "");
 		} else {
 			var tfs = size(scratchpad);
-			if (tfs == 9) {
+			if (tfs == 9 and find("/", scratchpad) != -1) {
 				var fromto = split("/", scratchpad);
 				var froms = size(fromto[0]);
 				var tos = size(fromto[1]);
