@@ -172,13 +172,6 @@ var PNEU = {
 		wowl = getprop("/gear/gear[1]/wow");
 		wowr = getprop("/gear/gear[2]/wow");
 		
-		# Air Sources/PSI
-		if (rpmapu >= 94.9 and bleedapu_sw and !bleedapu_fail) {
-			setprop("/systems/pneumatic/bleedapu", 34);
-		} else {
-			setprop("/systems/pneumatic/bleedapu", 0);
-		}
-		
 		ground = getprop("/systems/pneumatic/groundair");
 		bleedapu = getprop("/systems/pneumatic/bleedapu");
 		

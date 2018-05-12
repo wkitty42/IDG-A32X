@@ -257,9 +257,9 @@ var canvas_lowerECAM_apu = {
 		me["APUGenHz"].setText(sprintf("%s", math.round(getprop("/systems/electrical/extra/apu-hz"))));
 
 		# APU Bleed
-		if (getprop("/controls/adirs/ir[1]/knob") != 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu") > 0)) {
+		if (getprop("/controls/adirs/ir[1]/knob") == 1 and (getprop("/controls/APU/master") == 1 or getprop("/systems/pneumatic/bleedapu") > 0)) {
 			me["APUBleedPSI"].setColor(0.0509,0.7529,0.2941);
-			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu"))));
+			me["APUBleedPSI"].setText(sprintf("%s", math.round(getprop("/systems/pneumatic/bleedapu-actual"))));
 		} else {
 			me["APUBleedPSI"].setColor(0.7333,0.3803,0);
 			me["APUBleedPSI"].setText(sprintf("%s", "XX"));

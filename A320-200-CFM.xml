@@ -455,6 +455,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<system file="glass-effect1" />
 	<system file="fmgc" />
 	<system file="a320-fcs" />
+	<system file="pneumatics" />
 	
 	<flight_control name="none"/>
 	

@@ -1,0 +1,28 @@
+<!-- Airbus A320 Electrical -->
+
+<!--
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
+-->
+
+<system name="A320: Electrical">
+	<property>/controls/pneumatic/switches/bleedapu</property>
+	<property>/systems/failures/bleed-apu</property>
+	
+	<channel name="APU Bleed">
+		<switch name="/systems/pneumatic/bleedapu">
+			<test logic="AND" value="36">
+				/controls/pneumatic/switches/bleedapu eq 1
+				/systems/apu/rpm ge 94.9
+				/systems/failures/bleed-apu eq 0
+			</test>
+		</switch>
+		
+		<lag_filter name="/systems/pneumatic/bleedapu-actual">
+			<input>/systems/pneumatic/bleedapu</input>
+			<c1>0.375</c1>
+		</lag_filter>
+	</channel>
+
+</system>
