@@ -171,47 +171,11 @@ var PNEU = {
 		wowc = getprop("/gear/gear[0]/wow");
 		wowl = getprop("/gear/gear[1]/wow");
 		wowr = getprop("/gear/gear[2]/wow");
-		
 		ground = getprop("/systems/pneumatic/groundair");
 		bleedapu = getprop("/systems/pneumatic/bleedapu");
-		
-		if (xbleed_sw == 0) {
-			setprop("/systems/pneumatic/xbleed", 0);
-		} else if (xbleed_sw == 1) {
-			if (bleedapu >= 11) {
-				setprop("/systems/pneumatic/xbleed", 1);
-			} else {
-				setprop("/systems/pneumatic/xbleed", 0);
-			}
-		} else if (xbleed_sw == 2) {
-			setprop("/systems/pneumatic/xbleed", 1);
-		}
-		
 		xbleed = getprop("/systems/pneumatic/xbleed", 0);
-		
-		if (stateL == 3 and bleed1_sw and !bleedeng1_fail) {
-			setprop("/systems/pneumatic/bleed1", 31);
-		} else {
-			setprop("/systems/pneumatic/bleed1", 0);
-		}
-		
-		if (stateR == 3 and bleed2_sw and !bleedeng2_fail) {
-			setprop("/systems/pneumatic/bleed2", 32);
-		} else {
-			setprop("/systems/pneumatic/bleed2", 0);
-		}
-		
 		bleed1 = getprop("/systems/pneumatic/bleed1");
 		bleed2 = getprop("/systems/pneumatic/bleed2");
-		
-		if (bleed1 >= 11 and (stateR != 3 or !bleed2_sw or bleedeng2_fail) and xbleed == 1) {
-			setprop("/systems/pneumatic/bleed2", 31);
-		}
-		
-		if (bleed2 >= 11 and (stateL != 3 or !bleed1_sw or bleedeng1_fail) and xbleed == 1) {
-			setprop("/systems/pneumatic/bleed1", 32);
-		}
-		
 		bleed1 = getprop("/systems/pneumatic/bleed1");
 		bleed2 = getprop("/systems/pneumatic/bleed2");
 		

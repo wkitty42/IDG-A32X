@@ -9,9 +9,16 @@
 <system name="A320: Electrical">
 	<property>/controls/pneumatic/switches/bleedapu</property>
 	<property>/systems/failures/bleed-apu</property>
+	<property>/controls/pneumatic/switches/xbleed</property>
+	<property>/systems/failures/bleed-eng1</property>
+	<property>/systems/failures/bleed-eng2</property>
+	<property>/systems/pneumatic/bleed2</property>
+	<property>/controls/pneumatic/switches/bleed1</property>
+	<property>/controls/pneumatic/switches/bleed2</property>
 	
 	<channel name="APU Bleed">
 		<switch name="/systems/pneumatic/bleedapu">
+			<default value="0"/>
 			<test logic="AND" value="36">
 				/controls/pneumatic/switches/bleedapu eq 1
 				/systems/apu/rpm ge 94.9
@@ -22,6 +29,81 @@
 		<lag_filter name="/systems/pneumatic/bleedapu-actual">
 			<input>/systems/pneumatic/bleedapu</input>
 			<c1>0.375</c1>
+		</lag_filter>
+	</channel>
+	
+	<channel name="X-Bleed">
+		<switch name="/systems/pneumatic/xbleed">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/controls/pneumatic/switches/xbleed eq 1
+				/systems/pneumatic/bleedapu ge 11
+			</test>
+			<test logic="AND" value="1">
+				/controls/pneumatic/switches/xbleed eq 2
+			</test>
+		</switch>
+	</channel>
+	
+	<channel name="Left Bleed">
+		<switch name="/systems/pneumatic/bleed1">
+			<default value="0"/>
+			<test logic="AND" value="31">
+				/engines/engine[0]/state eq 3
+				/systems/failures/bleed-eng1 eq 0
+				/controls/pneumatic/switches/bleed1 eq 1
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed2 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/engines/engine[0]/state ne 3
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed2 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/systems/failures/bleed-eng1 eq 1
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed2 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/controls/pneumatic/switches/bleed1 eq 0
+			</test>
+		</switch>
+		
+		<lag_filter name="/systems/pneumatic/bleed1-actual">
+			<input>/systems/pneumatic/bleed1</input>
+			<c1>0.4</c1>
+		</lag_filter>
+	</channel>
+	
+	<channel name="Right Bleed">
+		<switch name="/systems/pneumatic/bleed2">
+			<default value="0"/>
+			<test logic="AND" value="31">
+				/engines/engine[1]/state eq 3
+				/systems/failures/bleed-eng2 eq 0
+				/controls/pneumatic/switches/bleed2 eq 1
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed1 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/engines/engine[1]/state ne 3
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed1 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/systems/failures/bleed-eng2 eq 1
+			</test>
+			<test logic="AND" value="31">
+				/systems/pneumatic/bleed1 ge 11
+				/systems/pneumatic/xbleed eq 1
+				/controls/pneumatic/switches/bleed2 eq 0
+			</test>
+		</switch>
+		
+		<lag_filter name="/systems/pneumatic/bleed2-actual">
+			<input>/systems/pneumatic/bleed2</input>
+			<c1>0.4</c1>
 		</lag_filter>
 	</channel>
 
