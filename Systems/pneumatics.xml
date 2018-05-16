@@ -39,7 +39,7 @@
 				/controls/pneumatic/switches/xbleed eq 1
 				/systems/pneumatic/bleedapu ge 11
 			</test>
-			<test logic="AND" value="1">
+			<test value="1">
 				/controls/pneumatic/switches/xbleed eq 2
 			</test>
 		</switch>
