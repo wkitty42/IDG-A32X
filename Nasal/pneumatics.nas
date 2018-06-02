@@ -178,35 +178,7 @@ var PNEU = {
 		bleed2 = getprop("/systems/pneumatic/bleed2");
 		bleed1 = getprop("/systems/pneumatic/bleed1");
 		bleed2 = getprop("/systems/pneumatic/bleed2");
-		
-		if (stateL == 1 or stateR == 1 or stateL == 2 or stateR == 2) {
-			setprop("/systems/pneumatic/start-psi", 18);
-		} else {
-			setprop("/systems/pneumatic/start-psi", 0);
-		}
-		
-		if (getprop("/controls/engines/engine-start-switch") == 2 and wowc == 1 and (stateL != 3 or stateR != 3)) {
-			setprop("/systems/pneumatic/starting", 1);
-		} else if (wowc == 1 and eng1_starter == 1 or eng2_starter == 1) {
-			setprop("/systems/pneumatic/starting", 1);
-		} else {
-			setprop("/systems/pneumatic/starting", 0);
-		}
-		
 		starting = getprop("/systems/pneumatic/starting");
-		
-		if (pack1_sw == 1 and (bleed1 >= 11 or bleedapu >= 11 or ground >= 11) and starting == 0 and !pack1_fail) {
-			setprop("/systems/pneumatic/pack1", pack_flo_sw);
-		} else {
-			setprop("/systems/pneumatic/pack1", 0);
-		}
-		
-		if (pack2_sw == 1 and (bleed2 >= 11 or (bleedapu >= 11 and xbleed == 1)) and starting == 0 and !pack2_fail) {
-			setprop("/systems/pneumatic/pack2", pack_flo_sw);
-		} else {
-			setprop("/systems/pneumatic/pack2", 0);
-		}
-		
 		pack1 = getprop("/systems/pneumatic/pack1");
 		pack2 = getprop("/systems/pneumatic/pack2");
 		
@@ -226,12 +198,6 @@ var PNEU = {
 		} else {
 			total_psi_calc = ((bleed1 + bleed2 + bleedapu + ground) - start_psi - pack_psi);
 			setprop("/systems/pneumatic/total-psi", total_psi_calc);
-		}
-		
-		if (groundair_supp) {
-			setprop("/systems/pneumatic/groundair", 39);
-		} else {
-			setprop("/systems/pneumatic/groundair", 0);
 		}
 		
 		if (engantiice1 and bleed1 > 20) { # shut down anti-ice if bleed is lost else turn it on
