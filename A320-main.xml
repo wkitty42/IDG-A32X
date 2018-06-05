@@ -112,43 +112,39 @@
 			<electrical>
 				<path></path>
 			</electrical>
+			<!-- 0 is FADEC -->
 			<autopilot n="1">
 				<path>Aircraft/IDG-A32X/Systems/hydraulics.xml</path>
 			</autopilot>
 			<autopilot n="2">
-				<path>Aircraft/IDG-A32X/Systems/fbw-drivers.xml</path>
-			</autopilot>
-			<autopilot n="3">
-				<path>Aircraft/IDG-A32X/Systems/fbw-roll-yaw.xml</path>
-			</autopilot>
-			<autopilot n="4">
 				<path>Aircraft/IDG-A32X/Systems/fbw-pitch.xml</path>
 			</autopilot>
-			<autopilot n="5">
+			<autopilot n="3">
 				<path>Aircraft/IDG-A32X/Systems/fmgc-drivers.xml</path>
 			</autopilot>
-			<autopilot n="6">
+			<autopilot n="4">
 				<path>Aircraft/IDG-A32X/Systems/fmgc-roll-yaw.xml</path>
 			</autopilot>
-			<autopilot n="7">
+			<autopilot n="5">
 				<path>Aircraft/IDG-A32X/Systems/fmgc-pitch.xml</path>
 			</autopilot>
-			<autopilot n="8">
+			<autopilot n="6">
 				<path>Aircraft/IDG-A32X/Systems/fmgc-thrust.xml</path>
 			</autopilot>
-			<autopilot n="9">
+			<autopilot n="7">
 				<path>Aircraft/IDG-A32X/Systems/libraries.xml</path>
 			</autopilot>
-			<autopilot n="11">
+			<autopilot n="8">
 				<path>Aircraft/IDG-A32X/Systems/upper-ecam.xml</path>
 			</autopilot>
-			<autopilot n="12">
+			<autopilot n="9">
 				<path>Aircraft/IDG-A32X/Systems/lower-ecam.xml</path>
 			</autopilot>
-			<autopilot n="13">
+			<!-- 10 is sound -->
+			<autopilot n="11">
 				<path>Aircraft/IDG-A32X/Systems/pfd.xml</path>
 			</autopilot>
-			<autopilot n="14">
+			<autopilot n="12">
 				<path>Aircraft/IDG-A32X/Systems/zoom-views.xml</path>
 			</autopilot>
 		</systems>
@@ -359,6 +355,8 @@
 			<z-offset-min-m type="float">30.0</z-offset-min-m>
 			<z-offset-max-m type="float">300.0</z-offset-max-m>
 		</current-view>
+		
+		 <minimum-fg-version>2018.1.0</minimum-fg-version>
 	</sim>
 
 	<consumables>
@@ -415,6 +413,8 @@
 		<output>
 			<ap1>0</ap1>
 			<ap2>0</ap2>
+			<lat>0</lat>
+			<vert>0</vert>
 		</output>
 		<custom>
 			<show-hdg>0</show-hdg>
@@ -429,6 +429,12 @@
 	<it-fbw n="0">
 		<alpha-hld type="bool">0</alpha-hld>
 		<law type="int">0</law>
+		<roll-lim type="double">33</roll-lim>
+		<roll-back type="bool">0</roll-back>
+		<protections n="0">
+			<overspeed type="bool">0</overspeed>
+			<overspeed-roll-back type="bool">0</overspeed-roll-back>
+		</protections>
 	</it-fbw>
 
 	<apu>
@@ -484,7 +490,7 @@
 				<fault type="bool">false</fault>
 			</ir>
 			<onbat type="bool">false</onbat>
-			<skip userarchive="y" type="bool">0</skip>
+			<skip type="bool">0</skip>
 		</adirs>
 		<APU>
 			<fire-btn type="bool">0</fire-btn>
@@ -537,13 +543,11 @@
 			<aileron-left>0.5</aileron-left>
 			<aileron-right>-0.5</aileron-right>
 			<elevator-input>0</elevator-input>
-			<elevator-fbw>0</elevator-fbw>
 			<elevator-left>0.1</elevator-left>
 			<elevator-right>0.1</elevator-right>
 			<elevator-trim-fdm>0.0</elevator-trim-fdm>
 			<flap-pos type="int">0</flap-pos>
 			<ground-spoilers-armed type="bool">0</ground-spoilers-armed>
-			<roll-fbw>0</roll-fbw>
 			<rudder-trim-fdm>0.0</rudder-trim-fdm>
 			<spoiler-l1>0.0</spoiler-l1>
 			<spoiler-l2>0.0</spoiler-l2>
@@ -631,7 +635,6 @@
 		<tray n="0">
 			<lefttrayext type="double">0</lefttrayext>
 			<righttrayext type="double">0</righttrayext>
-			<suprise userarchive="y" type="bool">0</suprise>
 		</tray>
 	</controls>
 	
@@ -729,7 +732,8 @@
 	
 	<options n="0">
 		<system n="0">
-			<keyboard-mode userarchive="y" type="bool">0</keyboard-mode>
+			<keyboard-mode type="bool">0</keyboard-mode>
+			<laptop-mode type="bool">0</laptop-mode>
 		</system>
 		<steep-ils type="bool">0</steep-ils>
 		<steep-ils-avail type="bool">0</steep-ils-avail>
@@ -995,8 +999,20 @@
 			</mouse>
 		</mice>
 		<keyboard>
+			<key n="4">
+				<name>CTRL-d</name>
+				<desc>Autothrottle Disconnect</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						if (getprop("/it-autoflight/output/athr") == 1) {
+							setprop("/it-autoflight/input/athr", 0);
+						}
+					</script>
+				</binding>
+			</key>
 			<key n="24">
-				<name>Ctrl-X</name>
+				<name>Ctrl-x</name>
 				<desc>Reset zoom to default</desc>
 				<binding>
 					<command>nasal</command>
@@ -1221,6 +1237,21 @@
 					<script>
 						setprop("/controls/engines/engine[0]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01);
 						setprop("/controls/engines/engine[1]/throttle", getprop("/controls/engines/engine[0]/throttle") + 0.01); # Not a typo, always use engine[0] as a reference
+					</script>
+				</binding>
+			</key>
+			<key n="68">
+				<name>D</name>
+				<desc>Autopilot Disconnect</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						if (getprop("/it-autoflight/output/ap1") == 1) {
+							setprop("/it-autoflight/input/ap1", 0);
+						}
+						if (getprop("/it-autoflight/output/ap2") == 1) {
+							setprop("/it-autoflight/input/ap2", 0);
+						}
 					</script>
 				</binding>
 			</key>
