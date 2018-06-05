@@ -54,62 +54,116 @@
 # PHASE: /FMGC/status/phase
 
 # DISPLAY: 1 - EWD 2 - MEMO 3 - STATUS
+var ewd = props.globals.initNode("/instrumentation/ewd");
+var ewd_msg_three	= ewd.initNode("msg/priority_3"," ","STRING");
+var ewd_msg_two		= ewd.initNode("msg/priority_2"," ","STRING");
+var ewd_msg_one		= ewd.initNode("msg/priority_1"," ","STRING");
+var ewd_msg_zero	= ewd.initNode("msg/priority_0"," ","STRING");
+var ewd_msg_memo	= ewd.initNode("msg/memo"," ","STRING");
+var msgs_priority_3 = [];
+var msgs_priority_2 = [];
+var msgs_priority_1 = [];
+var msgs_priority_0 = [];
+var msgs_memo = [];
+var active_messages = [];
+var num_lines = 6;
+var msg = nil;
+var spacer = nil;
+var line = nil;
 
-var message = {
-	name: "",
-	text: "",
-	priority: 0,
-	logic_prop: "",
-	color: "",
-	display: "",
-	new: func(name,text,priority,logic_prop,color,display) {
-		var l = {parents:[message]};
-		
-		l.name = name;
-		l.text = text;
-		l.priority = priority;
-		l.logic_prop = logic_prop;
-		l.color = color;
-		l.display = display;
-		
-		return l;
+# messages logic and added to arrays
+
+var messages_priority_3 = func {
+	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
+		append(msgs_priority_3,"L/G GEAR NOT DOWN");
+		append(active_messages,"L/G GEAR NOT DOWN");
 	}
-};
+}
+var messages_priority_2 = func {}
+var messages_priority_1 = func {}
+var messages_priority_0 = func {}
+var messages_memo = func {
+	if (getprop("controls/flight/speedbrake-arm") == 1) {
+			append(msgs_memo,"GND SPLRS ARMED");
+			append(active_messages,"GND SPLRS ARMED");
+		}
+}
 
-var messages = nil;
+# messages sent to property tree
 
+var update_ewd = func(msgs_priority_3,msgs_priority_2,msgs_priority_1,msgs_priority_0,msgs_memo) {
+	msg = "";
+	spacer = "";
+	line = 0;
+	for(var i=0; i<size(msgs_priority_3); i+=1)
+	{
+		msg = msg ~ msgs_priority_3[i] ~ "\n";
+		spacer = spacer ~ "\n";
+		line+=1;
+	}
+	ewd_msg_three.setValue(msg);
+	msg = spacer;
+	for(var i=0; i<size(msgs_priority_2); i+=1)
+	{
+		msg = msg ~ msgs_priority_2[i] ~ "\n";
+		spacer = spacer ~ "\n";
+		line+=1;
+	}
+	ewd_msg_two.setValue(msg);
+	msg = spacer;
+	for(var i=0; i<size(msgs_priority_1); i+=1)
+	{
+		msg = msg ~ msgs_priority_1[i] ~ "\n";
+		spacer = spacer ~ "\n";
+		line+=1;
+	}
+	ewd_msg_one.setValue(msg);
+	msg = spacer;
+	for(var i=0; i<size(msgs_priority_0); i+=1)
+	{
+		msg = msg ~ msgs_priority_0[i] ~ "\n";
+		spacer = spacer ~ "\n";
+		line+=1;
+	}
+	ewd_msg_zero.setValue(msg);
+	while (line+size(msgs_memo) < num_lines) {
+		line+=1;
+		spacer = spacer ~ "\n";
+	}
+	msg = spacer;
+	for(var i=0; i<size(msgs_memo); i+=1)
+	{
+		msg = msg ~ msgs_memo[i] ~ "\n";
+	}
+	ewd_msg_memo.setValue(msg);
+}
 
-var ECAM_system = {
-	init: func() {
-		messages = [message.new(name: "RAM AIR P/B ON", text: "RAM AIR ON", priority: 5, logic_prop: "/controls/pneumatic/switches/ram-air", color: 4, display: 2), 
-					message.new(name: "EMERGENCY GENERATOR", text: "EMER GEN", priority: 5, logic_prop: "/controls/electrical/switches/emer-gen", color: 4, display: 2),
-					message.new(name: "GROUND SPOILERS ARMED", text: "GND SPLRS ARMED", priority: 5, logic_prop: "/controls/flight/speedbrake-arm", color: 4, display: 1)];
+# Finally the controller
+
+var ECAM_controller = {
+	loop: func() {
+		# cleans up arrays
+		msgs_priority_3 = [];
+		msgs_priority_2 = [];
+		msgs_priority_1 = [];
+		msgs_priority_0 = [];
+		msgs_memo = [];
 		active_messages = [];
 		
-	loop: func() {
-		foreach(var message_controller; messages) { 
-			if (getprop(message_controller.logic_prop) == 1){
-				setprop("/ECAM/msg/line1", message_controller.text);
-				if (getprop("/ECAM/left-msg") == "NONE") {
-					setprop("/ECAM/left-msg","MSG")
-				}
-				if (message_controller.color == 1) {
-					setprop("/ECAM/msg/line1c", "r");
-				} else if (message_controller.color == 2) {
-					setprop("/ECAM/msg/line1c", "a");
-				} else if (message_controller.color == 3) {
-					setprop("/ECAM/msg/line1c", "b");
-				} else if (message_controller.color == 4) {
-					setprop("/ECAM/msg/line1c", "g");
-				} else if (message_controller.color == 5) {
-					setprop("/ECAM/msg/line1c", "w");
-				} else {
-					setprop("/ECAM/msg/line1c", "w");
-				}
-			} else {
-				setprop("/ECAM/msg/line1", "");
-				
-			}
+		# check active messages
+		# config_warnings();
+		messages_priority_3();
+		messages_priority_2();
+		messages_priority_1();
+		messages_priority_0();
+		messages_memo();
+		
+		# update property tree with active messages
+		update_ewd(msgs_priority_3,msgs_priority_2,msgs_priority_1,msgs_priority_0,msgs_memo);
+		
+		# write to ECAM
+		foreach(var ewd_messages; active_messages) { 
+			setprop("/ECAM/msg/line1", ewd_messages);
 		}
 	},
 };
