@@ -335,7 +335,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	</ground_reactions>
 	
 	<propulsion>
-		<engine file="cfm56_5b4">
+		<engine file="cfm56_5b4_1">
 			<location unit="M">
 				<x> 11.2688788 </x>
 				<y> -5.755 </y>
@@ -361,7 +361,7 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 			</thruster>
 		</engine>
 		
-		<engine file="cfm56_5b4">
+		<engine file="cfm56_5b4_2">
 			<location unit="M">
 				<x> 11.2688788 </x>
 				<y> 5.755 </y>
