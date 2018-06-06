@@ -60,12 +60,12 @@ var ewd_msg_two		= ewd.initNode("msg/priority_2"," ","STRING");
 var ewd_msg_one		= ewd.initNode("msg/priority_1"," ","STRING");
 var ewd_msg_zero	= ewd.initNode("msg/priority_0"," ","STRING");
 var ewd_msg_memo	= ewd.initNode("msg/memo"," ","STRING");
-var msgs_priority_3 = [];
-var msgs_priority_2 = [];
-var msgs_priority_1 = [];
-var msgs_priority_0 = [];
-var msgs_memo = [];
-var active_messages = [];
+var msgs_priority_3 = std.Vector.new();
+var msgs_priority_2 = std.Vector.new();
+var msgs_priority_1 = std.Vector.new();
+var msgs_priority_0 = std.Vector.new();
+var msgs_memo = std.Vector.new();
+var active_messages = std.Vector.new();
 var num_lines = 6;
 var msg = nil;
 var spacer = nil;
@@ -75,8 +75,8 @@ var line = nil;
 
 var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
-		append(msgs_priority_3,"L/G GEAR NOT DOWN");
-		append(active_messages,"L/G GEAR NOT DOWN");
+		msgs_priority_3.append("L/G GEAR NOT DOWN");
+		active_messages.append("L/G GEAR NOT DOWN");
 	}
 }
 var messages_priority_2 = func {}
@@ -84,71 +84,23 @@ var messages_priority_1 = func {}
 var messages_priority_0 = func {}
 var messages_memo = func {
 	if (getprop("controls/flight/speedbrake-arm") == 1) {
-			append(msgs_memo,"GND SPLRS ARMED");
-			append(active_messages,"GND SPLRS ARMED");
-		}
+		msgs_memo.append("GND SPLRS ARMED");
+		active_messages.append("GND SPLRS ARMED");
+	}
 }
 
-# messages sent to property tree
-
-var update_ewd = func(msgs_priority_3,msgs_priority_2,msgs_priority_1,msgs_priority_0,msgs_memo) {
-	msg = "";
-	spacer = "";
-	line = 0;
-	for(var i=0; i<size(msgs_priority_3); i+=1)
-	{
-		msg = msg ~ msgs_priority_3[i] ~ "\n";
-		spacer = spacer ~ "\n";
-		line+=1;
-	}
-	ewd_msg_three.setValue(msg);
-	msg = spacer;
-	for(var i=0; i<size(msgs_priority_2); i+=1)
-	{
-		msg = msg ~ msgs_priority_2[i] ~ "\n";
-		spacer = spacer ~ "\n";
-		line+=1;
-	}
-	ewd_msg_two.setValue(msg);
-	msg = spacer;
-	for(var i=0; i<size(msgs_priority_1); i+=1)
-	{
-		msg = msg ~ msgs_priority_1[i] ~ "\n";
-		spacer = spacer ~ "\n";
-		line+=1;
-	}
-	ewd_msg_one.setValue(msg);
-	msg = spacer;
-	for(var i=0; i<size(msgs_priority_0); i+=1)
-	{
-		msg = msg ~ msgs_priority_0[i] ~ "\n";
-		spacer = spacer ~ "\n";
-		line+=1;
-	}
-	ewd_msg_zero.setValue(msg);
-	while (line+size(msgs_memo) < num_lines) {
-		line+=1;
-		spacer = spacer ~ "\n";
-	}
-	msg = spacer;
-	for(var i=0; i<size(msgs_memo); i+=1)
-	{
-		msg = msg ~ msgs_memo[i] ~ "\n";
-	}
-	ewd_msg_memo.setValue(msg);
-}
 
 # Finally the controller
 
 var ECAM_controller = {
 	loop: func() {
 		# cleans up arrays
-		msgs_priority_3 = [];
-		msgs_priority_2 = [];
-		msgs_priority_1 = [];
-		msgs_priority_0 = [];
-		msgs_memo = [];
-		active_messages = [];
+		msgs_priority_3.clear();
+		msgs_priority_2.clear();
+		msgs_priority_1.clear();
+		msgs_priority_0.clear();
+		msgs_memo.clear();
+		active_messages.clear();
 		
 		# check active messages
 		# config_warnings();
@@ -158,12 +110,24 @@ var ECAM_controller = {
 		messages_priority_0();
 		messages_memo();
 		
-		# update property tree with active messages
-		update_ewd(msgs_priority_3,msgs_priority_2,msgs_priority_1,msgs_priority_0,msgs_memo);
-		
 		# write to ECAM
-		foreach(var ewd_messages; active_messages) { 
-			setprop("/ECAM/msg/line1", ewd_messages);
+		foreach(var ewd_messages; active_messages.vector) { 
+			var i = 1;
+			var x = getprop("/ECAM/msg/line[" ~ i ~ "]");
+			print("Variable i is:" ~ i);
+			if (x == "") {
+				setprop("/ECAM/msg/line[" ~ i ~ "]", ewd_messages);
+			} else {
+				i = i + 1;
+				print("Variable i is:" ~ i);
+			}
 		}
+		
+		# debug
+		
+		foreach(var debug; active_messages.vector) { 
+			print(debug);
+		}
+		
 	},
 };
