@@ -2730,10 +2730,6 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>systems.fctlpoweruptest();</script>
-			</binding>
 		</action>
 	</animation>
 	
@@ -2794,10 +2790,6 @@
 			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
-			</binding>
-			<binding>
-				<command>nasal</command>
-				<script>systems.fctlpoweruptest();</script>
 			</binding>
 		</action>
 	</animation>
@@ -4356,9 +4348,8 @@
 						</or>
 					</and>
 				</condition>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>systems/pressurization/ditchingpb</property>
-				<value>1</value>
 			</binding>
 			<binding>
 				<condition>

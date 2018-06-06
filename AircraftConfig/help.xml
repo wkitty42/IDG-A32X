@@ -53,6 +53,11 @@
 				<label>Keyboard Mode: Maps flight controls to number pad, and number rows, instead of view shortucts.</label>
 			</text>
 			
+			<text>
+				<halign>left</halign>
+				<label>Laptop Mode: Not implemented yet. When implemented, will allow easier operation on laptops.</label>
+			</text>
+			
 			<hrule/>
 			
 			<text>
@@ -93,6 +98,10 @@
 			</text>
 			<text>
 				<halign>left</halign>
+				<label>DEL - Toggle Reverse Thrust</label>
+			</text>
+			<text>
+				<halign>left</halign>
 				<label>E - Set Idle Thrust</label>
 			</text>
 			<text>
@@ -101,15 +110,19 @@
 			</text>
 			<text>
 				<halign>left</halign>
-				<label>DEL - Toggle Reverse Thrust</label>
-			</text>
-			<text>
-				<halign>left</halign>
 				<label>CTRL + B - Cycle Spoilers</label>
 			</text>
 			<text>
 				<halign>left</halign>
 				<label>SHIFT + B - Toggle Parking Brake</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>CTRL + D - Disconnect Autothrottle</label>
+			</text>
+			<text>
+				<halign>left</halign>
+				<label>SHIFT + D - Disconnect Autopilot</label>
 			</text>
 			
 		</group>

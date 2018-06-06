@@ -81,10 +81,20 @@ failReset();
 setprop("/systems/acconfig/autoconfig-running", 0);
 setprop("/systems/acconfig/spinning", 0);
 setprop("/systems/acconfig/spin", "-");
-setprop("/systems/acconfig/new-revision", "");
+setprop("/systems/acconfig/options/revision", 0);
+setprop("/systems/acconfig/new-revision", 0);
 setprop("/systems/acconfig/out-of-date", 0);
 setprop("/systems/acconfig/mismatch-code", "0x000");
 setprop("/systems/acconfig/mismatch-reason", "XX");
+setprop("/systems/acconfig/options/keyboard-mode", 0);
+setprop("/systems/acconfig/options/laptop-mode", 0);
+setprop("/systems/acconfig/options/adirs-skip", 0);
+setprop("/systems/acconfig/options/welcome-skip", 0);
+setprop("/systems/acconfig/options/pfd-rate", 1);
+setprop("/systems/acconfig/options/nd-rate", 1);
+setprop("/systems/acconfig/options/uecam-rate", 1);
+setprop("/systems/acconfig/options/lecam-rate", 1);
+setprop("/systems/acconfig/options/iesi-rate", 1);
 var main_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/main/dialog", "Aircraft/IDG-A32X/AircraftConfig/main.xml");
 var welcome_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/welcome/dialog", "Aircraft/IDG-A32X/AircraftConfig/welcome.xml");
 var ps_load_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/psload/dialog", "Aircraft/IDG-A32X/AircraftConfig/psload.xml");
@@ -95,14 +105,17 @@ var fbw_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/fbw/dialog", "Aircraft/ID
 var fail_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/fail/dialog", "Aircraft/IDG-A32X/AircraftConfig/fail.xml");
 var about_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/about/dialog", "Aircraft/IDG-A32X/AircraftConfig/about.xml");
 var update_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/update/dialog", "Aircraft/IDG-A32X/AircraftConfig/update.xml");
+var updated_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/updated/dialog", "Aircraft/IDG-A32X/AircraftConfig/updated.xml");
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A32X/AircraftConfig/error-mismatch.xml");
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A32X/AircraftConfig/groundservices.xml");
+var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A32X/AircraftConfig/du-quality.xml");
 spinning.start();
 init_dlg.open();
 
 http.load("https://raw.githubusercontent.com/it0uchpods/IDG-A32X/master/revision.txt").done(func(r) setprop("/systems/acconfig/new-revision", r.response));
 var revisionFile = (getprop("/sim/aircraft-dir")~"/revision.txt");
 var current_revision = io.readfile(revisionFile);
+setprop("/systems/acconfig/revision", current_revision);
 
 setlistener("/systems/acconfig/new-revision", func {
 	if (getprop("/systems/acconfig/new-revision") > current_revision) {
@@ -113,20 +126,22 @@ setlistener("/systems/acconfig/new-revision", func {
 });
 
 var mismatch_chk = func {
-	if (num(string.replace(getprop("/sim/version/flightgear"),".","")) < 201730) {
+	if (num(string.replace(getprop("/sim/version/flightgear"),".","")) < 201810) {
 		setprop("/systems/acconfig/mismatch-code", "0x121");
-		setprop("/systems/acconfig/mismatch-reason", "FGFS version older than 2017.3.0, please update FlightGear.");
+		setprop("/systems/acconfig/mismatch-reason", "FGFS version is too old! Please update FlightGear to at least 2018.1.0.");
 		if (getprop("/systems/acconfig/out-of-date") != 1) {
 			error_mismatch.open();
 		}
 		print("Mismatch: 0x121");
+		welcome_dlg.close();
 	} else if (getprop("/gear/gear[0]/wow") == 0 or getprop("/position/altitude-ft") >= 15000) {
 		setprop("/systems/acconfig/mismatch-code", "0x223");
-		setprop("/systems/acconfig/mismatch-reason", "The aircraft position is invalid for initialization. Check your scenery.");
+		setprop("/systems/acconfig/mismatch-reason", "Preposterous configuration detected for initialization. Check your position or scenery.");
 		if (getprop("/systems/acconfig/out-of-date") != 1) {
 			error_mismatch.open();
 		}
 		print("Mismatch: 0x223");
+		welcome_dlg.close();
 	} else if (getprop("/systems/acconfig/libraries-loaded") != 1) {
 		setprop("/systems/acconfig/mismatch-code", "0x247");
 		setprop("/systems/acconfig/mismatch-reason", "System files are missing or damaged. Please download a new copy of the aircraft.");
@@ -134,6 +149,7 @@ var mismatch_chk = func {
 			error_mismatch.open();
 		}
 		print("Mismatch: 0x247");
+		welcome_dlg.close();
 	}
 }
 
@@ -144,18 +160,30 @@ setlistener("/sim/signals/fdm-initialized", func {
 		print("System: The IDG-A32X is out of date!");
 	} 
 	mismatch_chk();
-	if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000") {
+	readSettings();
+	if (getprop("/systems/acconfig/options/revision") < current_revision) {
+		updated_dlg.open();
+	} else if (getprop("/systems/acconfig/out-of-date") != 1 and getprop("/systems/acconfig/mismatch-code") == "0x000" and getprop("/systems/acconfig/options/welcome-skip") != 1) {
 		welcome_dlg.open();
 	}
+	setprop("/systems/acconfig/options/revision", current_revision);
+	writeSettings();
 	spinning.stop();
 });
 
-var saveSettings = func {
-	aircraft.data.add("/options/system/keyboard-mode", "/controls/adirs/skip", "/controls/tray/surprise");
-	aircraft.data.save();
+var readSettings = func {
+	io.read_properties(getprop("/sim/fg-home") ~ "/Export/IDG-A32X-config.xml", "/systems/acconfig/options");
+	setprop("/options/system/keyboard-mode", getprop("/systems/acconfig/options/keyboard-mode"));
+	setprop("/options/system/laptop-mode", getprop("/systems/acconfig/options/laptop-mode"));
+	setprop("/controls/adirs/skip", getprop("/systems/acconfig/options/adirs-skip"));
 }
 
-saveSettings();
+var writeSettings = func {
+	setprop("/systems/acconfig/options/keyboard-mode", getprop("/options/system/keyboard-mode"));
+	setprop("/systems/acconfig/options/laptop-mode", getprop("/options/system/laptop-mode"));
+	setprop("/systems/acconfig/options/adirs-skip", getprop("/controls/adirs/skip"));
+	io.write_properties(getprop("/sim/fg-home") ~ "/Export/IDG-A32X-config.xml", "/systems/acconfig/options");
+}
 
 ################
 # Panel States #
@@ -316,14 +344,14 @@ var taxi = func {
 	setprop("/controls/APU/master", 1);
 	setprop("/controls/APU/start", 1);
 	var apu_rpm_chk = setlistener("/systems/apu/rpm", func {
-		if (getprop("/systems/apu/rpm") >= 99) {
+		if (getprop("/systems/apu/rpm") >= 98) {
 			removelistener(apu_rpm_chk);
 			taxi_b();
 		}
 	});
 }
 var taxi_b = func {
-	# Continue with engine start prep, and start engine 2.
+	# Continue with engine start prep, and start engines.
 	setprop("/controls/fuel/tank0pump1", 1);
 	setprop("/controls/fuel/tank0pump2", 1);
 	setprop("/controls/fuel/tank1pump1", 1);
