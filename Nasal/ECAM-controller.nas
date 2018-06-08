@@ -113,12 +113,13 @@ var ECAM_controller = {
 		# write to ECAM
 		foreach(var ewd_messages; active_messages.vector) { 
 			var i = 1;
-			var x = getprop("/ECAM/msg/line[" ~ i ~ "]");
+			var x = getprop("/ECAM/msg/line" ~ i);
 			print("Variable i is:" ~ i);
 			if (x == "") {
-				setprop("/ECAM/msg/line[" ~ i ~ "]", ewd_messages);
+				setprop("/ECAM/msg/line" ~ i, ewd_messages);
 			} else {
 				i = i + 1;
+				setprop("/ECAM/msg/line" ~ i, ewd_messages);
 				print("Variable i is:" ~ i);
 			}
 		}
