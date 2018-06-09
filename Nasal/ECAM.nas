@@ -80,7 +80,7 @@ var ECAM = {
 			setprop("/ECAM/ldg-memo-enable", 0);
 		}
 		
-		if (size(ecam.active_messages) > 0) {
+		if (ecam.active_messages.size() > 0) {
 			setprop("/ECAM/left-msg", "MSG");
 		} else if (getprop("/FMGC/status/phase") == 0 and stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
 			setprop("/ECAM/left-msg", "TO-MEMO");
