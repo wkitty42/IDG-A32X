@@ -66,6 +66,7 @@ var msgs_priority_1 = std.Vector.new();
 var msgs_priority_0 = std.Vector.new();
 var msgs_memo = std.Vector.new();
 var active_messages = std.Vector.new();
+var display_messages = std.Vector.new();
 var num_lines = 6;
 var msg = nil;
 var spacer = nil;
@@ -77,8 +78,8 @@ var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
 		msgs_priority_3.append("L/G GEAR NOT DOWN");
 		active_messages.append("L/G GEAR NOT DOWN");
-	} else if (active_messages.contains("L/G GEAR NOT DOWN")) {
-		active_messages.remove("L/G GEAR NOT DOWN");
+	} else if (display_messages.contains("L/G GEAR NOT DOWN")) {
+		display_messages.remove("L/G GEAR NOT DOWN");
 	}
 }
 var messages_priority_2 = func {}
@@ -88,8 +89,8 @@ var messages_memo = func {
 	if (getprop("controls/flight/speedbrake-arm") == 1) {
 		msgs_memo.append("GND SPLRS ARMED");
 		active_messages.append("GND SPLRS ARMED");
-	} else if (active_messages.contains("GND SPLRS ARMED")) {
-		active_messages.remove("GND SPLRS ARMED");
+	} else if (display_messages.contains("GND SPLRS ARMED")) {
+		display_messages.remove("GND SPLRS ARMED");
 	}
 }
 
@@ -119,13 +120,17 @@ var ECAM_controller = {
 		forindex ( var i; active_messages.vector ) {
 			var line = 1;
 			if (getprop("/ECAM/msg/line" ~ line) == "") {
-				setprop("/ECAM/msg/line" ~ line, active_messages.vector[i]);
+				display_messages.append(active_messages.vector[i]);
+				active_messages.remove(active_messages.vector[i]);
+				setprop("/ECAM/msg/line" ~ line, display_messages.vector[i]);
 			} else {
-				setprop("/ECAM/msg/line" ~ (line + 1), active_messages.vector[i]);
+				display_messages.append(active_messages.vector[i]);
+				active_messages.remove(active_messages.vector[i]);
+				setprop("/ECAM/msg/line" ~ (line + 1), display_messages.vector[i]);
 			}
 		}
 		
-		if (active_messages.size() == 0) {
+		if (display_messages.size() == 0) {
 			setprop("/ECAM/msg/line1", "");
 			setprop("/ECAM/msg/line2", "");
 		}
