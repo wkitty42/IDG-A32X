@@ -45,6 +45,22 @@ var ECAM = {
 		setprop("/ECAM/msg/line6c", "w");
 		setprop("/ECAM/msg/line7c", "w");
 		setprop("/ECAM/msg/line8c", "w");
+		setprop("/ECAM/rightmsg/line1", "");
+		setprop("/ECAM/rightmsg/line2", "");
+		setprop("/ECAM/rightmsg/line3", "");
+		setprop("/ECAM/rightmsg/line4", "");
+		setprop("/ECAM/rightmsg/line5", "");
+		setprop("/ECAM/rightmsg/line6", "");
+		setprop("/ECAM/rightmsg/line7", "");
+		setprop("/ECAM/rightmsg/line8", "");
+		setprop("/ECAM/rightmsg/line1c", "w");
+		setprop("/ECAM/rightmsg/line2c", "w");
+		setprop("/ECAM/rightmsg/line3c", "w");
+		setprop("/ECAM/rightmsg/line4c", "w");
+		setprop("/ECAM/rightmsg/line5c", "w");
+		setprop("/ECAM/rightmsg/line6c", "w");
+		setprop("/ECAM/rightmsg/line7c", "w");
+		setprop("/ECAM/rightmsg/line8c", "w");
 	},
 	loop: func() {
 		stateL = getprop("/engines/engine[0]/state");
@@ -88,6 +104,12 @@ var ECAM = {
 			setprop("/ECAM/left-msg", "LDG-MEMO");
 		} else {
 			setprop("/ECAM/left-msg", "NONE");
+		}
+		
+		if (ecam.right_display_messages.size() > 0) {
+			setprop("/ECAM/right-msg", "MSG");
+		} else {
+			setprop("/ECAM/right-msg", "NONE");
 		}
 		
 		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/controls/switches/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 

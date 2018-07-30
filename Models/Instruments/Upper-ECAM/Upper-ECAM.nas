@@ -342,6 +342,122 @@ var canvas_upperECAM_base = {
 			me["TO_Memo"].hide();
 			me["LDG_Memo"].hide();
 		}
+		
+		# Right ECAM Messages
+		if (getprop("/ECAM/right-msg") == "MSG") {
+			me["ECAMR1"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line1")));
+			me["ECAMR2"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line2")));
+			me["ECAMR3"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line3")));
+			me["ECAMR4"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line4")));
+			me["ECAMR5"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line5")));
+			me["ECAMR6"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line6")));
+			me["ECAMR7"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line7")));
+			me["ECAMR8"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line8")));
+			
+			if (getprop("/ECAM/rightmsg/line1c") == "w") {
+				me["ECAMR1"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line1c") == "b") {
+				me["ECAMR1"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line1c") == "g") {
+				me["ECAMR1"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line1c") == "a") {
+				me["ECAMR1"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line1c") == "r") {
+				me["ECAMR1"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line2c") == "w") {
+				me["ECAMR2"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line2c") == "b") {
+				me["ECAMR2"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line2c") == "g") {
+				me["ECAMR2"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line2c") == "a") {
+				me["ECAMR2"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line2c") == "r") {
+				me["ECAMR2"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line3c") == "w") {
+				me["ECAMR3"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line3c") == "b") {
+				me["ECAMR3"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line3c") == "g") {
+				me["ECAMR3"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line3c") == "a") {
+				me["ECAMR3"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line3c") == "r") {
+				me["ECAMR3"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line4c") == "w") {
+				me["ECAMR4"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line4c") == "b") {
+				me["ECAMR4"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line4c") == "g") {
+				me["ECAMR4"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line4c") == "a") {
+				me["ECAMR4"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line4c") == "r") {
+				me["ECAMR4"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line5c") == "w") {
+				me["ECAMR5"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line5c") == "b") {
+				me["ECAMR5"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line5c") == "g") {
+				me["ECAMR5"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line5c") == "a") {
+				me["ECAMR5"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line5c") == "r") {
+				me["ECAMR5"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line6c") == "w") {
+				me["ECAMR6"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line6c") == "b") {
+				me["ECAMR6"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line6c") == "g") {
+				me["ECAMR6"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line6c") == "a") {
+				me["ECAMR6"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line6c") == "r") {
+				me["ECAMR6"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line7c") == "w") {
+				me["ECAMR7"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line7c") == "b") {
+				me["ECAMR7"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line7c") == "g") {
+				me["ECAMR7"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line7c") == "a") {
+				me["ECAMR7"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line7c") == "r") {
+				me["ECAMR7"].setColor(1,0,0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line8c") == "w") {
+				me["ECAMR8"].setColor(0.8078,0.8039,0.8078);
+			} else if (getprop("/ECAM/rightmsg/line8c") == "b") {
+				me["ECAMR8"].setColor(0.0901,0.6039,0.7176);
+			} else if (getprop("/ECAM/rightmsg/line8c") == "g") {
+				me["ECAMR8"].setColor(0.0509,0.7529,0.2941);
+			} else if (getprop("/ECAM/rightmsg/line8c") == "a") {
+				me["ECAMR8"].setColor(0.7333,0.3803,0);
+			} else if (getprop("/ECAM/rightmsg/line8c") == "r") {
+				me["ECAMR8"].setColor(1,0,0);
+			}
+			
+			me["TO_Memo"].hide();
+			me["LDG_Memo"].hide();
+			me["ECAM_Right"].show();
+		} else {
+			me["ECAM_Right"].hide();
+			me["TO_Memo"].hide();
+			me["LDG_Memo"].hide();
+		}
 	},
 };
 
@@ -356,7 +472,7 @@ var canvas_upperECAM_cfm_eis2 = {
 		return ["N11-needle","N11-thr","N11-ylim","N11","N11-decpnt","N11-decimal","N11-box","N11-scale","N11-scale2","N11-scaletick","N11-scalenum","N11-XX","N11-XX2","N11-XX-box","EGT1-needle","EGT1","EGT1-scale","EGT1-box","EGT1-scale2","EGT1-scaletick",
 		"EGT1-XX","N21","N21-decpnt","N21-decimal","N21-XX","FF1","FF1-XX","N12-needle","N12-thr","N12-ylim","N12","N12-decpnt","N12-decimal","N12-box","N12-scale","N12-scale2","N12-scaletick","N12-scalenum","N12-XX","N12-XX2","N12-XX-box","EGT2-needle","EGT2",
 		"EGT2-scale","EGT2-box","EGT2-scale2","EGT2-scaletick","EGT2-XX","N22","N22-decpnt","N22-decimal","N22-XX","FF2","FF2-XX","FOB-LBS","FlapTxt","FlapDots","N1Lim-mode","N1Lim","N1Lim-decpnt","N1Lim-decimal","N1Lim-percent","N1Lim-XX","N1Lim-XX2","REV1",
-		"REV1-box","REV2","REV2-box","ECAM_Left","ECAML1","ECAML2","ECAML3","ECAML4","ECAML5","ECAML6","ECAML7","ECAML8","TO_Memo","TO_Autobrake","TO_Signs","TO_Spoilers","TO_Flaps","TO_Config","TO_Autobrake_B","TO_Signs_B","TO_Spoilers_B","TO_Flaps_B",
+		"REV1-box","REV2","REV2-box","ECAM_Left","ECAML1","ECAML2","ECAML3","ECAML4","ECAML5","ECAML6","ECAML7","ECAML8","ECAMR1", "ECAMR2", "ECAMR3", "ECAMR4", "ECAMR5", "ECAMR6", "ECAMR7", "ECAMR8", "ECAM_Right", "TO_Memo","TO_Autobrake","TO_Signs","TO_Spoilers","TO_Flaps","TO_Config","TO_Autobrake_B","TO_Signs_B","TO_Spoilers_B","TO_Flaps_B",
 		"TO_Config_B","LDG_Memo","LDG_Gear","LDG_Signs","LDG_Spoilers","LDG_Flaps","LDG_Gear_B","LDG_Signs_B","LDG_Spoilers_B","LDG_Flaps_B","LDG_Flaps_B3"];
 	},
 	update: func() {
@@ -583,7 +699,7 @@ var canvas_upperECAM_iae_eis2 = {
 		"N11-needle","N11-thr","N11-ylim","N11","N11-decpnt","N11-decimal","N11-scale","N11-scale2","N11-scaletick","N11-scalenum","N11-XX","N21","N21-decpnt","N21-decimal","N21-XX","FF1","FF1-XX","EPR2-needle","EPR2-thr","EPR2-ylim","EPR2","EPR2-decpnt",
 		"EPR2-decimal","EPR2-box","EPR2-scale","EPR2-scaletick","EPR2-scalenum","EPR2-XX","EPR2-XX2","EGT2-needle","EGT2","EGT2-scale","EGT2-scale2","EGT2-box","EGT2-scaletick","EGT2-XX","N12-needle","N12-thr","N12-ylim","N12","N12-decpnt","N12-decimal",
 		"N12-scale","N12-scale2","N12-scaletick","N12-scalenum","N12-XX","N22","N22-decpnt","N22-decimal","N22-XX","FF2","FF2-XX","FOB-LBS","FlapTxt","FlapDots","EPRLim-mode","EPRLim","EPRLim-decpnt","EPRLim-decimal","EPRLim-XX","EPRLim-XX2","REV1","REV1-box",
-		"REV2","REV2-box","ECAM_Left","ECAML1","ECAML2","ECAML3","ECAML4","ECAML5","ECAML6","ECAML7","ECAML8","TO_Memo","TO_Autobrake","TO_Signs","TO_Spoilers","TO_Flaps","TO_Config","TO_Autobrake_B","TO_Signs_B","TO_Spoilers_B","TO_Flaps_B","TO_Config_B",
+		"REV2","REV2-box","ECAM_Left","ECAML1","ECAML2","ECAML3","ECAML4","ECAML5","ECAML6","ECAML7","ECAML8", "ECAMR1", "ECAMR2", "ECAMR3", "ECAMR4", "ECAMR5", "ECAMR6", "ECAMR7", "ECAMR8", "ECAM_Right", "TO_Memo","TO_Autobrake","TO_Signs","TO_Spoilers","TO_Flaps","TO_Config","TO_Autobrake_B","TO_Signs_B","TO_Spoilers_B","TO_Flaps_B","TO_Config_B",
 		"LDG_Memo","LDG_Gear","LDG_Signs","LDG_Spoilers","LDG_Flaps","LDG_Gear_B","LDG_Signs_B","LDG_Spoilers_B","LDG_Flaps_B","LDG_Flaps_B3"];
 	},
 	update: func() {
