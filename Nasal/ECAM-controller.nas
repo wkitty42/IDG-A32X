@@ -54,34 +54,73 @@
 # PHASE: /FMGC/status/phase
 
 # DISPLAY: 1 - EWD 2 - MEMO 3 - STATUS
-var ewd = props.globals.initNode("/instrumentation/ewd");
-var ewd_msg_three	= ewd.initNode("msg/priority_3"," ","STRING");
-var ewd_msg_two		= ewd.initNode("msg/priority_2"," ","STRING");
-var ewd_msg_one		= ewd.initNode("msg/priority_1"," ","STRING");
-var ewd_msg_zero	= ewd.initNode("msg/priority_0"," ","STRING");
-var ewd_msg_memo	= ewd.initNode("msg/memo"," ","STRING");
-var msgs_priority_3 = std.Vector.new();
-var msgs_priority_2 = std.Vector.new();
-var msgs_priority_1 = std.Vector.new();
-var msgs_priority_0 = std.Vector.new();
-var msgs_memo = std.Vector.new();
-var right_memo = std.Vector.new();
-var active_messages = std.Vector.new();
-var display_messages = std.Vector.new();
-var right_display_messages = std.Vector.new();
 var num_lines = 6;
 var msg = nil;
 var spacer = nil;
 var line = nil;
+var right_line = nil;
 
+var warning = {
+	msg: "",
+	active: 0,
+	new: func(msg,active) {
+		
+		var t = {parents:[warning]};
+		
+		t.msg = msg;
+		t.active = active;
+		
+		return t
+	
+	},
+	write: func() {
+		var line = 1;
+		while (getprop("/ECAM/msg/line" ~ line) != "") {
+			line = line + 1; # go to next line until empty line
+		} 
+		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1) { # at empty line
+			setprop("/ECAM/msg/line" ~ (line), me.msg);
+		}
+	},
+};
+
+var memo = {
+	msg: "",
+	active: 0,
+	new: func(msg,active) {
+		
+		var t = {parents:[memo]};
+		
+		t.msg = msg;
+		t.active = active;
+		
+		return t
+	
+	},
+	write: func() {
+		var right_line = 1;
+		while (getprop("/ECAM/rightmsg/line" ~ right_line) != "") {
+			right_line = right_line + 1; # go to next line until empty line
+		} 
+		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1) { # at empty line
+			setprop("/ECAM/rightmsg/line" ~ (right_line), me.msg);
+		}
+	},
+};
 # messages logic and added to arrays
+
+var warnings = std.Vector.new([var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0)]);
+var memos = std.Vector.new([
+var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0),
+var park_brk = memo.new(msg: "PARK BRK", active: 0)
+]);
+
 
 var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
-		msgs_priority_3.append("L/G GEAR NOT DOWN");
-		active_messages.append("L/G GEAR NOT DOWN");
-	} else if (display_messages.contains("L/G GEAR NOT DOWN")) {
-		display_messages.remove("L/G GEAR NOT DOWN");
+		lg_not_dn.active = 1;
+	} else {
+		lg_not_dn.active = 0;
 	}
 }
 var messages_priority_2 = func {}
@@ -90,18 +129,14 @@ var messages_priority_0 = func {}
 var messages_memo = func {}
 var messages_right_memo = func {
 	if (getprop("controls/flight/speedbrake-arm") == 1) {
-		right_memo.append("GND SPLRS ARMED");
+		gnd_splrs.active = 1;
 	} else {
-		while (right_display_messages.contains("GND SPLRS ARMED")) {
-			right_display_messages.remove("GND SPLRS ARMED");
-		}
+		gnd_splrs.active = 0;
 	}
 	if (getprop("/controls/gear/brake-parking") == 1) {
-		right_memo.append("PARK BRK");
+		park_brk.active = 1;
 	} else {
-		while (right_display_messages.contains("PARK BRK")) {
-			right_display_messages.remove("PARK BRK");
-		}
+		park_brk.active = 0;
 	}
 }
 
@@ -109,14 +144,6 @@ var messages_right_memo = func {
 
 var ECAM_controller = {
 	loop: func() {
-		# cleans up arrays
-		msgs_priority_3.clear();
-		msgs_priority_2.clear();
-		msgs_priority_1.clear();
-		msgs_priority_0.clear();
-		msgs_memo.clear();
-		active_messages.clear();
-		right_memo.clear();
 		
 		# check active messages
 		# config_warnings();
@@ -129,56 +156,28 @@ var ECAM_controller = {
 		
 		# write to ECAM
 		
-		forindex ( var i; active_messages.vector ) {
-			line = 1;
-			while (getprop("/ECAM/msg/line" ~ line) != "") {
-				line = line + 1; # go to next line until empty line
-			} 
-		    if (getprop("/ECAM/msg/line" ~ line) == ""){ # at empty line
-				if (display_messages.size() > 0) { # is the display empty or is this first message?
-					msg = active_messages.vector[i]; # get the message that we will be setting
-					if (!display_messages.contains(msg)) {  # check: does it exist yet on the display?
-						display_messages.append(active_messages.vector[i]); # if not, send it to display
-						active_messages.remove(active_messages.vector[i]); 
-						setprop("/ECAM/msg/line" ~ (line), display_messages.vector[i]); # and write it
-					}
-				} else {
-					display_messages.append(active_messages.vector[i]);
-					active_messages.remove(active_messages.vector[i]);
-					setprop("/ECAM/msg/line" ~ (line), display_messages.vector[i]);
+		foreach (var i; warnings.vector) {
+			i.write();
+		}
+		
+		foreach (var m; memos.vector) {
+			m.write();
+		}
+		
+		if (warnings.size() > 0) {
+			for(var n=1; n<warnings.size(); n+=1) {
+				if (!warnings.contains(getprop("/ECAM/msg/line" ~ (n)))) {
+					setprop("/ECAM/msg/line" ~ n, "");
 				}
 			}
 		}
 		
-		forindex ( var x; right_memo.vector ) {
-			line = 1;
-			while (getprop("/ECAM/rightmsg/line" ~ line) != "") {
-				line = line + 1; # go to next line until empty line
-			} 
-		    if (getprop("/ECAM/rightmsg/line" ~ line) == ""){ # at empty line
-				if (right_display_messages.size() > 0) { # is the display empty or is this first message?
-					msg = right_memo.vector[x]; # get the message that we will be setting
-					if (!right_display_messages.contains(msg)) {  # check: does it exist yet on the display?
-						right_display_messages.append(right_memo.vector[x]); # if not, send it to display
-						right_memo.remove(right_memo.vector[x]); 
-						setprop("/ECAM/rightmsg/line" ~ (line), right_display_messages.vector[x]); # and write it
-					}
-				} else {
-					right_display_messages.append(right_memo.vector[x]);
-					right_memo.remove(right_memo.vector[x]);
-					setprop("/ECAM/rightmsg/line" ~ (line), right_display_messages.vector[x]);
+		if (memos.size() > 0) {
+			for(var n=1; n<memos.size(); n+=1) {
+				if (!memos.contains(getprop("/ECAM/rightmsg/line" ~ (n)))) {
+					setprop("/ECAM/rightmsg/line" ~ n, "");
 				}
 			}
-		}
-		
-		if (display_messages.size() == 0) {
-			setprop("/ECAM/msg/line1", "");
-			setprop("/ECAM/msg/line2", "");
-		}
-		
-		if (right_display_messages.size() == 0) {
-			setprop("/ECAM/rightmsg/line1", "");
-			setprop("/ECAM/rightmsg/line2", "");
 		}
 	},
 };
