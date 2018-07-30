@@ -135,26 +135,46 @@
 		<debug>false</debug>
 		<enable>
 			<condition>
-				<or>
-					<equals>
-						<property>/it-autoflight/output/vert</property>
-						<value>4</value>
-					</equals>
-					<equals>
-						<property>/it-autoflight/output/vert</property>
-						<value>7</value>
-					</equals>
-					<and>
+				<and>
+					<or>
 						<equals>
 							<property>/it-autoflight/output/vert</property>
-							<value>8</value>
-						</equals>
-						<equals>
-							<property>/it-autoflight/output/vert-mng</property>
 							<value>4</value>
 						</equals>
-					</and>
-				</or>
+						<equals>
+							<property>/it-autoflight/output/vert</property>
+							<value>7</value>
+						</equals>
+						<and>
+							<equals>
+								<property>/it-autoflight/output/vert</property>
+								<value>8</value>
+							</equals>
+							<equals>
+								<property>/it-autoflight/output/vert-mng</property>
+								<value>4</value>
+							</equals>
+						</and>
+					</or>
+					<or>
+						<equals>
+							<property>/it-autoflight/output/ap1</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/it-autoflight/output/ap2</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/it-autoflight/output/fd1</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/it-autoflight/output/fd2</property>
+							<value>1</value>
+						</equals>
+					</or>
+				</and>
 			</condition>
 		</enable>
 		<input>
@@ -308,7 +328,12 @@
 						<value>0</value>
 					</equals>
 				</condition>
-				<value>-6000</value>
+				<expression>
+					<dif>
+						<property>/it-autoflight/internal/vert-speed-fpm</property>
+						<value>2500</value>
+					</dif>
+				</expression>
 			</u_min>
 			<u_max>
 				<condition>
@@ -317,7 +342,12 @@
 						<value>0</value>
 					</equals>
 				</condition>
-				<value>10000</value>
+				<expression>
+					<sum>
+						<property>/it-autoflight/internal/vert-speed-fpm</property>
+						<value>2500</value>
+					</sum>
+				</expression>
 			</u_max>
 		</config>
 	</pid-controller>
@@ -598,15 +628,13 @@
 					</not-equals>
 				</condition>
 				<expression>
-					<dif>
-						<table>
+					<max>
+						<dif>
 							<property>/orientation/pitch-deg</property>
-							<entry><ind>-10</ind><dep>-5</dep></entry>
-							<entry><ind>  0</ind><dep> 0</dep></entry>
-							<entry><ind> 30</ind><dep>35</dep></entry>
-						</table>
-						<value>5</value>
-					</dif>
+							<value>5</value>
+						</dif>
+						<value>-10</value>
+					</max>
 				</expression>
 			</u_min>
 			<u_min>
@@ -632,15 +660,13 @@
 					</and>
 				</condition>
 				<expression>
-					<sum>
-						<table>
+					<min>
+						<sum>
 							<property>/orientation/pitch-deg</property>
-							<entry><ind>-10</ind><dep>-15</dep></entry>
-							<entry><ind>  0</ind><dep>  0</dep></entry>
-							<entry><ind> 30</ind><dep> 25</dep></entry>
-						</table>
-						<value>5</value>
-					</sum>
+							<value>5</value>
+						</sum>
+						<value>30</value>
+					</min>
 				</expression>
 			</u_max>
 			<u_max>
