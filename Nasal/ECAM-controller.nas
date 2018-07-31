@@ -63,12 +63,16 @@ var right_line = nil;
 var warning = {
 	msg: "",
 	active: 0,
-	new: func(msg,active) {
+	colour: "",
+	aural: "",
+	light: "",
+	new: func(msg,active,colour,aural,light) {
 		
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
 		t.active = active;
+		t.colour = colour;
 		
 		return t
 	
@@ -77,9 +81,12 @@ var warning = {
 		var line = 1;
 		while (getprop("/ECAM/msg/line" ~ line) != "") {
 			line = line + 1; # go to next line until empty line
-		} 
+		}
+		
+		# if (getprop("/ECAM/msg/line" ~ line) != me.msg)
 		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1) { # at empty line
-			setprop("/ECAM/msg/line" ~ (line), me.msg);
+			setprop("/ECAM/msg/line" ~ line, me.msg);
+			setprop("/ECAM/msg/linec" ~ line, me.colour);
 		}
 	},
 };
@@ -87,12 +94,16 @@ var warning = {
 var memo = {
 	msg: "",
 	active: 0,
-	new: func(msg,active) {
+	colour: "",
+	aural: "",
+	light: "",
+	new: func(msg,active,colour,aural,light) {
 		
 		var t = {parents:[memo]};
 		
 		t.msg = msg;
 		t.active = active;
+		t.colour = colour;
 		
 		return t
 	
@@ -102,17 +113,22 @@ var memo = {
 		while (getprop("/ECAM/rightmsg/line" ~ right_line) != "") {
 			right_line = right_line + 1; # go to next line until empty line
 		} 
+		
 		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1) { # at empty line
-			setprop("/ECAM/rightmsg/line" ~ (right_line), me.msg);
+			setprop("/ECAM/rightmsg/line" ~ right_line, me.msg);
+			setprop("/ECAM/rightmsg/linec" ~ right_line, me.colour);
 		}
 	},
 };
 # messages logic and added to arrays
 
-var warnings = std.Vector.new([var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0)]);
+var warnings = std.Vector.new([
+var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r")
+]);
+
 var memos = std.Vector.new([
-var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0),
-var park_brk = memo.new(msg: "PARK BRK", active: 0)
+var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0, colour: "g"),
+var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g")
 ]);
 
 
@@ -154,6 +170,25 @@ var ECAM_controller = {
 		messages_memo();
 		messages_right_memo();
 		
+		# clear display momentarily
+		
+		
+		if (warnings.size() > 0) {
+			for(var n=1; n<8; n+=1) {
+				# if (!warnings.contains(getprop("/ECAM/msg/line" ~ (n)))) {
+					setprop("/ECAM/msg/line" ~ n, "");
+				#}
+			}
+		}
+		
+		if (memos.size() > 0) {
+			for(var n=1; n<8; n+=1) {
+				# if (!memos.contains(getprop("/ECAM/rightmsg/line" ~ (n)))) {
+					setprop("/ECAM/rightmsg/line" ~ n, "");
+				# }
+			}
+		}
+		
 		# write to ECAM
 		
 		foreach (var i; warnings.vector) {
@@ -162,22 +197,6 @@ var ECAM_controller = {
 		
 		foreach (var m; memos.vector) {
 			m.write();
-		}
-		
-		if (warnings.size() > 0) {
-			for(var n=1; n<warnings.size(); n+=1) {
-				if (!warnings.contains(getprop("/ECAM/msg/line" ~ (n)))) {
-					setprop("/ECAM/msg/line" ~ n, "");
-				}
-			}
-		}
-		
-		if (memos.size() > 0) {
-			for(var n=1; n<memos.size(); n+=1) {
-				if (!memos.contains(getprop("/ECAM/rightmsg/line" ~ (n)))) {
-					setprop("/ECAM/rightmsg/line" ~ n, "");
-				}
-			}
 		}
 	},
 };

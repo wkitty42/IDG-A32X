@@ -37,14 +37,14 @@ var ECAM = {
 		setprop("/ECAM/msg/line6", "");
 		setprop("/ECAM/msg/line7", "");
 		setprop("/ECAM/msg/line8", "");
-		setprop("/ECAM/msg/line1c", "w");
-		setprop("/ECAM/msg/line2c", "w");
-		setprop("/ECAM/msg/line3c", "w");
-		setprop("/ECAM/msg/line4c", "w");
-		setprop("/ECAM/msg/line5c", "w");
-		setprop("/ECAM/msg/line6c", "w");
-		setprop("/ECAM/msg/line7c", "w");
-		setprop("/ECAM/msg/line8c", "w");
+		setprop("/ECAM/msg/linec1", "w");
+		setprop("/ECAM/msg/linec2", "w");
+		setprop("/ECAM/msg/linec3", "w");
+		setprop("/ECAM/msg/linec4", "w");
+		setprop("/ECAM/msg/linec5", "w");
+		setprop("/ECAM/msg/linec6", "w");
+		setprop("/ECAM/msg/linec7", "w");
+		setprop("/ECAM/msg/linec8", "w");
 		setprop("/ECAM/rightmsg/line1", "");
 		setprop("/ECAM/rightmsg/line2", "");
 		setprop("/ECAM/rightmsg/line3", "");
@@ -53,14 +53,14 @@ var ECAM = {
 		setprop("/ECAM/rightmsg/line6", "");
 		setprop("/ECAM/rightmsg/line7", "");
 		setprop("/ECAM/rightmsg/line8", "");
-		setprop("/ECAM/rightmsg/line1c", "w");
-		setprop("/ECAM/rightmsg/line2c", "w");
-		setprop("/ECAM/rightmsg/line3c", "w");
-		setprop("/ECAM/rightmsg/line4c", "w");
-		setprop("/ECAM/rightmsg/line5c", "w");
-		setprop("/ECAM/rightmsg/line6c", "w");
-		setprop("/ECAM/rightmsg/line7c", "w");
-		setprop("/ECAM/rightmsg/line8c", "w");
+		setprop("/ECAM/rightmsg/linec1", "w");
+		setprop("/ECAM/rightmsg/linec2", "w");
+		setprop("/ECAM/rightmsg/linec3", "w");
+		setprop("/ECAM/rightmsg/linec4", "w");
+		setprop("/ECAM/rightmsg/linec5", "w");
+		setprop("/ECAM/rightmsg/linec6", "w");
+		setprop("/ECAM/rightmsg/linec7", "w");
+		setprop("/ECAM/rightmsg/linec8", "w");
 	},
 	loop: func() {
 		stateL = getprop("/engines/engine[0]/state");

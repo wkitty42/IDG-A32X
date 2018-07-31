@@ -147,99 +147,99 @@ var canvas_upperECAM_base = {
 			me["ECAML7"].setText(sprintf("%s", getprop("/ECAM/msg/line7")));
 			me["ECAML8"].setText(sprintf("%s", getprop("/ECAM/msg/line8")));
 			
-			if (getprop("/ECAM/msg/line1c") == "w") {
+			if (getprop("/ECAM/msg/linec1") == "w") {
 				me["ECAML1"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line1c") == "b") {
+			} else if (getprop("/ECAM/msg/linec1") == "b") {
 				me["ECAML1"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line1c") == "g") {
+			} else if (getprop("/ECAM/msg/linec1") == "g") {
 				me["ECAML1"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line1c") == "a") {
+			} else if (getprop("/ECAM/msg/linec1") == "a") {
 				me["ECAML1"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line1c") == "r") {
+			} else if (getprop("/ECAM/msg/linec1") == "r") {
 				me["ECAML1"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line2c") == "w") {
+			if (getprop("/ECAM/msg/linec2") == "w") {
 				me["ECAML2"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line2c") == "b") {
+			} else if (getprop("/ECAM/msg/linec2") == "b") {
 				me["ECAML2"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line2c") == "g") {
+			} else if (getprop("/ECAM/msg/linec2") == "g") {
 				me["ECAML2"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line2c") == "a") {
+			} else if (getprop("/ECAM/msg/linec2") == "a") {
 				me["ECAML2"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line2c") == "r") {
+			} else if (getprop("/ECAM/msg/linec2") == "r") {
 				me["ECAML2"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line3c") == "w") {
+			if (getprop("/ECAM/msg/linec3") == "w") {
 				me["ECAML3"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line3c") == "b") {
+			} else if (getprop("/ECAM/msg/linec3") == "b") {
 				me["ECAML3"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line3c") == "g") {
+			} else if (getprop("/ECAM/msg/linec3") == "g") {
 				me["ECAML3"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line3c") == "a") {
+			} else if (getprop("/ECAM/msg/linec3") == "a") {
 				me["ECAML3"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line3c") == "r") {
+			} else if (getprop("/ECAM/msg/linec3") == "r") {
 				me["ECAML3"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line4c") == "w") {
+			if (getprop("/ECAM/msg/linec4") == "w") {
 				me["ECAML4"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line4c") == "b") {
+			} else if (getprop("/ECAM/msg/linec4") == "b") {
 				me["ECAML4"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line4c") == "g") {
+			} else if (getprop("/ECAM/msg/linec4") == "g") {
 				me["ECAML4"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line4c") == "a") {
+			} else if (getprop("/ECAM/msg/linec4") == "a") {
 				me["ECAML4"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line4c") == "r") {
+			} else if (getprop("/ECAM/msg/linec4") == "r") {
 				me["ECAML4"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line5c") == "w") {
+			if (getprop("/ECAM/msg/linec5") == "w") {
 				me["ECAML5"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line5c") == "b") {
+			} else if (getprop("/ECAM/msg/linec5") == "b") {
 				me["ECAML5"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line5c") == "g") {
+			} else if (getprop("/ECAM/msg/linec5") == "g") {
 				me["ECAML5"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line5c") == "a") {
+			} else if (getprop("/ECAM/msg/linec5") == "a") {
 				me["ECAML5"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line5c") == "r") {
+			} else if (getprop("/ECAM/msg/linec5") == "r") {
 				me["ECAML5"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line6c") == "w") {
+			if (getprop("/ECAM/msg/linec6") == "w") {
 				me["ECAML6"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line6c") == "b") {
+			} else if (getprop("/ECAM/msg/linec6") == "b") {
 				me["ECAML6"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line6c") == "g") {
+			} else if (getprop("/ECAM/msg/linec6") == "g") {
 				me["ECAML6"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line6c") == "a") {
+			} else if (getprop("/ECAM/msg/linec6") == "a") {
 				me["ECAML6"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line6c") == "r") {
+			} else if (getprop("/ECAM/msg/linec6") == "r") {
 				me["ECAML6"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line7c") == "w") {
+			if (getprop("/ECAM/msg/linec7") == "w") {
 				me["ECAML7"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line7c") == "b") {
+			} else if (getprop("/ECAM/msg/linec7") == "b") {
 				me["ECAML7"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line7c") == "g") {
+			} else if (getprop("/ECAM/msg/linec7") == "g") {
 				me["ECAML7"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line7c") == "a") {
+			} else if (getprop("/ECAM/msg/linec7") == "a") {
 				me["ECAML7"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line7c") == "r") {
+			} else if (getprop("/ECAM/msg/linec7") == "r") {
 				me["ECAML7"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/msg/line8c") == "w") {
+			if (getprop("/ECAM/msg/linec8") == "w") {
 				me["ECAML8"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/msg/line8c") == "b") {
+			} else if (getprop("/ECAM/msg/linec8") == "b") {
 				me["ECAML8"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/msg/line8c") == "g") {
+			} else if (getprop("/ECAM/msg/linec8") == "g") {
 				me["ECAML8"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/msg/line8c") == "a") {
+			} else if (getprop("/ECAM/msg/linec8") == "a") {
 				me["ECAML8"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/msg/line8c") == "r") {
+			} else if (getprop("/ECAM/msg/linec8") == "r") {
 				me["ECAML8"].setColor(1,0,0);
 			}
 			
@@ -354,99 +354,99 @@ var canvas_upperECAM_base = {
 			me["ECAMR7"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line7")));
 			me["ECAMR8"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line8")));
 			
-			if (getprop("/ECAM/rightmsg/line1c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec1") == "w") {
 				me["ECAMR1"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line1c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec1") == "b") {
 				me["ECAMR1"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line1c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec1") == "g") {
 				me["ECAMR1"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line1c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec1") == "a") {
 				me["ECAMR1"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line1c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec1") == "r") {
 				me["ECAMR1"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line2c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec2") == "w") {
 				me["ECAMR2"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line2c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec2") == "b") {
 				me["ECAMR2"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line2c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec2") == "g") {
 				me["ECAMR2"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line2c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec2") == "a") {
 				me["ECAMR2"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line2c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec2") == "r") {
 				me["ECAMR2"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line3c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec3") == "w") {
 				me["ECAMR3"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line3c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec3") == "b") {
 				me["ECAMR3"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line3c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec3") == "g") {
 				me["ECAMR3"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line3c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec3") == "a") {
 				me["ECAMR3"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line3c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec3") == "r") {
 				me["ECAMR3"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line4c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec4") == "w") {
 				me["ECAMR4"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line4c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec4") == "b") {
 				me["ECAMR4"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line4c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec4") == "g") {
 				me["ECAMR4"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line4c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec4") == "a") {
 				me["ECAMR4"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line4c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec4") == "r") {
 				me["ECAMR4"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line5c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec5") == "w") {
 				me["ECAMR5"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line5c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec5") == "b") {
 				me["ECAMR5"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line5c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec5") == "g") {
 				me["ECAMR5"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line5c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec5") == "a") {
 				me["ECAMR5"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line5c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec5") == "r") {
 				me["ECAMR5"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line6c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec6") == "w") {
 				me["ECAMR6"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line6c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec6") == "b") {
 				me["ECAMR6"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line6c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec6") == "g") {
 				me["ECAMR6"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line6c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec6") == "a") {
 				me["ECAMR6"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line6c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec6") == "r") {
 				me["ECAMR6"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line7c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec7") == "w") {
 				me["ECAMR7"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line7c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec7") == "b") {
 				me["ECAMR7"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line7c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec7") == "g") {
 				me["ECAMR7"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line7c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec7") == "a") {
 				me["ECAMR7"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line7c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec7") == "r") {
 				me["ECAMR7"].setColor(1,0,0);
 			}
 			
-			if (getprop("/ECAM/rightmsg/line8c") == "w") {
+			if (getprop("/ECAM/rightmsg/linec8") == "w") {
 				me["ECAMR8"].setColor(0.8078,0.8039,0.8078);
-			} else if (getprop("/ECAM/rightmsg/line8c") == "b") {
+			} else if (getprop("/ECAM/rightmsg/linec8") == "b") {
 				me["ECAMR8"].setColor(0.0901,0.6039,0.7176);
-			} else if (getprop("/ECAM/rightmsg/line8c") == "g") {
+			} else if (getprop("/ECAM/rightmsg/linec8") == "g") {
 				me["ECAMR8"].setColor(0.0509,0.7529,0.2941);
-			} else if (getprop("/ECAM/rightmsg/line8c") == "a") {
+			} else if (getprop("/ECAM/rightmsg/linec8") == "a") {
 				me["ECAMR8"].setColor(0.7333,0.3803,0);
-			} else if (getprop("/ECAM/rightmsg/line8c") == "r") {
+			} else if (getprop("/ECAM/rightmsg/linec8") == "r") {
 				me["ECAMR8"].setColor(1,0,0);
 			}
 			
