@@ -54,11 +54,15 @@
 # PHASE: /FMGC/status/phase
 
 # DISPLAY: 1 - EWD 2 - MEMO 3 - STATUS
+
+# commented lines of logic are waiting for proper FMGC warning phases
 var num_lines = 6;
 var msg = nil;
 var spacer = nil;
 var line = nil;
 var right_line = nil;
+setprop("/ECAM/warnings/master-warning-light", 0);
+setprop("/ECAM/warnings/master-caution-light", 0);
 
 var warning = {
 	msg: "",
@@ -66,13 +70,17 @@ var warning = {
 	colour: "",
 	aural: "",
 	light: "",
-	new: func(msg,active,colour,aural,light) {
+	noRepeat: 0,
+	new: func(msg,active,colour,aural,light,noRepeat) {
 		
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
 		t.active = active;
 		t.colour = colour;
+		t.aural = aural;
+		t.light = light;
+		t.noRepeat = noRepeat;
 		
 		return t
 	
@@ -89,15 +97,19 @@ var warning = {
 			setprop("/ECAM/msg/linec" ~ line, me.colour);
 		}
 	},
+	warnlight: func() {
+		if (me.light != "none" and me.noRepeat == 0 and me.active == 1) { # only toggle light once per message, allows canceling 
+			setprop("/ECAM/warnings/master-"~me.light~"-light", 1);
+			me.noRepeat = 1;
+		}
+	},
 };
 
 var memo = {
 	msg: "",
 	active: 0,
 	colour: "",
-	aural: "",
-	light: "",
-	new: func(msg,active,colour,aural,light) {
+	new: func(msg,active,colour) {
 		
 		var t = {parents:[memo]};
 		
@@ -123,7 +135,7 @@ var memo = {
 # messages logic and added to arrays
 
 var warnings = std.Vector.new([
-var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r")
+var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0)
 ]);
 
 var memos = std.Vector.new([
@@ -134,9 +146,11 @@ var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g")
 
 var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
-		lg_not_dn.active = 1;
+	# if ((getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5)) or ((getprop("/engines/engine[0]/n1-actual") < 75.0 and getprop("/engines/engine[1]/n1-actual") < 75.0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6)) or (((getprop("/engines/engine[0]/n1-actual") < 77.0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) or (getprop("/engines/engine[1]/n1-actual") < 77.0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6))) {
+	lg_not_dn.active = 1;
 	} else {
 		lg_not_dn.active = 0;
+		lg_not_dn.noRepeat = 0;
 	}
 }
 var messages_priority_2 = func {}
@@ -149,10 +163,17 @@ var messages_right_memo = func {
 	} else {
 		gnd_splrs.active = 0;
 	}
+	
+	#if (getprop("/controls/gear/brake-parking") == 1 and getprop("/FMGC/status/phase") != 3) {
 	if (getprop("/controls/gear/brake-parking") == 1) {
 		park_brk.active = 1;
 	} else {
 		park_brk.active = 0;
+	}
+	if (getprop("/FMGC/status/phase") >= 4 and getprop("/FMGC/status/phase") <= 8) {
+		park_brk.colour = "a";
+	} else {
+		park_brk.colour = "g";
 	}
 }
 
@@ -175,17 +196,13 @@ var ECAM_controller = {
 		
 		if (warnings.size() > 0) {
 			for(var n=1; n<8; n+=1) {
-				# if (!warnings.contains(getprop("/ECAM/msg/line" ~ (n)))) {
-					setprop("/ECAM/msg/line" ~ n, "");
-				#}
+				setprop("/ECAM/msg/line" ~ n, "");
 			}
 		}
 		
 		if (memos.size() > 0) {
 			for(var n=1; n<8; n+=1) {
-				# if (!memos.contains(getprop("/ECAM/rightmsg/line" ~ (n)))) {
-					setprop("/ECAM/rightmsg/line" ~ n, "");
-				# }
+				setprop("/ECAM/rightmsg/line" ~ n, "");
 			}
 		}
 		
@@ -193,6 +210,7 @@ var ECAM_controller = {
 		
 		foreach (var i; warnings.vector) {
 			i.write();
+			i.warnlight();
 		}
 		
 		foreach (var m; memos.vector) {
