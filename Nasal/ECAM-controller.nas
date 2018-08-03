@@ -61,6 +61,7 @@ var msg = nil;
 var spacer = nil;
 var line = nil;
 var right_line = nil;
+var wow = getprop("/gear/gear[1]/wow");
 setprop("/ECAM/warnings/master-warning-light", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
 
@@ -149,8 +150,13 @@ var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural:
 ]);
 
 var memos = std.Vector.new([
+var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
+var fob_3T = memo.new(msg: "FOB BELOW 3T", active: 0, colour: "g"),
+var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
 var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0, colour: "g"),
-var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g")
+var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
+var refuelg = memo.new(msg: "REFUELG", active: 0, colour: "g"),
+var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g")
 ]);
 
 
@@ -192,6 +198,43 @@ var messages_right_memo = func {
 		park_brk.colour = "a";
 	} else {
 		park_brk.colour = "g";
+	}
+	
+	if (getprop("/controls/pneumatic/switches/ram-air") == 1) {
+		ram_air.active = 1;
+	} else {
+		ram_air.active = 0;
+	}
+	
+	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and !wow) {
+		emer_gen.active = 1;
+	} else {
+		emer_gen.active = 0;
+	}
+	
+	if ((getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
+		spd_brk.active = 1;
+	} else {
+		spd_brk.active = 0;
+	}
+	
+	if (getprop("/systems/thrust/state1") == "IDLE" and getprop("/systems/thrust/state2") == "IDLE" and getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7) {
+		spd_brk.colour = "g";
+	} else if ((getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 5) or ((getprop("/systems/thrust/state1") != "IDLE" or getprop("/systems/thrust/state2") != "IDLE") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7))) {
+		spd_brk.colour = "a";
+	}
+	
+	if (getprop("services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
+		refuelg.active = 1;
+	} else {
+		refuelg.active = 0;
+	}
+
+	
+	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
+		fob_3T.active = 1;
+	} else {
+		fob_3T.active = 0;
 	}
 }
 
