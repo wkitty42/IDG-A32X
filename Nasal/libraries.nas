@@ -125,6 +125,15 @@ setlistener("/controls/switches/no-smoking-sign", func {
 	}, 1);
 });
 
+setlistener("/sim/sounde/btn1", func {
+	if (!getprop("/sim/sounde/btn1")) {
+		return;
+	}
+	settimer(func {
+		props.globals.getNode("/sim/sound/warnings/").setBoolValue(1);
+	}, 0.05);
+});
+
 #########
 # Doors #
 #########

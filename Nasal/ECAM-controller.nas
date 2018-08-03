@@ -103,6 +103,15 @@ var warning = {
 			me.noRepeat = 1;
 		}
 	},
+	sound: func() {
+		if (me.active and me.aural != "none" and getprop("/sim/sound/warnings/"~me.aural) != 1) {
+			setprop("/sim/sound/warnings/"~me.aural, 1);
+		} else if (!me.active or me.aural == "none") {
+			if (getprop("/sim/sound/warnings/"~me.aural) == 1) {
+				setprop("/sim/sound/warnings/"~me.aural, 0);
+			}
+		}
+	},
 };
 
 var memo = {
@@ -135,7 +144,8 @@ var memo = {
 # messages logic and added to arrays
 
 var warnings = std.Vector.new([
-var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0)
+var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0),
+var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
 ]);
 
 var memos = std.Vector.new([
@@ -153,7 +163,15 @@ var messages_priority_3 = func {
 		lg_not_dn.noRepeat = 0;
 	}
 }
-var messages_priority_2 = func {}
+var messages_priority_2 = func {
+	# if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7)) {
+	if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 5)) {
+		park_brk_on.active = 1;
+	} else {
+		park_brk_on.active = 0;
+		park_brk_on.noRepeat = 0;
+	}
+}
 var messages_priority_1 = func {}
 var messages_priority_0 = func {}
 var messages_memo = func {}
@@ -211,6 +229,7 @@ var ECAM_controller = {
 		foreach (var i; warnings.vector) {
 			i.write();
 			i.warnlight();
+			i.sound();
 		}
 		
 		foreach (var m; memos.vector) {
