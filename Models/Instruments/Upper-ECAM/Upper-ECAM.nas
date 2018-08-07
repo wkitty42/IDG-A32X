@@ -157,6 +157,8 @@ var canvas_upperECAM_base = {
 				me["ECAML1"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec1") == "r") {
 				me["ECAML1"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec1") == "m") {
+				me["ECAML1"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec2") == "w") {
@@ -169,6 +171,8 @@ var canvas_upperECAM_base = {
 				me["ECAML2"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec2") == "r") {
 				me["ECAML2"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec2") == "m") {
+				me["ECAML2"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec3") == "w") {
@@ -181,6 +185,8 @@ var canvas_upperECAM_base = {
 				me["ECAML3"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec3") == "r") {
 				me["ECAML3"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec3") == "m") {
+				me["ECAML3"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec4") == "w") {
@@ -193,6 +199,8 @@ var canvas_upperECAM_base = {
 				me["ECAML4"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec4") == "r") {
 				me["ECAML4"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec4") == "m") {
+				me["ECAML4"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec5") == "w") {
@@ -205,6 +213,8 @@ var canvas_upperECAM_base = {
 				me["ECAML5"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec5") == "r") {
 				me["ECAML5"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec5") == "m") {
+				me["ECAML5"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec6") == "w") {
@@ -217,6 +227,8 @@ var canvas_upperECAM_base = {
 				me["ECAML6"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec6") == "r") {
 				me["ECAML6"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec6") == "m") {
+				me["ECAML6"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec7") == "w") {
@@ -229,6 +241,8 @@ var canvas_upperECAM_base = {
 				me["ECAML7"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec7") == "r") {
 				me["ECAML7"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec7") == "m") {
+				me["ECAML7"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/msg/linec8") == "w") {
@@ -241,6 +255,8 @@ var canvas_upperECAM_base = {
 				me["ECAML8"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/msg/linec8") == "r") {
 				me["ECAML8"].setColor(1,0,0);
+			} else if (getprop("/ECAM/msg/linec8") == "m") {
+				me["ECAML8"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			me["TO_Memo"].hide();
@@ -364,6 +380,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR1"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec1") == "r") {
 				me["ECAMR1"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec1") == "m") {
+				me["ECAMR1"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec2") == "w") {
@@ -376,6 +394,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR2"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec2") == "r") {
 				me["ECAMR2"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec2") == "m") {
+				me["ECAMR2"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec3") == "w") {
@@ -388,6 +408,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR3"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec3") == "r") {
 				me["ECAMR3"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec3") == "m") {
+				me["ECAMR3"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec4") == "w") {
@@ -400,6 +422,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR4"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec4") == "r") {
 				me["ECAMR4"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec4") == "m") {
+				me["ECAMR4"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec5") == "w") {
@@ -412,6 +436,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR5"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec5") == "r") {
 				me["ECAMR5"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec5") == "m") {
+				me["ECAMR5"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec6") == "w") {
@@ -424,6 +450,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR6"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec6") == "r") {
 				me["ECAMR6"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec6") == "m") {
+				me["ECAMR6"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec7") == "w") {
@@ -436,6 +464,8 @@ var canvas_upperECAM_base = {
 				me["ECAMR7"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec7") == "r") {
 				me["ECAMR7"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec7") == "m") {
+				me["ECAMR7"].setColor(0.6901,0.3333,0.7450);
 			}
 			
 			if (getprop("/ECAM/rightmsg/linec8") == "w") {
@@ -448,10 +478,10 @@ var canvas_upperECAM_base = {
 				me["ECAMR8"].setColor(0.7333,0.3803,0);
 			} else if (getprop("/ECAM/rightmsg/linec8") == "r") {
 				me["ECAMR8"].setColor(1,0,0);
+			} else if (getprop("/ECAM/rightmsg/linec8") == "m") {
+				me["ECAMR8"].setColor(0.6901,0.3333,0.7450);
 			}
 			
-			me["TO_Memo"].hide();
-			me["LDG_Memo"].hide();
 			me["ECAM_Right"].show();
 		} else {
 			me["ECAM_Right"].hide();

@@ -93,7 +93,7 @@ var warning = {
 		}
 		
 		# if (getprop("/ECAM/msg/line" ~ line) != me.msg)
-		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1) { # at empty line
+		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1 and me.msg != "") { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
 			setprop("/ECAM/msg/line" ~ line, me.msg);
 			setprop("/ECAM/msg/linec" ~ line, me.colour);
 		}
@@ -150,13 +150,20 @@ var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural:
 ]);
 
 var memos = std.Vector.new([
+var to_inhibit = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
+var ldg_inhibit = memo.new(msg: "LDG INHIBIT", active: 0, colour: "m"),
 var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
 var fob_3T = memo.new(msg: "FOB BELOW 3T", active: 0, colour: "g"),
 var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
+var rat = memo.new(msg: "RAT OUT", active: 0, colour: "g"),
 var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0, colour: "g"),
 var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
 var refuelg = memo.new(msg: "REFUELG", active: 0, colour: "g"),
-var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g")
+var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g"),
+var ptu = memo.new(msg: "HYD PTU", active: 0, colour: "g"),
+var eng_aice = memo.new(msg: "ENG A.ICE", active: 0, colour: "g"),
+var wing_aice = memo.new(msg: "WING A.ICE", active: 0, colour: "g"),
+var fuelx = memo.new(msg: "FUEL X FEED", active: 0, colour: "g")
 ]);
 
 
@@ -182,6 +189,18 @@ var messages_priority_1 = func {}
 var messages_priority_0 = func {}
 var messages_memo = func {}
 var messages_right_memo = func {
+	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
+		to_inhibit.active = 1;
+	} else {
+		to_inhibit.active = 0;
+	}
+	
+	if (getprop("/FMGC/status/phase") >= 7 and getprop("/FMGC/status/phase") <= 7) {
+		ldg_inhibit.active = 1;
+	} else {
+		ldg_inhibit.active = 0;
+	}
+	
 	if (getprop("controls/flight/speedbrake-arm") == 1) {
 		gnd_splrs.active = 1;
 	} else {
@@ -229,12 +248,53 @@ var messages_right_memo = func {
 	} else {
 		refuelg.active = 0;
 	}
-
 	
 	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
 		fob_3T.active = 1;
 	} else {
 		fob_3T.active = 0;
+	}
+	
+	if (getprop("/systems/fuel/x-feed") == 1 and getprop("controls/fuel/x-feed") == 1) {
+		fuelx.active = 1;
+	} else {
+		fuelx.active = 0;
+	}
+	
+	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
+		fuelx.colour = "a";
+	} else {
+		fuelx.colour = "g";
+	}
+	
+	if (getprop("/controls/hydraulic/ptu") == 1 and ((getprop("/systems/hydraulic/yellow-psi") < 1450 and getprop("/systems/hydraulic/green-psi") > 1450 and getprop("/controls/hydraulic/elec-pump-yellow") == 0) or (getprop("/systems/hydraulic/yellow-psi") > 1450 and getprop("/systems/hydraulic/green-psi") < 1450))) {
+		ptu.active = 1;
+	} else {
+		ptu.active = 0;
+	}
+	
+	if (getprop("/controls/hydraulic/rat-deployed") == 1) {
+		rat.active = 1;
+	} else {
+		rat.active = 0;
+	}
+	
+	if (getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) {
+		rat.colour = "a";
+	} else {
+		rat.colour = "g";
+	}
+	
+	if (getprop("/controls/switches/leng") == 1 or getprop("/controls/switches/reng") == 1 or getprop("/systems/electrical/bus/dc1") == 0 or getprop("/systems/electrical/bus/dc2") == 0) {
+		eng_aice.active = 1;
+	} else {
+		eng_aice.active = 0;
+	}
+	
+	if (getprop("/controls/switches/wing") == 1) {
+		eng_aice.active = 1;
+	} else {
+		eng_aice.active = 0;
 	}
 }
 
