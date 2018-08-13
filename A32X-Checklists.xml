@@ -792,7 +792,7 @@ TODO: add conditions for not yet implemented stuff:
 								<value>4</value>
 							</equals>
 							<equals>
-								<property>instrumentation/mk-viii(inputs/discretes/momentary-flap-3-override</property>
+								<property>instrumentation/mk-viii/inputs/discretes/momentary-flap-3-override</property>
 								<value>0</value>
 							</equals>
 						</and>
@@ -802,7 +802,7 @@ TODO: add conditions for not yet implemented stuff:
 								<value>3</value>
 							</equals>
 							<equals>
-								<property>instrumentation/mk-viii(inputs/discretes/momentary-flap-3-override</property>
+								<property>instrumentation/mk-viii/inputs/discretes/momentary-flap-3-override</property>
 								<value>1</value>
 							</equals>
 						</and>
