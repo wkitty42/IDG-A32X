@@ -125,15 +125,6 @@ setlistener("/controls/switches/no-smoking-sign", func {
 	}, 1);
 });
 
-setlistener("/sim/sounde/btn1", func {
-	if (!getprop("/sim/sounde/btn1")) {
-		return;
-	}
-	settimer(func {
-		props.globals.getNode("/sim/sound/warnings/").setBoolValue(1);
-	}, 0.05);
-});
-
 #########
 # Doors #
 #########
@@ -525,22 +516,6 @@ var lightsLoop = maketimer(0.2, func {
 		nav_lights.setBoolValue(1);
 	} else {
 		nav_lights.setBoolValue(0);
-	}
-	
-	# landing lights
-	landl = getprop("/controls/lighting/landing-lights[1]");
-	landr = getprop("/controls/lighting/landing-lights[2]");
-	
-	if (landl == 1 and getprop("/sim/current-view/internal") == 1) {
-		setprop("/sim/rendering/als-secondary-lights/use-landing-light", 1);
-	} else {
-		setprop("/sim/rendering/als-secondary-lights/use-landing-light", 0);
-	}
-	
-	if (landr == 1 and getprop("/sim/current-view/internal") == 1) {
-		setprop("/sim/rendering/als-secondary-lights/use-alt-landing-light", 1);
-	} else {
-		setprop("/sim/rendering/als-secondary-lights/use-alt-landing-light", 0);
 	}
 });
 
