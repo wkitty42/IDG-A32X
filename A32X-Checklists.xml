@@ -785,11 +785,28 @@ TODO: add conditions for not yet implemented stuff:
 						<property>controls/flight/speedbrake-arm</property>
 						<value>1</value>
 					</equals>
-					<equals>
-						<property>controls/flight/flap-lever</property>
-						<value>4</value>
-					</equals>
-					<!-- add possibility to use flaps 3 landing -->
+					<or>
+						<and>
+							<equals>
+								<property>controls/flight/flap-lever</property>
+								<value>4</value>
+							</equals>
+							<equals>
+								<property>instrumentation/mk-viii(inputs/discretes/momentary-flap-3-override</property>
+								<value>0</value>
+							</equals>
+						</and>
+						<and>
+							<equals>
+								<property>controls/flight/flap-lever</property>
+								<value>3</value>
+							</equals>
+							<equals>
+								<property>instrumentation/mk-viii(inputs/discretes/momentary-flap-3-override</property>
+								<value>1</value>
+							</equals>
+						</and>
+					</or>
 				</and>
 			</condition>
                         <marker>
