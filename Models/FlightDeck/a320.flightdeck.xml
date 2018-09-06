@@ -391,8 +391,6 @@
 		<object-name>ecam_wheel_led</object-name>
 		<object-name>exped_led</object-name>
 		<object-name>hdg-text-test</object-name>
-		<object-name>master_caution_on</object-name>
-		<object-name>master_warning_on</object-name>
 		<object-name>qnh-test</object-name>
 		<object-name>rudder-trim-test</object-name>
 		<object-name>spd-text-test</object-name>
@@ -4723,6 +4721,81 @@
 			<blue>0.259</blue>
 			<factor-prop>controls/lighting/fcu-panel-norm</factor-prop>
 		</emission>
+	</animation>
+	
+	<!-- Master Warning and Caution -->
+	<animation>
+		<type>select</type>
+		<object-name>master_warning_on</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>ECAM/warnings/master-warning-light</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>master_caution_on</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>ECAM/warnings/master-caution-light</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>master_warning</object-name>
+		<object-name>master_warning_on</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>property-assign</command>
+				<property>ECAM/warnings/master-warning-light</property>
+				<value>0</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>master_caution</object-name>
+		<object-name>master_caution_on</object-name>
+		<action>
+			<button>0</button>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>property-assign</command>
+				<property>ECAM/warnings/master-caution-light</property>
+				<value>0</value>
+			</binding>
+		</action>
 	</animation>
 
 	<!-- Overhead Panel-2 lighting -->

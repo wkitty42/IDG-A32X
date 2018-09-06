@@ -37,14 +37,30 @@ var ECAM = {
 		setprop("/ECAM/msg/line6", "");
 		setprop("/ECAM/msg/line7", "");
 		setprop("/ECAM/msg/line8", "");
-		setprop("/ECAM/msg/line1c", "w");
-		setprop("/ECAM/msg/line2c", "w");
-		setprop("/ECAM/msg/line3c", "w");
-		setprop("/ECAM/msg/line4c", "w");
-		setprop("/ECAM/msg/line5c", "w");
-		setprop("/ECAM/msg/line6c", "w");
-		setprop("/ECAM/msg/line7c", "w");
-		setprop("/ECAM/msg/line8c", "w");
+		setprop("/ECAM/msg/linec1", "w");
+		setprop("/ECAM/msg/linec2", "w");
+		setprop("/ECAM/msg/linec3", "w");
+		setprop("/ECAM/msg/linec4", "w");
+		setprop("/ECAM/msg/linec5", "w");
+		setprop("/ECAM/msg/linec6", "w");
+		setprop("/ECAM/msg/linec7", "w");
+		setprop("/ECAM/msg/linec8", "w");
+		setprop("/ECAM/rightmsg/line1", "");
+		setprop("/ECAM/rightmsg/line2", "");
+		setprop("/ECAM/rightmsg/line3", "");
+		setprop("/ECAM/rightmsg/line4", "");
+		setprop("/ECAM/rightmsg/line5", "");
+		setprop("/ECAM/rightmsg/line6", "");
+		setprop("/ECAM/rightmsg/line7", "");
+		setprop("/ECAM/rightmsg/line8", "");
+		setprop("/ECAM/rightmsg/linec1", "w");
+		setprop("/ECAM/rightmsg/linec2", "w");
+		setprop("/ECAM/rightmsg/linec3", "w");
+		setprop("/ECAM/rightmsg/linec4", "w");
+		setprop("/ECAM/rightmsg/linec5", "w");
+		setprop("/ECAM/rightmsg/linec6", "w");
+		setprop("/ECAM/rightmsg/linec7", "w");
+		setprop("/ECAM/rightmsg/linec8", "w");
 	},
 	loop: func() {
 		stateL = getprop("/engines/engine[0]/state");
@@ -80,12 +96,20 @@ var ECAM = {
 			setprop("/ECAM/ldg-memo-enable", 0);
 		}
 		
-		if (getprop("/FMGC/status/phase") == 0 and stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
+		if (ecam.warnings.size() > 0) {
+			setprop("/ECAM/left-msg", "MSG");
+		} else if (getprop("/FMGC/status/phase") == 0 and stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
 			setprop("/ECAM/left-msg", "TO-MEMO");
 		} else if (getprop("/ECAM/ldg-memo-enable") == 1) {
 			setprop("/ECAM/left-msg", "LDG-MEMO");
 		} else {
 			setprop("/ECAM/left-msg", "NONE");
+		}
+		
+		if (ecam.memos.size() > 0) {
+			setprop("/ECAM/right-msg", "MSG");
+		} else {
+			setprop("/ECAM/right-msg", "NONE");
 		}
 		
 		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/controls/switches/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 
