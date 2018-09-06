@@ -182,8 +182,8 @@ var systemsInit = func {
 	systems.autobrake_init();
   	fmgc.APinit();			
 	fmgc.FMGCinit();
-	mcdu1.MCDU_init();
-	mcdu2.MCDU_init();
+	mcdu.MCDU_init(0);
+	mcdu.MCDU_init(1);
 	systemsLoop.start();
 	libraries.CVR.start();
 	icing.icingInit();

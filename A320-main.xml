@@ -186,6 +186,35 @@
 
 		<menubar>
 			<default>
+				<menu n="3"> <!-- Force disable Route Manager dialogs, bindings are changed just in case the item is not grayed out properly -->
+					<item n="1">
+						<enabled type="bool" n="0">false</enabled>
+						<binding n="0">
+							<command n="0">nasal</command>
+							<script n="0">
+							gui.popupTip("You must use the MCDU to manage your route.");
+							</script>
+						</binding>
+					</item>
+					<item n="2">
+						<enabled type="bool" n="0">false</enabled>
+						<binding n="0">
+							<command n="0">nasal</command>
+							<script n="0">
+							gui.popupTip("You must use the MCDU to manage your route.");
+							</script>
+						</binding>
+					</item>
+					<item n="3">
+						<enabled type="bool" n="0">false</enabled>
+						<binding n="0">
+							<command n="0">nasal</command>
+							<script n="0">
+							gui.popupTip("You must use the MCDU to manage your route.");
+							</script>
+						</binding>
+					</item>
+				</menu>
 				<menu n="100">
 					<label>IDG-A32X</label>
 					<enabled type="bool">true</enabled>
@@ -1490,32 +1519,19 @@
 			<file>Aircraft/IDG-A32X/Nasal/FMGC-b.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/FMGC-c.nas</file>
 		</fmgc>
-		<mcdu1>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/MCDU.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/F-PLNA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/INITA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/INITB.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/PERFCLB.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/PERFCRZ.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/PERFDES.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/PERFTO.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/RADNAV.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/DATA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU1/STATUS.nas</file>
-		</mcdu1>
-		<mcdu2>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/MCDU.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/F-PLNA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/INITA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/INITB.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/PERFCLB.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/PERFCRZ.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/PERFDES.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/PERFTO.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/RADNAV.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/DATA.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU2/STATUS.nas</file>
-		</mcdu2>
+		<mcdu>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/MCDU.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/F-PLNA.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITA.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITB.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFCLB.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFCRZ.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFDES.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFTO.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/RADNAV.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/DATA.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/MCDU/STATUS.nas</file>
+		</mcdu>
 		<canvas_pfd>
 			<file>Aircraft/IDG-A32X/Models/Instruments/PFD/PFD.nas</file>
 		</canvas_pfd>
