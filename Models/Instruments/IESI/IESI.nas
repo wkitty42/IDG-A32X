@@ -210,10 +210,10 @@ setlistener("sim/signals/fdm-initialized", func {
 });
 
 var rateApply = func {
-	IESI_update.restart(0.07 * iesi_rate.getValue());
+	IESI_update.restart(0.05 * iesi_rate.getValue());
 }
 
-var IESI_update = maketimer(0.07, func {
+var IESI_update = maketimer(0.05, func {
 	canvas_IESI_base.update();
 });
 
