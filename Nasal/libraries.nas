@@ -206,7 +206,6 @@ var systemsLoop = maketimer(0.1, func {
 	systems.FUEL.loop();
 	systems.ADIRS.loop();
 	libraries.ECAM.loop();
-	ecam.ECAM_controller.loop();
 	libraries.BUTTONS.update();
 	fadec.fadecLoop();
 	
