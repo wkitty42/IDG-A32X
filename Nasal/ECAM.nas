@@ -188,10 +188,36 @@ var LowerECAM = {
 		var apu_n = getprop("/systems/apu/rpm");
 		var apu_master = getprop("/controls/APU/master");
 
+		var eng_timer = getprop("/ECAM/Lower/eng-timer");
+		var eng1_state = getprop("/engines/engine[0]/state");
+		var eng2_state = getprop("/engines/engine[1]/state");
+		var eng_mode = getprop("/controls/engines/engine-start-switch");
+
 		if(!man_sel) {
 			if(!fault_sel) {
-				#TODO auto select page for ENG, F/CTL
-				if((apu_master == 1 and apu_n < 95) or apu_timer > 0) {
+				#TODO auto select page for ENG on TO, F/CTL
+				if( eng_mode == 0
+					or eng1_state == 1
+					or eng1_state == 2
+					or eng2_state == 1
+					or eng2_state == 2
+					or eng_timer > 0) {
+
+					if(eng_timer == 0) {
+						setprop("/ECAM/Lower/eng-timer", 1);
+					}
+
+					if(eng_mode == 1) {
+						setprop("/ECAM/Lower/eng-timer", 0);
+					}
+
+					if((eng1_state == 0 or eng1_state == 3) and (eng2_state == 0 or eng2_state == 3)) {
+						settimer(func() { setprop("/ECAM/Lower/eng-timer", 0);}, 10);
+					}
+
+					setprop("/ECAM/Lower/page", "eng");
+
+				} else if((apu_master == 1 and apu_n < 95) or apu_timer > 0) {
 					# apu-timer states:
 					#	0 -> no apu start
 					#	1 -> apu starting/started, will be set back to 0 by timer
@@ -208,10 +234,13 @@ var LowerECAM = {
 					}
 
 					setprop("/ECAM/Lower/page", "apu");
+
 				} else if(((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
 					setprop("/ECAM/Lower/page", "wheel");
+
 				} else if(getprop("/gear/gear[1]/wow") == 1) {
 					setprop("/ECAM/Lower/page", "door");
+
 				} else {
 					setprop("/ECAM/Lower/page", "crz");
 				}
