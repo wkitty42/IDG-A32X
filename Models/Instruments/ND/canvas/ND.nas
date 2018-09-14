@@ -219,13 +219,11 @@ var canvas_ND_1_test = {
 		return ["Test_white","Test_text"];
 	},
 	update: func() {
-		elapsedtime = getprop("/sim/time/elapsed-sec");
-		if (du2_test_time.getValue() + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") != 1) {
+		elapsedtime = getprop("/sim/time/elapsed-sec") or 0;
+		if ((du2_test_time.getValue() + 1 >= elapsedtime) and getprop("/modes/cpt-du-xfr") != 1) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
-		} else if (du1_test_time.getValue() + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") == 1) {
-			print(du1_test_time.getValue());
-			print(elapsedtime);
+		} else if ((du1_test_time.getValue() + 1 >= elapsedtime) and getprop("/modes/cpt-du-xfr") != 0) {
 			print(getprop("/modes/cpt-du-xfr"));
 			me["Test_white"].show();
 			me["Test_text"].hide();
@@ -263,11 +261,11 @@ var canvas_ND_2_test = {
 		return ["Test_white","Test_text"];
 	},
 	update: func() {
-		elapsedtime = getprop("/sim/time/elapsed-sec");
-		if (du5_test_time.getValue() + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") != 1) {
+		elapsedtime = getprop("/sim/time/elapsed-sec") or 0;
+		if ((du5_test_time.getValue() + 1 >= elapsedtime) and getprop("/modes/cpt-du-xfr") != 1) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
-		} else if (du6_test_time.getValue() + 1 >= elapsedtime and getprop("/modes/cpt-du-xfr") == 1) {
+		} else if ((du6_test_time.getValue() + 1 >= elapsedtime) and getprop("/modes/cpt-du-xfr") != 0) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
 		} else {

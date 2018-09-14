@@ -1148,10 +1148,11 @@ var canvas_PFD_1_test = {
 		return ["Test_white","Test_text"];
 	},
 	update: func() {
-		if (du1_test_time.getValue() + 1 >= elapsedtime.getValue() and cpt_du_xfr.getValue() != 1) {
+		et = elapsedtime.getValue() or 0;
+		if ((du1_test_time.getValue() + 1 >= et) and cpt_du_xfr.getValue() != 1) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
-		} else if (du2_test_time.getValue() + 1 >= elapsedtime.getValue() and cpt_du_xfr.getValue() == 1) {
+		} else if ((du2_test_time.getValue() + 1 >= et) and cpt_du_xfr.getValue() != 0) {
 			print(du2_test_time.getValue());
 			print(elapsedtime.getValue());
 			print(cpt_du_xfr.getValue());
@@ -1191,10 +1192,11 @@ var canvas_PFD_2_test = {
 		return ["Test_white","Test_text"];
 	},
 	update: func() {
-		if (du6_test_time.getValue() + 1 >= elapsedtime.getValue() and fo_du_xfr.getValue() != 1) {
+		et = elapsedtime.getValue() or 0;
+		if ((du6_test_time.getValue() + 1 >= et) and fo_du_xfr.getValue() != 1) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
-		} else if (du5_test_time.getValue() + 1 >= elapsedtime.getValue() and fo_du_xfr.getValue() == 1) {
+		} else if ((du5_test_time.getValue() + 1 >= et) and fo_du_xfr.getValue() != 0) {
 			me["Test_white"].show();
 			me["Test_text"].hide();
 		} else {
