@@ -19,6 +19,9 @@ var ECAM = {
 		setprop("/ECAM/Lower/page", "door");
 		setprop("/ECAM/Lower/man-select", 0);
 		setprop("/ECAM/Lower/fault-select", 0);
+		setprop("/ECAM/Lower/apu-timer", 0);
+		setprop("/ECAM/Lower/eng-timer", 0);
+		setprop("/ECAM/Lower/fctl-timer", 0);
 		setprop("/ECAM/Lower/light/apu", 0);
 		setprop("/ECAM/Lower/light/bleed", 0);
 		setprop("/ECAM/Lower/light/cond", 0);
@@ -181,10 +184,31 @@ var LowerECAM = {
 		var man_sel = getprop("/ECAM/Lower/man-select");
 		var fault_sel = getprop("/ECAM/Lower/fault-select");
 
+		var apu_timer = getprop("/ECAM/Lower/apu-timer");
+		var apu_n = getprop("/systems/apu/rpm");
+		var apu_master = getprop("/controls/APU/master");
+
 		if(!man_sel) {
 			if(!fault_sel) {
-				#TODO auto select page for ENG, F/CTL and APU
-				if(((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
+				#TODO auto select page for ENG, F/CTL
+				if((apu_master == 1 and apu_n < 95) or apu_timer > 0) {
+					# apu-timer states:
+					#	0 -> no apu start
+					#	1 -> apu starting/started, will be set back to 0 by timer
+					if(apu_timer == 0) {
+						setprop("/ECAM/Lower/apu-timer", 1);
+					}
+
+					if(apu_master == 0) {
+						setprop("/ECAM/Lower/apu-timer", 0);
+					}
+
+					if(apu_n >= 95) {
+						settimer(func() { setprop("/ECAM/Lower/apu-timer", 0);}, 10);
+					}
+
+					setprop("/ECAM/Lower/page", "apu");
+				} else if(((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
 					setprop("/ECAM/Lower/page", "wheel");
 				} else if(getprop("/gear/gear[1]/wow") == 1) {
 					setprop("/ECAM/Lower/page", "door");
@@ -198,6 +222,9 @@ var LowerECAM = {
 		setprop("/ECAM/Lower/page", "door");
 		setprop("/ECAM/Lower/man-select", 0);
 		setprop("/ECAM/Lower/fault-select", 0);
+		setprop("/ECAM/Lower/apu-timer", 0);
+		setprop("/ECAM/Lower/eng-timer", 0);
+		setprop("/ECAM/Lower/fctl-timer", 0);
 		setprop("/ECAM/Lower/light/apu", 0);
 		setprop("/ECAM/Lower/light/bleed", 0);
 		setprop("/ECAM/Lower/light/cond", 0);
