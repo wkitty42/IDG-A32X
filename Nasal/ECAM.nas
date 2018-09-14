@@ -18,6 +18,7 @@ var ECAM = {
 		setprop("/ECAM/ldg-memo-enable", 0);
 		setprop("/ECAM/Lower/page", "door");
 		setprop("/ECAM/Lower/man-select", 0);
+		setprop("/ECAM/Lower/fault-select", 0);
 		setprop("/ECAM/Lower/light/apu", 0);
 		setprop("/ECAM/Lower/light/bleed", 0);
 		setprop("/ECAM/Lower/light/cond", 0);
@@ -158,33 +159,45 @@ var LowerECAM = {
 	button: func(b) {
 		var man_sel = getprop("/ECAM/Lower/man-select");
 
-		if(!man_sel) {
-			setprop("/ECAM/Lower/man-select", 1);
-			setprop("/ECAM/Lower/page", b);
-			setprop("/ECAM/Lower/light/" ~ b, 1);
-		} else {
-			if(b == getprop("/ECAM/Lower/page")) {
-				setprop("/ECAM/Lower/man-select", 0);
-				LowerECAM.loop();
-				setprop("/ECAM/Lower/light/" ~ b, 0);
-			} else {
-				setprop("/ECAM/Lower/light/" ~ getprop("/ECAM/Lower/page"), 0);
+		if(!getprop("/ECAM/lower/fault-select")) {
+			if(!man_sel) {
+				setprop("/ECAM/Lower/man-select", 1);
 				setprop("/ECAM/Lower/page", b);
 				setprop("/ECAM/Lower/light/" ~ b, 1);
+			} else {
+				if(b == getprop("/ECAM/Lower/page")) {
+					setprop("/ECAM/Lower/man-select", 0);
+					LowerECAM.loop();
+					setprop("/ECAM/Lower/light/" ~ b, 0);
+				} else {
+					setprop("/ECAM/Lower/light/" ~ getprop("/ECAM/Lower/page"), 0);
+					setprop("/ECAM/Lower/page", b);
+					setprop("/ECAM/Lower/light/" ~ b, 1);
+				}
 			}
 		}
 	},
 	loop: func() {
 		var man_sel = getprop("/ECAM/Lower/man-select");
+		var fault_sel = getprop("/ECAM/Lower/fault-select");
 
 		if(!man_sel) {
-			setprop("/ECAM/Lower/page", "crz");
-			#TODO auto select page
+			if(!fault_sel) {
+				#TODO auto select page for ENG, F/CTL and APU
+				if(((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
+					setprop("/ECAM/Lower/page", "wheel");
+				} else if(getprop("/gear/gear[1]/wow") == 1) {
+					setprop("/ECAM/Lower/page", "door");
+				} else {
+					setprop("/ECAM/Lower/page", "crz");
+				}
+			}
 		}
 	},
 	reset: func() {
 		setprop("/ECAM/Lower/page", "door");
 		setprop("/ECAM/Lower/man-select", 0);
+		setprop("/ECAM/Lower/fault-select", 0);
 		setprop("/ECAM/Lower/light/apu", 0);
 		setprop("/ECAM/Lower/light/bleed", 0);
 		setprop("/ECAM/Lower/light/cond", 0);
