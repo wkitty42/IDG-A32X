@@ -1074,7 +1074,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(sts);</script>
+				<script>libraries.LowerECAM.button("sts");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1093,7 +1093,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(apu);</script>
+				<script>libraries.LowerECAM.button("apu");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1112,7 +1112,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(bleed);</script>
+				<script>libraries.LowerECAM.button("bleed");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1131,7 +1131,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(press);</script>
+				<script>libraries.LowerECAM.button("press");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1150,7 +1150,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(elec);</script>
+				<script>libraries.LowerECAM.button("elec");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1169,7 +1169,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(hyd);</script>
+				<script>libraries.LowerECAM.button("hyd");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1188,7 +1188,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(fuel);</script>
+				<script>libraries.LowerECAM.button("fuel");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1207,7 +1207,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(eng);</script>
+				<script>libraries.LowerECAM.button("eng");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1226,7 +1226,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(cond);</script>
+				<script>libraries.LowerECAM.button("cond");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1245,7 +1245,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(door);</script>
+				<script>libraries.LowerECAM.button("door");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1264,7 +1264,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(wheel);</script>
+				<script>libraries.LowerECAM.button("wheel");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1283,7 +1283,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(fctl);</script>
+				<script>libraries.LowerECAM.button("fctl");</script>
 			</binding>
 		</action>
 	</animation>

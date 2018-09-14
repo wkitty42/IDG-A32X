@@ -16,7 +16,8 @@ var ECAM = {
 		setprop("/ECAM/to-memo-enable", 1);
 		setprop("/ECAM/to-config", 0);
 		setprop("/ECAM/ldg-memo-enable", 0);
-		setprop("/ECAM/Lower/page", "");
+		setprop("/ECAM/Lower/page", "door");
+		setprop("/ECAM/Lower/man-select", 0);
 		setprop("/ECAM/Lower/light/apu", 0);
 		setprop("/ECAM/Lower/light/bleed", 0);
 		setprop("/ECAM/Lower/light/cond", 0);
@@ -155,12 +156,46 @@ ECAM.MSGclr();
 
 var LowerECAM = {
 	button: func(b) {
-		
+		var man_sel = getprop("/ECAM/Lower/man-select");
+
+		if(!man_sel) {
+			setprop("/ECAM/Lower/man-select", 1);
+			setprop("/ECAM/Lower/page", b);
+			setprop("/ECAM/Lower/light/" ~ b, 1);
+		} else {
+			if(b == getprop("/ECAM/Lower/page")) {
+				setprop("/ECAM/Lower/man-select", 0);
+				LowerECAM.loop();
+				setprop("/ECAM/Lower/light/" ~ b, 0);
+			} else {
+				setprop("/ECAM/Lower/light/" ~ getprop("/ECAM/Lower/page"), 0);
+				setprop("/ECAM/Lower/page", b);
+				setprop("/ECAM/Lower/light/" ~ b, 1);
+			}
+		}
 	},
 	loop: func() {
-		
+		var man_sel = getprop("/ECAM/Lower/man-select");
+
+		if(!man_sel) {
+			setprop("/ECAM/Lower/page", "crz");
+			#TODO auto select page
+		}
 	},
 	reset: func() {
-		
+		setprop("/ECAM/Lower/page", "door");
+		setprop("/ECAM/Lower/man-select", 0);
+		setprop("/ECAM/Lower/light/apu", 0);
+		setprop("/ECAM/Lower/light/bleed", 0);
+		setprop("/ECAM/Lower/light/cond", 0);
+		setprop("/ECAM/Lower/light/door", 0);
+		setprop("/ECAM/Lower/light/elec", 0);
+		setprop("/ECAM/Lower/light/eng", 0);
+		setprop("/ECAM/Lower/light/fctl", 0);
+		setprop("/ECAM/Lower/light/fuel", 0);
+		setprop("/ECAM/Lower/light/hyd", 0);
+		setprop("/ECAM/Lower/light/press", 0);
+		setprop("/ECAM/Lower/light/sts", 0);
+		setprop("/ECAM/Lower/light/wheel", 0);
 	},
 };
