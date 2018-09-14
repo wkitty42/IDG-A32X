@@ -59,18 +59,18 @@ var hdg_scale = props.globals.initNode("/instrumentation/pfd/heading-scale", 0.0
 var track = props.globals.initNode("/instrumentation/pfd/track-deg", 0.0, "DOUBLE");
 var track_diff = props.globals.initNode("/instrumentation/pfd/track-hdg-diff", 0.0, "DOUBLE");
 var speed_pred = props.globals.initNode("/instrumentation/pfd/speed-lookahead", 0.0, "DOUBLE");
-var du1_test = props.globals.getNode("/instrumentation/du/du1-test", 1);
-var du1_test_time = props.globals.getNode("/instrumentation/du/du1-test-time", 1);
-var du1_test_amount = props.globals.getNode("/instrumentation/du/du1-test-amount", 1);
-var du2_test = props.globals.getNode("/instrumentation/du/du2-test", 1);
-var du2_test_time = props.globals.getNode("/instrumentation/du/du2-test-time", 1);
-var du2_test_amount = props.globals.getNode("/instrumentation/du/du2-test-amount", 1);
-var du5_test = props.globals.getNode("/instrumentation/du/du5-test", 1);
-var du5_test_time = props.globals.getNode("/instrumentation/du/du5-test-time", 1);
-var du5_test_amount = props.globals.getNode("/instrumentation/du/du5-test-amount", 1);
-var du6_test = props.globals.getNode("/instrumentation/du/du6-test", 1);
-var du6_test_time = props.globals.getNode("/instrumentation/du/du6-test-time", 1);
-var du6_test_amount = props.globals.getNode("/instrumentation/du/du6-test-amount", 1);
+var du1_test = props.globals.initNode("/instrumentation/du/du1-test", 0, "BOOL");
+var du1_test_time = props.globals.initNode("/instrumentation/du/du1-test-time", 0.0, "DOUBLE");
+var du1_test_amount = props.globals.initNode("/instrumentation/du/du1-test-amount", 0.0, "DOUBLE");
+var du2_test = props.globals.initNode("/instrumentation/du/du2-test", 0, "BOOL");
+var du2_test_time = props.globals.initNode("/instrumentation/du/du2-test-time", 0.0, "DOUBLE");
+var du2_test_amount = props.globals.initNode("/instrumentation/du/du2-test-amount", 0.0, "DOUBLE");
+var du5_test = props.globals.initNode("/instrumentation/du/du5-test", 0, "BOOL");
+var du5_test_time = props.globals.initNode("/instrumentation/du/du5-test-time", 0.0, "DOUBLE");
+var du5_test_amount = props.globals.initNode("/instrumentation/du/du5-test-amount", 0.0, "DOUBLE");
+var du6_test = props.globals.initNode("/instrumentation/du/du6-test", 0, "BOOL");
+var du6_test_time = props.globals.initNode("/instrumentation/du/du6-test-time", 0.0, "DOUBLE");
+var du6_test_amount = props.globals.initNode("/instrumentation/du/du6-test-amount", 0.0, "DOUBLE");
 var vspeed_pfr = props.globals.getNode("/it-autoflight/internal/vert-speed-fpm-pfd", 1);
 var gear_agl = props.globals.getNode("/position/gear-agl-ft", 1);
 var aileron_input = props.globals.getNode("/controls/flight/aileron-input-fast", 1);
@@ -207,7 +207,7 @@ var canvas_PFD_base = {
 				du1_test.setValue(1);
 				du1_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
 				du1_test_time.setValue(elapsedtime_act);
-			} else if (acconfig.getValue() == 1 and du1_test != 1) {
+			} else if (acconfig.getValue() == 1 and du1_test.getValue() != 1) {
 				du1_test.setValue(1);
 				du1_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
 				du1_test_time.setValue(elapsedtime_act - 30);
