@@ -7,7 +7,6 @@
 
 setprop("/ECAM/left-msg", "NONE");
 setprop("/position/gear-agl-ft", 0);
-setprop("/ECAM/Lower/page", "fctl");
 # w = White, b = Blue, g = Green, a = Amber, r = Red
 
 var ECAM = {
@@ -17,6 +16,19 @@ var ECAM = {
 		setprop("/ECAM/to-memo-enable", 1);
 		setprop("/ECAM/to-config", 0);
 		setprop("/ECAM/ldg-memo-enable", 0);
+		setprop("/ECAM/Lower/page", "");
+		setprop("/ECAM/Lower/light/apu", 0);
+		setprop("/ECAM/Lower/light/bleed", 0);
+		setprop("/ECAM/Lower/light/cond", 0);
+		setprop("/ECAM/Lower/light/door", 0);
+		setprop("/ECAM/Lower/light/elec", 0);
+		setprop("/ECAM/Lower/light/eng", 0);
+		setprop("/ECAM/Lower/light/fctl", 0);
+		setprop("/ECAM/Lower/light/fuel", 0);
+		setprop("/ECAM/Lower/light/hyd", 0);
+		setprop("/ECAM/Lower/light/press", 0);
+		setprop("/ECAM/Lower/light/sts", 0);
+		setprop("/ECAM/Lower/light/wheel", 0);
 		var stateL = getprop("/engines/engine[0]/state");
 		var stateR = getprop("/engines/engine[1]/state");
 		var thrustL = getprop("/systems/thrust/state1");
@@ -25,6 +37,7 @@ var ECAM = {
 		var speed = getprop("/velocities/airspeed-kt");
 		var wow = getprop("/gear/gear[0]/wow");
 		var altitude = getprop("/position/gear-agl-ft");
+		LowerECAM.reset();
 	},
 	MSGclr: func() {
 		setprop("/ECAM/ecam-checklist-active", 0);
@@ -118,6 +131,8 @@ var ECAM = {
 		} else {
 			setprop("/ECAM/to-config", 0);
 		}
+		
+		LowerECAM.loop();
 	},
 	toConfig: func() {
 		stateL = getprop("/engines/engine[0]/state");
@@ -137,3 +152,15 @@ var ECAM = {
 };
 
 ECAM.MSGclr();
+
+var LowerECAM = {
+	button: func(b) {
+		
+	},
+	loop: func() {
+		
+	},
+	reset: func() {
+		
+	},
+};
