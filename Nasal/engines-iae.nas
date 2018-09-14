@@ -60,7 +60,7 @@ var cutoff_one = func {
 	setprop("/systems/pneumatic/eng1-starter", 0);
 	setprop("/controls/engines/engine[0]/starter", 0);
 	setprop("/controls/engines/engine[0]/cutoff", 1);
-	var engine0_state = props.globals.initNode("/engines/engine[0]/state", 0, "INT");
+	setprop("/engines/engine[0]/state", 0);
 	interpolate(engines[0].getNode("egt-actual"), 0, egt_shutdown_time);
 	eng_one_n2_check.stop();
 }
@@ -144,7 +144,7 @@ var cutoff_two = func {
 	setprop("/systems/pneumatic/eng2-starter", 0);
 	setprop("/controls/engines/engine[1]/starter", 0);
 	setprop("/controls/engines/engine[1]/cutoff", 1);
-	var engine1_state = props.globals.initNode("/engines/engine[1]/state", 0, "INT");
+	setprop("/engines/engine[1]/state", 0);
 	interpolate(engines[1].getNode("egt-actual"), 0, egt_shutdown_time);
 }
 
