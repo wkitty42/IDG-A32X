@@ -780,11 +780,11 @@ var canvas_lowerECAM_crz = {
 	},
 	getKeys: func() {
 		return ["TAT","SAT","GW","UTCh","UTCm","Oil1","Oil2","FUsed1","FUsed2","FUsed","VIB1N1","VIB1N2","VIB2N1","VIB2N2","deltaPSI","LDGELEV-AUTO","LDGELEV","CABVS","CABALT","VS-Arrow-UP","VS-Arrow-DN","CKPT-TEMP","FWD-TEMP","AFT-TEMP"];
+	},
+	update: func() {
 
 		me["Oil1"].setText(sprintf("%s", getprop("/engines/engine[0]/oil-qt-actual")));
 		me["Oil2"].setText(sprintf("%s", getprop("/engines/engine[1]/oil-qt-actual")));
-	},
-	update: func() {
 
 		me.updateBottomStatus();
 	},
