@@ -147,6 +147,7 @@ var du5_test_amount = props.globals.initNode("/instrumentation/du/du5-test-amoun
 var du6_test = props.globals.initNode("/instrumentation/du/du6-test", 0, "BOOL");
 var du6_test_time = props.globals.initNode("/instrumentation/du/du6-test-time", 0.0, "DOUBLE");
 var du6_test_amount = props.globals.initNode("/instrumentation/du/du6-test-amount", 0.0, "DOUBLE");
+
 var canvas_PFD_base = {
 	init: func(canvas_group, file) {
 		var font_mapper = func(family, weight) {
