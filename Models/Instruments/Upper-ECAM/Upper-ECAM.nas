@@ -228,7 +228,6 @@ var canvas_upperECAM_base = {
 			me["ECAML7"].setText(sprintf("%s", ECAM_line7.getValue()));
 			me["ECAML8"].setText(sprintf("%s", ECAM_line8.getValue()));
 			
-			
 			if (line1c == "w") {
 				me["ECAML1"].setColor(0.8078,0.8039,0.8078);
 			} else if (line1c == "b") {
