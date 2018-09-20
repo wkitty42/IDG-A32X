@@ -23,66 +23,25 @@ var ASImax = 0;
 var ASItrend = 0;
 var altTens = 0;
 
-var state1 = props.globals.getNode("/systems/thrust/state1");
-var state2 = props.globals.getNode("/systems/thrust/state2");
-var managed_spd = props.globals.getNode("/it-autoflight/input/spd-managed");
-var ap1 = props.globals.getNode("/it-autoflight/output/ap1");
-var ap2 = props.globals.getNode("/it-autoflight/output/ap2");
-var fd1 = props.globals.getNode("/it-autoflight/output/fd1");
-var fd2 = props.globals.getNode("/it-autoflight/output/fd2");
-var athr = props.globals.getNode("/it-autoflight/output/athr");
-var throttle_mode = props.globals.getNode("/modes/pfd/fma/throttle-mode");
-var pitch_mode = props.globals.getNode("/modes/pfd/fma/pitch-mode");
-var pitch_mode_armed = props.globals.getNode("/modes/pfd/fma/pitch-mode-armed");
-var pitch_mode2_armed = props.globals.getNode("/modes/pfd/fma/pitch-mode2-armed");
-var pitch_mode_armed_box = props.globals.getNode("/modes/pfd/fma/pitch-mode-armed-box");
-var pitch_mode2_armed_box = props.globals.getNode("/modes/pfd/fma/pitch-mode2-armed-box");
-var roll_mode = props.globals.getNode("/modes/pfd/fma/roll-mode");
-var roll_mode_armed = props.globals.getNode("/modes/pfd/fma/roll-mode-armed");
-var roll_mode_box = props.globals.getNode("/modes/pfd/fma/roll-mode-box");
-var roll_mode_armed_box = props.globals.getNode("/modes/pfd/fma/roll-mode-armed-box");
-var thr1 = props.globals.getNode("/controls/engines/engine[0]/throttle-pos");
-var thr2 = props.globals.getNode("/controls/engines/engine[1]/throttle-pos");
-var wow1 = props.globals.getNode("/gear/gear[1]/wow");
-var wow2 = props.globals.getNode("/gear/gear[2]/wow");
-var pitch = props.globals.getNode("/orientation/pitch-deg");
-var roll = props.globals.getNode("/orientation/roll-deg");
-var vs_needle = props.globals.initNode("/instrumentation/pfd/vs-needle", 0.0, "DOUBLE");
-var vs_needle_trans = props.globals.initNode("/instrumentation/pfd/vs-digit-trans", 0.0, "DOUBLE");
-var target_ias = props.globals.initNode("/FMGC/internal/target-ias-pfd", 0.0, "DOUBLE");
-var alt_diff = props.globals.initNode("/instrumentation/pfd/alt-diff", 0.0, "DOUBLE");
-var heading = props.globals.initNode("/instrumentation/pfd/heading-deg", 0.0, "DOUBLE");
-var horizon_pitch = props.globals.initNode("/instrumentation/pfd/horizon-pitch", 0.0, "DOUBLE");
-var horizon_ground = props.globals.initNode("/instrumentation/pfd/horizon-ground", 0.0, "DOUBLE");
-var hdg_diff = props.globals.initNode("/instrumentation/pfd/hdg-diff", 0.0, "DOUBLE");
-var hdg_scale = props.globals.initNode("/instrumentation/pfd/heading-scale", 0.0, "DOUBLE");
-var track = props.globals.initNode("/instrumentation/pfd/track-deg", 0.0, "DOUBLE");
-var track_diff = props.globals.initNode("/instrumentation/pfd/track-hdg-diff", 0.0, "DOUBLE");
-var speed_pred = props.globals.initNode("/instrumentation/pfd/speed-lookahead", 0.0, "DOUBLE");
-var du1_test = props.globals.initNode("/instrumentation/du/du1-test", 0, "BOOL");
-var du1_test_time = props.globals.initNode("/instrumentation/du/du1-test-time", 0.0, "DOUBLE");
-var du1_test_amount = props.globals.initNode("/instrumentation/du/du1-test-amount", 0.0, "DOUBLE");
-var du2_test = props.globals.initNode("/instrumentation/du/du2-test", 0, "BOOL");
-var du2_test_time = props.globals.initNode("/instrumentation/du/du2-test-time", 0.0, "DOUBLE");
-var du2_test_amount = props.globals.initNode("/instrumentation/du/du2-test-amount", 0.0, "DOUBLE");
-var du5_test = props.globals.initNode("/instrumentation/du/du5-test", 0, "BOOL");
-var du5_test_time = props.globals.initNode("/instrumentation/du/du5-test-time", 0.0, "DOUBLE");
-var du5_test_amount = props.globals.initNode("/instrumentation/du/du5-test-amount", 0.0, "DOUBLE");
-var du6_test = props.globals.initNode("/instrumentation/du/du6-test", 0, "BOOL");
-var du6_test_time = props.globals.initNode("/instrumentation/du/du6-test-time", 0.0, "DOUBLE");
-var du6_test_amount = props.globals.initNode("/instrumentation/du/du6-test-amount", 0.0, "DOUBLE");
-var vspeed_pfr = props.globals.getNode("/it-autoflight/internal/vert-speed-fpm-pfd", 1);
-var gear_agl = props.globals.getNode("/position/gear-agl-ft", 1);
-var aileron_input = props.globals.getNode("/controls/flight/aileron-input-fast", 1);
-var elevator_input = props.globals.getNode("/controls/flight/elevator-input-fast", 1);
-var adirs0_active = props.globals.getNode("/instrumentation/adirs/adr[0]/active", 1);
-var adirs1_active = props.globals.getNode("/instrumentation/adirs/adr[1]/active", 1);
-var adirs2_active = props.globals.getNode("/instrumentation/adirs/adr[2]/active", 1);
-var ir0_aligned = props.globals.getNode("/instrumentation/adirs/ir[0]/aligned", 1);
-var ir1_aligned = props.globals.getNode("/instrumentation/adirs/ir[1]/aligned", 1);
-var ir2_aligned = props.globals.getNode("/instrumentation/adirs/ir[2]/aligned", 1);
-var att_switch = props.globals.getNode("/controls/switching/ATTHDG", 1);
-var air_switch = props.globals.getNode("/controls/switching/AIRDATA", 1);
+# Fetch nodes:
+var state1 = props.globals.getNode("/systems/thrust/state1", 1);
+var state2 = props.globals.getNode("/systems/thrust/state2", 1);
+var throttle_mode = props.globals.getNode("/modes/pfd/fma/throttle-mode", 1);
+var pitch_mode = props.globals.getNode("/modes/pfd/fma/pitch-mode", 1);
+var pitch_mode_armed = props.globals.getNode("/modes/pfd/fma/pitch-mode-armed", 1);
+var pitch_mode2_armed = props.globals.getNode("/modes/pfd/fma/pitch-mode2-armed", 1);
+var pitch_mode_armed_box = props.globals.getNode("/modes/pfd/fma/pitch-mode-armed-box", 1);
+var pitch_mode2_armed_box = props.globals.getNode("/modes/pfd/fma/pitch-mode2-armed-box", 1);
+var roll_mode = props.globals.getNode("/modes/pfd/fma/roll-mode", 1);
+var roll_mode_armed = props.globals.getNode("/modes/pfd/fma/roll-mode-armed", 1);
+var roll_mode_box = props.globals.getNode("/modes/pfd/fma/roll-mode-box", 1);
+var roll_mode_armed_box = props.globals.getNode("/modes/pfd/fma/roll-mode-armed-box", 1);
+var thr1 = props.globals.getNode("/controls/engines/engine[0]/throttle-pos", 1);
+var thr2 = props.globals.getNode("/controls/engines/engine[1]/throttle-pos", 1);
+var wow1 = props.globals.getNode("/gear/gear[1]/wow", 1);
+var wow2 = props.globals.getNode("/gear/gear[2]/wow", 1);
+var pitch = props.globals.getNode("/orientation/pitch-deg", 1);
+var roll = props.globals.getNode("/orientation/roll-deg", 1);
 var elapsedtime = props.globals.getNode("/sim/time/elapsed-sec", 1);
 var acess = props.globals.getNode("/systems/electrical/bus/ac-ess", 1);
 var ac2 = props.globals.getNode("/systems/electrical/bus/ac2", 1);
@@ -124,8 +83,6 @@ var athr_arm = props.globals.getNode("/modes/pfd/fma/athr-armed", 1);
 var FMGC_max_spd = props.globals.getNode("/FMGC/internal/maxspeed", 1);
 var ind_spd_kt = props.globals.getNode("/instrumentation/airspeed-indicator/indicated-speed-kt", 1);
 var ind_spd_mach = props.globals.getNode("/instrumentation/airspeed-indicator/indicated-mach", 1);
-var at_spd_managed = props.globals.getNode("/it-autoflight/input/spd-managed", 1);
-var at_tgt_ias = props.globals.getNode("/FMGC/internal/target-ias-pfd", 1);
 var at_mach_mode = props.globals.getNode("/it-autoflight/input/kts-mach", 1);
 var at_input_spd_mach = props.globals.getNode("/it-autoflight/input/spd-mach", 1);
 var at_input_spd_kts = props.globals.getNode("/it-autoflight/input/spd-kts", 1);
@@ -147,6 +104,49 @@ var nav0_signalq = props.globals.getNode("/instrumentation/nav[0]/signal-quality
 var hasloc = props.globals.getNode("/instrumentation/nav[0]/nav-loc", 1);
 var hasgs = props.globals.getNode("/instrumentation/nav[0]/has-gs", 1);
 var pfdrate = props.globals.getNode("/systems/acconfig/options/pfd-rate", 1);
+var managed_spd = props.globals.getNode("/it-autoflight/input/spd-managed", 1);
+var at_tgt_ias = props.globals.getNode("/FMGC/internal/target-ias-pfd", 1);
+var ap1 = props.globals.getNode("/it-autoflight/output/ap1", 1);
+var ap2 = props.globals.getNode("/it-autoflight/output/ap2", 1);
+var fd1 = props.globals.getNode("/it-autoflight/output/fd1", 1);
+var fd2 = props.globals.getNode("/it-autoflight/output/fd2", 1);
+var athr = props.globals.getNode("/it-autoflight/output/athr", 1);
+var gear_agl = props.globals.getNode("/position/gear-agl-ft", 1);
+var aileron_input = props.globals.getNode("/controls/flight/aileron-input-fast", 1);
+var elevator_input = props.globals.getNode("/controls/flight/elevator-input-fast", 1);
+var adirs0_active = props.globals.getNode("/instrumentation/adirs/adr[0]/active", 1);
+var adirs1_active = props.globals.getNode("/instrumentation/adirs/adr[1]/active", 1);
+var adirs2_active = props.globals.getNode("/instrumentation/adirs/adr[2]/active", 1);
+var ir0_aligned = props.globals.getNode("/instrumentation/adirs/ir[0]/aligned", 1);
+var ir1_aligned = props.globals.getNode("/instrumentation/adirs/ir[1]/aligned", 1);
+var ir2_aligned = props.globals.getNode("/instrumentation/adirs/ir[2]/aligned", 1);
+var att_switch = props.globals.getNode("/controls/switching/ATTHDG", 1);
+var air_switch = props.globals.getNode("/controls/switching/AIRDATA", 1);
+
+# Create Nodes:
+var vs_needle = props.globals.initNode("/instrumentation/pfd/vs-needle", 0.0, "DOUBLE");
+var vs_needle_trans = props.globals.initNode("/instrumentation/pfd/vs-digit-trans", 0.0, "DOUBLE");
+var alt_diff = props.globals.initNode("/instrumentation/pfd/alt-diff", 0.0, "DOUBLE");
+var heading = props.globals.initNode("/instrumentation/pfd/heading-deg", 0.0, "DOUBLE");
+var horizon_pitch = props.globals.initNode("/instrumentation/pfd/horizon-pitch", 0.0, "DOUBLE");
+var horizon_ground = props.globals.initNode("/instrumentation/pfd/horizon-ground", 0.0, "DOUBLE");
+var hdg_diff = props.globals.initNode("/instrumentation/pfd/hdg-diff", 0.0, "DOUBLE");
+var hdg_scale = props.globals.initNode("/instrumentation/pfd/heading-scale", 0.0, "DOUBLE");
+var track = props.globals.initNode("/instrumentation/pfd/track-deg", 0.0, "DOUBLE");
+var track_diff = props.globals.initNode("/instrumentation/pfd/track-hdg-diff", 0.0, "DOUBLE");
+var speed_pred = props.globals.initNode("/instrumentation/pfd/speed-lookahead", 0.0, "DOUBLE");
+var du1_test = props.globals.initNode("/instrumentation/du/du1-test", 0, "BOOL");
+var du1_test_time = props.globals.initNode("/instrumentation/du/du1-test-time", 0.0, "DOUBLE");
+var du1_test_amount = props.globals.initNode("/instrumentation/du/du1-test-amount", 0.0, "DOUBLE");
+var du2_test = props.globals.initNode("/instrumentation/du/du2-test", 0, "BOOL");
+var du2_test_time = props.globals.initNode("/instrumentation/du/du2-test-time", 0.0, "DOUBLE");
+var du2_test_amount = props.globals.initNode("/instrumentation/du/du2-test-amount", 0.0, "DOUBLE");
+var du5_test = props.globals.initNode("/instrumentation/du/du5-test", 0, "BOOL");
+var du5_test_time = props.globals.initNode("/instrumentation/du/du5-test-time", 0.0, "DOUBLE");
+var du5_test_amount = props.globals.initNode("/instrumentation/du/du5-test-amount", 0.0, "DOUBLE");
+var du6_test = props.globals.initNode("/instrumentation/du/du6-test", 0, "BOOL");
+var du6_test_time = props.globals.initNode("/instrumentation/du/du6-test-time", 0.0, "DOUBLE");
+var du6_test_amount = props.globals.initNode("/instrumentation/du/du6-test-amount", 0.0, "DOUBLE");
 
 var canvas_PFD_base = {
 	init: func(canvas_group, file) {
@@ -437,7 +437,7 @@ var canvas_PFD_base = {
 		pitch_mode2_armed_act = pitch_mode2_armed.getValue();
 		roll_mode_act = roll_mode.getValue();
 		roll_mode_armed_act = roll_mode_armed.getValue();
-		fbw = fbw_law.getValue();
+		fbw_curlaw = fbw_law.getValue();
 		me["FMA_combined"].setText(sprintf("%s", pitch_mode_act));
 		
 		
@@ -450,11 +450,11 @@ var canvas_PFD_base = {
 			me["FMA_rollarm_box"].hide();
 			me["FMA_Middle1"].hide();
 			me["FMA_Middle2"].hide();
-			if (fbw == 2) {
+			if (fbw_curlaw == 2) {
 				me["FMA_ctr_msg"].setText("USE MAN PITCH TRIM");
 				me["FMA_ctr_msg"].setColor(0.7333,0.3803,0);
 				me["FMA_ctr_msg"].show();
-			} else if (fbw == 3) {
+			} else if (fbw_curlaw == 3) {
 				me["FMA_ctr_msg"].setText("MAN PITCH TRIM ONLY");
 				me["FMA_ctr_msg"].setColor(1,0,0);
 				me["FMA_ctr_msg"].show();
@@ -470,13 +470,13 @@ var canvas_PFD_base = {
 		} else {
 			me["FMA_combined"].hide();
 			me["FMA_combined_box"].hide();
-			if (fbw == 2) {
+			if (fbw_curlaw == 2) {
 				me["FMA_ctr_msg"].setText("USE MAN PITCH TRIM");
 				me["FMA_ctr_msg"].setColor(0.7333,0.3803,0);
 				me["FMA_Middle1"].hide();
 				me["FMA_Middle2"].show();
 				me["FMA_ctr_msg"].show();
-			} else if (fbw == 3) {
+			} else if (fbw_curlaw == 3) {
 				me["FMA_ctr_msg"].setText("MAN PITCH TRIM ONLY");
 				me["FMA_ctr_msg"].setColor(1,0,0);
 				me["FMA_Middle1"].hide();
@@ -637,7 +637,7 @@ var canvas_PFD_base = {
 			me["ASI_mach"].setText(sprintf("%3.0f", ind_mach * 1000));
 		}
 		
-		if (at_spd_managed.getValue() == 1) {
+		if (managed_spd.getValue() == 1) {
 			me["ASI_target"].setColor(0.6901,0.3333,0.7450);
 			me["ASI_digit_UP"].setColor(0.6901,0.3333,0.7450);
 			me["ASI_decimal_UP"].setColor(0.6901,0.3333,0.7450);
