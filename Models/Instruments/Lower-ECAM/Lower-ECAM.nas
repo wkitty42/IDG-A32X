@@ -292,7 +292,7 @@ var canvas_lowerECAM_base = {
 		} else if (ac1_src.getValue() == "XX" or ac2_src.getValue() == "XX") {
 			du4_test.setValue(0);
 		}
-		
+
 		if (ac2.getValue() >= 110 and lighting_du4.getValue() > 0) {
 			if (du4_test_time.getValue() + du4_test_amount.getValue() >= elapsedtime) {
 				lowerECAM_apu.page.hide();
@@ -562,7 +562,7 @@ var canvas_lowerECAM_apu = {
 	},
 	update: func() {
 		oat = temperature_degc.getValue();
-		
+
 		# Avail and Flap Open
 		if (apu_flap.getValue() == 1) {
 			me["APUFlapOpen"].show();
@@ -575,13 +575,13 @@ var canvas_lowerECAM_apu = {
 		} else {
 			me["APUAvail"].hide();
 		}
-		
+
 		if (tank3_content_lbs.getValue() < 100) {
 			me["APUfuelLO"].show();
 		} else {
 			me["APUfuelLO"].hide();
 		}
-		
+
 		# APU Gen
 		if (apu_volts.getValue() > 110) {
 			me["APUGenVolt"].setColor(0.0509,0.7529,0.2941);
@@ -594,7 +594,7 @@ var canvas_lowerECAM_apu = {
 		} else {
 			me["APUGenHz"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (apu_master.getValue() == 1 or apu_rpm.getValue() >= 94.9) {
 			me["APUGenbox"].show();
 			me["APUGenHz"].show();
@@ -612,13 +612,13 @@ var canvas_lowerECAM_apu = {
 			me["text3728"].hide();
 			me["text3732"].hide();
 		}
-		
+
 		if ((apu_rpm.getValue() > 94.9) and (gen_apu.getValue() == 1)) {
 			me["APUGenOnline"].show();
 		} else {
 			me["APUGenOnline"].hide();
 		}
-		
+
 		if ((apu_master.getValue() == 0) or ((apu_master.getValue() == 1) and (gen_apu.getValue() == 1) and (apu_rpm.getValue() > 94.9))) {
 			me["APUGentext"].setColor(0.8078,0.8039,0.8078);
 		} else if ((apu_master.getValue() == 1) and (gen_apu.getValue() == 0) and (apu_rpm.getValue() < 94.9)) { 
@@ -674,7 +674,7 @@ var canvas_lowerECAM_bleed = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_bleed, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
@@ -993,7 +993,7 @@ var canvas_lowerECAM_door = {
 	},
 	update: func() {
 		# If you make AirBerlin or Allegiant livery add below 
-		
+
 		if (doorL1_pos.getValue() > 0) {
 			me["Cabin1Left"].show();
 			me["Cabin1Left"].setColor(0.7333,0.3803,0);
@@ -1006,7 +1006,7 @@ var canvas_lowerECAM_door = {
 			me["Cabin1LeftLbl"].hide();
 			me["Cabin1LeftLine"].hide();
 		}
-		
+
 		if (doorR1_pos.getValue() > 0) {
 			me["Cabin1Right"].show();
 			me["Cabin1Right"].setColor(0.7333,0.3803,0);
@@ -1019,7 +1019,7 @@ var canvas_lowerECAM_door = {
 			me["Cabin1RightLbl"].hide();
 			me["Cabin1RightLine"].hide();
 		}
-		
+
 		if (doorL4_pos.getValue() > 0) {
 			me["Cabin4Left"].show();
 			me["Cabin4Left"].setColor(0.7333,0.3803,0);
@@ -1032,7 +1032,7 @@ var canvas_lowerECAM_door = {
 			me["Cabin4LeftLbl"].hide();
 			me["Cabin4LeftLine"].hide();
 		}
-		
+
 		if (doorR4_pos.getValue() > 0) {
 			me["Cabin4Right"].show();
 			me["Cabin4Right"].setColor(0.7333,0.3803,0);
@@ -1045,7 +1045,7 @@ var canvas_lowerECAM_door = {
 			me["Cabin4RightLbl"].hide();
 			me["Cabin4RightLine"].hide();
 		}
-		
+
 		if (cargobulk_pos.getValue() > 0) {
 			me["Bulk"].setColor(0.7333,0.3803,0);
 			me["Bulk"].setColorFill(0.7333,0.3803,0);
@@ -1057,7 +1057,7 @@ var canvas_lowerECAM_door = {
 			me["BulkLbl"].hide();
 			me["BulkLine"].hide();
 		}
-		
+
 		if (cargofwd_pos.getValue() > 0) {
 			me["Cargo1Door"].setColor(0.7333,0.3803,0);
 			me["Cargo1Door"].setColorFill(0.7333,0.3803,0);
@@ -1069,7 +1069,7 @@ var canvas_lowerECAM_door = {
 			me["Cargo1Lbl"].hide();
 			me["Cargo1Line"].hide();
 		}
-		
+
 		if (cargoaft_pos.getValue() > 0) {
 			me["Cargo2Door"].setColor(0.7333,0.3803,0);
 			me["Cargo2Door"].setColorFill(0.7333,0.3803,0);
@@ -1081,7 +1081,7 @@ var canvas_lowerECAM_door = {
 			me["Cargo2Lbl"].hide();
 			me["Cargo2Line"].hide();
 		}
-		
+
 		me["Cabin1LeftSlide"].hide();
 		me["Cabin1RightSlide"].hide();
 		me["Cabin2LeftSlide"].hide();
@@ -1090,14 +1090,14 @@ var canvas_lowerECAM_door = {
 		me["Cabin3RightSlide"].hide();
 		me["Cabin4LeftSlide"].hide();
 		me["Cabin4RightSlide"].hide();
-		
+
 		me["DOOROXY-REGUL-LO-PR"].hide();
 		me["AvionicsLine1"].hide();
 		me["AvionicsLine2"].hide();
 		me["AvionicsLbl1"].hide();
 		me["AvionicsLbl2"].hide();
 		me["ExitLSlide"].hide();
-		me["ExitLLine"].hide(); 
+		me["ExitLLine"].hide();
 		me["ExitLLbl"].hide();
 		me["ExitRSlide"].hide();
 		me["ExitRLine"].hide();
@@ -1118,7 +1118,7 @@ var canvas_lowerECAM_door = {
 		me["Cabin3Right"].hide();
 		me["Cabin3RightLine"].hide();
 		me["Cabin3RightLbl"].hide();
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -1452,7 +1452,7 @@ var canvas_lowerECAM_elec = {
 		}
 
 		# EXT PWR
-		
+
 		if (switch_cart.getValue() == 0) {
 			me["EXTPWR-group"].hide();
 		} else {
@@ -1677,7 +1677,7 @@ var canvas_lowerECAM_eng = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_eng, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
@@ -1689,10 +1689,10 @@ var canvas_lowerECAM_eng = {
 		me["OilQT2"].setText(sprintf("%s", int(oil_qt2_actual.getValue())));
 		me["OilQT1-decimal"].setText(sprintf("%s", int(10*math.mod(oil_qt1_actual.getValue(),1))));
 		me["OilQT2-decimal"].setText(sprintf("%s", int(10*math.mod(oil_qt2_actual.getValue(),1))));
-		
+
 		me["OilQT1-needle"].setRotation((oil_qt1.getValue() + 90) * D2R);
 		me["OilQT2-needle"].setRotation((oil_qt2.getValue() + 90) * D2R);
-		
+
 		# Oil Pressure
 		if (oil_psi_actual1.getValue() >= 20) {
 			me["OilPSI1"].setColor(0.0509,0.7529,0.2941);
@@ -1701,7 +1701,7 @@ var canvas_lowerECAM_eng = {
 			me["OilPSI1"].setColor(1,0,0);
 			me["OilPSI1-needle"].setColor(1,0,0);
 		}
-		
+
 		if (oil_psi_actual2.getValue() >= 20) {
 			me["OilPSI2"].setColor(0.0509,0.7529,0.2941);
 			me["OilPSI2-needle"].setColor(0.0509,0.7529,0.2941);
@@ -1709,13 +1709,13 @@ var canvas_lowerECAM_eng = {
 			me["OilPSI2"].setColor(1,0,0);
 			me["OilPSI2-needle"].setColor(1,0,0);
 		}
-		
+
 		me["OilPSI1"].setText(sprintf("%s", math.round(oil_psi_actual1.getValue())));
 		me["OilPSI2"].setText(sprintf("%s", math.round(oil_psi_actual2.getValue())));
-		
+
 		me["OilPSI1-needle"].setRotation((oil_psi1.getValue() + 90) * D2R);
 		me["OilPSI2-needle"].setRotation((oil_psi2.getValue() + 90) * D2R);
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -1737,7 +1737,7 @@ var canvas_lowerECAM_fctl = {
 		blue_psi = b_psi.getValue();
 		green_psi = g_psi.getValue();
 		yellow_psi = y_psi.getValue();
-		
+
 		# Pitch Trim
 		me["PT"].setText(sprintf("%2.1f", math.round(elevator_trim_deg.getValue(), 0.1)));
 
@@ -1756,11 +1756,11 @@ var canvas_lowerECAM_fctl = {
 			me["PTupdn"].setColor(0.0509,0.7529,0.2941);
 			me["PTcc"].setColor(0.0509,0.7529,0.2941);
 		}
-		
+
 		# Ailerons
 		me["ailL"].setTranslation(0, aileron_ind_left.getValue() * 100);
 		me["ailR"].setTranslation(0, aileron_ind_right.getValue() * (-100));
-			
+
 		if (blue_psi < 1500 and green_psi < 1500) {
 			me["ailL"].setColor(0.7333,0.3803,0);
 			me["ailR"].setColor(0.7333,0.3803,0);
@@ -1768,7 +1768,7 @@ var canvas_lowerECAM_fctl = {
 			me["ailL"].setColor(0.0509,0.7529,0.2941);
 			me["ailR"].setColor(0.0509,0.7529,0.2941);
 		}
-		
+
 		# Elevators
 		me["elevL"].setTranslation(0, elevator_ind_left.getValue() * 100);
 		me["elevR"].setTranslation(0, elevator_ind_right.getValue() * 100);
@@ -1778,13 +1778,13 @@ var canvas_lowerECAM_fctl = {
 		} else {
 			me["elevL"].setColor(0.0509,0.7529,0.2941);
 		}
-		
+
 		if (blue_psi < 1500 and yellow_psi < 1500) {
 			me["elevR"].setColor(0.7333,0.3803,0);
 		} else {
 			me["elevR"].setColor(0.0509,0.7529,0.2941);
 		}
-		
+
 		# Rudder
 		me["rudder"].setRotation(final_deg.getValue() * -0.024);
 
@@ -1793,7 +1793,7 @@ var canvas_lowerECAM_fctl = {
 		} else {
 			me["rudder"].setColor(0.0509,0.7529,0.2941);
 		}
-		
+
 		# Spoilers
 		if (spoiler_L1.getValue() < 1.5) {
 			me["spoiler1Lex"].hide();
@@ -1802,7 +1802,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Lrt"].hide();
 			me["spoiler1Lex"].show();
 		}
-		
+
 		if (spoiler_L2.getValue() < 1.5) {
 			me["spoiler2Lex"].hide();
 			me["spoiler2Lrt"].show();
@@ -1810,7 +1810,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Lrt"].hide();
 			me["spoiler2Lex"].show();
 		}
-		
+
 		if (spoiler_L3.getValue() < 1.5) {
 			me["spoiler3Lex"].hide();
 			me["spoiler3Lrt"].show();
@@ -1818,7 +1818,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Lrt"].hide();
 			me["spoiler3Lex"].show();
 		}
-		
+
 		if (spoiler_L4.getValue() < 1.5) {
 			me["spoiler4Lex"].hide();
 			me["spoiler4Lrt"].show();
@@ -1826,7 +1826,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Lrt"].hide();
 			me["spoiler4Lex"].show();
 		}
-		
+
 		if (spoiler_L5.getValue() < 1.5) {
 			me["spoiler5Lex"].hide();
 			me["spoiler5Lrt"].show();
@@ -1834,7 +1834,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Lrt"].hide();
 			me["spoiler5Lex"].show();
 		}
-		
+
 		if (spoiler_R1.getValue() < 1.5) {
 			me["spoiler1Rex"].hide();
 			me["spoiler1Rrt"].show();
@@ -1842,7 +1842,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Rrt"].hide();
 			me["spoiler1Rex"].show();
 		}
-		
+
 		if (spoiler_R2.getValue() < 1.5) {
 			me["spoiler2Rex"].hide();
 			me["spoiler2Rrt"].show();
@@ -1850,7 +1850,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Rrt"].hide();
 			me["spoiler2Rex"].show();
 		}
-		
+
 		if (spoiler_R3.getValue() < 1.5) {
 			me["spoiler3Rex"].hide();
 			me["spoiler3Rrt"].show();
@@ -1858,7 +1858,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Rrt"].hide();
 			me["spoiler3Rex"].show();
 		}
-		
+
 		if (spoiler_R4.getValue() < 1.5) {
 			me["spoiler4Rex"].hide();
 			me["spoiler4Rrt"].show();
@@ -1866,7 +1866,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Rrt"].hide();
 			me["spoiler4Rex"].show();
 		}
-		
+
 		if (spoiler_R5.getValue() < 1.5) {
 			me["spoiler5Rex"].hide();
 			me["spoiler5Rrt"].show();
@@ -1874,7 +1874,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Rrt"].hide();
 			me["spoiler5Rex"].show();
 		}
-		
+
 		# Spoiler Fail
 		if (spoiler_L1_fail.getValue() or green_psi < 1500) {
 			me["spoiler1Lex"].setColor(0.7333,0.3803,0);
@@ -1889,7 +1889,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler1Lf"].hide();
 		}
-		
+
 		if (spoiler_L2_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler2Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler2Lrt"].setColor(0.7333,0.3803,0);
@@ -1903,7 +1903,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler2Lf"].hide();
 		}
-		
+
 		if (spoiler_L3_fail.getValue() or blue_psi < 1500) {
 			me["spoiler3Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler3Lrt"].setColor(0.7333,0.3803,0);
@@ -1917,7 +1917,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler3Lf"].hide();
 		}
-		
+
 		if (spoiler_L4_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler4Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler4Lrt"].setColor(0.7333,0.3803,0);
@@ -1931,7 +1931,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler4Lf"].hide();
 		}
-		
+
 		if (spoiler_L5_fail.getValue() or green_psi < 1500) {
 			me["spoiler5Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler5Lrt"].setColor(0.7333,0.3803,0);
@@ -1945,7 +1945,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler5Lf"].hide();
 		}
-		
+
 		if (spoiler_R1_fail.getValue() or green_psi < 1500) {
 			me["spoiler1Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler1Rrt"].setColor(0.7333,0.3803,0);
@@ -1959,7 +1959,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler1Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler1Rf"].hide();
 		}
-		
+
 		if (spoiler_R2_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler2Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler2Rrt"].setColor(0.7333,0.3803,0);
@@ -1973,7 +1973,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler2Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler2Rf"].hide();
 		}
-		
+
 		if (spoiler_R3_fail.getValue() or blue_psi < 1500) {
 			me["spoiler3Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler3Rrt"].setColor(0.7333,0.3803,0);
@@ -1987,7 +1987,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler3Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler3Rf"].hide();
 		}
-		
+
 		if (spoiler_R4_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler4Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler4Rrt"].setColor(0.7333,0.3803,0);
@@ -2001,7 +2001,7 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler4Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler4Rf"].hide();
 		}
-		
+
 		if (spoiler_R5_fail.getValue() or green_psi < 1500) {
 			me["spoiler5Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler5Rrt"].setColor(0.7333,0.3803,0);
@@ -2015,8 +2015,8 @@ var canvas_lowerECAM_fctl = {
 			me["spoiler5Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler5Rf"].hide();
 		}
-		
-		# Flight Computers		
+
+		# Flight Computers
 		if (elac1.getValue()) {
 			me["elac1"].setColor(0.0509,0.7529,0.2941);
 			me["path4249"].setColor(0.0509,0.7529,0.2941);
@@ -2024,7 +2024,7 @@ var canvas_lowerECAM_fctl = {
 			me["elac1"].setColor(0.7333,0.3803,0);
 			me["path4249"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (elac2.getValue()) {
 			me["elac2"].setColor(0.0509,0.7529,0.2941);
 			me["path4249-3"].setColor(0.0509,0.7529,0.2941);
@@ -2032,7 +2032,7 @@ var canvas_lowerECAM_fctl = {
 			me["elac2"].setColor(0.7333,0.3803,0);
 			me["path4249-3"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (sec1.getValue()) {
 			me["sec1"].setColor(0.0509,0.7529,0.2941);
 			me["path4249-3-6-7"].setColor(0.0509,0.7529,0.2941);
@@ -2040,7 +2040,7 @@ var canvas_lowerECAM_fctl = {
 			me["sec1"].setColor(0.7333,0.3803,0);
 			me["path4249-3-6-7"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (sec2.getValue()) {
 			me["sec2"].setColor(0.0509,0.7529,0.2941);
 			me["path4249-3-6-7-5"].setColor(0.0509,0.7529,0.2941);
@@ -2048,7 +2048,7 @@ var canvas_lowerECAM_fctl = {
 			me["sec2"].setColor(0.7333,0.3803,0);
 			me["path4249-3-6-7-5"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (sec3.getValue()) {
 			me["sec3"].setColor(0.0509,0.7529,0.2941);
 			me["path4249-3-6"].setColor(0.0509,0.7529,0.2941);
@@ -2056,7 +2056,7 @@ var canvas_lowerECAM_fctl = {
 			me["sec3"].setColor(0.7333,0.3803,0);
 			me["path4249-3-6"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		# Hydraulic Indicators
 		if (blue_psi >= 1500) {
 			me["ailLblue"].setColor(0.0509,0.7529,0.2941);
@@ -2073,7 +2073,7 @@ var canvas_lowerECAM_fctl = {
 			me["rudderblue"].setColor(0.7333,0.3803,0);
 			me["spdbrkblue"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (green_psi >= 1500) {
 			me["ailLgreen"].setColor(0.0509,0.7529,0.2941);
 			me["ailRgreen"].setColor(0.0509,0.7529,0.2941);
@@ -2089,7 +2089,7 @@ var canvas_lowerECAM_fctl = {
 			me["PTgreen"].setColor(0.7333,0.3803,0);
 			me["spdbrkgreen"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (yellow_psi >= 1500) {
 			me["elevRyellow"].setColor(0.0509,0.7529,0.2941);
 			me["rudderyellow"].setColor(0.0509,0.7529,0.2941);
@@ -2101,7 +2101,7 @@ var canvas_lowerECAM_fctl = {
 			me["PTyellow"].setColor(0.7333,0.3803,0);
 			me["spdbrkyellow"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -2121,24 +2121,24 @@ var canvas_lowerECAM_fuel = {
 		"FUEL-Pump-Center-2-Open","FUEL-Pump-Right-1-Closed","FUEL-Pump-Right-1-Open","FUEL-Pump-Right-2-Closed","FUEL-Pump-Right-2-Open","FUEL-ENG-1-label","FUEL-ENG-2-label","FUEL-ENG-1-pipe","FUEL-ENG-2-pipe","FUEL-Right-Tranfser","ENG1idFFlow","ENG2idFFlow"];
 	},
 	update: func() {
-		
+
 		# if (getprop("engines/engine[0]/n1-actual") < getprop("/controls/engines/idle-limit")) {
 		if (eng1_n1.getValue() < 19.7) {
 			me["ENG1idFFlow"].setColor(0.7333,0.3803,0);
 		} else {
 			me["ENG1idFFlow"].setColor(0.8078,0.8039,0.8078);
 		}
-		
+
 		# if (getprop("engines/engine[1]/n1-actual") < getprop("/controls/engines/idle-limit")) {
 		if (eng2_n1.getValue() < 19.7) {
 			me["ENG2idFFlow"].setColor(0.7333,0.3803,0);
 		} else {
 			me["ENG2idFFlow"].setColor(0.8078,0.8039,0.8078);
 		}
-		
+
 		# TODO add FOB half-boxed amber if some fuel is blocked
 		me["FUEL-On-Board"].setText(sprintf("%s", math.round(total_fuel_lbs.getValue(), 10)));
-		
+
 		if (fadec1.getValue() == 1 and fadec2.getValue() == 1) {
 			me["FUEL-Flow-per-min"].setColor(0.0509,0.7529,0.2941);
 			me["FUEL-Flow-per-min"].setText(sprintf("%s", math.round((fuel_flow1.getValue() + fuel_flow2.getValue()) / 60, 1)));
@@ -2146,7 +2146,7 @@ var canvas_lowerECAM_fuel = {
 			me["FUEL-Flow-per-min"].setColor(0.7333,0.3803,0);
 			me["FUEL-Flow-per-min"].setText("XX");
 		}
-		
+
 		# this is now bound to the ENG master switch
 		# TODO use the valve prop and add amber if diffrence between eng master and valve
 		# TODO add transition state
@@ -2196,7 +2196,7 @@ var canvas_lowerECAM_fuel = {
 		} else {
 			me["FUEL-Pump-Left-1-Open"].hide();
 			me["FUEL-Pump-Left-1-Closed"].show();
-			me["FUEL-Pump-Left-1"].setColor(0.7333,0.3803,0);		
+			me["FUEL-Pump-Left-1"].setColor(0.7333,0.3803,0);
 		}
 
 		# TODO add LO indication
@@ -2275,7 +2275,7 @@ var canvas_lowerECAM_fuel = {
 		me["FUEL-Left-Inner-temp"].hide();
 		me["FUEL-Right-Outer-temp"].hide();
 		me["FUEL-Right-Inner-temp"].hide();
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -2284,7 +2284,7 @@ var canvas_lowerECAM_press = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_press, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
@@ -2293,8 +2293,8 @@ var canvas_lowerECAM_press = {
 	update: func() {
 		me["PRESS-Cab-VS"].setText(sprintf("%4.0f", press_vs_norm.getValue()));
 		me["PRESS-Cab-Alt"].setText(sprintf("%4.0f", cabinalt.getValue()));
-		
-		
+
+
 		me.updateBottomStatus();
 	},
 };
@@ -2303,14 +2303,14 @@ var canvas_lowerECAM_status = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_status, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
 		return ["TAT","SAT","GW","UTCh","UTCm"];
 	},
 	update: func() {
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -2319,7 +2319,7 @@ var canvas_lowerECAM_hyd = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_hyd, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
@@ -2384,7 +2384,6 @@ var canvas_lowerECAM_hyd = {
 
 			if (put_active.getValue() == 1) {
 				if (ptu_supplies.getValue() == "yellow") {
-					print("if");
 					me["PTU-Supply-Line"].show();
 					me["PTU-supply-yellow"].show();
 					me["PTU-supply-green"].hide();
@@ -2573,7 +2572,7 @@ var canvas_lowerECAM_hyd = {
 			me["Fire-Valve-Yellow"].setColor(0.0509,0.7529,0.2941);
 			me["Fire-Valve-Yellow"].setRotation(0);
 		}
-		
+
 		if (g_fire_valve.getValue() == 1) {
 			me["Fire-Valve-Green"].setColor(0.7333,0.3803,0);
 			me["Fire-Valve-Green"].setRotation(90 * D2R);
@@ -2581,7 +2580,7 @@ var canvas_lowerECAM_hyd = {
 			me["Fire-Valve-Green"].setColor(0.0509,0.7529,0.2941);
 			me["Fire-Valve-Green"].setRotation(0);
 		}
-		
+
 		me.updateBottomStatus();
 	},
 };
@@ -2590,7 +2589,7 @@ var canvas_lowerECAM_wheel = {
 	new: func(canvas_group, file) {
 		var m = {parents: [canvas_lowerECAM_wheel, canvas_lowerECAM_base]};
 		m.init(canvas_group, file);
-		
+
 		return m;
 	},
 	getKeys: func() {
@@ -2614,14 +2613,14 @@ var canvas_lowerECAM_wheel = {
 		askidsw = askid.getValue();
 		brakemode = brk_mode.getValue();
 		accum = accu_press.getValue();
-		
+
 		# L/G CTL
 		if ((leftgear == 0 or nosegear == 0 or rightgear == 0 and gearlvr == 0) or (leftgear == 1 or nosegear == 1 or rightgear == 1 and gearlvr == 1)) {
 			me["lgctltext"].hide();
 		} else {
 			me["lgctltext"].show();
 		}
-		
+
 		# NWS / Antiskid / Brakes
 		if (askidsw and yellow_psi >= 1500) {
 			me["NWStext"].hide();
@@ -2655,7 +2654,7 @@ var canvas_lowerECAM_wheel = {
 			me["BSCU1"].show();
 			me["BSCU2"].show();
 		}
-		
+
 		if (green_psi >= 1500 and brakemode == 1) {
 			me["NORMbrk"].hide();
 			me["normbrk-rect"].hide();
@@ -2671,7 +2670,7 @@ var canvas_lowerECAM_wheel = {
 			me["NORMbrk"].setColor(0.7333,0.3803,0);
 			me["normbrkhyd"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (brakemode != 2) {
 			me["ALTNbrk"].hide();
 			me["altnbrk-rect"].hide();
@@ -2685,7 +2684,7 @@ var canvas_lowerECAM_wheel = {
 			me["altnbrk-rect"].show();
 			me["altnbrkhyd"].setColor(0.7333,0.3803,0);
 		}
-		
+
 		if (brakemode == 2 and accum < 200 and yellow_psi < 1500) {
 			me["accupress_text"].show();
 			me["brakearrow"].hide();
@@ -2705,13 +2704,13 @@ var canvas_lowerECAM_wheel = {
 			me["brakearrow"].hide();
 			me["accupress_text"].hide();
 		}
-		
+
 		# Gear Doors
 		me["leftdoor"].setRotation(door_left.getValue() * D2R);
 		me["rightdoor"].setRotation(door_right.getValue() * D2R);
 		me["nosegeardoorL"].setRotation(door_nose_left.getValue() * D2R);
 		me["nosegeardoorR"].setRotation(door_nose_right.getValue() * D2R);
-		
+
 		if (nosedoor == 0) {
 			me["nosegeardoorL"].setColorFill(0.0509,0.7529,0.2941);
 			me["nosegeardoorR"].setColorFill(0.0509,0.7529,0.2941);
@@ -2719,19 +2718,19 @@ var canvas_lowerECAM_wheel = {
 			me["nosegeardoorL"].setColorFill(0.7333,0.3803,0);
 			me["nosegeardoorR"].setColorFill(0.7333,0.3803,0);
 		}
-		
+
 		if (leftdoor == 0) {
 			me["leftdoor"].setColorFill(0.0509,0.7529,0.2941);
 		} else {
 			me["leftdoor"].setColorFill(0.7333,0.3803,0);
 		}
-		
+
 		if (rightdoor == 0) {
 			me["rightdoor"].setColorFill(0.0509,0.7529,0.2941);
 		} else {
 			me["rightdoor"].setColorFill(0.7333,0.3803,0);
 		}
-		
+
 		# Triangles
 		if (leftgear < 0.2 or leftgear > 0.8) {
 			me["Triangle-Left1"].hide();
@@ -2740,7 +2739,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Left1"].show();
 			me["Triangle-Left2"].show();
 		}
-		
+
 		if (leftgear == 1) {
 			me["Triangle-Left1"].setColor(0.0509,0.7529,0.2941);
 			me["Triangle-Left2"].setColor(0.0509,0.7529,0.2941);
@@ -2748,7 +2747,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Left1"].setColor(1,0,0);
 			me["Triangle-Left2"].setColor(1,0,0);
 		}
-		
+
 		if (nosegear < 0.2 or nosegear > 0.8) {
 			me["Triangle-Nose1"].hide();
 			me["Triangle-Nose2"].hide();
@@ -2756,7 +2755,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Nose1"].show();
 			me["Triangle-Nose2"].show();
 		}
-		
+
 		if (nosegear == 1) {
 			me["Triangle-Nose1"].setColor(0.0509,0.7529,0.2941);
 			me["Triangle-Nose2"].setColor(0.0509,0.7529,0.2941);
@@ -2764,7 +2763,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Nose1"].setColor(1,0,0);
 			me["Triangle-Nose2"].setColor(1,0,0);
 		}
-		
+
 		if (rightgear < 0.2 or rightgear > 0.8) {
 			me["Triangle-Right1"].hide();
 			me["Triangle-Right2"].hide();
@@ -2772,7 +2771,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Right1"].show();
 			me["Triangle-Right2"].show();
 		}
-		
+
 		if (rightgear == 1) {
 			me["Triangle-Right1"].setColor(0.0509,0.7529,0.2941);
 			me["Triangle-Right2"].setColor(0.0509,0.7529,0.2941);
@@ -2780,7 +2779,7 @@ var canvas_lowerECAM_wheel = {
 			me["Triangle-Right1"].setColor(1,0,0);
 			me["Triangle-Right2"].setColor(1,0,0);
 		}
-		
+
 		# Autobrake
 		if (autobrakemode == 0) {
 			me["autobrkind"].hide();
@@ -2794,13 +2793,13 @@ var canvas_lowerECAM_wheel = {
 			me["autobrkind"].show();
 			me["autobrkind"].setText(sprintf("%s", "MAX"));
 		}
-		
+
 		if (autobrakemode != 0) {
 			me["autobrk"].show();
 		} elsif (autobrakemode == 0) {
 			me["autobrk"].hide();
 		}
-		
+
 		# Spoilers
 		if (spoiler_L1.getValue() < 1.5) {
 			me["spoiler1Lex"].hide();
@@ -2809,7 +2808,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler1Lrt"].hide();
 			me["spoiler1Lex"].show();
 		}
-		
+
 		if (spoiler_L2.getValue() < 1.5) {
 			me["spoiler2Lex"].hide();
 			me["spoiler2Lrt"].show();
@@ -2817,7 +2816,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler2Lrt"].hide();
 			me["spoiler2Lex"].show();
 		}
-		
+
 		if (spoiler_L3.getValue() < 1.5) {
 			me["spoiler3Lex"].hide();
 			me["spoiler3Lrt"].show();
@@ -2825,7 +2824,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler3Lrt"].hide();
 			me["spoiler3Lex"].show();
 		}
-		
+
 		if (spoiler_L4.getValue() < 1.5) {
 			me["spoiler4Lex"].hide();
 			me["spoiler4Lrt"].show();
@@ -2833,7 +2832,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler4Lrt"].hide();
 			me["spoiler4Lex"].show();
 		}
-		
+
 		if (spoiler_L5.getValue() < 1.5) {
 			me["spoiler5Lex"].hide();
 			me["spoiler5Lrt"].show();
@@ -2841,7 +2840,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler5Lrt"].hide();
 			me["spoiler5Lex"].show();
 		}
-		
+
 		if (spoiler_R1.getValue() < 1.5) {
 			me["spoiler1Rex"].hide();
 			me["spoiler1Rrt"].show();
@@ -2849,7 +2848,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler1Rrt"].hide();
 			me["spoiler1Rex"].show();
 		}
-		
+
 		if (spoiler_R2.getValue() < 1.5) {
 			me["spoiler2Rex"].hide();
 			me["spoiler2Rrt"].show();
@@ -2857,7 +2856,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler2Rrt"].hide();
 			me["spoiler2Rex"].show();
 		}
-		
+
 		if (spoiler_R3.getValue() < 1.5) {
 			me["spoiler3Rex"].hide();
 			me["spoiler3Rrt"].show();
@@ -2865,7 +2864,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler3Rrt"].hide();
 			me["spoiler3Rex"].show();
 		}
-		
+
 		if (spoiler_R4.getValue() < 1.5) {
 			me["spoiler4Rex"].hide();
 			me["spoiler4Rrt"].show();
@@ -2873,7 +2872,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler4Rrt"].hide();
 			me["spoiler4Rex"].show();
 		}
-		
+
 		if (spoiler_R5.getValue() < 1.5) {
 			me["spoiler5Rex"].hide();
 			me["spoiler5Rrt"].show();
@@ -2881,7 +2880,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler5Rrt"].hide();
 			me["spoiler5Rex"].show();
 		}
-		
+
 		# Spoiler Fail
 		if (spoiler_L1_fail.getValue() or green_psi < 1500) {
 			me["spoiler1Lex"].setColor(0.7333,0.3803,0);
@@ -2896,7 +2895,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler1Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler1Lf"].hide();
 		}
-		
+
 		if (spoiler_L2_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler2Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler2Lrt"].setColor(0.7333,0.3803,0);
@@ -2910,7 +2909,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler2Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler2Lf"].hide();
 		}
-		
+
 		if (spoiler_L3_fail.getValue() or blue_psi < 1500) {
 			me["spoiler3Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler3Lrt"].setColor(0.7333,0.3803,0);
@@ -2924,7 +2923,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler3Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler3Lf"].hide();
 		}
-		
+
 		if (spoiler_L4_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler4Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler4Lrt"].setColor(0.7333,0.3803,0);
@@ -2938,7 +2937,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler4Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler4Lf"].hide();
 		}
-		
+
 		if (spoiler_L5_fail.getValue() or green_psi < 1500) {
 			me["spoiler5Lex"].setColor(0.7333,0.3803,0);
 			me["spoiler5Lrt"].setColor(0.7333,0.3803,0);
@@ -2952,7 +2951,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler5Lrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler5Lf"].hide();
 		}
-		
+
 		if (spoiler_R1_fail.getValue() or green_psi < 1500) {
 			me["spoiler1Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler1Rrt"].setColor(0.7333,0.3803,0);
@@ -2966,7 +2965,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler1Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler1Rf"].hide();
 		}
-		
+
 		if (spoiler_R2_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler2Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler2Rrt"].setColor(0.7333,0.3803,0);
@@ -2980,7 +2979,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler2Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler2Rf"].hide();
 		}
-		
+
 		if (spoiler_R3_fail.getValue() or blue_psi < 1500) {
 			me["spoiler3Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler3Rrt"].setColor(0.7333,0.3803,0);
@@ -2994,7 +2993,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler3Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler3Rf"].hide();
 		}
-		
+
 		if (spoiler_R4_fail.getValue() or yellow_psi < 1500) {
 			me["spoiler4Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler4Rrt"].setColor(0.7333,0.3803,0);
@@ -3008,7 +3007,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler4Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler4Rf"].hide();
 		}
-		
+
 		if (spoiler_R5_fail.getValue() or green_psi < 1500) {
 			me["spoiler5Rex"].setColor(0.7333,0.3803,0);
 			me["spoiler5Rrt"].setColor(0.7333,0.3803,0);
@@ -3022,7 +3021,7 @@ var canvas_lowerECAM_wheel = {
 			me["spoiler5Rrt"].setColor(0.0509,0.7529,0.2941);
 			me["spoiler5Rf"].hide();
 		}
-		
+
 		# Hide not yet implemented stuff
 		me["braketemp1"].hide();
 		me["braketemp2"].hide();
@@ -3043,7 +3042,7 @@ var canvas_lowerECAM_test = {
 		};
 
 		canvas.parsesvg(canvas_group, file, {"font-mapper": font_mapper});
-		
+
 		var svg_keys = me.getKeys();
 		foreach(var key; svg_keys) {
 			me[key] = canvas_group.getElementById(key);
@@ -3110,7 +3109,7 @@ setlistener("sim/signals/fdm-initialized", func {
 	lowerECAM_hyd = canvas_lowerECAM_hyd.new(groupHyd, "Aircraft/IDG-A32X/Models/Instruments/Lower-ECAM/res/hyd.svg");
 	lowerECAM_wheel = canvas_lowerECAM_wheel.new(groupWheel, "Aircraft/IDG-A32X/Models/Instruments/Lower-ECAM/res/wheel.svg");
 	lowerECAM_test = canvas_lowerECAM_test.new(group_test, "Aircraft/IDG-A32X/Models/Instruments/Common/res/du-test.svg");
-	
+
 	lowerECAM_update.start();
 });
 
