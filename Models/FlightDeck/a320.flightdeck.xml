@@ -353,6 +353,21 @@
 		<object-name>arpt_led</object-name>
 		<object-name>arpt_led.001</object-name>
 		<object-name>a-thr_led</object-name>
+		<object-name>audio_att_led</object-name>
+		<object-name>audio_att_sgn</object-name>
+		<object-name>audio_call_hf2_led</object-name>
+		<object-name>audio_call_hf1_led</object-name>
+		<object-name>audio_call_vhf1_led</object-name>
+		<object-name>audio_call_vhf2_led</object-name>
+		<object-name>audio_call_vhf3_led</object-name>
+		<object-name>audio_hf1_led</object-name>
+		<object-name>audio_hf2_led</object-name>
+		<object-name>audio_mech_led</object-name>
+		<object-name>audio_mech_sgn</object-name>
+		<object-name>audio_voice_led</object-name>
+		<object-name>audio_vhf1_led</object-name>
+		<object-name>audio_vhf2_led</object-name>
+		<object-name>audio_vhf3_led</object-name>
 		<object-name>autoland_light_on</object-name>
 		<object-name>cstr_led</object-name>
 		<object-name>cstr_led.001</object-name>
@@ -398,6 +413,19 @@
 		<object-name>qnh-inhg</object-name>
 		<object-name>qnh-std</object-name>
 		<object-name>qnh-test</object-name>
+		<object-name>radio_adf_led</object-name>
+		<object-name>radio_am_led</object-name>
+		<object-name>radio_bfo_led</object-name>
+		<object-name>radio_hf1_led</object-name>
+		<object-name>radio_hf2_led</object-name>
+		<object-name>radio_ls_led</object-name>
+		<object-name>radio_nav_led</object-name>
+		<object-name>radio_opt_led</object-name>
+		<object-name>radio_sel_led</object-name>
+		<object-name>radio_vhf1_led</object-name>
+		<object-name>radio_vhf2_led</object-name>
+		<object-name>radio_vhf3_led</object-name>
+		<object-name>radio_vor_led</object-name>
 		<object-name>rgear_down</object-name>
 		<object-name>rgear_unlk</object-name>
 		<object-name>rudder-trim</object-name>
@@ -423,6 +451,21 @@
 	<animation>
 		<type>select</type>
 		<object-name>alt-text-test</object-name>
+		<object-name>audio_att_led</object-name>
+		<object-name>audio_att_sgn</object-name>
+		<object-name>audio_call_hf2_led</object-name>
+		<object-name>audio_call_hf1_led</object-name>
+		<object-name>audio_call_vhf1_led</object-name>
+		<object-name>audio_call_vhf2_led</object-name>
+		<object-name>audio_call_vhf3_led</object-name>
+		<object-name>audio_hf1_led</object-name>
+		<object-name>audio_hf2_led</object-name>
+		<object-name>audio_mech_led</object-name>
+		<object-name>audio_mech_sgn</object-name>
+		<object-name>audio_voice_led</object-name>
+		<object-name>audio_vhf1_led</object-name>
+		<object-name>audio_vhf2_led</object-name>
+		<object-name>audio_vhf3_led</object-name>
 		<object-name>autoland_light_on</object-name>
 		<object-name>ecam_apu_led</object-name>
 		<object-name>ecam_bleed_led</object-name>
@@ -440,39 +483,24 @@
 		<object-name>ecam_press_led</object-name>
 		<object-name>ecam_sts_led</object-name>
 		<object-name>ecam_wheel_led</object-name>
-		<object-name>radio_vhf1_led</object-name>
-		<object-name>radio_vhf2_led</object-name>
-		<object-name>radio_vhf3_led</object-name>
-		<object-name>radio_hf1_led</object-name>
-		<object-name>radio_hf2_led</object-name>
-		<object-name>radio_am_led</object-name>
-		<object-name>radio_nav_led</object-name>
-		<object-name>radio_vor_led</object-name>
-		<object-name>radio_ls_led</object-name>
-		<object-name>radio_opt_led</object-name>
-		<object-name>radio_adf_led</object-name>
-		<object-name>radio_bfo_led</object-name>
-		<object-name>radio_sel_led</object-name>
-		<object-name>audio_vhf1_led</object-name>
-		<object-name>audio_call_vhf1_led</object-name>
-		<object-name>audio_vhf2_led</object-name>
-		<object-name>audio_call_vhf2_led</object-name>
-		<object-name>audio_vhf3_led</object-name>
-		<object-name>audio_call_vhf3_led</object-name>
-		<object-name>audio_hf1_led</object-name>
-		<object-name>audio_call_hf1_led</object-name>
-		<object-name>audio_hf2_led</object-name>
-		<object-name>audio_call_hf2_led</object-name>
-		<object-name>audio_mech_led</object-name>
-		<object-name>audio_mech_sgn</object-name>
-		<object-name>audio_att_led</object-name>
-		<object-name>audio_att_sgn</object-name>
-		<object-name>audio_voice_led</object-name>
 		<object-name>exped_led</object-name>
 		<object-name>hdg-text-test</object-name>
 		<object-name>master_caution_on</object-name>
 		<object-name>master_warning_on</object-name>
 		<object-name>qnh-test</object-name>
+		<object-name>radio_adf_led</object-name>
+		<object-name>radio_am_led</object-name>
+		<object-name>radio_bfo_led</object-name>
+		<object-name>radio_hf1_led</object-name>
+		<object-name>radio_hf2_led</object-name>
+		<object-name>radio_ls_led</object-name>
+		<object-name>radio_nav_led</object-name>
+		<object-name>radio_opt_led</object-name>
+		<object-name>radio_sel_led</object-name>
+		<object-name>radio_vhf1_led</object-name>
+		<object-name>radio_vhf2_led</object-name>
+		<object-name>radio_vhf3_led</object-name>
+		<object-name>radio_vor_led</object-name>
 		<object-name>rudder-trim-test</object-name>
 		<object-name>spd-text-test</object-name>
 		<object-name>terr_on_nd_on</object-name>
