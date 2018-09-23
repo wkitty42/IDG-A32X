@@ -250,13 +250,6 @@ var brk_mode = props.global.getNode("/systems/hydraulic/brakes/mode");
 var accu_press = props.global.getNode("/systems/hydraulic/brakes/accumulator-pressure-psi");
 var press_vs_norm = props.global.getNode("/systems/pressurization/vs-norm");
 var cabinalt = props.global.getNode("/systems/pressurization/cabinalt-norm");
-var  = props.global.getNode;
-var  = props.global.getNode;
-var  = props.global.getNode;
-var  = props.global.getNode;
-var  = props.global.getNode;
-var  = props.global.getNode;
-var  = props.global.getNode;
 
 var canvas_lowerECAM_base = {
 	init: func(canvas_group, file) {
@@ -1720,7 +1713,6 @@ var canvas_lowerECAM_eng = {
 		me.updateBottomStatus();
 	},
 };
-
 
 var canvas_lowerECAM_fctl = {
 	new: func(canvas_group, file) {
