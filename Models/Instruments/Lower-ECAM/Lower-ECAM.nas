@@ -250,6 +250,7 @@ var brk_mode = props.global.getNode("/systems/hydraulic/brakes/mode");
 var accu_press = props.global.getNode("/systems/hydraulic/brakes/accumulator-pressure-psi");
 var press_vs_norm = props.global.getNode("/systems/pressurization/vs-norm");
 var cabinalt = props.global.getNode("/systems/pressurization/cabinalt-norm");
+var gear0_wow = props.global.getNode("/gear/gear[0]/wow");
 
 var canvas_lowerECAM_base = {
 	init: func(canvas_group, file) {
@@ -274,14 +275,19 @@ var canvas_lowerECAM_base = {
 	update: func() {
 		elapsedtime = elapsed_sec.getValue();
 		if (ac2.getValue() >= 110) {
-			if (autoconfig_running.getValue() != 1 and du4_test.getValue() != 1) {
+			if (gear0_wow.getValue() == 1) {
+				if (autoconfig_running.getValue() != 1 and du4_test.getValue() != 1) {
+					du4_test.setValue(1);
+					du4_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
+					du4_test_time.setValue(elapsedtime);
+				} else if (autoconfig_running.getValue() == 1 and du4_test.getValue() != 1) {
+					du4_test.setValue(1);
+					du4_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
+					du4_test_time.setValue(elapsedtime - 30);
+			} else {
 				du4_test.setValue(1);
-				du4_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
-				du4_test_time.setValue(elapsedtime);
-			} else if (autoconfig_running.getValue() == 1 and du4_test.getValue() != 1) {
-				du4_test.setValue(1);
-				du4_test_amount.setValue(math.round((rand() * 5 ) + 35, 0.1));
-				du4_test_time.setValue(elapsedtime - 30);
+				du4_test_amount.setValue(0);
+				du4_test_time.setValue(-100);
 			}
 		} else if (ac1_src.getValue() == "XX" or ac2_src.getValue() == "XX") {
 			du4_test.setValue(0);
