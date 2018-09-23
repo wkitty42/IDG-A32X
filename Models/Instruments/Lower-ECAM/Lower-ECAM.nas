@@ -1565,13 +1565,13 @@ var canvas_lowerECAM_elec = {
 		if (ac1.getValue() >= 110) {
 			me["AC1-in"].show();
 		} else {
-			me["AC1-in"].hide()
+			me["AC1-in"].hide();
 		}
 
 		if (ac2.getValue() >= 110) {
 			me["AC2-in"].show();
 		} else {
-			me["AC2-in"].hide()
+			me["AC2-in"].hide();
 		}
 
 		if (ac1_src.getValue() == "APU" or ac1_src.getValue() == "EXT" or ac1_src.getValue() == "XTIE" or ac2_src.getValue() == "XTIE") {
@@ -2568,18 +2568,18 @@ var canvas_lowerECAM_hyd = {
 
 		if (y_fire_valve.getValue() == 1) {
 			me["Fire-Valve-Yellow"].setColor(0.7333,0.3803,0);
-			me["Fire-Valve-Yellow"].setRotation(90 * D2R)
+			me["Fire-Valve-Yellow"].setRotation(90 * D2R);
 		} else {
 			me["Fire-Valve-Yellow"].setColor(0.0509,0.7529,0.2941);
-			me["Fire-Valve-Yellow"].setRotation(0)
+			me["Fire-Valve-Yellow"].setRotation(0);
 		}
 		
 		if (g_fire_valve.getValue() == 1) {
 			me["Fire-Valve-Green"].setColor(0.7333,0.3803,0);
-			me["Fire-Valve-Green"].setRotation(90 * D2R)
+			me["Fire-Valve-Green"].setRotation(90 * D2R);
 		} else {
 			me["Fire-Valve-Green"].setColor(0.0509,0.7529,0.2941);
-			me["Fire-Valve-Green"].setRotation(0)
+			me["Fire-Valve-Green"].setRotation(0);
 		}
 		
 		me.updateBottomStatus();
