@@ -1517,9 +1517,9 @@
 		<object-name>eng_mode.mark</object-name>
 		<property>controls/engines/engine-start-switch</property>
 		<interpolation>
-			<entry><ind>0</ind><dep>-53</dep></entry>
+			<entry><ind>0</ind><dep> 53</dep></entry>
 			<entry><ind>1</ind><dep>  0</dep></entry>
-			<entry><ind>2</ind><dep> 53</dep></entry>
+			<entry><ind>2</ind><dep>-53</dep></entry>
 		</interpolation>
 		<axis>
 			<object-name>eng_mode.axis</object-name>
