@@ -972,8 +972,8 @@ var canvas_lowerECAM_crz = {
 	},
 	update: func() {
 
-		me["Oil1"].setText(sprintf("%s", oil_qt1_actual.getValue()));
-		me["Oil2"].setText(sprintf("%s", oil_qt2_actual.getValue()));
+		me["Oil1"].setText(sprintf("%s", math.round(oil_qt1_actual.getValue(), 0.1)));
+		me["Oil2"].setText(sprintf("%s", math.round(oil_qt2_actual.getValue(), 0.1)));
 
 		me.updateBottomStatus();
 	},
