@@ -1547,6 +1547,9 @@
 		<autopush_route>
 			<file>Aircraft/IDG-A32X/Nasal/autopush_route.nas</file>
 		</autopush_route>
+		<rmp>
+			<file>Aircraft/IDG-A32X/Models/Instruments/Radio/Radio.nas</file>
+		</rmp>
 	</nasal>
 
 </PropertyList>
