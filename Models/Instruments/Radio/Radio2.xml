@@ -1407,30 +1407,30 @@
 		</condition>
 	</animation>
 
-        <text>
-                <name>rmp2-active-test</name>
-                <offsets>
+	<text>
+		<name>rmp2-active-test</name>
+		<offsets>
 			<x-m>-0.22190</x-m>
 			<y-m>-0.21549</y-m>
 			<z-m>-0.12613</z-m>
-                        <heading-deg>90</heading-deg>
-                </offsets>
-                <alignment>center-center</alignment>
-                <axis-alignment>xy-plane</axis-alignment>
-                <type type="string">text-value</type>
-                <format type="string">888.888</format>
-                <property>autopilot/servicable</property>
-                <truncate type="bool">false</truncate>
-                <font type="string">led.txf</font>
-                <draw-text type="bool">true</draw-text>
-                <draw-alignment type="bool">false</draw-alignment>
-                <draw-boundingbox type="bool">false</draw-boundingbox>
-                <character-size>0.008</character-size>
-                <font-resolution>
-                        <width type="int">32</width>
-                        <height type="int">32</height>
-                </font-resolution>
-        </text>
+			<heading-deg>90</heading-deg>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>xy-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">888.888</format>
+		<property>autopilot/servicable</property>
+		<truncate type="bool">false</truncate>
+		<font type="string">led.txf</font>
+		<draw-text type="bool">true</draw-text>
+		<draw-alignment type="bool">false</draw-alignment>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<character-size>0.008</character-size>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
 
 	<!-- STBY Display -->
 	<animation>
@@ -1491,28 +1491,28 @@
 		</condition>
 	</animation>
 
-        <text>
-                <name>rmp2-standby-test</name>
-                <offsets>
+	<text>
+		<name>rmp2-standby-test</name>
+		<offsets>
 			<x-m>-0.22190</x-m>
 			<y-m>-0.14896</y-m>
 			<z-m>-0.12613</z-m>
-                        <heading-deg>90</heading-deg>
-                </offsets>
-                <alignment>center-center</alignment>
-                <axis-alignment>xy-plane</axis-alignment>
-                <type type="string">text-value</type>
-                <format type="string">888.888</format>
-                <property>autopilot/servicable</property>
-                <truncate type="bool">false</truncate>
-                <font type="string">led.txf</font>
-                <draw-text type="bool">true</draw-text>
-                <draw-alignment type="bool">false</draw-alignment>
-                <draw-boundingbox type="bool">false</draw-boundingbox>
-                <character-size>0.008</character-size>
-                <font-resolution>
-                        <width type="int">32</width>
-                        <height type="int">32</height>
-                </font-resolution>
-        </text>
+			<heading-deg>90</heading-deg>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>xy-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">888.888</format>
+		<property>autopilot/servicable</property>
+		<truncate type="bool">false</truncate>
+		<font type="string">led.txf</font>
+		<draw-text type="bool">true</draw-text>
+		<draw-alignment type="bool">false</draw-alignment>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<character-size>0.008</character-size>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
 </PropertyList>
