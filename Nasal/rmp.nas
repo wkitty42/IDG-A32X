@@ -11,36 +11,47 @@ var rmp_update = nil;
 
 var act_vhf1 = props.globals.getNode("/instrumentation/comm[0]/frequencies/selected-mhz");
 var act_vhf2 = props.globals.getNode("/instrumentation/comm[1]/frequencies/selected-mhz");
-var act_vhf3 = props.globals.initNode("/instrumentation/comm[2]/frequencies/selected-mhz", 0);
+var act_vhf3 = props.globals.getNode("/instrumentation/comm[2]/frequencies/selected-mhz");
 
-var act_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/active-display", "123.900");
-var stby_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/standby-display", "118.700");
-var stby_rmp1_vhf1 = props.globals.initNode("/systems/radio/rmp[0]/vhf1-standby", 118.7);
-var stby_rmp1_vhf2 = props.globals.initNode("/systems/radio/rmp[0]/vhf2-standby", 123.12);
-var stby_rmp1_vhf3 = props.globals.initNode("/systems/radio/rmp[0]/vhf3-standby", 121.5);
+var act_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/active-display", "123.900", "STRING");
+var stby_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/standby-display", "118.700", "STRING");
+var stby_rmp1_vhf1 = props.globals.initNode("/systems/radio/rmp[0]/vhf1-standby", 118.7, "DOUBLE");
+var stby_rmp1_vhf2 = props.globals.initNode("/systems/radio/rmp[0]/vhf2-standby", 123.12, "DOUBLE");
+var stby_rmp1_vhf3 = props.globals.initNode("/systems/radio/rmp[0]/vhf3-standby", 121.5, "DOUBLE");
 
-var act_display_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/active-display", "127.900");
-var stby_display_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/standby-display", "123.125");
-var stby_rmp2_vhf1 = props.globals.initNode("/systems/radio/rmp[1]/vhf1-standby", 118.7);
-var stby_rmp2_vhf2 = props.globals.initNode("/systems/radio/rmp[1]/vhf2-standby", 123.12);
-var stby_rmp2_vhf3 = props.globals.initNode("/systems/radio/rmp[1]/vhf3-standby", 121.5);
+var act_display_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/active-display", "127.900", "STRING");
+var stby_display_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/standby-display", "123.125", "STRING");
+var stby_rmp2_vhf1 = props.globals.initNode("/systems/radio/rmp[1]/vhf1-standby", 118.7, "DOUBLE");
+var stby_rmp2_vhf2 = props.globals.initNode("/systems/radio/rmp[1]/vhf2-standby", 123.12, "DOUBLE");
+var stby_rmp2_vhf3 = props.globals.initNode("/systems/radio/rmp[1]/vhf3-standby", 121.5, "DOUBLE");
 
-var act_display_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/active-display", "127.900");
-var stby_display_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/standby-display", "123.125");
-var stby_rmp3_vhf1 = props.globals.initNode("/systems/radio/rmp[2]/vhf1-standby", 118.7);
-var stby_rmp3_vhf2 = props.globals.initNode("/systems/radio/rmp[2]/vhf2-standby", 123.12);
-var stby_rmp3_vhf3 = props.globals.initNode("/systems/radio/rmp[2]/vhf3-standby", 121.5);
+var act_display_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/active-display", "127.900", "STRING");
+var stby_display_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/standby-display", "123.125", "STRING");
+var stby_rmp3_vhf1 = props.globals.initNode("/systems/radio/rmp[2]/vhf1-standby", 118.7, "DOUBLE");
+var stby_rmp3_vhf2 = props.globals.initNode("/systems/radio/rmp[2]/vhf2-standby", 123.12, "DOUBLE");
+var stby_rmp3_vhf3 = props.globals.initNode("/systems/radio/rmp[2]/vhf3-standby", 121.5, "DOUBLE");
 
-var chan_rmp1 = props.globals.initNode("/systems/radio/rmp[0]/sel_chan", "vhf1");
-var chan_rmp2 = props.globals.initNode("/systems/radio/rmp[1]/sel_chan", "vhf2");
-var chan_rmp3 = props.globals.initNode("/systems/radio/rmp[2]/sel_chan", "vhf3");
+var chan_rmp1 = props.globals.initNode("/systems/radio/rmp[0]/sel_chan", "vhf1", "STRING");
+var chan_rmp2 = props.globals.initNode("/systems/radio/rmp[1]/sel_chan", "vhf2", "STRING");
+var chan_rmp3 = props.globals.initNode("/systems/radio/rmp[2]/sel_chan", "vhf3", "STRING");
+
+var pwr_sw_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/on", 0, "BOOL");
+var pwr_sw_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/on", 0, "BOOL");
+var pwr_sw_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/on", 0, "BOOL");
 
 var init = func() {
 	for(var i = 0; i < 3; i += 1) {
 		setprop("/systems/radio/rmp[" ~ i ~ "]/hf1-standby", 510);
 		setprop("/systems/radio/rmp[" ~ i ~ "]/hf2-standby", 891);
 	}
-
+	
+	chan_rmp1.setValue("vhf1");
+	chan_rmp2.setValue("vhf2");
+	chan_rmp3.setValue("vhf3");
+	pwr_sw_rmp1.setBoolValue(0);
+	pwr_sw_rmp2.setBoolValue(0);
+	pwr_sw_rmp3.setBoolValue(0);
+	
 	var rmp_update = maketimer(0.2, func {
 		rmp_refresh.update();
 	});

@@ -1375,7 +1375,7 @@
 	<!-- Active Display -->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-active</object-name>
+		<object-name>rmp-active</object-name>
 		<condition>
 			<and>
 				<not-equals>
@@ -1407,11 +1407,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-active</name>
+		<name>rmp-active</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
-			<y-m>-0.21549</y-m>
-			<z-m>-0.12613</z-m>
+			<x-m>-0.22205</x-m>
+			<y-m>-0.21625</y-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1434,7 +1434,7 @@
 	<!-- VHF3 Data Mode-->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-active-vhf3-data</object-name>
+		<object-name>rmp-active-vhf3-data</object-name>
 		<condition>
 			<and>
 				<not-equals>
@@ -1462,11 +1462,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-active-vhf3-data</name>
+		<name>rmp-active-vhf3-data</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
-			<y-m>-0.21549</y-m>
-			<z-m>-0.12613</z-m>
+			<x-m>-0.22205</x-m>
+			<y-m>-0.21625</y-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1489,7 +1489,7 @@
 	<!-- Test Illumination-->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-active-test</object-name>
+		<object-name>rmp-active-test</object-name>
 		<condition>
 			<equals>
 				<property>controls/switches/annun-test</property>
@@ -1499,11 +1499,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-active-test</name>
+		<name>rmp-active-test</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
-			<y-m>-0.21549</y-m>
-			<z-m>-0.12613</z-m>
+			<x-m>-0.22205</x-m>
+			<y-m>-0.21625</y-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1526,7 +1526,7 @@
 	<!-- STBY Display -->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-standby</object-name>
+		<object-name>rmp-standby</object-name>
 		<condition>
 			<and>
 				<not-equals>
@@ -1558,11 +1558,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-standby</name>
+		<name>rmp-standby</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
+			<x-m>-0.22205</x-m>
 			<y-m>-0.14896</y-m>
-			<z-m>-0.12613</z-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1585,7 +1585,7 @@
 	<!-- VHF3 Data Mode-->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-standby-vhf3-data</object-name>
+		<object-name>rmp-standby-vhf3-data</object-name>
 		<condition>
 			<and>
 				<not-equals>
@@ -1613,11 +1613,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-standby-vhf3-data</name>
+		<name>rmp-standby-vhf3-data</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
+			<x-m>-0.22205</x-m>
 			<y-m>-0.14896</y-m>
-			<z-m>-0.12613</z-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1640,7 +1640,7 @@
 	<!-- Test Illumination-->
 	<animation>
 		<type>select</type>
-		<object-name>rmp1-standby-test</object-name>
+		<object-name>rmp-standby-test</object-name>
 		<condition>
 			<equals>
 				<property>controls/switches/annun-test</property>
@@ -1650,11 +1650,11 @@
 	</animation>
 
 	<text>
-		<name>rmp1-standby-test</name>
+		<name>rmp-standby-test</name>
 		<offsets>
-			<x-m>-0.22190</x-m>
+			<x-m>-0.22205</x-m>
 			<y-m>-0.14896</y-m>
-			<z-m>-0.12613</z-m>
+			<z-m>-0.12582</z-m>
 			<heading-deg>90</heading-deg>
 		</offsets>
 		<alignment>center-center</alignment>
@@ -1673,4 +1673,36 @@
 			<height type="int">32</height>
 		</font-resolution>
 	</text>
+
+	<!-- Z Colors/Effects -->
+	<animation>
+		<type>material</type>
+		<object-name>rmp-active</object-name>
+		<object-name>rmp-active-test</object-name>
+		<object-name>rmp-active-vhf3-data</object-name>
+		<object-name>rmp-standby</object-name>
+		<object-name>rmp-standby-test</object-name>
+		<object-name>rmp-standby-vhf3-data</object-name>
+		<diffuse>
+			<red>0.89</red>
+			<green>0.37</green>
+			<blue>0.08</blue>
+		</diffuse>
+		<ambient>
+			<red>0</red>
+			<green>0</green>
+			<blue>0</blue>
+		</ambient>
+		<specular>
+			<red>0</red>
+			<green>0</green>
+			<blue>0</blue>
+		</specular>
+		<emission>
+			<red>0.89</red>
+			<green>0.37</green>
+			<blue>0.08</blue>
+		</emission>
+	</animation>
+
 </PropertyList>
