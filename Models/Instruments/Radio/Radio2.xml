@@ -318,6 +318,12 @@
 							<property>systems/radio/rmp[1]/sel_chan</property>
 							<value type="string">vhf3</value>
 						</equals>
+						<not>
+							<equals>
+								<property>systems/radio/rmp[1]/vhf3-standby</property>
+								<value>0</value>
+							</equals>
+						</not>
 					</and>
 				</condition>
 				<command>property-adjust</command>
@@ -455,6 +461,12 @@
 							<property>systems/radio/rmp[1]/sel_chan</property>
 							<value type="string">vhf3</value>
 						</equals>
+						<not>
+							<equals>
+								<property>systems/radio/rmp[1]/vhf3-standby</property>
+								<value>0</value>
+							</equals>
+						</not>
 					</and>
 				</condition>
 				<command>property-adjust</command>
@@ -594,6 +606,12 @@
 							<property>systems/radio/rmp[1]/sel_chan</property>
 							<value type="string">vhf3</value>
 						</equals>
+						<not>
+							<equals>
+								<property>systems/radio/rmp[1]/vhf3-standby</property>
+								<value>0</value>
+							</equals>
+						</not>
 					</and>
 				</condition>
 				<command>property-adjust</command>
@@ -730,6 +748,12 @@
 							<property>systems/radio/rmp[1]/sel_chan</property>
 							<value type="string">vhf3</value>
 						</equals>
+						<not>
+							<equals>
+								<property>systems/radio/rmp[1]/vhf3-standby</property>
+								<value>0</value>
+							</equals>
+						</not>
 					</and>
 				</condition>
 				<command>property-adjust</command>
@@ -1366,6 +1390,18 @@
 					<property>systems/electrical/bus/dc2</property>
 					<value>25</value>
 				</greater-than-equals>
+				<not>
+					<and>
+						<equals>
+							<property>systems/radio/rmp[1]/sel_chan</property>
+							<value type="string">vhf3</value>
+						</equals>
+						<equals>
+							<property>instrumentation/comm[2]/frequencies/selected-mhz</property>
+							<value>0</value>
+						</equals>
+					</and>
+				</not>
 			</and>
 		</condition>
 	</animation>
@@ -1383,6 +1419,61 @@
 		<type type="string">text-value</type>
 		<format type="string">%s</format>
 		<property>controls/radio/rmp[1]/active-display</property>
+		<truncate type="bool">false</truncate>
+		<font type="string">led.txf</font>
+		<draw-text type="bool">true</draw-text>
+		<draw-alignment type="bool">false</draw-alignment>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<character-size>0.008</character-size>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- VHF3 Data Mode-->
+	<animation>
+		<type>select</type>
+		<object-name>rmp2-active-vhf3-data</object-name>
+		<condition>
+			<and>
+				<not-equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</not-equals>
+				<equals>
+					<property>controls/radio/rmp[1]/on</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+					<property>systems/electrical/bus/dc2</property>
+					<value>25</value>
+				</greater-than-equals>
+				<equals>
+					<property>systems/radio/rmp[1]/sel_chan</property>
+					<value type="string">vhf3</value>
+				</equals>
+				<equals>
+					<property>instrumentation/comm[2]/frequencies/selected-mhz</property>
+					<value>0</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<text>
+		<name>rmp2-active-vhf3-data</name>
+		<offsets>
+			<x-m>-0.22190</x-m>
+			<y-m>-0.21549</y-m>
+			<z-m>-0.12613</z-m>
+			<heading-deg>90</heading-deg>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>xy-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">data</format>
+		<property>autopilot/servicable</property>
 		<truncate type="bool">false</truncate>
 		<font type="string">led.txf</font>
 		<draw-text type="bool">true</draw-text>
@@ -1450,6 +1541,18 @@
 					<property>systems/electrical/bus/dc2</property>
 					<value>25</value>
 				</greater-than-equals>
+				<not>
+					<and>
+						<equals>
+							<property>systems/radio/rmp[1]/sel_chan</property>
+							<value type="string">vhf3</value>
+						</equals>
+						<equals>
+							<property>systems/radio/rmp[1]/vhf3-standby</property>
+							<value>0</value>
+						</equals>
+					</and>
+				</not>
 			</and>
 		</condition>
 	</animation>
@@ -1467,6 +1570,61 @@
 		<type type="string">text-value</type>
 		<format type="string">%s</format>
 		<property>controls/radio/rmp[1]/standby-display</property>
+		<truncate type="bool">false</truncate>
+		<font type="string">led.txf</font>
+		<draw-text type="bool">true</draw-text>
+		<draw-alignment type="bool">false</draw-alignment>
+		<draw-boundingbox type="bool">false</draw-boundingbox>
+		<character-size>0.008</character-size>
+		<font-resolution>
+			<width type="int">32</width>
+			<height type="int">32</height>
+		</font-resolution>
+	</text>
+
+	<!-- VHF3 Data Mode-->
+	<animation>
+		<type>select</type>
+		<object-name>rmp2-standby-vhf3-data</object-name>
+		<condition>
+			<and>
+				<not-equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</not-equals>
+				<equals>
+					<property>controls/radio/rmp[1]/on</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+					<property>systems/electrical/bus/dc-ess</property>
+					<value>25</value>
+				</greater-than-equals>
+				<equals>
+					<property>systems/radio/rmp[1]/sel_chan</property>
+					<value type="string">vhf3</value>
+				</equals>
+				<equals>
+					<property>systems/radio/rmp[1]/vhf3-standby</property>
+					<value>0</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<text>
+		<name>rmp2-standby-vhf3-data</name>
+		<offsets>
+			<x-m>-0.22190</x-m>
+			<y-m>-0.14896</y-m>
+			<z-m>-0.12613</z-m>
+			<heading-deg>90</heading-deg>
+		</offsets>
+		<alignment>center-center</alignment>
+		<axis-alignment>xy-plane</axis-alignment>
+		<type type="string">text-value</type>
+		<format type="string">data</format>
+		<property>autopilot/servicable</property>
 		<truncate type="bool">false</truncate>
 		<font type="string">led.txf</font>
 		<draw-text type="bool">true</draw-text>

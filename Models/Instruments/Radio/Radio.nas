@@ -9,10 +9,9 @@
 
 var rmp_update = nil;
 
-var act_vhf1 = props.globals.getNode("/instrumentation/comm[0]/frequencies/selected-mhz-fmt");
-var act_vhf2 = props.globals.getNode("/instrumentation/comm[1]/frequencies/selected-mhz-fmt");
-# TODO when VHF3 is available uncomment this
-#var act_vhf3 = props.globals.getNode("/instrumentation/comm[2]/frequencies/selected-mhz-fmt");
+var act_vhf1 = props.globals.getNode("/instrumentation/comm[0]/frequencies/selected-mhz");
+var act_vhf2 = props.globals.getNode("/instrumentation/comm[1]/frequencies/selected-mhz");
+var act_vhf3 = props.globals.initNode("/instrumentation/comm[2]/frequencies/selected-mhz", 0);
 
 var act_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/active-display", "123.900");
 var stby_display_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/standby-display", "118.700");
@@ -76,17 +75,16 @@ var update_active_vhf = func(vhf) {
 			}
 		}
 	} else {
-# TODO when VHF3 is available uncomment this
-#		if(sel1 == "vhf2" or sel2 == "vhf2") {
-#			var act = sprintf("%3.3f", act_vhf2.getValue());
-#
-#			if(sel1 == "vhf2") {
-#				act_display_rmp1.setValue(act);
-#			}
-#			if(sel2 == "vhf2") {
-#				act_display_rmp2.setValue(act);
-#			}
-#		}
+		if(sel1 == "vhf3" or sel2 == "vhf3") {
+			var act = sprintf("%3.3f", act_vhf3.getValue());
+
+			if(sel1 == "vhf3") {
+				act_display_rmp1.setValue(act);
+			}
+			if(sel2 == "vhf3") {
+				act_display_rmp2.setValue(act);
+			}
+		}
 	}
 };
 
@@ -159,19 +157,13 @@ var transfer = func(rmp_no) {
 		var mod1 = int(string.replace(sel_chan, "vhf", ""));
 		var mod = mod1 - 1;
 
-		# TODO remove this IF statement when /instrumentation/comm[2] was added
-		if(mod == 2) { return;}
-
-
 		var mem = getprop("/instrumentation/comm[" ~ mod ~ "]/frequencies/selected-mhz");
-
 		setprop("/instrumentation/comm[" ~ mod ~ "]/frequencies/selected-mhz", getprop("/systems/radio/rmp[" ~ rmp_no ~ "]/vhf" ~ mod1 ~ "-standby"));
 		setprop("/systems/radio/rmp[" ~ rmp_no ~ "]/vhf" ~ mod1 ~ "-standby", mem);
 	}
 }
 
 
-# In case that a 3rd RMP is added, increase the check in the following 3 loops to `i <= 2`
 setlistener("/systems/radio/rmp[0]/vhf1-standby", func {
 	update_stby_vhf(0, 1);
 });
@@ -197,15 +189,15 @@ setlistener("/systems/radio/rmp[1]/vhf3-standby", func {
 });
 
 setlistener("/systems/radio/rmp[2]/vhf1-standby", func {
-	update_stby_vhf(0, 1);
+	update_stby_vhf(2, 1);
 });
 
 setlistener("/systems/radio/rmp[2]/vhf2-standby", func {
-	update_stby_vhf(0, 2);
+	update_stby_vhf(2, 2);
 });
 
 setlistener("/systems/radio/rmp[2]/vhf3-standby", func {
-	update_stby_vhf(0, 3);
+	update_stby_vhf(2, 3);
 });
 
 setlistener("/instrumentation/comm[0]/frequencies/selected-mhz", func {
@@ -216,10 +208,9 @@ setlistener("/instrumentation/comm[1]/frequencies/selected-mhz", func {
 	update_active_vhf(2);
 });
 
-# In case that a 3rd RMP is added, uncomment the following lines
-#setlistener("/instrumentation/comm[2]/frequencies/selected-mhz", func {
-#	update_active_vhf(2);
-#});
+setlistener("/instrumentation/comm[2]/frequencies/selected-mhz", func {
+	update_active_vhf(3);
+});
 
 setlistener("/systems/radio/rmp[0]/sel_chan", func {
 	update_chan_sel(0);
