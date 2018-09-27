@@ -1597,7 +1597,7 @@
 					<value>1</value>
 				</equals>
 				<greater-than-equals>
-					<property>systems/electrical/bus/dc-ess</property>
+					<property>systems/electrical/bus/dc2</property>
 					<value>25</value>
 				</greater-than-equals>
 				<equals>
