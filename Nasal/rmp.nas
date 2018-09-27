@@ -52,36 +52,36 @@ var update_active_vhf = func(vhf) {
 # In case that a 3rd RMP is added, uncomment the following line and expand the if statements with the sel3 comparison
 #	var sel3 = chan_rmp3.getValue();
 
-	if(vhf == 1) {
-		if(sel1 == "vhf1" or sel2 == "vhf1") {
+	if (vhf == 1) {
+		if (sel1 == "vhf1" or sel2 == "vhf1") {
 			var act = sprintf("%3.3f", act_vhf1.getValue());
 
-			if(sel1 == "vhf1") {
+			if (sel1 == "vhf1") {
 				act_display_rmp1.setValue(act);
 			}
-			if(sel2 == "vhf1") {
+			if (sel2 == "vhf1") {
 				act_display_rmp2.setValue(act);
 			}
 		}
 	} else if (vhf == 2) {
-		if(sel1 == "vhf2" or sel2 == "vhf2") {
+		if (sel1 == "vhf2" or sel2 == "vhf2") {
 			var act = sprintf("%3.3f", act_vhf2.getValue());
 
-			if(sel1 == "vhf2") {
+			if (sel1 == "vhf2") {
 				act_display_rmp1.setValue(act);
 			}
-			if(sel2 == "vhf2") {
+			if (sel2 == "vhf2") {
 				act_display_rmp2.setValue(act);
 			}
 		}
 	} else {
-		if(sel1 == "vhf3" or sel2 == "vhf3") {
+		if (sel1 == "vhf3" or sel2 == "vhf3") {
 			var act = sprintf("%3.3f", act_vhf3.getValue());
 
-			if(sel1 == "vhf3") {
+			if (sel1 == "vhf3") {
 				act_display_rmp1.setValue(act);
 			}
-			if(sel2 == "vhf3") {
+			if (sel2 == "vhf3") {
 				act_display_rmp2.setValue(act);
 			}
 		}
@@ -89,10 +89,10 @@ var update_active_vhf = func(vhf) {
 };
 
 var update_stby_vhf = func(rmp_no, vhf) {
-	if(rmp_no == 0) {
-		if(vhf == 1) {
+	if (rmp_no == 0) {
+		if (vhf == 1) {
 			var stby = sprintf("%3.3f", stby_rmp1_vhf1.getValue());
-		} else if(vhf == 2) {
+		} else if (vhf == 2) {
 			var stby = sprintf("%3.3f", stby_rmp1_vhf2.getValue());
 		} else {
 			var stby = sprintf("%3.3f", stby_rmp1_vhf3.getValue());
@@ -100,9 +100,9 @@ var update_stby_vhf = func(rmp_no, vhf) {
 
 		stby_display_rmp1.setValue(stby);
 	} else {
-		if(vhf == 1) {
+		if (vhf == 1) {
 			var stby = sprintf("%3.3f", stby_rmp2_vhf1.getValue());
-		} else if(vhf == 2) {
+		} else if (vhf == 2) {
 			var stby = sprintf("%3.3f", stby_rmp2_vhf2.getValue());
 		} else {
 			var stby = sprintf("%3.3f", stby_rmp2_vhf3.getValue());
@@ -117,20 +117,20 @@ var update_chan_sel = func(rmp_no) {
 	update_active_vhf(2);
 	update_active_vhf(3);
 
-	if(rmp_no == 0) {
+	if (rmp_no == 0) {
 		var chan = chan_rmp1.getValue();
-		if(chan == "vhf1") {
+		if (chan == "vhf1") {
 			update_stby_vhf(rmp_no, 1);
-		} else if(chan == "vhf1") {
+		} else if (chan == "vhf1") {
 			update_stby_vhf(rmp_no, 2);
 		} else {
 			update_stby_vhf(rmp_no, 3);
 		}
-	} else if(rmp_no == 1) {
+	} else if (rmp_no == 1) {
 		var chan = chan_rmp2.getValue();
-		if(chan == "vhf1") {
+		if (chan == "vhf1") {
 			update_stby_vhf(rmp_no, 1);
-		} else if(chan == "vhf2") {
+		} else if (chan == "vhf2") {
 			update_stby_vhf(rmp_no, 2);
 		} else {
 			update_stby_vhf(rmp_no, 3);
@@ -138,9 +138,9 @@ var update_chan_sel = func(rmp_no) {
 	} else {
 # In case that a 3rd RMP is added, uncomment this
 #		var chan = chan_rmp3.getValue();
-#		if(chan == "vhf1") {
+#		if (chan == "vhf1") {
 #			update_stby_vhf(rmp_no, 1);
-#		} else if(chan == "vhf2") {
+#		} else if (chan == "vhf2") {
 #			update_stby_vhf(rmp_no, 2);
 #		} else {
 #			update_stby_vhf(rmp_no, 3);
@@ -153,7 +153,7 @@ var transfer = func(rmp_no) {
 	rmp_no = rmp_no - 1;
 	var sel_chan = getprop("/systems/radio/rmp[" ~ rmp_no ~ "]/sel_chan");
 
-	if(string.match(sel_chan, "vhf[1-3]")) {
+	if (string.match(sel_chan, "vhf[1-3]")) {
 		var mod1 = int(string.replace(sel_chan, "vhf", ""));
 		var mod = mod1 - 1;
 
