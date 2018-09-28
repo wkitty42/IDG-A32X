@@ -150,19 +150,22 @@ var pack1_fault = warning.new(msg: "AIR PACK 1 FAULT ", active: 0, colour: "a", 
 var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
 var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
-var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
+var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
+
+var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var refuelg = warning.new(msg: "REFUELG", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var seatbelts = warning.new(msg: "SEAT BELTS", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0)
 ]);
 
 var memos = std.Vector.new([
 var to_inhibit = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
 var ldg_inhibit = memo.new(msg: "LDG INHIBIT", active: 0, colour: "m"),
 var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
-var fob_3T = memo.new(msg: "FOB BELOW 3T", active: 0, colour: "g"),
 var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
 var rat = memo.new(msg: "RAT OUT", active: 0, colour: "g"),
-var gnd_splrs = memo.new(msg: "GND SPLRS ARMED", active: 0, colour: "g"),
 var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
-var refuelg = memo.new(msg: "REFUELG", active: 0, colour: "g"),
 var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g"),
 var ptu = memo.new(msg: "HYD PTU", active: 0, colour: "g"),
 var eng_aice = memo.new(msg: "ENG A.ICE", active: 0, colour: "g"),
@@ -175,7 +178,7 @@ var clearWarnings = std.Vector.new();
 var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
 	# if ((getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5)) or ((getprop("/engines/engine[0]/n1-actual") < 75.0 and getprop("/engines/engine[1]/n1-actual") < 75.0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6)) or (((getprop("/engines/engine[0]/n1-actual") < 77.0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) or (getprop("/engines/engine[1]/n1-actual") < 77.0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6))) {
-	lg_not_dn.active = 1;
+		lg_not_dn.active = 1;
 	} else {
 		lg_not_dn.active = 0;
 		lg_not_dn.noRepeat = 0;
@@ -216,7 +219,37 @@ var messages_priority_2 = func {
 }
 var messages_priority_1 = func {}
 var messages_priority_0 = func {}
-var messages_memo = func {}
+var messages_memo = func {
+	if (getprop("/services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
+		refuelg.active = 1;
+	} else {
+		refuelg.active = 0;
+	}
+	
+	if (getprop("/controls/flight/speedbrake-arm") == 1) {
+		gnd_splrs.active = 1;
+	} else {
+		gnd_splrs.active = 0;
+	}
+	
+	if (getprop("/controls/switches/seatbelt-sign") == 1) {
+		seatbelts.active = 1;
+	} else {
+		seatbelts.active = 0;
+	}
+	
+	if (getprop("/controls/switches/no-smoking-sign") == 1) {
+		nosmoke.active = 1;
+	} else {
+		nosmoke.active = 0;
+	}
+	
+	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
+		fob_3T.active = 1;
+	} else {
+		fob_3T.active = 0;
+	}
+}
 var messages_right_memo = func {
 	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
 		to_inhibit.active = 1;
@@ -228,36 +261,6 @@ var messages_right_memo = func {
 		ldg_inhibit.active = 1;
 	} else {
 		ldg_inhibit.active = 0;
-	}
-	
-	if (getprop("controls/flight/speedbrake-arm") == 1) {
-		gnd_splrs.active = 1;
-	} else {
-		gnd_splrs.active = 0;
-	}
-	
-	#if (getprop("/controls/gear/brake-parking") == 1 and getprop("/FMGC/status/phase") != 3) {
-	if (getprop("/controls/gear/brake-parking") == 1) {
-		park_brk.active = 1;
-	} else {
-		park_brk.active = 0;
-	}
-	if (getprop("/FMGC/status/phase") >= 4 and getprop("/FMGC/status/phase") <= 8) {
-		park_brk.colour = "a";
-	} else {
-		park_brk.colour = "g";
-	}
-	
-	if (getprop("/controls/pneumatic/switches/ram-air") == 1) {
-		ram_air.active = 1;
-	} else {
-		ram_air.active = 0;
-	}
-	
-	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and !wow) {
-		emer_gen.active = 1;
-	} else {
-		emer_gen.active = 0;
 	}
 	
 	if ((getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
@@ -272,28 +275,16 @@ var messages_right_memo = func {
 		spd_brk.colour = "a";
 	}
 	
-	if (getprop("services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
-		refuelg.active = 1;
+	#if (getprop("/controls/gear/brake-parking") == 1 and getprop("/FMGC/status/phase") != 3) {
+	if (getprop("/controls/gear/brake-parking") == 1) {
+		park_brk.active = 1;
 	} else {
-		refuelg.active = 0;
+		park_brk.active = 0;
 	}
-	
-	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
-		fob_3T.active = 1;
+	if (getprop("/FMGC/status/phase") >= 4 and getprop("/FMGC/status/phase") <= 8) {
+		park_brk.colour = "a";
 	} else {
-		fob_3T.active = 0;
-	}
-	
-	if (getprop("/systems/fuel/x-feed") == 1 and getprop("controls/fuel/x-feed") == 1) {
-		fuelx.active = 1;
-	} else {
-		fuelx.active = 0;
-	}
-	
-	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
-		fuelx.colour = "a";
-	} else {
-		fuelx.colour = "g";
+		park_brk.colour = "g";
 	}
 	
 	if (getprop("/controls/hydraulic/ptu") == 1 and ((getprop("/systems/hydraulic/yellow-psi") < 1450 and getprop("/systems/hydraulic/green-psi") > 1450 and getprop("/controls/hydraulic/elec-pump-yellow") == 0) or (getprop("/systems/hydraulic/yellow-psi") > 1450 and getprop("/systems/hydraulic/green-psi") < 1450))) {
@@ -314,6 +305,18 @@ var messages_right_memo = func {
 		rat.colour = "g";
 	}
 	
+	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and !wow) {
+		emer_gen.active = 1;
+	} else {
+		emer_gen.active = 0;
+	}
+	
+	if (getprop("/controls/pneumatic/switches/ram-air") == 1) {
+		ram_air.active = 1;
+	} else {
+		ram_air.active = 0;
+	}
+	
 	if (getprop("/controls/switches/leng") == 1 or getprop("/controls/switches/reng") == 1 or getprop("/systems/electrical/bus/dc1") == 0 or getprop("/systems/electrical/bus/dc2") == 0) {
 		eng_aice.active = 1;
 	} else {
@@ -321,9 +324,21 @@ var messages_right_memo = func {
 	}
 	
 	if (getprop("/controls/switches/wing") == 1) {
-		eng_aice.active = 1;
+		wing_aice.active = 1;
 	} else {
-		eng_aice.active = 0;
+		wing_aice.active = 0;
+	}
+	
+	if (getprop("/systems/fuel/x-feed") == 1 and getprop("controls/fuel/x-feed") == 1) {
+		fuelx.active = 1;
+	} else {
+		fuelx.active = 0;
+	}
+	
+	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
+		fuelx.colour = "a";
+	} else {
+		fuelx.colour = "g";
 	}
 }
 
