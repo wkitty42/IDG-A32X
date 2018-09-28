@@ -99,13 +99,13 @@ var warning = {
 		}
 	},
 	warnlight: func() {
-		if (me.light != "none" and me.noRepeat == 0 and me.active == 1) { # only toggle light once per message, allows canceling 
+		if ((me.light != "none" or me.light != "") and me.noRepeat == 0 and me.active == 1) { # only toggle light once per message, allows canceling 
 			setprop("/ECAM/warnings/master-"~me.light~"-light", 1);
 			me.noRepeat = 1;
 		}
 	},
 	sound: func() {
-		if (me.active and me.aural != "none" and getprop("/sim/sound/warnings/"~me.aural) != 1) {
+		if (me.active and (me.aural != "none" or me.aural != "") and getprop("/sim/sound/warnings/"~me.aural) != 1) {
 			setprop("/sim/sound/warnings/"~me.aural, 1);
 		} else if (!me.active or me.aural == "none") {
 			if (getprop("/sim/sound/warnings/"~me.aural) == 1) {
@@ -146,6 +146,10 @@ var memo = {
 
 var warnings = std.Vector.new([
 var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0),
+var pack1_fault = warning.new(msg: "AIR PACK 1 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
+var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
+var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
+var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
 var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
 ]);
 
@@ -166,6 +170,7 @@ var wing_aice = memo.new(msg: "WING A.ICE", active: 0, colour: "g"),
 var fuelx = memo.new(msg: "FUEL X FEED", active: 0, colour: "g")
 ]);
 
+var clearWarnings = std.Vector.new();
 
 var messages_priority_3 = func {
 	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
@@ -177,6 +182,30 @@ var messages_priority_3 = func {
 	}
 }
 var messages_priority_2 = func {
+	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[0]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack1") == 1) {
+		pack1_fault.active = 1;
+	} else {
+		pack1_fault.active = 0;
+	}
+	
+	if (pack1_fault.active == 1 and getprop("/controls/pneumatic/switches/pack1") == 1) {
+		pack1_fault_subwarn_1.active = 1;
+	} else {
+		pack1_fault_subwarn_1.active = 0;
+	}
+	
+	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[1]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack2") == 1) {
+		pack2_fault.active = 1;
+	} else {
+		pack2_fault.active = 0;
+	}
+	
+	if (pack2_fault.active == 1 and getprop("/controls/pneumatic/switches/pack2") == 1) {
+		pack2_fault_subwarn_1.active = 1;
+	} else {
+		pack2_fault_subwarn_1.active = 0;
+	}
+	
 	# if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7)) {
 	if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 5)) {
 		park_brk_on.active = 1;
@@ -313,7 +342,6 @@ var ECAM_controller = {
 		messages_right_memo();
 		
 		# clear display momentarily
-		
 		
 		if (warnings.size() > 0) {
 			for(var n=1; n<8; n+=1) {

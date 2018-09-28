@@ -1579,6 +1579,45 @@
 		</condition>
 	</animation>
 
+	<!--<animation>
+		<type>pick</type>
+		<object-name>ecam_rcl</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>nasal</command>
+				<script>ecam.rclBTN();</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>ecam_clr_l</object-name>
+		<object-name>ecam_clr_r</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>nasal</command>
+				<script>ecam.clrBTN();</script>
+			</binding>
+		</action>
+	</animation>-->
+	
 	<!-- Engine Cutoff/Mode Selector -->
 	<animation>
 		<type>pick</type>
