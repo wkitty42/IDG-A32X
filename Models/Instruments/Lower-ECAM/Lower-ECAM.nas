@@ -1287,10 +1287,12 @@ var canvas_lowerECAM_elec = {
 		if (switch_emer_gen.getValue() == 0) {
 			me["EMERGEN-group"].hide();
 			me["ELEC-Line-Emergen-ESSTR"].hide();
+			me["ELEC-Line-Emergen-ESSTR-off"].show();
 			me["EMERGEN-Label-off"].show();
 		} else {
 			me["EMERGEN-group"].show();
 			me["ELEC-Line-Emergen-ESSTR"].show();
+			me["ELEC-Line-Emergen-ESSTR-off"].hide();
 			me["EMERGEN-Label-off"].hide();
 		}
 
