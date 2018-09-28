@@ -2390,7 +2390,6 @@ var canvas_lowerECAM_hyd = {
 					me["PTU-supply-green"].hide();
 					me["PTU-Auto-or-off"].hide();
 				} else {
-					print("else if");
 					me["PTU-Supply-Line"].show();
 					me["PTU-supply-yellow"].hide();
 					me["PTU-supply-green"].show();
