@@ -152,13 +152,19 @@ var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", 
 var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
 var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 
-var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var company_alert = warning.new(msg: "COMPANY ALERT", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
 var refuelg = warning.new(msg: "REFUELG", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var irs_in_align = warning.new(msg: "IRS IN ALIGN", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var seatbelts = warning.new(msg: "SEAT BELTS", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var no_portable_devices = warning.new(msg: "NO PORTABLE DEVICES", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
 var strobe_lt_off = warning.new(msg: "STROBE LT OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var gpws_flap_mode_off = warning.new(msg: "GPWS FLAP MODE OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0)
+var outr_tk_fuel_xfrd = warning.new(msg: "OUTR TK FUEL XFRD", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var gpws_flap_mode_off = warning.new(msg: "GPWS FLAP MODE OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var atc_datalink_stby = warning.new(msg: "ATC DATALINK STBY", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0) # Not yet implemented
 ]);
 
 var memos = std.Vector.new([
