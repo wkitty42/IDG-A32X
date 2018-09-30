@@ -147,9 +147,9 @@ var memo = {
 var warnings = std.Vector.new([
 var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0),
 var pack1_fault = warning.new(msg: "AIR PACK 1 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
+var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
 var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "c", aural: "none", light: "none", noRepeat: 0),
+var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
 var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 
 var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
@@ -189,24 +189,28 @@ var messages_priority_2 = func {
 		pack1_fault.active = 1;
 	} else {
 		pack1_fault.active = 0;
+		pack1_fault.noRepeat = 0;
 	}
 	
 	if (pack1_fault.active == 1 and getprop("/controls/pneumatic/switches/pack1") == 1) {
 		pack1_fault_subwarn_1.active = 1;
 	} else {
 		pack1_fault_subwarn_1.active = 0;
+		pack1_fault_subwarn_1.noRepeat = 0;
 	}
 	
 	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[1]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack2") == 1) {
 		pack2_fault.active = 1;
 	} else {
 		pack2_fault.active = 0;
+		pack2_fault.noRepeat = 0;
 	}
 	
 	if (pack2_fault.active == 1 and getprop("/controls/pneumatic/switches/pack2") == 1) {
 		pack2_fault_subwarn_1.active = 1;
 	} else {
 		pack2_fault_subwarn_1.active = 0;
+		pack2_fault_subwarn_1.noRepeat = 0;
 	}
 	
 	# if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7)) {
