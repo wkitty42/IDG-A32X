@@ -467,22 +467,11 @@
 		<object-name>audio_vhf2_led</object-name>
 		<object-name>audio_vhf3_led</object-name>
 		<object-name>autoland_light_on</object-name>
-		<object-name>ecam_apu_led</object-name>
-		<object-name>ecam_bleed_led</object-name>
-		<object-name>ecam_cond_led</object-name>
 		<object-name>ecam_clr_l_led</object-name>
 		<object-name>ecam_clr_r_led</object-name>
 		<object-name>ecam_c_b_led</object-name>
-		<object-name>ecam_door_led</object-name>
-		<object-name>ecam_elec_led</object-name>
 		<object-name>ecam_el_dc_led</object-name>
-		<object-name>ecam_eng_led</object-name>
-		<object-name>ecam_fctl_led</object-name>
-		<object-name>ecam_fuel_led</object-name>
-		<object-name>ecam_hyd_led</object-name>
-		<object-name>ecam_press_led</object-name>
 		<object-name>ecam_sts_led</object-name>
-		<object-name>ecam_wheel_led</object-name>
 		<object-name>exped_led</object-name>
 		<object-name>hdg-text-test</object-name>
 		<object-name>qnh-test</object-name>
@@ -1169,7 +1158,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(sts);</script>
+				<script>libraries.LowerECAM.button("sts");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1188,7 +1177,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(apu);</script>
+				<script>libraries.LowerECAM.button("apu");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1207,7 +1196,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(bleed);</script>
+				<script>libraries.LowerECAM.button("bleed");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1226,7 +1215,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(press);</script>
+				<script>libraries.LowerECAM.button("press");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1245,7 +1234,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(elec);</script>
+				<script>libraries.LowerECAM.button("elec");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1264,7 +1253,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(hyd);</script>
+				<script>libraries.LowerECAM.button("hyd");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1283,7 +1272,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(fuel);</script>
+				<script>libraries.LowerECAM.button("fuel");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1302,7 +1291,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(eng);</script>
+				<script>libraries.LowerECAM.button("eng");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1321,7 +1310,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(cond);</script>
+				<script>libraries.LowerECAM.button("cond");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1340,7 +1329,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(door);</script>
+				<script>libraries.LowerECAM.button("door");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1359,7 +1348,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(wheel);</script>
+				<script>libraries.LowerECAM.button("wheel");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1378,7 +1367,7 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>libraries.LowerECAM.button(fctl);</script>
+				<script>libraries.LowerECAM.button("fctl");</script>
 			</binding>
 		</action>
 	</animation>
@@ -1401,7 +1390,195 @@
 			</binding>
 		</action>
 	</animation>
-	
+
+	<!-- ECAM page keys -->
+	<animation>
+		<type>select</type>
+		<object-name>ecam_eng_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/eng</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_apu_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/apu</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_door_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/door</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_elec_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/elec</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_fuel_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/fuel</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_hyd_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/hyd</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_fctl_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/fctl</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_press_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/press</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_wheel_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/wheel</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_bleed_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/bleed</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>ecam_cond_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/cond</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
 	<!--<animation>
 		<type>pick</type>
 		<object-name>ecam_rcl</object-name>

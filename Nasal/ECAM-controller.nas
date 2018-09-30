@@ -152,24 +152,62 @@ var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", 
 var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
 var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 
-var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var company_alert = warning.new(msg: "COMPANY ALERT", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
 var refuelg = warning.new(msg: "REFUELG", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var irs_in_align = warning.new(msg: "IRS IN ALIGN", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var seatbelts = warning.new(msg: "SEAT BELTS", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0)
+var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var no_portable_devices = warning.new(msg: "NO PORTABLE DEVICES", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var strobe_lt_off = warning.new(msg: "STROBE LT OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var outr_tk_fuel_xfrd = warning.new(msg: "OUTR TK FUEL XFRD", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var gpws_flap_mode_off = warning.new(msg: "GPWS FLAP MODE OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var atc_datalink_stby = warning.new(msg: "ATC DATALINK STBY", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
+var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0) # Not yet implemented
 ]);
 
 var memos = std.Vector.new([
 var to_inhibit = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
 var ldg_inhibit = memo.new(msg: "LDG INHIBIT", active: 0, colour: "m"),
 var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
-var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
-var rat = memo.new(msg: "RAT OUT", active: 0, colour: "g"),
 var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
-var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g"),
 var ptu = memo.new(msg: "HYD PTU", active: 0, colour: "g"),
+var rat = memo.new(msg: "RAT OUT", active: 0, colour: "g"),
+var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
+var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g"),
+var nw_strg_disc = memo.new(msg: "NW STRG DISC", active: 0, colour: "g"), # Not yet implemented
+var ignition = memo.new(msg: "IGNITION", active: 0, colour: "g"),
+var cabin_ready = memo.new(msg: "CABIN READY", active: 0, colour: "g"), # Not yet implemented
+var pred_ws_off = memo.new(msg: "PRED W/S OFF", active: 0, colour: "g"), # Not yet implemented
+var terr_stby = memo.new(msg: "TERR STBY", active: 0, colour: "g"), # Not yet implemented
+var tcas_stby = memo.new(msg: "TCAS STBY", active: 0, colour: "g"), # Not yet implemented
+var acars_call = memo.new(msg: "ACARS CALL", active: 0, colour: "g"), # Not yet implemented
+var company_call = memo.new(msg: "COMPANY CALL", active: 0, colour: "g"), # Not yet implemented
+var satcom_alert = memo.new(msg: "SATCOM ALERT", active: 0, colour: "g"), # Not yet implemented
+var acars_msg = memo.new(msg: "ACARS MSG", active: 0, colour: "g"), # Not yet implemented
+var company_msg = memo.new(msg: "COMPANY MSG", active: 0, colour: "g"), # Not yet implemented
 var eng_aice = memo.new(msg: "ENG A.ICE", active: 0, colour: "g"),
 var wing_aice = memo.new(msg: "WING A.ICE", active: 0, colour: "g"),
+var ice_not_det = memo.new(msg: "ICE NOT DET", active: 0, colour: "g"), # Not yet implemented
+var hi_alt = memo.new(msg: "HI ALT", active: 0, colour: "g"), # Not yet implemented
+var apu_avail = memo.new(msg: "APU AVAIL", active: 0, colour: "g"),
+var apu_bleed = memo.new(msg: "APU BLEED", active: 0, colour: "g"), # Not yet implemented
+var ldg_lt = memo.new(msg: "LDG LT", active: 0, colour: "g"),
+var brk_fan = memo.new(msg: "BRK FAN", active: 0, colour: "g"), # Not yet implemented
+var audio3_xfrd = memo.new(msg: "AUDIO 3 XFRD", active: 0, colour: "g"), # Not yet implemented
+var switchg_pnl = memo.new(msg: "SWITCHG PNL", active: 0, colour: "g"), # Not yet implemented
+var gpws_flap3 = memo.new(msg: "GPWS FLAP 3", active: 0, colour: "g"), # Not yet implemented
+var hf_data_ovrd = memo.new(msg: "HF DATA OVRD", active: 0, colour: "g"), # Not yet implemented
+var hf_voice = memo.new(msg: "HF VOICE", active: 0, colour: "g"), # Not yet implemented
+var acars_stby = memo.new(msg: "ACARS STBY", active: 0, colour: "g"), # Not yet implemented
+var vhf3_voice = memo.new(msg: "VHF3 VOICE", active: 0, colour: "g"),
+var auto_brk_lo = memo.new(msg: "AUTO BRK LO", active: 0, colour: "g"),
+var auto_brk_med = memo.new(msg: "AUTO BRK MED", active: 0, colour: "g"),
+var auto_brk_max = memo.new(msg: "AUTO BRK MAX", active: 0, colour: "g"),
+var auto_brk_off = memo.new(msg: "AUTO BRK OFF", active: 0, colour: "g"), # Not yet implemented
+var man_ldg_elev = memo.new(msg: "MAN LDG ELEV", active: 0, colour: "g"), # Not yet implemented
+var ctr_tk_feedg = memo.new(msg: "CTR TK FEEDG", active: 0, colour: "g"), # Not yet implemented
 var fuelx = memo.new(msg: "FUEL X FEED", active: 0, colour: "g")
 ]);
 
@@ -247,6 +285,18 @@ var messages_memo = func {
 	} else {
 		nosmoke.active = 0;
 	}
+
+	if (getprop("/controls/lighting/strobe") == 0 and getprop("/gear/gear[1]/wow") == 0) {
+		strobe_lt_off.active = 1;
+	} else {
+		strobe_lt_off.active = 0;
+	}
+
+	if (getprop("instrumentation/mk-viii/inputs/discretes/momentary-flap-all-override") == 1) {
+		gpws_flap_mode_off.active = 1;
+	} else {
+		gpws_flap_mode_off.active = 0;
+	}
 	
 	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
 		fob_3T.active = 1;
@@ -320,7 +370,25 @@ var messages_right_memo = func {
 	} else {
 		ram_air.active = 0;
 	}
-	
+
+	if (getprop("/controls/engines/engine[0]/igniter-a") == 1 or getprop("/controls/engines/engine[0]/igniter-b") == 1 or getprop("/controls/engines/engine[1]/igniter-a") == 1 or getprop("/controls/engines/engine[1]/igniter-b") == 1) {
+		ignition.active = 1;
+	} else {
+		ignition.active = 0;
+	}
+
+	if (apu_bleed.active == 0 and getprop("/systems/apu/rpm") >= 95) {
+		apu_avail.active = 1;
+	} else {
+		apu_avail.active = 0;
+	}
+
+	if (getprop("/controls/lighting/landing-lights[1]") > 0 or getprop("/controls/lighting/landing-lights[2]") > 0) {
+		ldg_lt.active = 1;
+	} else {
+		ldg_lt.active = 0;
+	}
+
 	if (getprop("/controls/switches/leng") == 1 or getprop("/controls/switches/reng") == 1 or getprop("/systems/electrical/bus/dc1") == 0 or getprop("/systems/electrical/bus/dc2") == 0) {
 		eng_aice.active = 1;
 	} else {
@@ -331,6 +399,28 @@ var messages_right_memo = func {
 		wing_aice.active = 1;
 	} else {
 		wing_aice.active = 0;
+	}
+	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and getprop("/FMGC/status/phase") == 1 or getprop("/FMGC/status/phase") == 2 or getprop("/FMGC/status/phase") == 6 or getprop("/FMGC/status/phase") == 9 or getprop("/FMGC/status/phase") == 10) {
+		vhf3_voice.active = 1;
+	} else {
+		vhf3_voice.active = 0;
+	}
+	if (getprop("/controls/autobrake/mode") == 1 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+		auto_brk_lo.active = 1;
+	} else {
+		auto_brk_lo.active = 0;
+	}
+
+	if (getprop("/controls/autobrake/mode") == 2 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+		auto_brk_med.active = 1;
+	} else {
+		auto_brk_med.active = 0;
+	}
+
+	if (getprop("/controls/autobrake/mode") == 3 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+		auto_brk_max.active = 1;
+	} else {
+		auto_brk_max.active = 0;
 	}
 	
 	if (getprop("/systems/fuel/x-feed") == 1 and getprop("controls/fuel/x-feed") == 1) {
