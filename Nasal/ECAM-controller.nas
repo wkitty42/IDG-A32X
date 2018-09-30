@@ -156,7 +156,8 @@ var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aura
 var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var refuelg = warning.new(msg: "REFUELG", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var seatbelts = warning.new(msg: "SEAT BELTS", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0)
+var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
+var strobe_lt_off = warning.new(msg: "STROBE LT OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0)
 ]);
 
 var memos = std.Vector.new([
@@ -272,6 +273,12 @@ var messages_memo = func {
 		nosmoke.active = 1;
 	} else {
 		nosmoke.active = 0;
+	}
+
+	if (getprop("/controls/lighting/strobe") == 0 and getprop("/gear/gear[1]/wow") == 0) {
+		strobe_lt_off.active = 1;
+	} else {
+		strobe_lt_off.active = 0;
 	}
 	
 	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
