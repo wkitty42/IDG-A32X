@@ -227,24 +227,28 @@ var messages_priority_2 = func {
 		pack1_fault.active = 1;
 	} else {
 		pack1_fault.active = 0;
+		pack1_fault.noRepeat = 0;
 	}
 	
 	if (pack1_fault.active == 1 and getprop("/controls/pneumatic/switches/pack1") == 1) {
 		pack1_fault_subwarn_1.active = 1;
 	} else {
 		pack1_fault_subwarn_1.active = 0;
+		pack1_fault_subwarn_1.noRepeat = 0;
 	}
 	
 	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[1]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack2") == 1) {
 		pack2_fault.active = 1;
 	} else {
 		pack2_fault.active = 0;
+		pack2_fault.noRepeat = 0;
 	}
 	
 	if (pack2_fault.active == 1 and getprop("/controls/pneumatic/switches/pack2") == 1) {
 		pack2_fault_subwarn_1.active = 1;
 	} else {
 		pack2_fault_subwarn_1.active = 0;
+		pack2_fault_subwarn_1.noRepeat = 0;
 	}
 	
 	# if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7)) {
