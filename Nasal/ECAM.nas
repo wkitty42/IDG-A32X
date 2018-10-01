@@ -1,4 +1,4 @@
-# A3XX ECAM Messages
+# A3XX ECAM
 # Joshua Davidson (it0uchpods)
 
 ##############################################
@@ -13,6 +13,13 @@ var elec = 0;
 var speed = 0;
 var wow = 0;
 var altitude = 0;
+var phase = 1;
+var toPowerSet = 0;
+var eng = "XX";
+var eprlim = 0;
+var n1lim = 0;
+var mode = "XX";
+var modeI = "XX";
 setprop("/ECAM/left-msg", "NONE");
 setprop("/position/gear-agl-ft", 0);
 # w = White, b = Blue, g = Green, a = Amber, r = Red
@@ -42,6 +49,8 @@ var ECAM = {
 		setprop("/ECAM/Lower/light/press", 0);
 		setprop("/ECAM/Lower/light/sts", 0);
 		setprop("/ECAM/Lower/light/wheel", 0);
+		setprop("/ECAM/warning-phase", 1);
+		setprop("/ECAM/warning-phase-10-time", 0);
 		LowerECAM.reset();
 	},
 	MSGclr: func() {
@@ -86,8 +95,9 @@ var ECAM = {
 		thrustL = getprop("/systems/thrust/state1");
 		thrustR = getprop("/systems/thrust/state2");
 		elec = getprop("/systems/electrical/on");
-		speed = getprop("/velocities/airspeed-kt");
+		speed = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt");
 		wow = getprop("/gear/gear[0]/wow");
+		eng = getprop("/options/eng");
 		
 		if (stateL == 3 and stateR == 3 and wow == 1) {
 			if (getprop("/ECAM/engine-start-time-switch") != 1) {
@@ -108,7 +118,7 @@ var ECAM = {
 		
 		if (getprop("/position/gear-agl-ft") <= 2000 and (getprop("/FMGC/status/phase") == 3 or getprop("/FMGC/status/phase") == 4 or getprop("/FMGC/status/phase") == 5) and wow == 0) {
 			setprop("/ECAM/ldg-memo-enable", 1);
-		} else if (getprop("/ECAM/left-msg") == "LDG-MEMO" and getprop("/instrumentation/airspeed-indicator/indicated-speed-kt") <= 80 and wow == 1) {
+		} else if (getprop("/ECAM/left-msg") == "LDG-MEMO" and speed <= 80 and wow == 1) {
 			setprop("/ECAM/ldg-memo-enable", 0);
 		} else if (getprop("/ECAM/left-msg") != "LDG-MEMO") {
 			setprop("/ECAM/ldg-memo-enable", 0);
@@ -135,6 +145,60 @@ var ECAM = {
 			# Do nothing
 		} else {
 			setprop("/ECAM/to-config", 0);
+		}
+		
+		if (eng == "IAE") {
+			eprlim = getprop("/controls/engines/epr-limit");
+			if (abs(getprop("/engines/engine[0]/epr-actual") - eprlim) <= 0.005 or abs(getprop("/engines/engine[0]/epr-actual") - eprlim) <= 0.005) {
+				toPowerSet = 1;
+			} else {
+				toPowerSet = 0;
+			}
+		} else {
+			n1lim = getprop("/controls/engines/n1-limit");
+			if (abs(getprop("/engines/engine[0]/n1-actual") - n1lim) <= 0.1 or abs(getprop("/engines/engine[0]/n1-actual") - n1lim) <= 0.1) {
+				toPowerSet = 1;
+			} else {
+				toPowerSet = 0;
+			}
+		}
+		
+		# Warning Phases
+		if (getprop("/systems/electrical/bus/ac1") < 110 and getprop("/systems/electrical/bus/ac2") < 110 and getprop("/systems/electrical/bus/ac-ess") < 110) { # Reset warning phases
+			if (getprop("/ECAM/warning-phase") != 1) {
+				setprop("/ECAM/warning-phase", 1);
+			}
+		} else {
+			phase = getprop("/ECAM/warning-phase");
+			mode = getprop("/modes/pfd/fma/pitch-mode");
+			modeI = getprop("/it-autoflight/mode/vert");
+			
+			if (phase == 1 and (stateL == 3 or stateR == 3)) {
+				setprop("/ECAM/warning-phase", 2);
+			} else if (phase == 2 and toPowerSet) {
+				setprop("/ECAM/warning-phase", 3);
+			} else if (phase == 3 and speed >= 80) {
+				setprop("/ECAM/warning-phase", 4);
+			} else if (phase == 4 and getprop("/fdm/jsbsim/position/wow") == 0) { # Liftoff
+				setprop("/ECAM/warning-phase", 5);
+			} else if (phase == 5 and getprop("/position/gear-agl-ft") >= 1500) {
+				setprop("/ECAM/warning-phase", 6);
+			} else if (phase == 6 and getprop("/position/gear-agl-ft") < 800) {
+				if (mode == "OP CLB" or mode == "CLB" or (modeI == "V/S" and getprop("/it-autoflight/input/vs") >= 100) or (modeI == "FPA" and getprop("/it-autoflight/input/fpa") >= 0.1)) {
+					# Do not do this if we are climbing, not in FCOM, but prevents terrain  from causing early mode change. If this ends up using baro alt, not radio, then delete this if
+				} else {
+					setprop("/ECAM/warning-phase", 7);
+				}
+			} else if (phase == 7 and getprop("/fdm/jsbsim/position/wow") == 1) { # Touchdown
+				setprop("/ECAM/warning-phase", 8);
+			} else if (phase == 8 and speed < 80) {
+				setprop("/ECAM/warning-phase", 9);
+			} else if (phase == 9 and (stateL == 0 or stateR == 0)) {
+				setprop("/ECAM/warning-phase", 10);
+				setprop("/ECAM/warning-phase-10-time", getprop("/sim/time/elapsed-sec"));
+			} else if (phase == 10 and getprop("/ECAM/warning-phase-10-time") + 300 < getprop("/sim/time/elapsed-sec")) { # After 5 mins, reset to phase 1
+				setprop("/ECAM/warning-phase", 1);
+			}
 		}
 		
 		LowerECAM.loop();
@@ -184,9 +248,8 @@ var LowerECAM = {
 		var man_sel = getprop("/ECAM/Lower/man-select");
 		var fault_sel = getprop("/ECAM/Lower/fault-select");
 
-		if(!man_sel) {
-
-			if(!fault_sel) {
+		if (!man_sel) {
+			if (!fault_sel) {
 				var apu_timer = getprop("/ECAM/Lower/apu-timer");
 				var apu_n = getprop("/systems/apu/rpm");
 				var apu_master = getprop("/controls/APU/master");
@@ -216,23 +279,13 @@ var LowerECAM = {
 				}
 
 				var to_thr = 0;
-				if (n1_left >= 70 and state1 == "TOGA" or (flx == 1 and state1 == "MCT" and eng_out == 0)
-					or (flx == 1 and (state1 == "MAN THR" and thr1 >= 0.83 and eng_out == 0))
-					or n1_right >= 70 and state2 == "TOGA" or (flx == 1 and state2 == "MCT" and eng_out == 0)
-					or (flx == 1 and (state2 == "MAN THR" and thr2 >= 0.83 and eng_out == 0))) {
+				if (n1_left >= 70 and state1 == "TOGA" or (flx == 1 and state1 == "MCT" and eng_out == 0) or (flx == 1 and (state1 == "MAN THR" and thr1 >= 0.83 and eng_out == 0)) or n1_right >= 70 and state2 == "TOGA" or (flx == 1 and state2 == "MCT" 
+				and eng_out == 0) or (flx == 1 and (state2 == "MAN THR" and thr2 >= 0.83 and eng_out == 0))) {
 					to_thr = 1;
 				}
 
 				#TODO auto select page for F/CTL
-				if ( eng_mode == 0
-					or eng1_state == 1
-					or eng1_state == 2
-					or eng2_state == 1
-					or eng2_state == 2
-					or (to_thr == 1 and agl < 1500)
-					or eng_to == 1
-					or eng_timer > 0) {
-
+				if (eng_mode == 0 or eng1_state == 1 or eng1_state == 2 or eng2_state == 1 or eng2_state == 2 or (to_thr == 1 and agl < 1500) or eng_to == 1 or eng_timer > 0) {
 					if (eng_timer == 0) {
 						setprop("/ECAM/Lower/eng-timer", 1);
 					}
@@ -258,7 +311,6 @@ var LowerECAM = {
 					}
 
 					setprop("/ECAM/Lower/page", "eng");
-
 				} else if ((apu_master == 1 and apu_n < 95) or apu_timer > 0) {
 					# apu-timer states:
 					#	0 -> no apu start
@@ -277,12 +329,11 @@ var LowerECAM = {
 
 					setprop("/ECAM/Lower/page", "apu");
 
-				} else if (((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
+				} else if (((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 
+				and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
 					setprop("/ECAM/Lower/page", "wheel");
-
 				} else if (getprop("/gear/gear[1]/wow") == 1) {
 					setprop("/ECAM/Lower/page", "door");
-
 				} else {
 					setprop("/ECAM/Lower/page", "crz");
 				}
