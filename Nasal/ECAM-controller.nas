@@ -51,7 +51,7 @@
 
 # ARINC 429: 100kb/s (high speed)
 
-# PHASE: /FMGC/status/phase
+# PHASE: /ECAM/warning-phase
 
 # DISPLAY: 1 - EWD 2 - MEMO 3 - STATUS
 
@@ -150,15 +150,16 @@ var pack1_fault = warning.new(msg: "AIR PACK 1 FAULT ", active: 0, colour: "a", 
 var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
 var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
-var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
+var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
+]);
 
-var company_alert = warning.new(msg: "COMPANY ALERT", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
+var leftmemos = std.Vector.new([
+var company_alert = warning.new(msg: "COMPANY ALERT", active: 0, colour: "g", aural: "buzzer", light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
 var refuelg = warning.new(msg: "REFUELG", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var irs_in_align = warning.new(msg: "IRS IN ALIGN", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
 var gnd_splrs = warning.new(msg: "GND SPLRS ARMED", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var seatbelts = warning.new(msg: "SEAT BELTS", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var nosmoke = warning.new(msg: "NO SMOKING", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
-var no_portable_devices = warning.new(msg: "NO PORTABLE DEVICES", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
 var strobe_lt_off = warning.new(msg: "STROBE LT OFF", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
 var outr_tk_fuel_xfrd = warning.new(msg: "OUTR TK FUEL XFRD", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0), # Not yet implemented
 var fob_3T = warning.new(msg: "FOB BELOW 3T", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0),
@@ -214,16 +215,17 @@ var fuelx = memo.new(msg: "FUEL X FEED", active: 0, colour: "g")
 var clearWarnings = std.Vector.new();
 
 var messages_priority_3 = func {
-	if (getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and getprop("/FMGC/status/phase") == 5) {
-	# if ((getprop("/controls/flight/flap-pos") > 2 and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5)) or ((getprop("/engines/engine[0]/n1-actual") < 75.0 and getprop("/engines/engine[1]/n1-actual") < 75.0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6)) or (((getprop("/engines/engine[0]/n1-actual") < 77.0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) or (getprop("/engines/engine[1]/n1-actual") < 77.0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) and getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/FMGC/status/phase") != 3 and getprop("/FMGC/status/phase") != 4 and getprop("/FMGC/status/phase") != 5 and getprop("/FMGC/status/phase") != 6))) {
+	if ((getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/ECAM/warning-phase") <= 3 and getprop("/ECAM/warning-phase") >= 5)) and ((((getprop("/engines/engine[0]/n1-actual") < 75.0 and getprop("/engines/engine[1]/n1-actual") < 75.0)) or ((getprop("/engines/engine[0]/n1-actual") < 77.0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) or (getprop("/engines/engine[1]/n1-actual") < 77.0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0))) or getprop("/controls/flight/flap-pos") > 1)) {
 		lg_not_dn.active = 1;
+		setprop("/systems/gear/landing-gear-warning-light", 1);
 	} else {
 		lg_not_dn.active = 0;
 		lg_not_dn.noRepeat = 0;
+		setprop("/systems/gear/landing-gear-warning-light", 0);
 	}
 }
 var messages_priority_2 = func {
-	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[0]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack1") == 1) {
+	if ((((getprop("/ECAM/warning-phase") >= 1 and getprop("/ECAM/warning-phase") <= 2) or (getprop("/ECAM/warning-phase") >= 9 and getprop("/ECAM/warning-phase") <= 10) and (wow and getprop("/engines/engine[0]/state") == 3)) or getprop("/ECAM/warning-phase") == 6) and getprop("/systems/failures/pack1") == 1) {
 		pack1_fault.active = 1;
 	} else {
 		pack1_fault.active = 0;
@@ -237,7 +239,7 @@ var messages_priority_2 = func {
 		pack1_fault_subwarn_1.noRepeat = 0;
 	}
 	
-	if ((((getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) or (getprop("/FMGC/status/phase") >= 9 and getprop("/FMGC/status/phase") <= 10) and (wow and getprop("/engines/engine[1]/state") == 3)) or getprop("/FMGC/status/phase") == 6) and getprop("/systems/failures/pack2") == 1) {
+	if ((((getprop("/ECAM/warning-phase") >= 1 and getprop("/ECAM/warning-phase") <= 2) or (getprop("/ECAM/warning-phase") >= 9 and getprop("/ECAM/warning-phase") <= 10) and (wow and getprop("/engines/engine[1]/state") == 3)) or getprop("/ECAM/warning-phase") == 6) and getprop("/systems/failures/pack2") == 1) {
 		pack2_fault.active = 1;
 	} else {
 		pack2_fault.active = 0;
@@ -251,8 +253,7 @@ var messages_priority_2 = func {
 		pack2_fault_subwarn_1.noRepeat = 0;
 	}
 	
-	# if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7)) {
-	if (getprop("/controls/gear/brake-parking") and (getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 5)) {
+	if (getprop("/controls/gear/brake-parking") and (getprop("/ECAM/warning-phase") >= 6 and getprop("/ECAM/warning-phase") <= 7)) {
 		park_brk_on.active = 1;
 	} else {
 		park_brk_on.active = 0;
@@ -305,37 +306,36 @@ var messages_memo = func {
 	}
 }
 var messages_right_memo = func {
-	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
+	if (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 5) {
 		to_inhibit.active = 1;
 	} else {
 		to_inhibit.active = 0;
 	}
 	
-	if (getprop("/FMGC/status/phase") >= 7 and getprop("/FMGC/status/phase") <= 7) {
+	if (getprop("/ECAM/warning-phase") >= 7 and getprop("/ECAM/warning-phase") <= 7) {
 		ldg_inhibit.active = 1;
 	} else {
 		ldg_inhibit.active = 0;
 	}
 	
-	if ((getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
+	if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
 		spd_brk.active = 1;
 	} else {
 		spd_brk.active = 0;
 	}
 	
-	if (getprop("/systems/thrust/state1") == "IDLE" and getprop("/systems/thrust/state2") == "IDLE" and getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7) {
+	if (getprop("/systems/thrust/state1") == "IDLE" and getprop("/systems/thrust/state2") == "IDLE" and getprop("/ECAM/warning-phase") >= 6 and getprop("/ECAM/warning-phase") <= 7) {
 		spd_brk.colour = "g";
-	} else if ((getprop("/FMGC/status/phase") >= 2 and getprop("/FMGC/status/phase") <= 5) or ((getprop("/systems/thrust/state1") != "IDLE" or getprop("/systems/thrust/state2") != "IDLE") and (getprop("/FMGC/status/phase") >= 6 and getprop("/FMGC/status/phase") <= 7))) {
+	} else if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 5) or ((getprop("/systems/thrust/state1") != "IDLE" or getprop("/systems/thrust/state2") != "IDLE") and (getprop("/ECAM/warning-phase") >= 6 and getprop("/ECAM/warning-phase") <= 7))) {
 		spd_brk.colour = "a";
 	}
 	
-	#if (getprop("/controls/gear/brake-parking") == 1 and getprop("/FMGC/status/phase") != 3) {
-	if (getprop("/controls/gear/brake-parking") == 1) {
+	if (getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") != 3) {
 		park_brk.active = 1;
 	} else {
 		park_brk.active = 0;
 	}
-	if (getprop("/FMGC/status/phase") >= 4 and getprop("/FMGC/status/phase") <= 8) {
+	if (getprop("/ECAM/warning-phase") >= 4 and getprop("/ECAM/warning-phase") <= 8) {
 		park_brk.colour = "a";
 	} else {
 		park_brk.colour = "g";
@@ -353,7 +353,7 @@ var messages_right_memo = func {
 		rat.active = 0;
 	}
 	
-	if (getprop("/FMGC/status/phase") >= 1 and getprop("/FMGC/status/phase") <= 2) {
+	if (getprop("/ECAM/warning-phase") >= 1 and getprop("/ECAM/warning-phase") <= 2) {
 		rat.colour = "a";
 	} else {
 		rat.colour = "g";
@@ -400,24 +400,24 @@ var messages_right_memo = func {
 	} else {
 		wing_aice.active = 0;
 	}
-	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and getprop("/FMGC/status/phase") == 1 or getprop("/FMGC/status/phase") == 2 or getprop("/FMGC/status/phase") == 6 or getprop("/FMGC/status/phase") == 9 or getprop("/FMGC/status/phase") == 10) {
+	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and getprop("/ECAM/warning-phase") == 1 or getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") == 9 or getprop("/ECAM/warning-phase") == 10) {
 		vhf3_voice.active = 1;
 	} else {
 		vhf3_voice.active = 0;
 	}
-	if (getprop("/controls/autobrake/mode") == 1 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 1 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
 		auto_brk_lo.active = 1;
 	} else {
 		auto_brk_lo.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 2 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 2 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
 		auto_brk_med.active = 1;
 	} else {
 		auto_brk_med.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 3 and getprop("/FMGC/status/phase") == 7 or getprop("/FMGC/status/phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 3 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
 		auto_brk_max.active = 1;
 	} else {
 		auto_brk_max.active = 0;
@@ -429,7 +429,7 @@ var messages_right_memo = func {
 		fuelx.active = 0;
 	}
 	
-	if (getprop("/FMGC/status/phase") >= 3 and getprop("/FMGC/status/phase") <= 5) {
+	if (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 5) {
 		fuelx.colour = "a";
 	} else {
 		fuelx.colour = "g";
@@ -470,6 +470,12 @@ var ECAM_controller = {
 			i.write();
 			i.warnlight();
 			i.sound();
+		}
+		
+		if (warnings.size() == 0) {
+			foreach (var h; leftmemos.vector) {
+				h.write();
+			}
 		}
 		
 		foreach (var m; memos.vector) {
