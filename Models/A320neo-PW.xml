@@ -353,7 +353,7 @@
 		<!-- Engines -->
 		<object-name>NacellePW1100G</object-name>
 		<object-name>ReverserPW1100G</object-name>
-		<!-- Fuselage -->
+		<!-- Engines -->
 		<property-base>sim/model/eng</property-base>
 		<texture-prop>texture</texture-prop>
 		<texture>PW_PurePower_1100G.png</texture>
