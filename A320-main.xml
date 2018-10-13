@@ -1008,9 +1008,7 @@
 								</and>
 							</condition>
 							<command>nasal</command>
-							<script>
-								libraries.fovZoom(-1);
-							</script>
+							<script>libraries.fovZoom(-1);</script>
 						</binding>
 					</button>
 					<button n="4">
@@ -1025,9 +1023,7 @@
 								</and>
 							</condition>
 							<command>nasal</command>
-							<script>
-								libraries.fovZoom(1);
-							</script>
+							<script>libraries.fovZoom(1);</script>
 						</binding>
 					</button>
 				</mode>
