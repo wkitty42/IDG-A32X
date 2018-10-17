@@ -131,6 +131,18 @@
 		</offsets>
 	</model-->
 
+	<!-- DDRMI Instrument -->
+	<model>
+		<path>Aircraft/IDG-A32X/Models/Instruments/DDRMI/DDRMI.xml</path>
+		<offsets>
+			<x-m>-0.516286</x-m>
+			<y-m>-0.142488</y-m>
+			<z-m>0.098057</z-m>
+			<heading-deg>90</heading-deg>
+			<roll-deg>73.5</roll-deg>
+		</offsets>
+	</model>
+
 	<!-- Brakes Pressure Indicator -->
 	<model>
 		<path>Aircraft/IDG-A32X/Models/Instruments/Brakes/Brakes.xml</path>
