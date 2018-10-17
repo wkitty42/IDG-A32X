@@ -120,17 +120,6 @@
 		</offsets>
 	</model>
 
-	<!-- VOR Instrument -->
-	<!--model>
-		<path>Aircraft/IDG-A32X/Models/Instruments/VOR/VOR.xml</path>
-		<offsets>
-			<x-m>-0.51846</x-m>
-			<y-m>-0.14098</y-m>
-			<z-m>0.10572</z-m>
-			<pitch-deg>-16.534</pitch-deg>
-		</offsets>
-	</model-->
-
 	<!-- DDRMI Instrument -->
 	<model>
 		<path>Aircraft/IDG-A32X/Models/Instruments/DDRMI/DDRMI.xml</path>
