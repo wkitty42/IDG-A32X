@@ -82,7 +82,7 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/roll/gain-switch</independentVar>
 					<tableData>
-							 0	   1  
+						     0     1  
 						0.2 -26.2  0.0
 						0.9 -15.5  0.0
 					</tableData>
@@ -96,7 +96,7 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/roll/gain-switch</independentVar>
 					<tableData>
-							 0	   1
+						     0     1
 						0.2 -45.5  0.0
 						0.9 -36.0  0.0
 					</tableData>
@@ -110,7 +110,7 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/roll/gain-switch</independentVar>
 					<tableData>
-							 0	  1
+						     0    1
 						0.2 -2.1  0.0
 						0.9 -1.1  0.0
 					</tableData>
@@ -124,9 +124,9 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/pitch/gain-switch</independentVar>
 					<tableData>
-							 0	 1	
-						0.2	 28	 0
-						0.9	 23	 0
+						     0   1  
+						0.2  28  0
+						0.9  23  0
 					</tableData>
 				</table>
 			</function>
@@ -138,9 +138,9 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/pitch/gain-switch</independentVar>
 					<tableData>
-							 0	 1
-						0.2	 61	 0
-						0.9	 45	 0
+						     0   1
+						0.2  61  0
+						0.9  45  0
 					</tableData>
 				</table>
 			</function>
@@ -152,9 +152,9 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/pitch/gain-switch</independentVar>
 					<tableData>
-							 0	  1
-						0.2	 2.9  0.0
-						0.9	 1.3  0.0
+						     0    1
+						0.2  2.9  0.0
+						0.9  1.3  0.0
 					</tableData>
 				</table>
 			</function>
@@ -166,7 +166,7 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/yaw/gain-switch</independentVar>
 					<tableData>
-							 0	  1
+						     0    1
 						0.2 -7.5  0.0
 						0.9 -1.5  0.0
 					</tableData>
@@ -180,9 +180,9 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/yaw/gain-switch</independentVar>
 					<tableData>
-							 0	   1
-						0.2	 5.01  0.00
-						0.9	 1.05  0.00
+						     0     1
+						0.2  5.01  0.00
+						0.9  1.05  0.00
 					</tableData>
 				</table>
 			</function>
@@ -194,9 +194,9 @@
 					<independentVar lookup="row">velocities/mach</independentVar>
 					<independentVar lookup="column">fbw/yaw/gain-switch</independentVar>
 					<tableData>
-							 0	   1
-						0.2	 1.03  0.00
-						0.9	 0.79  0.00
+						     0     1
+						0.2  1.03  0.00
+						0.9  0.79  0.00
 					</tableData>
 				</table>
 			</function>
@@ -279,11 +279,11 @@
 						<independentVar lookup="row">attitude/roll-rad</independentVar>
 						<independentVar lookup="column">fbw/roll/a-i</independentVar>
 						<tableData>
-									  -1		 0		   1
-							-0.575959  0.261799	 0.000000  0.000000
-							-0.575958  0.000000	 0.000000  0.000000
-							 0.575958  0.000000	 0.000000  0.000000
-							 0.575959  0.000000	 0.000000 -0.261799
+							          -1         0         1
+							-0.575959  0.261799  0.000000  0.000000
+							-0.575958  0.000000  0.000000  0.000000
+							 0.575958  0.000000  0.000000  0.000000
+							 0.575959  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
 					<table>
@@ -310,11 +310,11 @@
 						<independentVar lookup="row">attitude/roll-rad</independentVar>
 						<independentVar lookup="column">fbw/roll/a-i</independentVar>
 						<tableData>
-									  -1		 0		   1
-							-1.169370  0.261799	 0.000000  0.000000
-							-1.169369  0.000000	 0.000000  0.000000
-							 1.169369  0.000000	 0.000000  0.000000
-							 1.169370  0.000000	 0.000000 -0.261799
+							          -1         0         1
+							-1.169370  0.261799  0.000000  0.000000
+							-1.169369  0.000000  0.000000  0.000000
+							 1.169369  0.000000  0.000000  0.000000
+							 1.169370  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
 					<table>
@@ -369,11 +369,11 @@
 						<independentVar lookup="row">attitude/roll-rad</independentVar>
 						<independentVar lookup="column">fbw/roll/a-i</independentVar>
 						<tableData>
-									  -1		 0		   1
-							-0.698132  0.261799	 0.000000  0.000000
-							-0.698131  0.000000	 0.000000  0.000000
-							 0.698131  0.000000	 0.000000  0.000000
-							 0.698132  0.000000	 0.000000 -0.261799
+							          -1         0         1
+							-0.698132  0.261799  0.000000  0.000000
+							-0.698131  0.000000  0.000000  0.000000
+							 0.698131  0.000000  0.000000  0.000000
+							 0.698132  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
 				</sum>
@@ -523,9 +523,9 @@
 						<independentVar lookup="row">velocities/mach</independentVar>
 						<independentVar lookup="column">position/wow</independentVar>
 						<tableData>
-								 0	  1
-							0.2	 0.5  1.0
-							0.9	 0.1  1.0
+							     0    1
+							0.2  0.5  1.0
+							0.9  0.1  1.0
 						</tableData>
 					</table>
 				</product>
@@ -615,8 +615,8 @@
 					<table>
 						<independentVar lookup="row">/position/gear-agl-ft</independentVar>
 						<tableData>
-							 5	0.2
-							30	0.1
+							 5  0.2
+							30  0.1
 						</tableData>
 					</table>
 				</sum>
@@ -779,11 +779,11 @@
 						<independentVar lookup="row">attitude/pitch-rad</independentVar>
 						<independentVar lookup="column">fbw/pitch/g-pi-switched</independentVar>
 						<tableData>
-									  -1		 0		   1
-							-0.261799  0.000000	 0.000000  0.087266
-							-0.261798  0.000000	 0.000000  0.000000
-							 0.523598  0.000000	 0.000000  0.000000
-							 0.523599 -0.087266	 0.000000  0.000000
+							          -1         0         1
+							-0.261799  0.000000  0.000000  0.087266
+							-0.261798  0.000000  0.000000  0.000000
+							 0.523598  0.000000  0.000000  0.000000
+							 0.523599 -0.087266  0.000000  0.000000
 						</tableData>
 					</table>
 					<table>
@@ -818,9 +818,9 @@
 						<independentVar lookup="row">attitude/pitch-rad</independentVar>
 						<independentVar lookup="column">fbw/pitch/g-pi-switched</independentVar>
 						<tableData>
-									  -1		 0		 
-							 0.523598 -0.026180	 0.000000
-							 0.523599 -0.087266	 0.000000
+							          -1         0       
+							 0.523598 -0.026180  0.000000
+							 0.523599 -0.087266  0.000000
 						</tableData>
 					</table>
 					<table>
@@ -1066,7 +1066,7 @@
 					<independentVar lookup="row">/controls/flight/rudder</independentVar>
 					<independentVar lookup="column">fbw/fmgc/enabled</independentVar>
 					<tableData>
-							   0  1
+						       0  1
 						-1.00 -1  0
 						-0.04  0  0
 						 0.04  0  0
@@ -1192,8 +1192,8 @@
 				<table>
 					<independentVar lookup="row">/velocities/airspeed-kt</independentVar>
 					<tableData>
-						 62	 1.0
-						116	 0.0
+						 62  1.0
+						116  0.0
 					</tableData>
 				</table>
 			</function>
@@ -1204,8 +1204,8 @@
 				<table>
 					<independentVar lookup="row">/velocities/airspeed-kt</independentVar>
 					<tableData>
-						 72	 1.0
-						121	 0.0
+						 72  1.0
+						121  0.0
 					</tableData>
 				</table>
 			</function>
@@ -1222,8 +1222,8 @@
 				<table>
 					<independentVar lookup="row">spoilers/anti-droop-cmd</independentVar>
 					<tableData>
-						0.5	 0.0
-						1.0	 1.0
+						0.5  0.0
+						1.0  1.0
 					</tableData>
 				</table>
 			</function>
@@ -1521,9 +1521,9 @@
 				<independentVar lookup="row">velocities/mach</independentVar>
 				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
 				<tableData>
-						 0	   43000
-					0.0	 1.00  0.850
-					0.9	 0.02  0.750
+					     0     43000
+					0.0  1.00  0.850
+					0.9  0.02  0.750
 				</tableData>
 			</table>
 		</scheduled_gain>
@@ -1534,9 +1534,9 @@
 				<independentVar lookup="row">velocities/mach</independentVar>
 				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
 				<tableData>
-						 0	   43000
-					0.0	 1.00  0.850
-					0.9	 0.02  0.750
+					     0     43000
+					0.0  1.00  0.850
+					0.9  0.02  0.750
 				</tableData>
 			</table>
 		</scheduled_gain>
@@ -1547,9 +1547,9 @@
 				<independentVar lookup="row">velocities/mach</independentVar>
 				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
 				<tableData>
-						 0	   43000
-					0.0	 1.00  0.850
-					0.9	 0.02  0.750
+					     0     43000
+					0.0  1.00  0.850
+					0.9  0.02  0.750
 				</tableData>
 			</table>
 		</scheduled_gain>
@@ -1563,34 +1563,34 @@
 				<table>
 					<independentVar lookup="row">/velocities/airspeed-kt</independentVar>
 					<tableData>
-						160.00	25.000
-						162.15	23.649
-						165.02	22.226
-						168.64	21.015
-						172.25	19.734
-						176.59	18.595
-						181.67	17.525
-						186.75	16.385
-						191.83	15.316
-						197.65	14.318
-						205.65	13.247
-						212.93	12.318
-						219.48	11.462
-						227.48	10.533
-						236.96	9.7450
-						246.43	8.8863
-						255.18	8.0990
-						266.12	7.4525
-						277.06	6.7704
-						288.00	6.0884
-						299.67	5.5124
-						311.35	5.0075
-						323.03	4.5736
-						335.44	4.2104
-						347.13	3.9186
-						358.81	3.6979
-						370.50	3.5482
-						380.00	3.4000
+						160.00  25.000
+						162.15  23.649
+						165.02  22.226
+						168.64  21.015
+						172.25  19.734
+						176.59  18.595
+						181.67  17.525
+						186.75  16.385
+						191.83  15.316
+						197.65  14.318
+						205.65  13.247
+						212.93  12.318
+						219.48  11.462
+						227.48  10.533
+						236.96  9.7450
+						246.43  8.8863
+						255.18  8.0990
+						266.12  7.4525
+						277.06  6.7704
+						288.00  6.0884
+						299.67  5.5124
+						311.35  5.0075
+						323.03  4.5736
+						335.44  4.2104
+						347.13  3.9186
+						358.81  3.6979
+						370.50  3.5482
+						380.00  3.4000
 					</tableData>
 				</table>
 			</function>
@@ -1737,7 +1737,8 @@
 	
 	</channel>
 	
-	<channel name="Flaps">
+	<channel name="SFCC">
+		
 		<switch name="fcs/sfcc/unit1-avail">
 			<default value="0"/>
 			<test logic="OR" value="1">
@@ -1751,6 +1752,10 @@
 				/systems/electrical/bus/dc2 ge 25
 			</test>
 		</switch>
+	
+	</channel>
+	
+	<channel name="Flaps">
 		
 		<pure_gain name="fcs/flap-pos-gain">
 			<input>/controls/flight/flaps</input>
@@ -1900,9 +1905,9 @@
 					<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
 					<independentVar lookup="column">hydraulics/tiller/switch</independentVar>
 					<tableData>
-							   -1	  0	 1
-						30.000 -70.0  0	 70.0
-						30.001 -10.0  0	 10.0
+						       -1     0  1
+						30.000 -70.0  0  70.0
+						30.001 -10.0  0  10.0
 					</tableData>
 				</table>
 			</function>
