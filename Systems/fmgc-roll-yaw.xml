@@ -9,11 +9,9 @@
 <!-- IT-AUTOFLIGHT -->
 
 <PropertyList>
-
- <!-- =============================================================== -->
- <!-- Lateral  Modes                                                  -->
- <!-- =============================================================== -->
-
+	
+	<!-- Roll Axis -->
+	
 	<pi-simple-controller>
 		<name>ROLL CONTROLLER: HDG/LNAV</name>
 		<debug>false</debug>
@@ -109,7 +107,7 @@
 			<max>/it-autoflight/internal/bank-limit</max>
 		</config>
 	</pi-simple-controller>
-
+	
 	<filter>
 		<name>ROLL DEG SYNC</name>
 		<debug>false</debug>
@@ -220,9 +218,7 @@
 		<max>0.32</max>
 	</filter>
 	
- <!-- =============================================================== -->
- <!-- Yaw Control                                                     -->
- <!-- =============================================================== -->
+	<!-- Yaw Axis -->
 	
 	<pi-simple-controller>
 		<name>RUDDER VORLOC TRK</name>

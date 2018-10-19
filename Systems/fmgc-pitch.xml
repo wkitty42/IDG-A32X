@@ -9,10 +9,8 @@
 <!-- IT-AUTOFLIGHT -->
 
 <PropertyList>
-
- <!-- =============================================================== -->
- <!-- Vertical Modes                                                  -->
- <!-- =============================================================== -->
+	
+	<!-- Pitch Axis -->
 	
 	<filter>
 		<name>ALTITUDE CAPTURE/HOLD</name>
@@ -49,7 +47,7 @@
 		<min>/it-autoflight/internal/min-vs</min>
 		<max>/it-autoflight/internal/max-vs</max>
 	</filter>
-
+	
 	<pid-controller>
 		<name>FPA HOLD</name>
 		<debug>false</debug>
@@ -687,7 +685,7 @@
 		<min>-15</min>
 		<max>30</max>
 	</filter>
-
+	
 	<filter>
 		<name>System Command: Pitch Rate</name>
 		<debug>false</debug>
