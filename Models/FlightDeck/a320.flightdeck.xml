@@ -5625,5 +5625,50 @@
 			<blue>0.08</blue>
 		</emission>
 	</animation>
+	
+	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
+		<object-name>ceiling</object-name>
+		<object-name>beam</object-name>
+		<object-name>beam_a</object-name>
+		<object-name>beam_f</object-name>
+		<object-name>sfl.001</object-name>
+		<object-name>sfl.011</object-name>
+		<object-name>WindowCpt</object-name>
+		<object-name>WindowFo</object-name>
+		<object-name>ohpanel2</object-name>
+		<object-name>efis_box_3</object-name>
+		<object-name>efis_box_4</object-name>
+		<object-name>main_panel</object-name>
+		<object-name>side_base.002</object-name>
+		<object-name>so.1</object-name>
+		<object-name>sts</object-name>
+		<object-name>sts.001</object-name>
+		<object-name>sts.003</object-name>
+		<object-name>sts.004</object-name>
+		<object-name>wall_1</object-name>
+		<object-name>pedestal1</object-name>
+		<object-name>pedestal2</object-name>
+		<emission>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+			<factor-prop>controls/lighting/dome-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
+		<object-name>cpit_lamp_cpt</object-name>
+		<object-name>cpit_lamp_fo</object-name>
+		<emission>
+			<red>0.8</red>
+			<green>0.8</green>
+			<blue>0.8</blue>
+			<factor-prop>controls/lighting/dome-norm</factor-prop>
+		</emission>
+	</animation>
 
 </PropertyList>
