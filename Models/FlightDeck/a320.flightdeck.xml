@@ -5635,26 +5635,49 @@
 		<object-name>beam_f</object-name>
 		<object-name>sfl.001</object-name>
 		<object-name>sfl.011</object-name>
+		<object-name>sfl.012</object-name>
+		<object-name>sfl.014</object-name>
 		<object-name>WindowCpt</object-name>
 		<object-name>WindowFo</object-name>
 		<object-name>ohpanel2</object-name>
+		<object-name>efis_box_1</object-name>
+		<object-name>efis_box_2</object-name>
 		<object-name>efis_box_3</object-name>
 		<object-name>efis_box_4</object-name>
 		<object-name>main_panel</object-name>
+		<object-name>poly000041</object-name>
 		<object-name>side_base.002</object-name>
+		<object-name>pedals_block_capt</object-name>
 		<object-name>so.1</object-name>
 		<object-name>sts</object-name>
 		<object-name>sts.001</object-name>
 		<object-name>sts.003</object-name>
 		<object-name>sts.004</object-name>
 		<object-name>wall_1</object-name>
+		<object-name>carpet</object-name>
+		<object-name>DoorC</object-name>
 		<object-name>pedestal1</object-name>
 		<object-name>pedestal2</object-name>
+		<object-name>pedestal3</object-name>
+		<object-name>ped_footrest</object-name>
+		<object-name>pedestal_low</object-name>
+		<object-name>thr_quad</object-name>
+		<object-name>trim_1</object-name>
+		<object-name>trim_2</object-name>
+		<object-name>fcu_panel</object-name>
+		<object-name>seat1</object-name>
+		<object-name>seat4</object-name>
+		<object-name>seat6</object-name>
+		<object-name>seat7</object-name>
+		<object-name>compass_box</object-name>
+		<object-name>iesi</object-name>
+		<object-name>clock_body</object-name>
+		<object-name>gear_lever_body</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>
 			<blue>0.3</blue>
-			<factor-prop>controls/lighting/dome-norm</factor-prop>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
 		</emission>
 	</animation>
 	
@@ -5667,7 +5690,7 @@
 			<red>0.8</red>
 			<green>0.8</green>
 			<blue>0.8</blue>
-			<factor-prop>controls/lighting/dome-norm</factor-prop>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
 		</emission>
 	</animation>
 

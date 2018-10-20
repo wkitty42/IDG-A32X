@@ -10,4 +10,26 @@
 
 	<path>res/Pedestal_up.ac</path>
 	
+	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
+		<object-name>atc_body</object-name>
+		<object-name>ecam_body</object-name>
+		<object-name>ecam_switch_body</object-name>
+		<object-name>engine_body</object-name>
+		<object-name>radar_body</object-name>
+		<object-name>vu111_body</object-name>
+		<object-name>vu112_body</object-name>
+		<object-name>throttle_1</object-name>
+		<object-name>throttle_1_label</object-name>
+		<object-name>dummy_1</object-name>
+		<object-name>dummy_2</object-name>
+		<emission>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
+		</emission>
+	</animation>
+	
 </PropertyList>
