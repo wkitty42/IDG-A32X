@@ -32,6 +32,7 @@ setprop("/engines/engine[1]/oil-qt-actual", qty2);
 ##########
 # Lights #
 ##########
+
 var beacon_switch = props.globals.getNode("/controls/switches/beacon", 2);
 var beacon = aircraft.light.new("/sim/model/lights/beacon", [0.1, 1], "/controls/lighting/beacon");
 var strobe_switch = props.globals.getNode("/controls/switches/strobe", 2);
