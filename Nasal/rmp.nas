@@ -7,7 +7,9 @@
 
 # GLOBAL TODO add stuff for HF1, HF2, VOR, LS and ADF
 
-var rmp_update = nil;
+var chan_rmp1_v = "vhr1";
+var chan_rmp2_v = "vhr2";
+var chan_rmp3_v = "vhr3";
 
 var act_vhf1 = props.globals.getNode("/instrumentation/comm[0]/frequencies/selected-mhz");
 var act_vhf2 = props.globals.getNode("/instrumentation/comm[1]/frequencies/selected-mhz");
@@ -39,6 +41,14 @@ var pwr_sw_rmp1 = props.globals.initNode("/controls/radio/rmp[0]/on", 0, "BOOL")
 var pwr_sw_rmp2 = props.globals.initNode("/controls/radio/rmp[1]/on", 0, "BOOL");
 var pwr_sw_rmp3 = props.globals.initNode("/controls/radio/rmp[2]/on", 0, "BOOL");
 
+var sel_light_rmp1 = props.globals.initNode("/systems/radio/rmp[0]/sel-light", 0, "BOOL");
+var sel_light_rmp2 = props.globals.initNode("/systems/radio/rmp[1]/sel-light", 0, "BOOL");
+var sel_light_rmp3 = props.globals.initNode("/systems/radio/rmp[2]/sel-light", 0, "BOOL");
+
+var am_mode_rmp1 = props.globals.initNode("/systems/radio/rmp[0]/am-active", 0, "BOOL");
+var am_mode_rmp2 = props.globals.initNode("/systems/radio/rmp[1]/am-active", 0, "BOOL");
+var am_mode_rmp3 = props.globals.initNode("/systems/radio/rmp[2]/am-active", 0, "BOOL");
+
 var init = func() {
 	for(var i = 0; i < 3; i += 1) {
 		setprop("/systems/radio/rmp[" ~ i ~ "]/hf1-standby", 510);
@@ -51,10 +61,48 @@ var init = func() {
 	pwr_sw_rmp1.setBoolValue(0);
 	pwr_sw_rmp2.setBoolValue(0);
 	pwr_sw_rmp3.setBoolValue(0);
+}
+
+var rmpUpdate = func() {
+	chan_rmp1_v = chan_rmp1.getValue();
+	chan_rmp2_v = chan_rmp2.getValue();
+	chan_rmp3_v = chan_rmp3.getValue();
 	
-	var rmp_update = maketimer(0.2, func {
-		rmp_refresh.update();
-	});
+	# SEL lights
+	if (chan_rmp1_v == "vhf2" or chan_rmp1_v == "vhf3" or chan_rmp1_v == "hf1" or chan_rmp1_v == "hf2" or chan_rmp2_v == "vhf1" or chan_rmp2_v == "vhf3" or chan_rmp2_v == "hf1" or chan_rmp2_v == "hf2" or chan_rmp3_v == "vhf1" or chan_rmp3_v == "vhf2") {
+		if (sel_light_rmp1.getBoolValue() != 1) {
+			sel_light_rmp1.setBoolValue(1);
+		}
+		if (sel_light_rmp2.getBoolValue() != 1) {
+			sel_light_rmp2.setBoolValue(1);
+		}
+		if (sel_light_rmp3.getBoolValue() != 1) {
+			sel_light_rmp3.setBoolValue(1);
+		}
+	} else {
+		if (sel_light_rmp1.getBoolValue() != 0) {
+			sel_light_rmp1.setBoolValue(0);
+		}
+		if (sel_light_rmp2.getBoolValue() != 0) {
+			sel_light_rmp2.setBoolValue(0);
+		}
+		if (sel_light_rmp3.getBoolValue() != 0) {
+			sel_light_rmp3.setBoolValue(0);
+		}
+	}
+	
+	# Disable AM mode if not in HF
+	if (chan_rmp1_v != "hf1" and chan_rmp1_v != "hf2" and am_mode_rmp1.getBoolValue() == 1) {
+		am_mode_rmp1.setBoolValue(0);
+	}
+	
+	if (chan_rmp2_v != "hf1" and chan_rmp2_v != "hf2" and am_mode_rmp2.getBoolValue() == 1) {
+		am_mode_rmp2.setBoolValue(0);
+	}
+	
+	if (chan_rmp3_v != "hf1" and chan_rmp3_v != "hf2" and am_mode_rmp3.getBoolValue() == 1) {
+		am_mode_rmp3.setBoolValue(0);
+	}
 }
 
 var update_active_vhf = func(vhf) {
@@ -85,15 +133,23 @@ var update_active_vhf = func(vhf) {
 				act_display_rmp2.setValue(act);
 			}
 		}
-	} else {
+	} else if (vhf == 3) {
 		if (sel1 == "vhf3" or sel2 == "vhf3") {
 			var act = sprintf("%3.3f", act_vhf3.getValue());
 
 			if (sel1 == "vhf3") {
-				act_display_rmp1.setValue(act);
+				if (act == 0) {
+					act_display_rmp1.setValue("data");
+				} else {
+					act_display_rmp1.setValue(act);
+				}
 			}
 			if (sel2 == "vhf3") {
-				act_display_rmp2.setValue(act);
+				if (act == 0) {
+					act_display_rmp2.setValue("data");
+				} else {
+					act_display_rmp2.setValue(act);
+				}
 			}
 		}
 	}
@@ -132,7 +188,7 @@ var update_chan_sel = func(rmp_no) {
 		var chan = chan_rmp1.getValue();
 		if (chan == "vhf1") {
 			update_stby_vhf(rmp_no, 1);
-		} else if (chan == "vhf1") {
+		} else if (chan == "vhf2") {
 			update_stby_vhf(rmp_no, 2);
 		} else {
 			update_stby_vhf(rmp_no, 3);
@@ -160,7 +216,6 @@ var update_chan_sel = func(rmp_no) {
 }
 
 var transfer = func(rmp_no) {
-
 	rmp_no = rmp_no - 1;
 	var sel_chan = getprop("/systems/radio/rmp[" ~ rmp_no ~ "]/sel_chan");
 
