@@ -1519,6 +1519,9 @@
 		<rmp>
 			<file>Aircraft/IDG-A32X/Nasal/rmp.nas</file>
 		</rmp>
+		<acp>
+			<file>Aircraft/IDG-A32X/Nasal/acp.nas</file>
+		</acp>
 	</nasal>
 
 </PropertyList>
