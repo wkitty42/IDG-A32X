@@ -5682,8 +5682,8 @@
 	</animation>
 	
 	<effect>
-    <inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood</inherits-from>
-    <object-name>main_panel</object-name>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood</inherits-from>
+		<object-name>main_panel</object-name>
 	</effect>
    
 	<animation>
