@@ -5664,7 +5664,7 @@
 		<object-name>thr_quad</object-name>
 		<object-name>trim_1</object-name>
 		<object-name>trim_2</object-name>
-		<object-name>fcu_panel</object-name>
+		<object-name>FCU</object-name>
 		<object-name>seat1</object-name>
 		<object-name>seat4</object-name>
 		<object-name>seat6</object-name>
@@ -5684,6 +5684,7 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood</inherits-from>
 		<object-name>main_panel</object-name>
+		<object-name>main_panel_signboard</object-name>
 	</effect>
 	
 	<!-- move any objects requiring lightmap to another effect file -->
@@ -5701,62 +5702,23 @@
 		<object-name>clock.001</object-name>
 		<object-name>clock_body</object-name>
 		<object-name>compass_box</object-name>
-		<object-name>cpit_lamp_cpt</object-name>
-		<object-name>cpit_lamp_fo</object-name>
 		<object-name>DoorC</object-name>
-		<object-name>FCU</object-name>
 		<object-name>efis_box_1</object-name>
 		<object-name>efis_box_2</object-name>
 		<object-name>efis_box_2.001</object-name>
 		<object-name>efis_box_3</object-name>
 		<object-name>efis_box_4</object-name>
 		<object-name>extinguisher</object-name>
-		<object-name>a-thr</object-name>
-		<object-name>a-thr_led</object-name>
-		<object-name>alt-sel</object-name>
-		<object-name>alt-sel-mode</object-name>
-		<object-name>ap1</object-name>
-		<object-name>ap1_led</object-name>
-		<object-name>ap2</object-name>
-		<object-name>ap2_led</object-name>
-		<object-name>appr</object-name>
-		<object-name>appr_led</object-name>
-		<object-name>arpt</object-name>
-		<object-name>arpt_led</object-name>
-		<object-name>arpt.001</object-name>
-		<object-name>arpt_led.001</object-name>
-		<object-name>autoland_light</object-name>
-		<object-name>autoland_light_on</object-name>
-		<object-name>cstr</object-name>
-		<object-name>cstr_led</object-name>
-		<object-name>cstr.001</object-name>
-		<object-name>cstr_led.001</object-name>
 		<object-name>cylinder30</object-name>
 		<object-name>cylinder30.002</object-name>
 		<object-name>cylinder30.003</object-name>
 		<object-name>cylinder30.004</object-name>
 		<object-name>efis_display_foil</object-name>
-		<object-name>exped</object-name>
-		<object-name>exped_led</object-name>
 		<object-name>fcu_integ_knb</object-name>
-		<object-name>fcu_panel</object-name>
-		<object-name>fcu_panel_emit</object-name>
-		<object-name>fd1</object-name>
-		<object-name>fd1_led</object-name>
-		<object-name>fd2</object-name>
-		<object-name>fd2_led</object-name>
-		<object-name>hdg-sel</object-name>
-		<object-name>hdg-vs</object-name>
 		<object-name>hud_brt</object-name>
 		<object-name>hud_brt.mark</object-name>
 		<object-name>hud_declutter_btn</object-name>
 		<object-name>hud_norm_sw</object-name>
-		<object-name>ils</object-name>
-		<object-name>ils_led</object-name>
-		<object-name>ils2</object-name>
-		<object-name>ils2_led</object-name>
-		<object-name>loc</object-name>
-		<object-name>loc_led</object-name>
 		<object-name>lt_knb_1</object-name>
 		<object-name>lt_knb_1.001</object-name>
 		<object-name>master_caution</object-name>
@@ -5771,40 +5733,16 @@
 		<object-name>nd_range</object-name>
 		<object-name>nd_range.mark</object-name>
 		<object-name>nd_range_fo</object-name>
-		<object-name>nd_range_fo.mark</object-name>
-		<object-name>ndb</object-name>
-		<object-name>ndb_led</object-name>
-		<object-name>ndb.001</object-name>
-		<object-name>ndb_led.001</object-name>
-		<object-name>prio_capt</object-name>
-		<object-name>prio_capt.arrow</object-name>
-		<object-name>prio_capt.capt</object-name>
-		<object-name>prio_fo_fo</object-name>
-		<object-name>prio_capt.arrow.001</object-name>
-		<object-name>prio_capt.capt.001</object-name>
-		<object-name>prio_fo</object-name>
-		<object-name>prio_fo.arrow</object-name>
 		<object-name>qnh_cpt_knb</object-name>
 		<object-name>qnh_cpt_sw</object-name>
 		<object-name>qnh_fo_knb</object-name>
 		<object-name>qnh_fo_sw</object-name>
 		<object-name>rect.003</object-name>
 		<object-name>rect.004</object-name>
-		<object-name>spd-mach</object-name>
-		<object-name>spd-sel</object-name>
 		<object-name>vor-adf-1</object-name>
 		<object-name>vor-adf-1-right</object-name>
 		<object-name>vor-adf-2</object-name>
 		<object-name>vor-adf-2-right</object-name>
-		<object-name>vord</object-name>
-		<object-name>vord_led</object-name>
-		<object-name>vord.001</object-name>
-		<object-name>vord_led.001</object-name>
-		<object-name>vs-sel</object-name>
-		<object-name>wpt</object-name>
-		<object-name>wpt_led</object-name>
-		<object-name>wpt.001</object-name>
-		<object-name>wpt_led.001</object-name>
 		<object-name>footrest3</object-name>
 		<object-name>footrest_cpt</object-name>
 		<object-name>footrest_cpt2</object-name>
