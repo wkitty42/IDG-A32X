@@ -1384,4 +1384,9 @@
 		</emission>
 	</animation>
 	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<object-name>mcdu_body</object-name>
+	</effect>
+	
 </PropertyList>

@@ -21,4 +21,9 @@
 			<factor-prop>sim/model/lights/dome-light</factor-prop>
 		</emission>
 	</animation>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<object-name>audio_body</object-name>
+	</effect>
 </PropertyList>
