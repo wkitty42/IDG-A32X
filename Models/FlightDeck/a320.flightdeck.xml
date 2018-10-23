@@ -5664,7 +5664,7 @@
 		<object-name>thr_quad</object-name>
 		<object-name>trim_1</object-name>
 		<object-name>trim_2</object-name>
-		<object-name>FCU</object-name>
+		<object-name>fcu_panel</object-name>
 		<object-name>seat1</object-name>
 		<object-name>seat4</object-name>
 		<object-name>seat6</object-name>
@@ -5684,7 +5684,16 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood</inherits-from>
 		<object-name>main_panel</object-name>
-		<object-name>main_panel_signboard</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light</inherits-from>
+		<object-name>WindowCpt</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light-checklist</inherits-from>
+		<object-name>Sticker</object-name>
 	</effect>
 	
 	<!-- move any objects requiring lightmap to another effect file -->
@@ -5939,9 +5948,7 @@
 		<object-name>wall_1</object-name>
 		<object-name>wall_2</object-name>
 		<object-name>window_frame</object-name>
-		<object-name>WindowCpt</object-name>
 		<object-name>HeadsetCpt</object-name>
-		<object-name>Sticker</object-name>
 		<object-name>WindowGlassCpt</object-name>
 		<object-name>WindowOpenerCpt</object-name>
 		<object-name>WindowFo</object-name>
