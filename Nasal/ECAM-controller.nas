@@ -400,24 +400,24 @@ var messages_right_memo = func {
 	} else {
 		wing_aice.active = 0;
 	}
-	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and getprop("/ECAM/warning-phase") == 1 or getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") == 9 or getprop("/ECAM/warning-phase") == 10) {
+	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and (getprop("/ECAM/warning-phase") == 1 or getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") == 9 or getprop("/ECAM/warning-phase") == 10)) {
 		vhf3_voice.active = 1;
 	} else {
 		vhf3_voice.active = 0;
 	}
-	if (getprop("/controls/autobrake/mode") == 1 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 1 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
 		auto_brk_lo.active = 1;
 	} else {
 		auto_brk_lo.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 2 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 2 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
 		auto_brk_med.active = 1;
 	} else {
 		auto_brk_med.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 3 and getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8) {
+	if (getprop("/controls/autobrake/mode") == 3 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
 		auto_brk_max.active = 1;
 	} else {
 		auto_brk_max.active = 0;
