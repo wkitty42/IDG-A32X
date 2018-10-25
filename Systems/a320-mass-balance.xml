@@ -25,7 +25,7 @@
 	
 	<!-- average human weight 145 lbs, max 44000 lb -->
 	<pointmass name="Crew">
-		<weight unit="LBS">840</weight>
+		<weight unit="LBS">380</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 5.29845 </x>
 			<y> 0 </y>
@@ -34,7 +34,7 @@
 	</pointmass>
 	
 	<pointmass name="PAX">
-		<weight unit="LBS">24360</weight>
+		<weight unit="LBS">23000</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 18.8231 </x>
 			<y> 0 </y>
@@ -43,7 +43,7 @@
 	</pointmass>
 	
 	<pointmass name="Fwd Cargo">
-		<weight unit="LBS">9400</weight>
+		<weight unit="LBS">3000</weight>
 		<location name="POINTMASS" unit="M"> 
 			<x> 13.0849 </x>
 			<y> 0 </y>
@@ -52,7 +52,7 @@
 	</pointmass>
 	
 	<pointmass name="Aft Cargo">
-		<weight unit="LBS">9400</weight>
+		<weight unit="LBS">3000</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 24.5565 </x>
 			<y> 0 </y>
