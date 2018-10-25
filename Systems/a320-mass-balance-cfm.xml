@@ -15,7 +15,7 @@
 	<ixy unit="SLUG*FT2">       0 </ixy>
 	<ixz unit="SLUG*FT2">       0 </ixz>
 	<iyz unit="SLUG*FT2">       0 </iyz>
-	<emptywt unit="LBS" >   80431 </emptywt>
+	<emptywt unit="LBS" >   92980 </emptywt>
 	
 	<location name="CG" unit="M">
 		<x> 18.8231 </x>
@@ -23,8 +23,9 @@
 		<z> 0.19249 </z>
 	</location>
 	
+	<!-- average human weight 145 lbs, max 44000 lb -->
 	<pointmass name="Crew">
-		<weight unit="LBS">380</weight>
+		<weight unit="LBS">840</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 5.29845 </x>
 			<y> 0 </y>
@@ -33,7 +34,7 @@
 	</pointmass>
 	
 	<pointmass name="PAX">
-		<weight unit="LBS">23000</weight>
+		<weight unit="LBS">24360</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 18.8231 </x>
 			<y> 0 </y>
@@ -42,7 +43,7 @@
 	</pointmass>
 	
 	<pointmass name="Fwd Cargo">
-		<weight unit="LBS">3000</weight>
+		<weight unit="LBS">9400</weight>
 		<location name="POINTMASS" unit="M"> 
 			<x> 13.0849 </x>
 			<y> 0 </y>
@@ -51,7 +52,7 @@
 	</pointmass>
 	
 	<pointmass name="Aft Cargo">
-		<weight unit="LBS">3000</weight>
+		<weight unit="LBS">9400</weight>
 		<location name="POINTMASS" unit="M">
 			<x> 24.5565 </x>
 			<y> 0 </y>
