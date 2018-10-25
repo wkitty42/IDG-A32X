@@ -28,6 +28,15 @@
 				/systems/electrical/bus/dc1 gt 25
 			</test>
 		</switch>
+		
+		<switch name="lights/pedestal-light">
+			<output>/controls/lighting/pedestal-light</output>
+			
+			<default value="0" />
+			<test logic="OR" value="/controls/lighting/ped-flood-knb">
+				/systems/electrical/bus/dc1 gt 25
+			</test>
+		</switch>
 	</channel>
 
 </system>

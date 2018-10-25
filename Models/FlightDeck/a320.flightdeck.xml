@@ -4638,6 +4638,45 @@
 	
 	<animation>
 		<type>pick</type>
+		<object-name>flood_lt_ped</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable>true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>controls/lighting/ped-flood-knb</property>
+				<step>0.05</step>
+				<max>1</max>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable>true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>controls/lighting/ped-flood-knb</property>
+				<step>-0.05</step>
+				<min>0</min>
+			</binding>
+		</action>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>flood_lt_ped</object-name>
+		<property>controls/lighting/ped-flood-knb</property>
+		<interpolation>
+			<entry><ind>0</ind><dep>-129</dep></entry>
+			<entry><ind>1</ind><dep>129</dep></entry>
+		</interpolation>
+		<axis>
+			<object-name>flood_lt_ped.axis</object-name>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
 		<object-name>integ_lt</object-name>
 		<action>
 			<button>0</button>
@@ -5687,6 +5726,11 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood</inherits-from>
+		<object-name>pedestal_low</object-name>
+	</effect>
+	
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light</inherits-from>
 		<object-name>WindowCpt</object-name>
 	</effect>
@@ -5867,7 +5911,6 @@
 		<object-name>SpdBrk</object-name>
 		<object-name>pedestal1</object-name>
 		<object-name>pedestal3</object-name>
-		<object-name>pedestal_low</object-name>
 		<object-name>pedestal_map_case</object-name>
 		<object-name>phone</object-name>
 		<object-name>phone2</object-name>

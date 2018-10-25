@@ -36,15 +36,31 @@
 	</animation>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-upper</inherits-from>
+		<object-name>throttle_1</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-atc</inherits-from>
 		<object-name>atc_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-engine</inherits-from>
+		<object-name>engine_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-radar</inherits-from>
+		<object-name>radar_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>ecam_body</object-name>
 		<object-name>ecam_switch_body</object-name>
-		<object-name>engine_body</object-name>
-		<object-name>radar_body</object-name>
 		<object-name>vu111_body</object-name>
 		<object-name>vu112_body</object-name>
-		<object-name>throttle_1</object-name>
 		<object-name>throttle_1_label</object-name>
 		<object-name>dummy_1</object-name>
 		<object-name>dummy_2</object-name>
