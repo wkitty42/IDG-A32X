@@ -2755,7 +2755,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.mode_inc();</script>
+				<script>libraries.setCptND(1);</script>
 			</binding>
 		</action>
 		<action>
@@ -2764,7 +2764,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.mode_dec();</script>
+				<script>libraries.setCptND(-1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -2793,7 +2793,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.mode2_inc();</script>
+				<script>libraries.setFoND(1);</script>
 			</binding>
 		</action>
 		<action>
@@ -2802,7 +2802,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.mode2_dec();</script>
+				<script>libraries.setFoND(-1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -2831,7 +2831,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.ctl_func("range",1);</script>
+				<script>libraries.setNDRange(0, 1);</script>
 			</binding>
 		</action>
 		<action>
@@ -2840,7 +2840,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.ctl_func("range",-1);</script>
+				<script>libraries.setNDRange(0, -1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -2849,10 +2849,10 @@
 		<object-name>nd_range</object-name>
 		<property>instrumentation/efis/inputs/range-nm</property>
 		<interpolation>
-			<entry><ind>10</ind><dep>0</dep></entry>
-			<entry><ind>20</ind><dep>45</dep></entry>
-			<entry><ind>40</ind><dep>90</dep></entry>
-			<entry><ind>80</ind><dep>135</dep></entry>
+			<entry><ind> 10</ind><dep>  0</dep></entry>
+			<entry><ind> 20</ind><dep> 45</dep></entry>
+			<entry><ind> 40</ind><dep> 90</dep></entry>
+			<entry><ind> 80</ind><dep>135</dep></entry>
 			<entry><ind>160</ind><dep>180</dep></entry>
 			<entry><ind>320</ind><dep>225</dep></entry>
 		</interpolation>
@@ -2870,7 +2870,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.ctl2_func("range",1);</script>
+				<script>libraries.setNDRange(1, 1);</script>
 			</binding>
 		</action>
 		<action>
@@ -2879,7 +2879,7 @@
 			<repeatable type="bool">false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.ctl2_func("range",-1);</script>
+				<script>libraries.setNDRange(1, -1);</script>
 			</binding>
 		</action>
 	</animation>
@@ -2888,10 +2888,10 @@
 		<object-name>nd_range_fo</object-name>
 		<property>instrumentation/efis[1]/inputs/range-nm</property>
 		<interpolation>
-			<entry><ind>10</ind><dep>0</dep></entry>
-			<entry><ind>20</ind><dep>45</dep></entry>
-			<entry><ind>40</ind><dep>90</dep></entry>
-			<entry><ind>80</ind><dep>135</dep></entry>
+			<entry><ind> 10</ind><dep>  0</dep></entry>
+			<entry><ind> 20</ind><dep> 45</dep></entry>
+			<entry><ind> 40</ind><dep> 90</dep></entry>
+			<entry><ind> 80</ind><dep>135</dep></entry>
 			<entry><ind>160</ind><dep>180</dep></entry>
 			<entry><ind>320</ind><dep>225</dep></entry>
 		</interpolation>
