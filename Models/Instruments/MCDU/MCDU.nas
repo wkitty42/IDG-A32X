@@ -104,7 +104,6 @@ var canvas_MCDU_base = {
 			MCDU_1.page.hide();
 		}
 		if (getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/mcdu2") > 0) {
-			MCDU_1.update();
 			MCDU_2.update();
 			MCDU_2.updateFast();
 			updateR = 1;
