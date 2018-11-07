@@ -39,16 +39,16 @@
 		<object-name>BRT</object-name>
 		<action>
 			<button>0</button>
-			<repeatable>false</repeatable>
+			<repeatable>true</repeatable>
 			<binding>
 				<condition>
 					<greater-than-equals>
-						<property>systems/electrical/bus/ac2</property>
+						<property>systems/electrical/bus/ac1</property>
 						<value>110</value>
 					</greater-than-equals>
 				</condition>
 				<command>property-adjust</command>
-				<property>controls/lighting/DU/mcdu2</property>
+				<property>controls/lighting/DU/mcdu1</property>
 				<min>0.0</min>
 				<max>1.0</max>
 				<step>0.2</step>
@@ -62,16 +62,16 @@
 		<object-name>DIM</object-name>
 		<action>
 			<button>0</button>
-			<repeatable>false</repeatable>
+			<repeatable>true</repeatable>
 			<binding>
 				<condition>
 					<greater-than-equals>
-						<property>systems/electrical/bus/ac2</property>
+						<property>systems/electrical/bus/ac1</property>
 						<value>110</value>
 					</greater-than-equals>
 				</condition>
 				<command>property-adjust</command>
-				<property>controls/lighting/DU/mcdu2</property>
+				<property>controls/lighting/DU/mcdu1</property>
 				<min>0.0</min>
 				<max>1.0</max>
 				<step>-0.2</step>
@@ -97,7 +97,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -122,7 +122,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -147,7 +147,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -172,7 +172,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -197,7 +197,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -222,7 +222,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -247,7 +247,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -272,7 +272,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -292,7 +292,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -316,7 +316,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -336,7 +336,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -360,7 +360,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -380,7 +380,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -404,7 +404,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -424,7 +424,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -448,7 +448,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -468,7 +468,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -492,7 +492,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -512,7 +512,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -537,7 +537,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -557,7 +557,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -581,7 +581,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -601,7 +601,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -625,7 +625,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -645,7 +645,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -669,7 +669,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -689,7 +689,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -713,7 +713,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -733,7 +733,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -757,7 +757,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -777,7 +777,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -802,7 +802,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -826,7 +826,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -850,7 +850,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -874,7 +874,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -899,7 +899,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -923,7 +923,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -947,7 +947,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -971,7 +971,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -995,7 +995,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1019,7 +1019,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1043,7 +1043,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1067,7 +1067,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1091,7 +1091,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1115,7 +1115,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1139,7 +1139,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1163,7 +1163,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1187,7 +1187,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1211,7 +1211,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1235,7 +1235,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1259,7 +1259,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1283,7 +1283,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1307,7 +1307,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1331,7 +1331,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1355,7 +1355,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1379,7 +1379,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1403,7 +1403,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1427,7 +1427,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1451,7 +1451,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1475,7 +1475,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1499,7 +1499,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1523,7 +1523,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1547,7 +1547,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1571,7 +1571,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1595,7 +1595,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1619,7 +1619,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1643,7 +1643,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1667,7 +1667,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1691,7 +1691,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1715,7 +1715,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1739,7 +1739,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1763,7 +1763,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1787,7 +1787,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1811,7 +1811,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1835,7 +1835,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1859,7 +1859,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
@@ -1883,7 +1883,7 @@
 						</greater-than-equals>
 						<greater-than>
 							<property>controls/lighting/DU/mcdu2</property>
-							<value>0</value>
+							<value>0.01</value>
 						</greater-than>
 					</and>
 				</condition>
