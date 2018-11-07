@@ -43,12 +43,12 @@
 			<binding>
 				<condition>
 					<greater-than-equals>
-						<property>systems/electrical/bus/ac1</property>
+						<property>systems/electrical/bus/ac2</property>
 						<value>110</value>
 					</greater-than-equals>
 				</condition>
 				<command>property-adjust</command>
-				<property>controls/lighting/DU/mcdu1</property>
+				<property>controls/lighting/DU/mcdu2</property>
 				<min>0.0</min>
 				<max>1.0</max>
 				<step>0.2</step>
@@ -66,12 +66,12 @@
 			<binding>
 				<condition>
 					<greater-than-equals>
-						<property>systems/electrical/bus/ac1</property>
+						<property>systems/electrical/bus/ac2</property>
 						<value>110</value>
 					</greater-than-equals>
 				</condition>
 				<command>property-adjust</command>
-				<property>controls/lighting/DU/mcdu1</property>
+				<property>controls/lighting/DU/mcdu2</property>
 				<min>0.0</min>
 				<max>1.0</max>
 				<step>-0.2</step>
