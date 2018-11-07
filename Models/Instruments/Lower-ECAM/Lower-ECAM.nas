@@ -293,8 +293,8 @@ var canvas_lowerECAM_base = {
 		} else if (ac1_src.getValue() == "XX" or ac2_src.getValue() == "XX") {
 			du4_test.setValue(0);
 		}
-
-		if (ac2.getValue() >= 110 and lighting_du4.getValue() > 0) {
+		
+		if (ac2.getValue() >= 110 and lighting_du4.getValue() > 0.01) {
 			if (du4_test_time.getValue() + du4_test_amount.getValue() >= elapsedtime) {
 				lowerECAM_apu.page.hide();
 				lowerECAM_bleed.page.hide();

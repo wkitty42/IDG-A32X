@@ -5,7 +5,6 @@
 ##############################################
 
 var MCDU_init = func(i) {
-	setprop("/MCDU[" ~ i ~ "]/brightness", "1.0");
 	MCDU_reset(i); # Reset MCDU, clears data
 }
 
