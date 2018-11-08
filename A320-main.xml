@@ -1420,6 +1420,16 @@
 					<value>0</value>
 				</binding>
 			</key>
+			<key n="108">
+				<name>l</name>
+				<desc>Flashlight</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>sim/rendering/als-secondary-lights/use-flashlight</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+			</key>
 		</keyboard>
 	</input>
 	
