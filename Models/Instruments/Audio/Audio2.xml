@@ -25,5 +25,6 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>audio_body</object-name>
+		<object-name>audio_glare</object-name>
 	</effect>
 </PropertyList>
