@@ -46,6 +46,11 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-atc-glare</inherits-from>
+		<object-name>atc_glare</object-name>
+	</effect>
+	
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-engine</inherits-from>
 		<object-name>engine_body</object-name>
 	</effect>
@@ -61,6 +66,26 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-radar-glare</inherits-from>
+		<object-name>radar_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-LCutoff</inherits-from>
+		<object-name>Lcutoff</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-RCutoff</inherits-from>
+		<object-name>Rcutoff</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-mode-selector</inherits-from>
+		<object-name>eng_mode</object-name>
+	</effect>
+	
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>ecam_body</object-name>
 		<object-name>ecam_switch_body</object-name>
@@ -69,8 +94,5 @@
 		<object-name>throttle_1_label</object-name>
 		<object-name>dummy_1</object-name>
 		<object-name>dummy_2</object-name>
-		<object-name>Lcutoff</object-name>
-		<object-name>Rcutoff</object-name>
-		<object-name>eng_mode</object-name>
 	</effect>
 </PropertyList>

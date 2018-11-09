@@ -5934,6 +5934,11 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-glare</inherits-from>
+		<object-name>pedestal_low_glare</object-name>
+	</effect>
+	
+	<!--<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light</inherits-from>
 		<object-name>WindowCpt</object-name>
 	</effect>
@@ -5941,6 +5946,16 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light-checklist</inherits-from>
 		<object-name>Sticker</object-name>
+	</effect>-->
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-flap</inherits-from>
+		<object-name>FlapsLever</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-spdbrk</inherits-from>
+		<object-name>SpdBrk</object-name>
 	</effect>
 	
 	<!-- move any objects requiring lightmap to another effect file -->
@@ -6105,13 +6120,11 @@
 		<object-name>CockpitDoorSwitch</object-name>
 		<object-name>CockpitDoorSwitch.mark</object-name>
 		<object-name>CockpitDoorVideoButton</object-name>
-		<object-name>FlapsLever</object-name>
 		<object-name>gravity_gear</object-name>
 		<object-name>ParkBrk</object-name>
 		<object-name>RudderTrim</object-name>
 		<object-name>RudderTrim.mark</object-name>
 		<object-name>RudderTrimReset</object-name>
-		<object-name>SpdBrk</object-name>
 		<object-name>pedestal1</object-name>
 		<object-name>pedestal3</object-name>
 		<object-name>pedestal_map_case</object-name>
