@@ -5929,6 +5929,16 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-left-brightness</inherits-from>
+		<object-name>brightness_panel_left_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-right-brightness</inherits-from>
+		<object-name>brightness_panel_right_glare</object-name>
+	</effect>
+	
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood</inherits-from>
 		<object-name>pedestal_low</object-name>
 	</effect>
@@ -5936,6 +5946,16 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-glare</inherits-from>
 		<object-name>pedestal_low_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-glare</inherits-from>
+		<object-name>main_panel_signboard</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-glare-right</inherits-from>
+		<object-name>gear_labels</object-name>
 	</effect>
 	
 	<!--<effect>
@@ -6088,7 +6108,6 @@
 		<object-name>lgear_down</object-name>
 		<object-name>lgear_unlk</object-name>
 		<object-name>main_panel_box</object-name>
-		<object-name>main_panel_signboard</object-name>
 		<object-name>ngear</object-name>
 		<object-name>ngear_down</object-name>
 		<object-name>ngear_unlk</object-name>
