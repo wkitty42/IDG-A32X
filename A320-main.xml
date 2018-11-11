@@ -183,7 +183,9 @@
 
 		<menubar>
 			<default>
-				<menu n="3"> <!-- Force disable Route Manager dialogs, bindings are changed just in case the item is not grayed out properly -->
+				<!-- Force disable Route Manager dialogs, bindings are changed just in case the item is not grayed out properly -->
+				<!-- Uncomment when route manager can be replaced by MCDU -->
+				<!--menu n="3">
 					<item n="1">
 						<enabled type="bool" n="0">false</enabled>
 						<binding n="0">
@@ -211,7 +213,7 @@
 							</script>
 						</binding>
 					</item>
-				</menu>
+				</menu-->
 				<menu n="100">
 					<label>IDG-A32X</label>
 					<enabled type="bool">true</enabled>

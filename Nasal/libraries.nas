@@ -208,7 +208,7 @@ var systemsLoop = maketimer(0.1, func {
 	libraries.ECAM.loop();
 	libraries.BUTTONS.update();
 	fadec.FADEC.loop();
-	ecam.ECAM_controller.loop();
+#	ecam.ECAM_controller.loop();
 	rmp.rmpUpdate();
 	
 	if ((getprop("/controls/pneumatic/switches/groundair") or getprop("/controls/switches/cart")) and ((getprop("/velocities/groundspeed-kt") > 2) or getprop("/controls/gear/brake-parking") == 0)) {
