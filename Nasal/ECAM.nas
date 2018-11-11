@@ -329,7 +329,6 @@ var LowerECAM = {
 					}
 
 					setprop("/ECAM/Lower/page", "apu");
-
 				} else if (((getprop("/engines/engine[0]/n2-actual") >= 59 or getprop("/engines/engine[1]/n2-actual") >= 59) and getprop("/gear/gear[1]/wow") == 1) or (getprop("/instrumentation/altimeter/indicated-altitude-ft") <= 16000 
 				and getprop("/controls/gear/gear-down") == 1 and getprop("/gear/gear[1]/wow") == 0)) { 
 					setprop("/ECAM/Lower/page", "wheel");

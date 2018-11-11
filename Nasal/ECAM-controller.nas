@@ -73,7 +73,6 @@ var warning = {
 	light: "",
 	noRepeat: 0,
 	new: func(msg,active,colour,aural,light,noRepeat) {
-		
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
@@ -84,7 +83,6 @@ var warning = {
 		t.noRepeat = noRepeat;
 		
 		return t
-	
 	},
 	write: func() {
 		var line = 1;
@@ -120,7 +118,6 @@ var memo = {
 	active: 0,
 	colour: "",
 	new: func(msg,active,colour) {
-		
 		var t = {parents:[memo]};
 		
 		t.msg = msg;
@@ -128,7 +125,6 @@ var memo = {
 		t.colour = colour;
 		
 		return t
-	
 	},
 	write: func() {
 		var right_line = 1;
@@ -260,8 +256,10 @@ var messages_priority_2 = func {
 		park_brk_on.noRepeat = 0;
 	}
 }
+
 var messages_priority_1 = func {}
 var messages_priority_0 = func {}
+
 var messages_memo = func {
 	if (getprop("/services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
 		refuelg.active = 1;
@@ -305,6 +303,7 @@ var messages_memo = func {
 		fob_3T.active = 0;
 	}
 }
+
 var messages_right_memo = func {
 	if (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 5) {
 		to_inhibit.active = 1;
@@ -440,7 +439,6 @@ var messages_right_memo = func {
 
 var ECAM_controller = {
 	loop: func() {
-		
 		# check active messages
 		# config_warnings();
 		messages_priority_3();
@@ -453,13 +451,13 @@ var ECAM_controller = {
 		# clear display momentarily
 		
 		if (warnings.size() > 0) {
-			for(var n=1; n<8; n+=1) {
+			for(var n = 1; n < 8; n += 1) {
 				setprop("/ECAM/msg/line" ~ n, "");
 			}
 		}
 		
 		if (memos.size() > 0) {
-			for(var n=1; n<8; n+=1) {
+			for(var n = 1; n < 8; n += 1) {
 				setprop("/ECAM/rightmsg/line" ~ n, "");
 			}
 		}
