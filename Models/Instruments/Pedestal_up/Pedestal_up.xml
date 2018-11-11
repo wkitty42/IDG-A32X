@@ -94,5 +94,24 @@
 		<object-name>throttle_1_label</object-name>
 		<object-name>dummy_1</object-name>
 		<object-name>dummy_2</object-name>
+		<object-name>ecam_glare_down</object-name>
+		<object-name>ecam_glare_up</object-name>
+		<object-name>ecam_att_hdg</object-name>
+		<object-name>ecam_air_data</object-name>
+		<object-name>ecam_eis_dmc</object-name>
+		<object-name>ecam_nd_xfr</object-name>
+		<object-name>ecam_brt_upper</object-name>
+		<object-name>ecam_brt_lower</object-name>
+		<object-name>flood_lt_main</object-name>
+		<object-name>integ_lt</object-name>
+		<object-name>flood_lt_ped</object-name>
+		<object-name>radar_gain</object-name>
+		<object-name>radar_mode</object-name>
+		<object-name>radar_tilt</object-name>
+		<object-name>atc_thrt</object-name>
+		<object-name>atc_sys</object-name>
+		<object-name>atc_abv</object-name>
+		<object-name>atc_stby</object-name>
+		<object-name>ecam_emer_canc_lit</object-name>
 	</effect>
 </PropertyList>

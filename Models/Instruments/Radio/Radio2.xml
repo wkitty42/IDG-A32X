@@ -1546,6 +1546,9 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>radio_body</object-name>
+		<object-name>radio_glare</object-name>
+		<object-name>radio_rot0</object-name>
+		<object-name>radio_rot1</object-name>
 	</effect>
 
 </PropertyList>
