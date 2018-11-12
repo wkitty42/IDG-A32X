@@ -42,35 +42,6 @@ var tr1_a = 0;
 var tr2_v = 0;
 var tr2_a = 0;
 
-# Create Nodes:
-var apu_load = props.globals.initNode("/systems/electrical/extra/apu-load", 0);
-var apu_volts = props.globals.initNode("/systems/electrical/extra/apu-volts", 0);
-var apu_hz = props.globals.initNode("/systems/electrical/extra/apu-hz", 0);
-var bleedapu = props.globals.initNode("/systems/pneumatic/bleedapu", 0);
-var oil_psi_actual1 = props.globals.initNode("/engines/engine[0]/oil-psi-actual", 0);
-var oil_psi_actual2 = props.globals.initNode("/engines/engine[1]/oil-psi-actual", 0);
-var door_left = props.globals.initNode("/ECAM/Lower/door-left", 0);
-var door_right = props.globals.initNode("/ECAM/Lower/door-right", 0);
-var door_nose_left = props.globals.initNode("/ECAM/Lower/door-nose-left", 0);
-var door_nose_right = props.globals.initNode("/ECAM/Lower/door-nose-right", 0);
-var apu_n = props.globals.initNode("/ECAM/Lower/APU-N", 0);
-var apu_egt = props.globals.initNode("/ECAM/Lower/APU-EGT", 0);
-var oil_qt1 = props.globals.initNode("/ECAM/Lower/Oil-QT[0]", 0);
-var oil_qt2 = props.globals.initNode("/ECAM/Lower/Oil-QT[1]", 0);
-var oil_psi1 = props.globals.initNode("/ECAM/Lower/Oil-PSI[0]", 0);
-var oil_psi2 = props.globals.initNode("/ECAM/Lower/Oil-PSI[1]", 0);
-var aileron_ind_left = props.globals.initNode("/ECAM/Lower/aileron-ind-left", 0);
-var aileron_ind_right = props.globals.initNode("/ECAM/Lower/aileron-ind-right", 0);
-var elevator_ind_left = props.globals.initNode("/ECAM/Lower/elevator-ind-left", 0);
-var elevator_ind_right = props.globals.initNode("/ECAM/Lower/elevator-ind-right", 0);
-var elevator_trim_deg = props.globals.initNode("/ECAM/Lower/elevator-trim-deg", 0);
-var final_deg = props.globals.initNode("/fdm/jsbsim/hydraulics/rudder/final-deg", 0);
-var temperature_degc = props.globals.initNode("/environment/temperature-degc", 0);
-var gw = props.globals.initNode("/FMGC/internal/gw", 0);
-var du4_test = props.globals.initNode("/instrumentation/du/du4-test", 0);
-var du4_test_time = props.globals.initNode("/instrumentation/du/du4-test-time", 0);
-var du4_test_amount = props.globals.initNode("/instrumentation/du/du4-test-amount", 0);
-
 # Fetch Nodes
 var elapsed_sec = props.globals.getNode("/sim/time/elapsed-sec", 1);
 var ac2 = props.globals.getNode("/systems/electrical/bus/ac2", 1);
@@ -83,6 +54,30 @@ var hour = props.globals.getNode("/sim/time/utc/hour", 1);
 var minute = props.globals.getNode("/sim/time/utc/minute", 1);
 var apu_flap = props.globals.getNode("/systems/apu/flap", 1);
 var apu_rpm = props.globals.getNode("/systems/apu/rpm", 1);
+var apu_egt = props.globals.getNode("/systems/apu/egt", 1);
+var door_left = props.globals.getNode("/ECAM/Lower/door-left", 1);
+var door_right = props.globals.getNode("/ECAM/Lower/door-right", 1);
+var door_nose_left = props.globals.getNode("/ECAM/Lower/door-nose-left", 1);
+var door_nose_right = props.globals.getNode("/ECAM/Lower/door-nose-right", 1);
+var apu_rpm_rot = props.globals.getNode("/ECAM/Lower/APU-N", 1);
+var apu_egt_rot = props.globals.getNode("/ECAM/Lower/APU-EGT", 1);
+var oil_qt1 = props.globals.getNode("/ECAM/Lower/Oil-QT[0]", 1);
+var oil_qt2 = props.globals.getNode("/ECAM/Lower/Oil-QT[1]", 1);
+var oil_psi1 = props.globals.getNode("/ECAM/Lower/Oil-PSI[0]", 1);
+var oil_psi2 = props.globals.getNode("/ECAM/Lower/Oil-PSI[1]", 1);
+var apu_volts = props.globals.getNode("/systems/electrical/extra/apu-volts", 1);
+var apu_hz = props.globals.getNode("/systems/electrical/extra/apu-hz", 1);
+var bleedapu = props.globals.getNode("/systems/pneumatic/bleedapu", 1);
+var oil_psi_actual1 = props.globals.getNode("/engines/engine[0]/oil-psi-actual", 1);
+var oil_psi_actual2 = props.globals.getNode("/engines/engine[1]/oil-psi-actual", 1);
+var aileron_ind_left = props.globals.getNode("/ECAM/Lower/aileron-ind-left", 1);
+var aileron_ind_right = props.globals.getNode("/ECAM/Lower/aileron-ind-right", 1);
+var elevator_ind_left = props.globals.getNode("/ECAM/Lower/elevator-ind-left", 1);
+var elevator_ind_right = props.globals.getNode("/ECAM/Lower/elevator-ind-right", 1);
+var elevator_trim_deg = props.globals.getNode("/ECAM/Lower/elevator-trim-deg", 1);
+var final_deg = props.globals.getNode("/fdm/jsbsim/hydraulics/rudder/final-deg", 1);
+var temperature_degc = props.globals.getNode("/environment/temperature-degc", 1);
+var gw = props.globals.getNode("/FMGC/internal/gw", 1);
 var tank3_content_lbs = props.globals.getNode("/fdm/jsbsim/propulsion/tank[2]/contents-lbs", 1);
 var apu_master = props.globals.getNode("/controls/APU/master", 1);
 var gen_apu = props.globals.getNode("/controls/electrical/switches/gen-apu", 1);
@@ -251,6 +246,12 @@ var accu_press = props.globals.getNode("/systems/hydraulic/brakes/accumulator-pr
 var press_vs_norm = props.globals.getNode("/systems/pressurization/vs-norm", 1);
 var cabinalt = props.globals.getNode("/systems/pressurization/cabinalt-norm", 1);
 var gear0_wow = props.globals.getNode("/gear/gear[0]/wow", 1);
+
+# Create Nodes:
+var apu_load = props.globals.initNode("/systems/electrical/extra/apu-load", 0, "DOUBLE");
+var du4_test = props.globals.initNode("/instrumentation/du/du4-test", 0, "BOOL");
+var du4_test_time = props.globals.initNode("/instrumentation/du/du4-test-time", 0, "DOUBLE");
+var du4_test_amount = props.globals.initNode("/instrumentation/du/du4-test-amount", 0, "DOUBLE");
 
 var canvas_lowerECAM_base = {
 	init: func(canvas_group, file) {
@@ -664,8 +665,8 @@ var canvas_lowerECAM_apu = {
 			me["APUEGT"].setColor(0.7333,0.3803,0);
 			me["APUEGT"].setText(sprintf("%s", "XX"));
 		}
-		me["APUN-needle"].setRotation((apu_n.getValue() + 90) * D2R);
-		me["APUEGT-needle"].setRotation((apu_egt.getValue() + 90) * D2R);
+		me["APUN-needle"].setRotation((apu_rpm_rot.getValue() + 90) * D2R);
+		me["APUEGT-needle"].setRotation((apu_egt_rot.getValue() + 90) * D2R);
 
 		me.updateBottomStatus();
 	},
