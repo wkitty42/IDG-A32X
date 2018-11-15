@@ -146,7 +146,7 @@ var ECAM = {
 			setprop("/ECAM/ldg-memo-enable", 0);
 		}
 		
-		if (ecam.warnings.size() > 0) {
+		if (getprop("/ECAM/show-left-msg") == 1) {
 			setprop("/ECAM/left-msg", "MSG");
 		} else if (getprop("/FMGC/status/phase") == 0 and stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
 			setprop("/ECAM/left-msg", "TO-MEMO");
@@ -156,7 +156,7 @@ var ECAM = {
 			setprop("/ECAM/left-msg", "NONE");
 		}
 		
-		if (ecam.memos.size() > 0) {
+		if (getprop("/ECAM/show-right-msg") == 1) {
 			setprop("/ECAM/right-msg", "MSG");
 		} else {
 			setprop("/ECAM/right-msg", "NONE");

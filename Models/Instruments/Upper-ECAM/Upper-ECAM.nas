@@ -10,6 +10,8 @@ var upperECAM_iae_eis2 = nil;
 var upperECAM_test = nil;
 var upperECAM_display = nil;
 var elapsedtime = 0;
+var leftmsg = "XX";
+var rightmsg = "XX";
 
 # Create Nodes:
 var fuel_1 = props.globals.initNode("/engines/engine[0]/fuel-flow_actual", 0);
@@ -92,6 +94,7 @@ var ECAM_line6c = props.globals.getNode("/ECAM/msg/linec6", 1);
 var ECAM_line7c = props.globals.getNode("/ECAM/msg/linec7", 1);
 var ECAM_line8c = props.globals.getNode("/ECAM/msg/linec8", 1);
 var ECAMleft = props.globals.getNode("/ECAM/left-msg", 1);
+var ECAMright = props.globals.getNode("/ECAM/right-msg", 1);
 var rate = props.globals.getNode("/systems/acconfig/options/uecam-rate", 1);
 
 var canvas_upperECAM_base = {
@@ -223,6 +226,7 @@ var canvas_upperECAM_base = {
 		line7c = ECAM_line7c.getValue();
 		line8c = ECAM_line8c.getValue();
 		leftmsg = ECAMleft.getValue();
+		rightmsg = ECAMright.getValue();
 		
 		if (leftmsg == "MSG") {
 			me["ECAML1"].setText(sprintf("%s", ECAM_line1.getValue()));
@@ -434,7 +438,7 @@ var canvas_upperECAM_base = {
 		}
 		
 		# Right ECAM Messages
-		if (getprop("/ECAM/right-msg") == "MSG") {
+		if (rightmsg == "MSG") {
 			me["ECAMR1"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line1")));
 			me["ECAMR2"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line2")));
 			me["ECAMR3"].setText(sprintf("%s", getprop("/ECAM/rightmsg/line3")));
@@ -559,8 +563,6 @@ var canvas_upperECAM_base = {
 			me["ECAM_Right"].show();
 		} else {
 			me["ECAM_Right"].hide();
-			me["TO_Memo"].hide();
-			me["LDG_Memo"].hide();
 		}
 	},
 };
