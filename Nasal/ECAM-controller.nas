@@ -197,10 +197,8 @@ var ECAM_controller = {
 		#	w.sound();
 		# }
 		
-		if (warnings.size() == 0) {
-			foreach (var l; leftmemos.vector) {
-				l.write();
-			}
+		foreach (var l; leftmemos.vector) {
+			l.write();
 		}
 		
 		foreach (var m; memos.vector) {
