@@ -113,6 +113,25 @@ var messages_right_memo = func {
 		ldg_inhibit.active = 0;
 	}
 	
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8)) {
+		land_asap_r.active = 1;
+	} else {
+		land_asap_r.active = 0;
+	}
+	
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8)) {
+		# todo: emer elec
+		land_asap_r.active = 1;
+	} else {
+		land_asap_r.active = 0;
+	}
+	
+	if (land_asap_r.active == 0 and getprop("/gear/gear[1]/wow") == 0 and ((getprop("/fdm/jsbsim/propulsion/tank[0]/contents-lbs") < 1650 and getprop("/fdm/jsbsim/propulsion/tank[1]/contents-lbs") < 1650) or ((getprop("/systems/electrical/bus/dc2") < 25 and (getprop("/systems/failures/elac1") == 1 or getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/green-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/yellow-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/blue-psi") < 1500 and (getprop("/systems/failures/elac2") == 1 and getprop("/systems/failures/sec2") == 1))) or (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8 and (getprop("/engines/engine[0]/state") != 3 or getprop("/engines/engine[1]/state") != 3)))) {
+		land_asap_a.active = 1;
+	} else {
+		land_asap_a.active = 0;
+	}
+	
 	if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
 		spd_brk.active = 1;
 	} else {
