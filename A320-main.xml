@@ -1530,6 +1530,7 @@
 		</canvas_mcdu>
 		<ecam>
 			<file>Aircraft/IDG-A32X/Nasal/ECAM-controller.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/ECAM-logic.nas</file>
 		</ecam>
 		<icing>
 			<file>Aircraft/IDG-A32X/Nasal/icing.nas</file>
