@@ -11,7 +11,7 @@ var spacer = nil;
 var line = nil;
 var right_line = nil;
 var wow = getprop("/gear/gear[1]/wow");
-setprop("/ECAM/show-left-msg", 0);
+setprop("/ECAM/show-left-msg", 1);
 setprop("/ECAM/show-right-msg", 1);
 setprop("/ECAM/warnings/master-warning-light", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
