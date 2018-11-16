@@ -12,7 +12,7 @@ var line = nil;
 var right_line = nil;
 var wow = getprop("/gear/gear[1]/wow");
 setprop("/ECAM/show-left-msg", 0);
-setprop("/ECAM/show-right-msg", 0);
+setprop("/ECAM/show-right-msg", 1);
 setprop("/ECAM/warnings/master-warning-light", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
 
@@ -120,6 +120,10 @@ var leftmemos = std.Vector.new([
 var memos = std.Vector.new([
 	var to_inhibit = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
 	var ldg_inhibit = memo.new(msg: "LDG INHIBIT", active: 0, colour: "m"),
+	var land_asap_r = memo.new(msg: "LAND ASAP", active: 0, colour: "r"),
+	var land_asap_a = memo.new(msg: "LAND ASAP", active: 0, colour: "a"),
+	var ap_off = memo.new(msg: "AP OFF", active: 0, colour: "r"),
+	var athr_off = memo.new(msg: "A/THR OFF", active: 0, colour: "a"),
 	var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
 	var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
 	var ptu = memo.new(msg: "HYD PTU", active: 0, colour: "g"),
@@ -171,8 +175,8 @@ var ECAM_controller = {
 		# messages_priority_2();
 		# messages_priority_1();
 		# messages_priority_0();
-		# messages_memo();
-		# messages_right_memo();
+		messages_memo();
+		messages_right_memo();
 		
 		# clear display momentarily
 		
