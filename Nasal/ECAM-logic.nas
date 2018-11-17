@@ -62,7 +62,7 @@ var messages_memo = func {
 		refuelg.active = 0;
 	}
 	
-	if (getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-lever") >= 1) {
+	if (getprop("/controls/flight/speedbrake-arm") == 1) {
 		gnd_splrs.active = 1;
 	} else {
 		gnd_splrs.active = 0;

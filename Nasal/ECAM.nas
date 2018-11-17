@@ -146,12 +146,12 @@ var ECAM = {
 			setprop("/ECAM/ldg-memo-enable", 0);
 		}
 		
-		if (getprop("/ECAM/show-left-msg") == 1) {
-			setprop("/ECAM/left-msg", "MSG");
-		} else if (getprop("/FMGC/status/phase") == 0 and stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
+		if (stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
 			setprop("/ECAM/left-msg", "TO-MEMO");
 		} else if (getprop("/ECAM/ldg-memo-enable") == 1) {
 			setprop("/ECAM/left-msg", "LDG-MEMO");
+		} else if (getprop("/ECAM/show-left-msg") == 1) {
+			setprop("/ECAM/left-msg", "MSG");
 		} else {
 			setprop("/ECAM/left-msg", "NONE");
 		}
@@ -164,7 +164,7 @@ var ECAM = {
 		
 		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/controls/switches/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 
 		and getprop("/controls/flight/flap-pos") < 5) {
-			# Do nothing
+			setprop("/ECAM/to-config", 1);
 		} else {
 			setprop("/ECAM/to-config", 0);
 		}
@@ -230,14 +230,9 @@ var ECAM = {
 		stateR = getprop("/engines/engine[1]/state");
 		wow = getprop("/gear/gear[0]/wow");
 		
-		if (wow == 1 and stateL == 3 and stateR == 3 and getprop("/ECAM/left-msg") != "TO-MEMO") {
+		if ((getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 9) and wow == 1 and (stateL == 3 or stateR == 3) and getprop("/ECAM/left-msg") != "TO-MEMO") {
 			setprop("/ECAM/to-memo-enable", 1);
 			setprop("/ECAM/engine-start-time", getprop("/ECAM/engine-start-time") - 120);
-		}
-		
-		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/controls/switches/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 
-		and getprop("/controls/flight/flap-pos") < 5) {
-			setprop("/ECAM/to-config", 1);
 		}
 	},
 };
