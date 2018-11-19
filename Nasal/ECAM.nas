@@ -132,9 +132,9 @@ var ECAM = {
 			}
 		}
 		
-		if (wow == 0) {
+		if (getprop("/ECAM/warning-phase") >= 3) {
 			setprop("/ECAM/to-memo-enable", 0);
-		} else if ((stateL != 3 or stateR != 3) and wow == 1) {
+		} else {
 			setprop("/ECAM/to-memo-enable", 1);
 		}
 		

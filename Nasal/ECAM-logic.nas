@@ -74,7 +74,7 @@ var messages_memo = func {
 		seatbelts.active = 0;
 	}
 	
-	if (getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
+	if (getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/gear/gear[1]/wow") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # should go off after takeoff assuming switch is in auto due to old logic from the days when smoking was allowed!
 		nosmoke.active = 1;
 	} else {
 		nosmoke.active = 0;
