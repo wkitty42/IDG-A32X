@@ -5915,6 +5915,21 @@
 		<object-name>iesi</object-name>
 		<object-name>clock_body</object-name>
 		<object-name>gear_lever_body</object-name>
+		<object-name>ParkBrk</object-name>
+		<object-name>RudderTrim</object-name>
+		<object-name>gravity_gear</object-name>
+		<object-name>flood_lt_main</object-name>
+		<object-name>integ_lt</object-name>
+		<object-name>flood_lt_ped</object-name>
+		<object-name>ecam_att_hdg</object-name>
+		<object-name>ecam_air_data</object-name>
+		<object-name>ecam_eis_dmc</object-name>
+		<object-name>ecam_nd_xfr</object-name>
+		<object-name>ecam_brt_upper</object-name>
+		<object-name>ecam_brt_lower</object-name>
+		<object-name>Lcutoff</object-name>
+		<object-name>Rcutoff</object-name>
+		<object-name>eng_mode</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>
@@ -5946,6 +5961,26 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-glare</inherits-from>
 		<object-name>pedestal_low_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/thr-quad-flood</inherits-from>
+		<object-name>thr_quad</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/rudder-trim</inherits-from>
+		<object-name>RudderTrim</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/park-brk</inherits-from>
+		<object-name>ParkBrk</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/gravity-gear</inherits-from>
+		<object-name>gravity_gear</object-name>
 	</effect>
 	
 	<effect>

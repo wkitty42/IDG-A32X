@@ -27,6 +27,10 @@
 		<object-name>Lcutoff</object-name>
 		<object-name>Rcutoff</object-name>
 		<object-name>eng_mode</object-name>
+		<object-name>radar_gain</object-name>
+		<object-name>radar_tilt</object-name>
+		<object-name>radar_mode</object-name>
+		<object-name>radio_rot1</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>
@@ -86,13 +90,49 @@
 	</effect>
 	
 	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/left-light-brightness</inherits-from>
+		<object-name>vu111_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/left-light-brightness-glare</inherits-from>
+		<object-name>vu111_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/right-light-brightness</inherits-from>
+		<object-name>vu112_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/right-light-brightness-glare</inherits-from>
+		<object-name>vu112_glare</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/dummy-gap</inherits-from>
+		<object-name>dummy_1</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/radar-mode</inherits-from>
+		<object-name>radar_mode</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/radar-tilt</inherits-from>
+		<object-name>radar_tilt</object-name>
+	</effect>
+	
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>ecam_body</object-name>
 		<object-name>ecam_switch_body</object-name>
 		<object-name>vu111_body</object-name>
 		<object-name>vu112_body</object-name>
+		<object-name>vu111_glare</object-name>
+		<object-name>vu112_glare</object-name>
 		<object-name>throttle_1_label</object-name>
-		<object-name>dummy_1</object-name>
 		<object-name>dummy_2</object-name>
 		<object-name>ecam_glare_down</object-name>
 		<object-name>ecam_glare_up</object-name>
@@ -106,8 +146,6 @@
 		<object-name>integ_lt</object-name>
 		<object-name>flood_lt_ped</object-name>
 		<object-name>radar_gain</object-name>
-		<object-name>radar_mode</object-name>
-		<object-name>radar_tilt</object-name>
 		<object-name>atc_thrt</object-name>
 		<object-name>atc_sys</object-name>
 		<object-name>atc_abv</object-name>
