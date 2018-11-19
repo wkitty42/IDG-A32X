@@ -4765,21 +4765,6 @@
 		<object-name>mcdu_glare</object-name>
 		<object-name>radio_glare</object-name>
 		<object-name>audio_glare</object-name>
-		<object-name>audio_vhf1_glare</object-name>
-		<object-name>audio_vhf2_glare</object-name>
-		<object-name>audio_vhf3_glare</object-name>
-		<object-name>audio_hf1_glare</object-name>
-		<object-name>audio_hf2_glare</object-name>
-		<object-name>audio_int_glare</object-name>
-		<object-name>audio_cab_glare</object-name>
-		<object-name>audio_pa_rot_glare</object-name>
-		<object-name>audio_vor1_glare</object-name>
-		<object-name>audio_vor2_glare</object-name>
-		<object-name>audio_mkr_glare</object-name>
-		<object-name>audio_ils_glare</object-name>
-		<object-name>audio_mls_glare</object-name>
-		<object-name>audio_adf1_glare</object-name>
-		<object-name>audio_adf2_glare</object-name>
 		<object-name>audio_int_rad.mark</object-name>
 		<object-name>vu111_glare</object-name>
 		<object-name>vu112_glare</object-name>
