@@ -171,7 +171,7 @@ var ECAM = {
 			setprop("/ECAM/right-msg", "NONE");
 		}
 		
-		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/switches/no-smoking-sign") == 1 and getprop("/controls/switches/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 
+		if (getprop("/controls/autobrake/mode") == 3 and getprop("/controls/lighting/no-smoking-sign") == 1 and getprop("/controls/lighting/seatbelt-sign") == 1 and getprop("/controls/flight/speedbrake-arm") == 1 and getprop("/controls/flight/flap-pos") > 0 
 		and getprop("/controls/flight/flap-pos") < 5) {
 			setprop("/ECAM/to-config", 1);
 		} else {
@@ -256,7 +256,7 @@ var ECAM = {
 			setprop("/ECAM/to-memo-enable", 1);
 			setprop("/ECAM/engine-start-time", getprop("/ECAM/engine-start-time") - 120);
 		}
-	},
+		},
 };
 
 ECAM.MSGclr();
