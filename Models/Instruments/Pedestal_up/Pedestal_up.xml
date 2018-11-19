@@ -46,66 +46,24 @@
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-atc</inherits-from>
-		<object-name>atc_body</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-atc-glare</inherits-from>
 		<object-name>atc_glare</object-name>
+		<object-name>atc_body</object-name>
 	</effect>
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-engine</inherits-from>
 		<object-name>engine_body</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-engine-glare</inherits-from>
 		<object-name>engine_glare</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-radar</inherits-from>
-		<object-name>radar_body</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-radar-glare</inherits-from>
-		<object-name>radar_glare</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-LCutoff</inherits-from>
+		<object-name>eng_mode</object-name>
 		<object-name>Lcutoff</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-RCutoff</inherits-from>
 		<object-name>Rcutoff</object-name>
 	</effect>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-mode-selector</inherits-from>
-		<object-name>eng_mode</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/left-light-brightness</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/brightness-panel-ped</inherits-from>
 		<object-name>vu111_body</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/left-light-brightness-glare</inherits-from>
-		<object-name>vu111_glare</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/right-light-brightness</inherits-from>
 		<object-name>vu112_body</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/right-light-brightness-glare</inherits-from>
+		<object-name>vu111_glare</object-name>
 		<object-name>vu112_glare</object-name>
 	</effect>
 	
@@ -115,14 +73,13 @@
 	</effect>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/radar-mode</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-radar</inherits-from>
 		<object-name>radar_mode</object-name>
+		<object-name>radar_tilt</object-name>
+		<object-name>radar_body</object-name>
+		<object-name>radar_glare</object-name>
 	</effect>
 	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/radar-tilt</inherits-from>
-		<object-name>radar_tilt</object-name>
-	</effect>
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
