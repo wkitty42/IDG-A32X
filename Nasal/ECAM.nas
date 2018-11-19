@@ -41,6 +41,9 @@ var ENGCounting = 0;
 var flapLever = 0;
 var CRZTime = 0;
 var CRZCondition = 0;
+var ap1_active = 0;
+var ap2_active = 0;
+var athr_active = 0;
 setprop("/ECAM/left-msg", "NONE");
 setprop("/position/gear-agl-ft", 0);
 # w = White, b = Blue, g = Green, a = Amber, r = Red
@@ -73,6 +76,12 @@ var ECAM = {
 		setprop("/ECAM/Lower/light/wheel", 0);
 		setprop("/ECAM/warning-phase", 1);
 		setprop("/ECAM/warning-phase-10-time", 0);
+		setprop("/ECAM/ap1-off-time", 0);
+		setprop("/ECAM/ap2-off-time", 0);
+		setprop("/ECAM/athr-off-time", 0);
+		var ap1_off_time = getprop("/ECAM/ap1-off-time");
+		var ap2_off_time = getprop("/ECAM/ap2-off-time");
+		var athr_off_time = getprop("/ECAM/athr-off-time");
 		LowerECAM.reset();
 	},
 	MSGclr: func() {
@@ -183,6 +192,19 @@ var ECAM = {
 			} else {
 				toPowerSet = 0;
 			}
+		}
+		
+		# AP / ATHR warnings
+		if (ap1_active == 1 and (getprop("/ECAM/ap1-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+			ap1_active = 0;
+		}
+		
+		if (ap2_active == 1 and (getprop("/ECAM/ap2-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+			ap2_active = 0;
+		}
+		
+		if (athr_active == 1 and (getprop("/ECAM/athr-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+			athr_active = 0;
 		}
 		
 		# Warning Phases
@@ -411,3 +433,26 @@ var LowerECAM = {
 		setprop("/ECAM/Lower/light/wheel", 0);
 	},
 };
+
+# Logic for autopilot disconnect warning
+
+setlistener("/it-autoflight/input/ap1", func {
+	if (getprop("/it-autoflight/input/ap1") == 0) {
+		ap1_active = 1;
+		setprop("/ECAM/ap1-off-time", getprop("/sim/time/elapsed-sec"));
+	}
+}, 0, 0);
+
+setlistener("/it-autoflight/input/ap2", func {
+	if (getprop("/it-autoflight/input/ap2") == 0) {
+		ap2_active = 1;
+		setprop("/ECAM/ap2-off-time", getprop("/sim/time/elapsed-sec"));
+	}
+}, 0, 0);
+
+setlistener("/it-autoflight/input/athr", func {
+	if (getprop("/it-autoflight/input/athr") == 0) {
+		athr_active = 1;
+		setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
+	}
+}, 0, 0);

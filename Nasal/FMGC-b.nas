@@ -170,9 +170,15 @@ setlistener("/it-autoflight/input/athr", func {
 	var atmas = getprop("/it-autoflight/input/athr");
 	if (atmas == 0) {
 		setprop("/it-autoflight/output/athr", 0);
+		if (getprop("/it-autoflight/sound/enableathrsound") == 1 and getprop("/it-autoflight/output/athr") == 0) {
+			setprop("/it-autoflight/sound/athrsound", 1);	
+			setprop("/it-autoflight/sound/enableathrsound", 0);	  
+		}
 	} else if (atmas == 1) {
 		thrustmode();
 		setprop("/it-autoflight/output/athr", 1);
+		setprop("/it-autoflight/sound/athrsound", 0);	
+		setprop("/it-autoflight/sound/enableathrsound", 1);	  
 	}
 });
 

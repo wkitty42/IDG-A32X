@@ -132,6 +132,17 @@ var messages_right_memo = func {
 		land_asap_a.active = 0;
 	}
 	
+	if (libraries.ap1_active == 1 or libraries.ap2_active == 1) {
+		ap_off.active = 1;
+	} else {
+		ap_off.active = 0;
+	}
+	
+	if (libraries.athr_active == 1) {
+		athr_off.active = 1;
+	} else {
+		athr_off.active = 0;
+	}
 	if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
 		spd_brk.active = 1;
 	} else {

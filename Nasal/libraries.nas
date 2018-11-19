@@ -553,7 +553,7 @@ var lightsLoop = maketimer(0.2, func {
 			if (getprop("/controls/lighting/no-smoking-sign") == 0) {
 				setprop("/controls/lighting/no-smoking-sign", 1);
 			}
-		} elsif (getprop("controls/switches/no-smoking-sign") == 0.5 and getprop("gear/gear[0]/position-norm") != 0) {
+		} elsif (getprop("controls/switches/no-smoking-sign") == 0.5 and getprop("gear/gear[0]/position-norm") != 0) { # todo: should be when uplocks not engaged
 			if (getprop("/controls/lighting/no-smoking-sign") == 0) {
 				setprop("/controls/lighting/no-smoking-sign", 1);
 			}

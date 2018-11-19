@@ -1071,6 +1071,9 @@
 						if (getprop("/it-autoflight/output/athr") == 1) {
 							setprop("/it-autoflight/input/athr", 0);
 						}
+						if (libraries.athr_active == 1) {
+							libraries.athr_active = 0;
+						}
 					</script>
 				</binding>
 			</key>
@@ -1316,6 +1319,12 @@
 						}
 						if (getprop("/it-autoflight/output/ap2") == 1) {
 							setprop("/it-autoflight/input/ap2", 0);
+						}
+						if (libraries.ap1_active == 1) {
+							libraries.ap1_active = 0;
+						}
+						if (libraries.ap2_active == 1) {
+							libraries.ap2_active = 0;
 						}
 					</script>
 				</binding>
