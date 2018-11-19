@@ -195,15 +195,15 @@ var ECAM = {
 		}
 		
 		# AP / ATHR warnings
-		if (ap1_active == 1 and (getprop("/ECAM/ap1-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+		if (ap1_active == 1 and getprop("/it-autoflight/input/ap1") == 0 and (getprop("/ECAM/ap1-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
 			ap1_active = 0;
 		}
 		
-		if (ap2_active == 1 and (getprop("/ECAM/ap2-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+		if (ap2_active == 1 and getprop("/it-autoflight/input/ap2") == 0 and (getprop("/ECAM/ap2-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
 			ap2_active = 0;
 		}
 		
-		if (athr_active == 1 and (getprop("/ECAM/athr-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+		if (athr_active == 1 and getprop("/it-autoflight/input/athr") == 0 and (getprop("/ECAM/athr-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
 			athr_active = 0;
 		}
 		
@@ -452,7 +452,9 @@ setlistener("/it-autoflight/input/ap2", func {
 
 setlistener("/it-autoflight/input/athr", func {
 	if (getprop("/it-autoflight/input/athr") == 0) {
-		athr_active = 1;
-		setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
+		if (getprop("/position/gear-agl-ft") > 50) {
+			athr_active = 1;
+			setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
+		}
 	}
 }, 0, 0);

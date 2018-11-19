@@ -130,7 +130,7 @@ var memos = std.Vector.new([
 	var rat = memo.new(msg: "RAT OUT", active: 0, colour: "g"),
 	var emer_gen = memo.new(msg: "EMER GEN", active: 0, colour: "g"),
 	var ram_air = memo.new(msg: "RAM AIR ON", active: 0, colour: "g"),
-	var nw_strg_disc = memo.new(msg: "NW STRG DISC", active: 0, colour: "g"), # Not yet implemented
+	var nw_strg_disc = memo.new(msg: "NW STRG DISC", active: 0, colour: "g"),
 	var ignition = memo.new(msg: "IGNITION", active: 0, colour: "g"),
 	var cabin_ready = memo.new(msg: "CABIN READY", active: 0, colour: "g"), # Not yet implemented
 	var pred_ws_off = memo.new(msg: "PRED W/S OFF", active: 0, colour: "g"), # Not yet implemented
@@ -151,7 +151,7 @@ var memos = std.Vector.new([
 	var brk_fan = memo.new(msg: "BRK FAN", active: 0, colour: "g"), # Not yet implemented
 	var audio3_xfrd = memo.new(msg: "AUDIO 3 XFRD", active: 0, colour: "g"), # Not yet implemented
 	var switchg_pnl = memo.new(msg: "SWITCHG PNL", active: 0, colour: "g"), # Not yet implemented
-	var gpws_flap3 = memo.new(msg: "GPWS FLAP 3", active: 0, colour: "g"), # Not yet implemented
+	var gpws_flap3 = memo.new(msg: "GPWS FLAP 3", active: 0, colour: "g"), 
 	var hf_data_ovrd = memo.new(msg: "HF DATA OVRD", active: 0, colour: "g"), # Not yet implemented
 	var hf_voice = memo.new(msg: "HF VOICE", active: 0, colour: "g"), # Not yet implemented
 	var acars_stby = memo.new(msg: "ACARS STBY", active: 0, colour: "g"), # Not yet implemented
@@ -161,7 +161,7 @@ var memos = std.Vector.new([
 	var auto_brk_max = memo.new(msg: "AUTO BRK MAX", active: 0, colour: "g"),
 	var auto_brk_off = memo.new(msg: "AUTO BRK OFF", active: 0, colour: "g"), # Not yet implemented
 	var man_ldg_elev = memo.new(msg: "MAN LDG ELEV", active: 0, colour: "g"), # Not yet implemented
-	var ctr_tk_feedg = memo.new(msg: "CTR TK FEEDG", active: 0, colour: "g"), # Not yet implemented
+	var ctr_tk_feedg = memo.new(msg: "CTR TK FEEDG", active: 0, colour: "g"),
 	var fuelx = memo.new(msg: "FUEL X FEED", active: 0, colour: "g")
 ]);
 

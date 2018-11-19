@@ -143,6 +143,7 @@ var messages_right_memo = func {
 	} else {
 		athr_off.active = 0;
 	}
+	
 	if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
 		spd_brk.active = 1;
 	} else {
@@ -184,6 +185,18 @@ var messages_right_memo = func {
 		rat.colour = "g";
 	}
 	
+	if (getprop("/sim/model/pushback/enabled") == 1) {
+		nw_strg_disc.active = 1;
+	} else {
+		nw_strg_disc.active = 0;
+	}
+	
+	if (getprop("/engines/engine[0]/state") == 3 or getprop("/engines/engine[1]/state") == 3) {
+		nw_strg_disc.colour = "a";
+	} else {
+		nw_strg_disc.colour = "g";
+	}
+	
 	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and !wow) {
 		emer_gen.active = 1;
 	} else {
@@ -200,6 +213,12 @@ var messages_right_memo = func {
 		ignition.active = 1;
 	} else {
 		ignition.active = 0;
+	}
+	
+	if (getprop("/controls/pneumatic/switches/bleedapu") == 1 and getprop("/systems/apu/rpm") >= 95) {
+		apu_bleed.active = 1;
+	} else {
+		apu_bleed.active = 0;
 	}
 
 	if (apu_bleed.active == 0 and getprop("/systems/apu/rpm") >= 95) {
@@ -225,6 +244,7 @@ var messages_right_memo = func {
 	} else {
 		wing_aice.active = 0;
 	}
+	
 	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and (getprop("/ECAM/warning-phase") == 1 or getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") == 9 or getprop("/ECAM/warning-phase") == 10)) {
 		vhf3_voice.active = 1;
 	} else {
@@ -258,5 +278,17 @@ var messages_right_memo = func {
 		fuelx.colour = "a";
 	} else {
 		fuelx.colour = "g";
+	}
+	
+	if (getprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-3-override") == 1) { # todo: emer elec
+		gpws_flap3.active = 1;
+	} else {
+		gpws_flap3.active = 0;
+	}
+	
+	if (getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 9 and getprop("/systems/fuel/only-use-ctr-tank") == 1 and getprop("/systems/electrical/bus/ac1") >= 115 and getprop("/systems/electrical/bus/ac2") >= 115) {
+		ctr_tk_feedg.active = 1;
+	} else {
+		ctr_tk_feedg.active = 0;
 	}
 }
