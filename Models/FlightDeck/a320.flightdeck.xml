@@ -5944,15 +5944,17 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood</inherits-from>
 		<object-name>main_panel</object-name>
+		<object-name>gear_lever_body</object-name>
 	</effect>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-left-brightness</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/gear-lever</inherits-from>
+		<object-name>gear_lever</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-brightness</inherits-from>
 		<object-name>brightness_panel_left_glare</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/panel-flood-right-brightness</inherits-from>
 		<object-name>brightness_panel_right_glare</object-name>
 	</effect>
 	
@@ -6000,15 +6002,6 @@
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-footrest</inherits-from>
 		<object-name>ped_footrest</object-name>
 	</effect>
-	<!--<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light</inherits-from>
-		<object-name>WindowCpt</object-name>
-	</effect>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/reading-light-checklist</inherits-from>
-		<object-name>Sticker</object-name>
-	</effect>-->
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-flap</inherits-from>
@@ -6018,6 +6011,28 @@
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/pedestal-flood-spdbrk</inherits-from>
 		<object-name>SpdBrk</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/iesi</inherits-from>
+		<object-name>iesi</object-name>
+		<object-name>iesi_baro_knb</object-name>
+		<object-name>iesi_btn_bugs</object-name>
+		<object-name>iesi_btn_ls</object-name>
+		<object-name>iesi_btn_minus</object-name>
+		<object-name>iesi_btn_plus</object-name>
+		<object-name>iesi_btn_rst</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/clock</inherits-from>
+		<object-name>clock.001</object-name>
+		<object-name>clock_body</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/clock-glare</inherits-from>
+		<object-name>clock_glare</object-name>
 	</effect>
 	
 	<!-- move any objects requiring lightmap to another effect file -->
@@ -6032,8 +6047,6 @@
 		<object-name>carpet</object-name>
 		<object-name>ceiling</object-name>
 		<object-name>clock</object-name>
-		<object-name>clock.001</object-name>
-		<object-name>clock_body</object-name>
 		<object-name>compass_box</object-name>
 		<object-name>DoorC</object-name>
 		<object-name>efis_box_1</object-name>
@@ -6082,7 +6095,6 @@
 		<object-name>footrest_fo</object-name>
 		<object-name>footrest_fo2</object-name>
 		<object-name>gallery_l</object-name>
-		<object-name>gear_lever_body</object-name>
 		<object-name>hud</object-name>
 		<object-name>hud_1</object-name>
 		<object-name>hud_1_label</object-name>
@@ -6134,16 +6146,8 @@
 		<object-name>foot_warmer_cpt_sw.mark</object-name>
 		<object-name>foot_warmer_fo_sw</object-name>
 		<object-name>foot_warmer_fo_sw.mark</object-name>
-		<object-name>gear_lever</object-name>
 		<object-name>gear_lever_slot</object-name>
 		<object-name>gpws_gs_sw</object-name>
-		<object-name>iesi</object-name>
-		<object-name>iesi_baro_knb</object-name>
-		<object-name>iesi_btn_bugs</object-name>
-		<object-name>iesi_btn_ls</object-name>
-		<object-name>iesi_btn_minus</object-name>
-		<object-name>iesi_btn_plus</object-name>
-		<object-name>iesi_btn_rst</object-name>
 		<object-name>iesi_labels</object-name>
 		<object-name>iesi_screen</object-name>
 		<object-name>lgear</object-name>

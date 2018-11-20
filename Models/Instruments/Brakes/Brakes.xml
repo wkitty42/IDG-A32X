@@ -74,7 +74,7 @@
 	</animation>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/brake</inherits-from>
 		<object-name>brakes_body</object-name>
 	</effect>
 

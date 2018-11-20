@@ -190,11 +190,19 @@
 	</animation>
 	
 	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/ddrmi</inherits-from>
 		<object-name>ddrmi_body</object-name>
-		<object-name>ddrmi_inside</object-name>
 		<object-name>ddrmi_vor_adf_select_1</object-name>
 		<object-name>ddrmi_vor_adf_select_2</object-name>
+		<object-name>ddrmi_pointer_1</object-name>
+		<object-name>ddrmi_pointer_2</object-name>
+	</effect>
+	
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<object-name>ddrmi_inside</object-name>
+		<object-name>ddrmi_vor_adf_flag_1</object-name>
+		<object-name>ddrmi_vor_adf_flag_2</object-name>
 	</effect>
 
 </PropertyList>
