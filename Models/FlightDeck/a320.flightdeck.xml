@@ -6030,10 +6030,10 @@
 		<object-name>clock_body</object-name>
 	</effect>
 	
-	<effect>
+	<!--<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/clock-glare</inherits-from>
 		<object-name>clock_glare</object-name>
-	</effect>
+	</effect>-->
 	
 	<!-- move any objects requiring lightmap to another effect file -->
 	<effect>
