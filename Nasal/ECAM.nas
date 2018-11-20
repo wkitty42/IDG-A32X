@@ -22,6 +22,7 @@ var mode = "XX";
 var modeI = "XX";
 var man_sel = 0;
 var fault_sel = 0;
+var fault_page = "";
 var warnPhase = 1;
 var page = "door";
 var aileron = 0;
@@ -59,6 +60,7 @@ var ECAM = {
 		setprop("/ECAM/Lower/page", "door");
 		setprop("/ECAM/Lower/man-select", 0);
 		setprop("/ECAM/Lower/fault-select", 0);
+		setprop("/ECAM/Lower/fault-page", "");
 		setprop("/ECAM/Lower/apu-timer", 0);
 		setprop("/ECAM/Lower/eng-timer", 0);
 		setprop("/ECAM/Lower/fctl-timer", 0);
@@ -74,6 +76,7 @@ var ECAM = {
 		setprop("/ECAM/Lower/light/press", 0);
 		setprop("/ECAM/Lower/light/sts", 0);
 		setprop("/ECAM/Lower/light/wheel", 0);
+		setprop("/ECAM/Lower/light/clr", 0);
 		setprop("/ECAM/warning-phase", 1);
 		setprop("/ECAM/warning-phase-10-time", 0);
 		setprop("/ECAM/ap1-off-time", 0);
@@ -267,16 +270,41 @@ var LowerECAM = {
 	button: func(b) {
 		man_sel = getprop("/ECAM/Lower/man-select");
 		
-		if (!getprop("/ECAM/lower/fault-select")) {
-			if (!man_sel) {
+		if (getprop("/ECAM/Lower/fault-select") == 0) {
+			if (b != "clr") {
+				if (!man_sel) {
+					setprop("/ECAM/Lower/man-select", 1);
+					setprop("/ECAM/Lower/page", b);
+					setprop("/ECAM/Lower/light/" ~ b, 1);
+				} else {
+					if (b == getprop("/ECAM/Lower/page")) {
+						setprop("/ECAM/Lower/man-select", 0);
+						LowerECAM.loop();
+						setprop("/ECAM/Lower/light/" ~ b, 0);
+					} else {
+						setprop("/ECAM/Lower/light/" ~ getprop("/ECAM/Lower/page"), 0);
+						setprop("/ECAM/Lower/page", b);
+						setprop("/ECAM/Lower/light/" ~ b, 1);
+					}
+				}
+			}
+		} else {
+			if (b == "clr") {
+				setprop("/ECAM/Lower/light/clr", 0);
+				setprop("/ECAM/Lower/fault-select", 0);
+				setprop("/ECAM/Lower/fault-page", "");
+				LowerECAM.loop();
+			} elsif (!man_sel) {
 				setprop("/ECAM/Lower/man-select", 1);
 				setprop("/ECAM/Lower/page", b);
 				setprop("/ECAM/Lower/light/" ~ b, 1);
+				print("calling SD page manually");
 			} else {
 				if (b == getprop("/ECAM/Lower/page")) {
 					setprop("/ECAM/Lower/man-select", 0);
-					LowerECAM.loop();
 					setprop("/ECAM/Lower/light/" ~ b, 0);
+					setprop("/ECAM/Lower/fault-select", 1);
+					setprop("/ECAM/Lower/page", getprop("/ECAM/Lower/fault-page"));
 				} else {
 					setprop("/ECAM/Lower/light/" ~ getprop("/ECAM/Lower/page"), 0);
 					setprop("/ECAM/Lower/page", b);
@@ -288,6 +316,7 @@ var LowerECAM = {
 	loop: func() {
 		man_sel = getprop("/ECAM/Lower/man-select");
 		fault_sel = getprop("/ECAM/Lower/fault-select");
+		fault_page = getprop("/ECAM/Lower/fault-page");
 		page = getprop("/ECAM/Lower/page");
 		aileron = getprop("/fdm/jsbsim/fbw/aileron-sidestick");
 		elevator = getprop("/fdm/jsbsim/fbw/elevator-sidestick");
@@ -296,6 +325,7 @@ var LowerECAM = {
 		stateL = getprop("/engines/engine[0]/state");
 		stateR = getprop("/engines/engine[1]/state");
 		engModeSel = getprop("/controls/engines/engine-start-switch");
+		elapsedSec = getprop("/sim/time/elapsed-sec");
 		
 		if (warnPhase == 2) {
 			if (abs(aileron) > 0.3 or abs(elevator) > 0.3) {
@@ -363,7 +393,6 @@ var LowerECAM = {
 						setprop("/ECAM/Lower/page", "door");
 					}
 				} else if (warnPhase == 2) {
-					elapsedSec = getprop("/sim/time/elapsed-sec");
 					
 					if (showENGPage) {
 						if (page != "eng") {
@@ -412,6 +441,19 @@ var LowerECAM = {
 						}
 					}
 				}
+			} else {
+				setprop("/ECAM/Lower/light/apu", 0);
+				setprop("/ECAM/Lower/light/bleed", 0);
+				setprop("/ECAM/Lower/light/cond", 0);
+				setprop("/ECAM/Lower/light/door", 0);
+				setprop("/ECAM/Lower/light/elec", 0);
+				setprop("/ECAM/Lower/light/eng", 0);
+				setprop("/ECAM/Lower/light/fctl", 0);
+				setprop("/ECAM/Lower/light/fuel", 0);
+				setprop("/ECAM/Lower/light/hyd", 0);
+				setprop("/ECAM/Lower/light/press", 0);
+				setprop("/ECAM/Lower/light/sts", 0);
+				setprop("/ECAM/Lower/light/wheel", 0);
 			}
 		}
 	},
@@ -431,6 +473,13 @@ var LowerECAM = {
 		setprop("/ECAM/Lower/light/press", 0);
 		setprop("/ECAM/Lower/light/sts", 0);
 		setprop("/ECAM/Lower/light/wheel", 0);
+	},
+	failCall: func(page) {
+		setprop("/ECAM/Lower/man-select", 0);
+		setprop("/ECAM/Lower/fault-select", 1);
+		setprop("/ECAM/Lower/fault-page", page);
+		setprop("/ECAM/Lower/page", page);
+		setprop("/ECAM/Lower/light/clr", 1);
 	},
 };
 

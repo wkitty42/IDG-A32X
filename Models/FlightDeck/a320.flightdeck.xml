@@ -460,8 +460,6 @@
 		<object-name>audio_call_vhf3_led</object-name>
 		<object-name>audio_mech_sgn</object-name>
 		<object-name>autoland_light_on</object-name>
-		<object-name>ecam_clr_l_led</object-name>
-		<object-name>ecam_clr_r_led</object-name>
 		<object-name>ecam_c_b_led</object-name>
 		<object-name>ecam_el_dc_led</object-name>
 		<object-name>ecam_sts_led</object-name>
@@ -1571,6 +1569,24 @@
 			</or>
 		</condition>
 	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>ecam_clr_l_led</object-name>
+		<object-name>ecam_clr_r_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>ECAM/Lower/light/clr</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
 
 	<!--<animation>
 		<type>pick</type>
@@ -1589,7 +1605,7 @@
 				<script>ecam.rclBTN();</script>
 			</binding>
 		</action>
-	</animation>
+	</animation>-->
 	
 	<animation>
 		<type>pick</type>
@@ -1606,10 +1622,10 @@
 					</greater-than-equals>
 				</condition>
 				<command>nasal</command>
-				<script>ecam.clrBTN();</script>
+				<script>libraries.LowerECAM.button("clr");</script>
 			</binding>
 		</action>
-	</animation>-->
+	</animation>
 	
 	<!-- Engine Cutoff/Mode Selector -->
 	<animation>
