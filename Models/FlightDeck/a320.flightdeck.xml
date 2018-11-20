@@ -6026,14 +6026,15 @@
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/clock</inherits-from>
+		<object-name>clock</object-name>
 		<object-name>clock.001</object-name>
 		<object-name>clock_body</object-name>
 	</effect>
 	
-	<!--<effect>
+	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/clock-glare</inherits-from>
 		<object-name>clock_glare</object-name>
-	</effect>-->
+	</effect>
 	
 	<!-- move any objects requiring lightmap to another effect file -->
 	<effect>
@@ -6046,7 +6047,6 @@
 		<object-name>cabinet</object-name>
 		<object-name>carpet</object-name>
 		<object-name>ceiling</object-name>
-		<object-name>clock</object-name>
 		<object-name>compass_box</object-name>
 		<object-name>DoorC</object-name>
 		<object-name>efis_box_1</object-name>
