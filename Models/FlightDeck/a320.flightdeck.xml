@@ -5899,6 +5899,7 @@
 		<object-name>compass_box</object-name>
 		<object-name>iesi</object-name>
 		<object-name>clock_body</object-name>
+		<object-name>clock.001</object-name>
 		<object-name>gear_lever_body</object-name>
 		<object-name>ParkBrk</object-name>
 		<object-name>RudderTrim</object-name>
@@ -5915,6 +5916,23 @@
 		<object-name>Lcutoff</object-name>
 		<object-name>Rcutoff</object-name>
 		<object-name>eng_mode</object-name>
+		<object-name>land_sw</object-name>
+		<object-name>gear_lever</object-name>
+		<object-name>pfd_brt_cpt</object-name>
+		<object-name>speaker_volume_cpt</object-name>
+		<object-name>brightness_nd_1_cpt</object-name>
+		<object-name>brightness_nd_2_cpt</object-name>
+		<object-name>pfd_brt_fo</object-name>
+		<object-name>speaker_volume_fo</object-name>
+		<object-name>brightness_nd_1_fo</object-name>
+		<object-name>brightness_nd_2_fo</object-name>
+		<object-name>light_console_cpt_sw</object-name>
+		<object-name>foot_warmer_cpt_sw</object-name>
+		<object-name>light_console_fo_sw</object-name>
+		<object-name>foot_warmer_fo_sw</object-name>
+		<object-name>pfd_nd_xfr_sw</object-name>
+		<object-name>pfd_nd_xfr_sw2</object-name>
+		<object-name>ohpanel2_knob</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>

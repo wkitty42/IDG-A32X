@@ -30,7 +30,10 @@
 		<object-name>radar_gain</object-name>
 		<object-name>radar_tilt</object-name>
 		<object-name>radar_mode</object-name>
+		<object-name>radar_gain</object-name>
 		<object-name>radio_rot1</object-name>
+		<object-name>vu112_aids</object-name>
+		<object-name>vu112_dfdr</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>
@@ -103,10 +106,8 @@
 		<object-name>integ_lt</object-name>
 		<object-name>flood_lt_ped</object-name>
 		<object-name>radar_gain</object-name>
-		<object-name>atc_thrt</object-name>
-		<object-name>atc_sys</object-name>
-		<object-name>atc_abv</object-name>
-		<object-name>atc_stby</object-name>
 		<object-name>ecam_emer_canc_lit</object-name>
+		<object-name>vu112_aids</object-name>
+		<object-name>vu112_dfdr</object-name>
 	</effect>
 </PropertyList>

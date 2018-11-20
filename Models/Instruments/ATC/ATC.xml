@@ -13,17 +13,6 @@
 	<animation>
 		<name>Panel lighting</name>
 		<type>material</type>
-		<object-name>atc_body</object-name>
-		<emission>
-			<red>0.3</red>
-			<green>0.3</green>
-			<blue>0.3</blue>
-			<factor-prop>sim/model/lights/dome-light</factor-prop>
-		</emission>
-	</animation>
-	
-	<effect>
-		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>atc_0</object-name>
 		<object-name>atc_1</object-name>
 		<object-name>atc_2</object-name>
@@ -41,7 +30,13 @@
 		<object-name>atc_stby</object-name>
 		<object-name>atc_sys</object-name>
 		<object-name>atc_thrt</object-name>
-	</effect>
+		<emission>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
+		</emission>
+	</animation>
 	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>

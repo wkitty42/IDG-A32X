@@ -949,6 +949,7 @@
 		<name>Panel lighting</name>
 		<type>material</type>
 		<object-name>audio_body</object-name>
+		<object-name>audio_int_rad</object-name>
 		<emission>
 			<red>0.3</red>
 			<green>0.3</green>
@@ -961,6 +962,7 @@
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>audio_body</object-name>
 		<object-name>audio_glare</object-name>
+		<object-name>audio_int_rad</object-name>
 	</effect>
 	
 	<animation>
