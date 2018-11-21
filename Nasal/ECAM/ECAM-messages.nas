@@ -5,102 +5,16 @@
 # Copyright (c) Joshua Davidson (it0uchpods) #
 ##############################################
 
-var num_lines = 6;
-var msg = nil;
-var spacer = nil;
-var line = nil;
-var right_line = nil;
-var wow = getprop("/gear/gear[1]/wow");
-setprop("/ECAM/show-left-msg", 1);
-setprop("/ECAM/show-right-msg", 1);
-setprop("/ECAM/warnings/master-warning-light", 0);
-setprop("/ECAM/warnings/master-caution-light", 0);
-
-var warning = {
-	msg: "",
-	active: 0,
-	colour: "",
-	aural: "",
-	light: "",
-	noRepeat: 0,
-	new: func(msg,active,colour,aural,light,noRepeat) {
-		var t = {parents:[warning]};
-		
-		t.msg = msg;
-		t.active = active;
-		t.colour = colour;
-		t.aural = aural;
-		t.light = light;
-		t.noRepeat = noRepeat;
-		
-		return t
-	},
-	write: func() {
-		var line = 1;
-		while (getprop("/ECAM/msg/line" ~ line) != "") {
-			line = line + 1; # go to next line until empty line
-		}
-		
-		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1 and me.msg != "") { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
-			setprop("/ECAM/msg/line" ~ line, me.msg);
-			setprop("/ECAM/msg/linec" ~ line, me.colour);
-		}
-	},
-	warnlight: func() {
-		if ((me.light != "none" or me.light != "") and me.noRepeat == 0 and me.active == 1) { # only toggle light once per message, allows canceling 
-			setprop("/ECAM/warnings/master-"~me.light~"-light", 1);
-			me.noRepeat = 1;
-		}
-	},
-	sound: func() {
-		if (me.active and (me.aural != "none" or me.aural != "") and getprop("/sim/sound/warnings/"~me.aural) != 1) {
-			setprop("/sim/sound/warnings/"~me.aural, 1);
-		} else if (!me.active or me.aural == "none") {
-			if (getprop("/sim/sound/warnings/"~me.aural) == 1) {
-				setprop("/sim/sound/warnings/"~me.aural, 0);
-			}
-		}
-	},
-};
-
-var memo = {
-	msg: "",
-	active: 0,
-	colour: "",
-	new: func(msg,active,colour) {
-		var t = {parents:[memo]};
-		
-		t.msg = msg;
-		t.active = active;
-		t.colour = colour;
-		
-		return t
-	},
-	write: func() {
-		var right_line = 1;
-		while (getprop("/ECAM/rightmsg/line" ~ right_line) != "") {
-			right_line = right_line + 1; # go to next line until empty line
-		} 
-		
-		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1) { # at empty line
-			setprop("/ECAM/rightmsg/line" ~ right_line, me.msg);
-			setprop("/ECAM/rightmsg/linec" ~ right_line, me.colour);
-		}
-	},
-};
-
-# messages logic and added to arrays
+# messages stored in vectors
 
 var warnings = std.Vector.new([
-	var lg_not_dn = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0),
+	var lg_not_dn   = warning.new(msg: "L/G GEAR NOT DOWN", active: 0, colour: "r", aural: "crc", light: "warning", noRepeat: 0),
 	var pack1_fault = warning.new(msg: "AIR PACK 1 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
 	var pack2_fault = warning.new(msg: "AIR PACK 2 FAULT ", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none", light: "none", noRepeat: 0),
-	var park_brk_on = warning.new(msg: "PARK BRK ON", active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
+	var park_brk_on = warning.new(msg: "PARK BRK ON",       active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
 ]);
-
-var activeWarnings = std.Vector.new();
 
 var leftmemos = std.Vector.new([
 	var company_alert = warning.new(msg: "COMPANY ALERT", active: 0, colour: "g", aural: "buzzer", light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
@@ -117,13 +31,29 @@ var leftmemos = std.Vector.new([
 	var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY", active: 0, colour: "g", aural: "none", light: "none", noRepeat: 0) # Not yet implemented
 ]);
 
+var specialLines = std.Vector.new([
+	var to_inhibit  = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
+	var ldg_inhibit = memo.new(msg: "LDG INHIBIT",  active: 0, colour: "m"),
+	var land_asap_r = memo.new(msg: "LAND ASAP",    active: 0, colour: "r"),
+	var land_asap_a = memo.new(msg: "LAND ASAP",    active: 0, colour: "a"),
+	var ap_off      = memo.new(msg: "AP OFF",       active: 0, colour: "r"),
+	var athr_off    = memo.new(msg: "A/THR OFF",    active: 0, colour: "a"),
+]);
+
+var secondaryFailures    = std.Vector.new([
+	var secondary_bleed  = memo.new(msg: "•AIR BLEED",  active: 0, colour: "a"),
+	var secondary_press  = memo.new(msg: "•CAB PRESS",  active: 0, colour: "a"),
+	var secondary_vent   = memo.new(msg: "•AVNCS VENT", active: 0, colour: "a"),
+	var secondary_elec   = memo.new(msg: "•ELEC",       active: 0, colour: "a"),
+	var secondary_hyd    = memo.new(msg: "•HYD",        active: 0, colour: "a"),
+	var secondary_fuel   = memo.new(msg: "•FUEL",       active: 0, colour: "a"),
+	var secondary_cond   = memo.new(msg: "•AIR COND",   active: 0, colour: "a"),
+	var secondary_brake  = memo.new(msg: "•BRAKES",     active: 0, colour: "a"),
+	var secondary_wheel  = memo.new(msg: "•WHEEL",      active: 0, colour: "a"),
+	var secondary_fctl   = memo.new(msg: "•F/CTL",      active: 0, colour: "a"),
+]);
+
 var memos = std.Vector.new([
-	var to_inhibit = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
-	var ldg_inhibit = memo.new(msg: "LDG INHIBIT", active: 0, colour: "m"),
-	var land_asap_r = memo.new(msg: "LAND ASAP", active: 0, colour: "r"),
-	var land_asap_a = memo.new(msg: "LAND ASAP", active: 0, colour: "a"),
-	var ap_off = memo.new(msg: "AP OFF", active: 0, colour: "r"),
-	var athr_off = memo.new(msg: "A/THR OFF", active: 0, colour: "a"),
 	var spd_brk = memo.new(msg: "SPEED BRK", active: 0, colour: "g"),
 	var park_brk = memo.new(msg: "PARK BRK", active: 0, colour: "g"),
 	var ptu = memo.new(msg: "HYD PTU", active: 0, colour: "g"),
@@ -146,7 +76,7 @@ var memos = std.Vector.new([
 	var ice_not_det = memo.new(msg: "ICE NOT DET", active: 0, colour: "g"), # Not yet implemented
 	var hi_alt = memo.new(msg: "HI ALT", active: 0, colour: "g"), # Not yet implemented
 	var apu_avail = memo.new(msg: "APU AVAIL", active: 0, colour: "g"),
-	var apu_bleed = memo.new(msg: "APU BLEED", active: 0, colour: "g"), # Not yet implemented
+	var apu_bleed = memo.new(msg: "APU BLEED", active: 0, colour: "g"),
 	var ldg_lt = memo.new(msg: "LDG LT", active: 0, colour: "g"),
 	var brk_fan = memo.new(msg: "BRK FAN", active: 0, colour: "g"), # Not yet implemented
 	var audio3_xfrd = memo.new(msg: "AUDIO 3 XFRD", active: 0, colour: "g"), # Not yet implemented
@@ -167,42 +97,10 @@ var memos = std.Vector.new([
 
 var clearWarnings = std.Vector.new();
 
-var ECAM_controller = {
-	loop: func() {
-		# check active messages
-		# config_warnings();
-		# messages_priority_3();
-		# messages_priority_2();
-		# messages_priority_1();
-		# messages_priority_0();
-		messages_memo();
-		messages_right_memo();
-		
-		# clear display momentarily
-		
-		
-		for(var n = 1; n < 8; n += 1) {
-			setprop("/ECAM/msg/line" ~ n, "");
-		}
-		
-		for(var n = 1; n < 8; n += 1) {
-			setprop("/ECAM/rightmsg/line" ~ n, "");
-		}
-		
-		# write to ECAM
-		
-		# foreach (var w; warnings.vector) {
-		#	w.write();
-		#	w.warnlight();
-		#	w.sound();
-		# }
-		
-		foreach (var l; leftmemos.vector) {
-			l.write();
-		}
-		
-		foreach (var m; memos.vector) {
-			m.write();
-		}
-	},
-};
+var statusLim = std.Vector.new();
+var statusApprProc = std.Vector.new();
+var statusProc = std.Vector.new();
+var statusInfo = std.Vector.new();
+var statusCancelled = std.Vector.new();
+var statusInop = std.Vector.new();
+var statusMaintenance = std.Vector.new();
