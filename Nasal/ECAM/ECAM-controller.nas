@@ -16,6 +16,8 @@ setprop("/ECAM/show-right-msg", 1);
 setprop("/ECAM/warnings/master-warning-light", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
 setprop("/ECAM/warnings/overflow", 0);
+setprop("/ECAM/warnings/overflow-left", 0);
+setprop("/ECAM/warnings/overflow-right", 0);
 
 var warning = {
 	msg: "",
@@ -43,10 +45,12 @@ var warning = {
 		}
 		
 		if (line > 8) {
-			setprop("/ECAM/warnings/overflow", 1);
+			setprop("/ECAM/warnings/overflow-left", 1);
+		} elsif (getprop("/ECAM/warnings/overflow-left") == 1) {
+			setprop("/ECAM/warnings/overflow-left", 0);
 		}
 		
-		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1 and me.msg != "") { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
+		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1 and me.msg != "" and line <= 8) { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
 			setprop("/ECAM/msg/line" ~ line, me.msg);
 			setprop("/ECAM/msg/linec" ~ line, me.colour);
 		}
@@ -88,10 +92,12 @@ var memo = {
 		} 
 		
 		if (right_line > 8) {
-			setprop("/ECAM/warnings/overflow", 1);
+			setprop("/ECAM/warnings/overflow-right", 1);
+		} elsif (getprop("/ECAM/warnings/overflow-right") == 1) {
+			setprop("/ECAM/warnings/overflow-right", 0);
 		}
 		
-		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1) { # at empty line
+		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1 and right_line <= 8) { # at empty line
 			setprop("/ECAM/rightmsg/line" ~ right_line, me.msg);
 			setprop("/ECAM/rightmsg/linec" ~ right_line, me.colour);
 		}
@@ -145,6 +151,12 @@ var ECAM_controller = {
 		
 		foreach (var m; memos.vector) {
 			m.write();
+		}
+		
+		if (getprop("/ECAM/warnings/overflow-left") == 1 or getprop("/ECAM/warnings/overflow-right") == 1) {
+			setprop("/ECAM/warnings/overflow", 1);
+		} elsif (getprop("/ECAM/warnings/overflow-left") == 0 and getprop("/ECAM/warnings/overflow-right") == 0) {
+			setprop("/ECAM/warnings/overflow", 0);
 		}
 	},
 };
