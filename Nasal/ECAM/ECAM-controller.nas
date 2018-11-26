@@ -147,11 +147,11 @@ var ECAM_controller = {
 		# clear display momentarily
 		
 		
-		for(var n = 1; n < 8; n += 1) {
+		for(var n = 1; n <= 8; n += 1) {
 			setprop("/ECAM/msg/line" ~ n, "");
 		}
 		
-		for(var n = 1; n < 8; n += 1) {
+		for(var n = 1; n <= 8; n += 1) {
 			setprop("/ECAM/rightmsg/line" ~ n, "");
 		}
 		
