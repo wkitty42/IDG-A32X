@@ -104,6 +104,32 @@ var memo = {
 	},
 };
 
+var status = {
+	msg: "",
+	active: 0,
+	colour: "",
+	new: func(msg,active,colour) {
+		var t = {parents:[status]};
+		
+		t.msg = msg;
+		t.active = active;
+		t.colour = colour;
+		
+		return t
+	},
+	write: func() {
+		status_line = 1;
+		while (getprop("/ECAM/status/line" ~ status_line) != "" and status_line <= 8) {
+			status_line = status_line + 1; # go to next line until empty line
+		} 
+		
+		if (getprop("/ECAM/status/line" ~ status_line) == "" and me.active == 1 and status_line <= 8) { # at empty line
+			setprop("/ECAM/status/line" ~ status_line, me.msg);
+			setprop("/ECAM/status/linec" ~ status_line, me.colour);
+		}
+	},
+};
+
 var ECAM_controller = {
 	init: func() {
 		ECAMloopTimer.start();

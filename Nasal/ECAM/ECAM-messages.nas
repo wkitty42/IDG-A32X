@@ -7,6 +7,7 @@
 
 # messages stored in vectors
 
+# Left E/WD
 var warnings                  = std.Vector.new([
 	var lg_not_dn             = warning.new(msg: "L/G GEAR NOT DOWN",        active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
 	var pack1_fault           = warning.new(msg: "AIR PACK 1 FAULT ",        active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
@@ -30,6 +31,8 @@ var leftmemos                 = std.Vector.new([
 	var atc_datalink_stby     = warning.new(msg: "ATC DATALINK STBY",        active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0), # Not yet implemented
 	var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY",    active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0) # Not yet implemented
 ]);
+
+# Right E/WD
 
 var specialLines         = std.Vector.new([
 	var to_inhibit       = memo.new(msg: "T.O. INHIBIT", active: 0, colour: "m"),
@@ -96,8 +99,135 @@ var memos                = std.Vector.new([
 ]);
 
 var clearWarnings        = std.Vector.new();
-var statusLim            = std.Vector.new();
-var statusApprProc       = std.Vector.new();
+
+# Status SD page
+var statusLim            = std.Vector.new([
+	var min_rat_spd      = status.new(msg: "MIN RAT SPD.....140 KT",    active: 0, colour: "c"), # Not yet implemented
+	var max_spd_gear     = status.new(msg: "MAX SPD........280/.67",    active: 0, colour: "c"), # Not yet implemented
+	var max_spd_rev      = status.new(msg: "MAX SPD........300/.78",    active: 0, colour: "c"), # Not yet implemented
+	var buffet_rev       = status.new(msg: "   •IF BUFFET :",           active: 0, colour: "w"), # Not yet implemented
+	var max_spd_rev_buf  = status.new(msg: "MAX SPD.............240",   active: 0, colour: "c"), # Not yet implemented
+	var max_spd_fctl     = status.new(msg: "MAX SPD........320/.77",    active: 0, colour: "c"), # Not yet implemented
+	var max_spd_fctl2    = status.new(msg: "MAX SPD.........300 KT",    active: 0, colour: "c"), # Not yet implemented
+	var max_spd_gr_door  = status.new(msg: "MAX SPD 250/.60",           active: 0, colour: "c"), # Not yet implemented
+	var max_alt_press    = status.new(msg: "MAX FL : 100/MEA",          active: 0, colour: "c"), # Not yet implemented
+	var gravity_fuel     = status.new(msg: "-PROC:GRAVTY FUEL FEEDING", active: 0, colour: "c"), # Not yet implemented
+	var gear_kp_dn       = status.new(msg: "L/G............KEEP DOWN",  active: 0, colour: "c"), # Not yet implemented
+	var park_brk_only    = status.new(msg: "PARK BRK ONLY",             active: 0, colour: "c"), # Not yet implemented
+	var park_brk_only    = status.new(msg: "MAX BRK PR........1000PSI", active: 0, colour: "c"), # Not yet implemented
+	var fuel_gravity     = status.new(msg: "FUEL GRAVTY FEED",          active: 0, colour: "c"), # Not yet implemented
+	var fctl_manvr       = status.new(msg: "MANOEUVER WITH CARE",       active: 0, colour: "c"), # Not yet implemented
+	var fctl_spdbrk_care = status.new(msg: "USE SPD BRK WITH CARE",     active: 0, colour: "c"), # Not yet implemented
+	var fctl_spdbrk_dont = status.new(msg: "SPD BRK......DO NOT USE",   active: 0, colour: "c"), # Not yet implemented
+	var fctl_rud_care    = status.new(msg: "RUD WITH CARE ABV 160KT",   active: 0, colour: "c"), # Not yet implemented
+	var eng_thr_changes  = status.new(msg: "AVOID RAPID THR CHANGES",   active: 0, colour: "c"), # Not yet implemented
+	var avoid_neg_g_fac  = status.new(msg: "AVOID NEGATIVE G FACTOR",   active: 0, colour: "c"), # Not yet implemented
+	var avoid_icing      = status.new(msg: "AVOID ICING CONDITONS",     active: 0, colour: "c"), # Not yet implemented
+	var severe_icing     = status.new(msg: " IF A/C ICING SEVERE :",    active: 0, colour: "w"), # Not yet implemented, a319 only
+	var severe_icing_2   = status.new(msg: "MIN SPD ALPHA PROT",        active: 0, colour: "c"), # Not yet implemented, a319 only
+	var avoid_thr_chg    = status.new(msg: "AVOID THR CHANGES",         active: 0, colour: "c"), # Not yet implemented, iae only
+	var avoid_thr_chg_2  = status.new(msg: "AVOID RAPID THR CHANGES",   active: 0, colour: "c"), # Not yet implemented, iae only
+	var avoid_adv_cond   = status.new(msg: "AVOID ADVERSE CONDITIONS",  active: 0, colour: "c"), # Not yet implemented, iae only
+	var atc_com_voice    = status.new(msg: "ATC COM VOICE ONLY",        active: 0, colour: "c") # Not yet implemented, iae only
+]);
+
+var statusApprProc       = std.Vector.new([
+	var dual_hyd_b_g     = status.new(msg: "APPR PROC DUAL HYD LO PR",             active: 0, colour: "r"), # Not yet implemented
+	var dual_hyd_b_g_2   = status.new(msg: "   •IF BLUE OVHT OUT:",                active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_b_g_3   = status.new(msg: "-BLUE ELEC PUMP.....AUTO",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_b_g_4   = status.new(msg: "   •IF GREEN OVHT OUT:",               active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_b_g_5   = status.new(msg: "-GREEN ENG 1 PUMP.....ON",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_b_g_6   = status.new(msg: "-PTU................AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var dual_hyd_b_y     = status.new(msg: "APPR PROC DUAL HYD LO PR",             active: 0, colour: "r"), # Not yet implemented
+	var dual_hyd_b_y_2   = status.new(msg: "   •IF BLUE OVHT OUT:",                active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_b_y_3   = status.new(msg: "-BLUE ELEC PUMP.....AUTO",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_b_y_4   = status.new(msg: "   •IF YELLOW OVHT OUT:",              active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_b_y_5   = status.new(msg: "-YELLOW ENG 2 PUMP....ON",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_b_y_6   = status.new(msg: "-PTU................AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var dual_hyd_g_y     = status.new(msg: "APPR PROC DUAL HYD LO PR",             active: 0, colour: "r"), # Not yet implemented
+	var dual_hyd_g_y_2   = status.new(msg: "   •IF GREEN OVHT OUT:",               active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_b_y_3   = status.new(msg: "-GREEN ENG 1 PUMP.....ON",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_g_y_4   = status.new(msg: "   •IF YELLOW OVHT OUT:",              active: 0, colour: "w"), # Not yet implemented
+	var dual_hyd_g_y_5   = status.new(msg: "-YELLOW ENG 2 PUMP....ON",             active: 0, colour: "c"), # Not yet implemented
+	var dual_hyd_g_y_6   = status.new(msg: "-PTU................AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var single_hyd_b     = status.new(msg: "APPR PROC HYD LO PR",                  active: 0, colour: "a"), # Not yet implemented
+	var single_hyd_b_2   = status.new(msg: "   •IF BLUE OVHT OUT:",                active: 0, colour: "w"), # Not yet implemented
+	var single_hyd_b_3   = status.new(msg: "-BLUE ELEC PUMP.....AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var single_hyd_g     = status.new(msg: "APPR PROC HYD LO PR",                  active: 0, colour: "a"), # Not yet implemented
+	var single_hyd_g_2   = status.new(msg: "   •IF GREEN OVHT OUT:",               active: 0, colour: "w"), # Not yet implemented
+	var single_hyd_g_3   = status.new(msg: "-GREEN ENG 1 PUMP.....ON",             active: 0, colour: "c"), # Not yet implemented
+	var single_hyd_g_4   = status.new(msg: "-PTU................AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var single_hyd_y     = status.new(msg: "APPR PROC HYD LO PR",                  active: 0, colour: "a"), # Not yet implemented
+	var single_hyd_y_2   = status.new(msg: "   •IF YELLOW OVHT OUT:",              active: 0, colour: "w"), # Not yet implemented
+	var single_hyd_y_3   = status.new(msg: "-YELLOW ENG 1 PUMP....ON",             active: 0, colour: "c"), # Not yet implemented
+	var single_hyd_y_4   = status.new(msg: "-PTU................AUTO",             active: 0, colour: "c"), # Not yet implemented
+	
+	var avionics_smk     = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var avionics_smk_2   = status.new(msg: "   •BEFORE L/G EXTENSION :",           active: 0, colour: "w"), # Not yet implemented
+	var avionics_smk_2   = status.new(msg: "-GEN 2...............ON",              active: 0, colour: "c"), # Not yet implemented
+	var avionics_smk_4   = status.new(msg: "-EMER ELEC GEN1 LINE ON",              active: 0, colour: "c"), # Not yet implemented
+	
+	var ths_stuck        = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var ths_stuck_2      = status.new(msg: "-FOR LDG.....USE FLAP 3",              active: 0, colour: "c"), # Not yet implemented
+	var ths_stuck_3      = status.new(msg: "-GPWS LDG FLAP 3.....ON",              active: 0, colour: "c"), # Not yet implemented
+	var ths_stuck_4      = status.new(msg: " •IF MAN TRIM NOT AVAIL:",             active: 0, colour: "w"), # Not yet implemented
+	var ths_stuck_5      = status.new(msg: " •WHEN CONF3 AND VAPP  :",             active: 0, colour: "w"), # Not yet implemented
+	var ths_stuck_6      = status.new(msg: "-L/G.................DN",              active: 0, colour: "c"), # Not yet implemented
+	
+	var flap_stuck       = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var flap_stuck_2     = status.new(msg: "-FOR LDG.....USE FLAP 3",              active: 0, colour: "c"), # Not yet implemented
+	var flap_stuck_3     = status.new(msg: "-FLAPS...KEEP CONF FULL",              active: 0, colour: "c"), # Not yet implemented
+	var flap_stuck_4     = status.new(msg: "-GPWS FLAP MODE.....OFF",              active: 0, colour: "c"), # Not yet implemented
+	var flap_stuck_5     = status.new(msg: "-GPWS LDG FLAP 3.....ON",              active: 0, colour: "c"), # Not yet implemented
+	
+	var slat_stuck       = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var slat_stuck_2     = status.new(msg: "-FOR LDG.....USE FLAP 1",              active: 0, colour: "c"), # Not yet implemented
+	var slat_stuck_3     = status.new(msg: "-FOR LDG.....USE FLAP 3",              active: 0, colour: "c"), # Not yet implemented
+	var slat_stuck_4     = status.new(msg: "-CTR TK PUMPS.......OFF",              active: 0, colour: "c"), # Not yet implemented
+	var slat_stuck_5     = status.new(msg: "-GPWS LDG FLAP 3.....ON",              active: 0, colour: "c"), # Not yet implemented
+	var slat_stuck_6     = status.new(msg: "-GPWS FLAP MODE.....OFF",              active: 0, colour: "c"), # Not yet implemented
+
+	var fctl_proc        = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var fctl_proc_2      = status.new(msg: " •IF BUFFET:",                         active: 0, colour: "w"), # Not yet implemented
+	var fctl_proc_3      = status.new(msg: "-FOR LDG.....USE FLAP 3",              active: 0, colour: "c"), # Not yet implemented
+	var fctl_proc_4      = status.new(msg: "-GPWS LDG FLAP 3.....ON",              active: 0, colour: "c"), # Not yet implemented
+	var fctl_proc_5      = status.new(msg: "-AT 1000FT AGL:L/G...DN",              active: 0, colour: "c"), # Not yet implemented
+	
+	var rev_unlc_proc    = status.new(msg: "APPR PROC:",                           active: 0, colour: "w"), # Not yet implemented
+	var rev_unlc_proc_2  = status.new(msg: " •IF BUFFET:",                         active: 0, colour: "w"), # Not yet implemented
+	var rev_unlc_proc_3  = status.new(msg: "-FOR LDG.....USE FLAP 3",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_4  = status.new(msg: "-APPR SPD : VREF + 55KT",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_5  = status.new(msg: "-APPR SPD : VREF + 60KT",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_6  = status.new(msg: "-RUD TRIM.......5 DEG R",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_7  = status.new(msg: "-RUD TRIM.......5 DEG L",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_8  = status.new(msg: "-ATHR...............OFF",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_9  = status.new(msg: "-GPWS FLAP MODE.....OFF",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_10 = status.new(msg: " •WHEN LDG ASSURED:",                  active: 0, colour: "w"), # Not yet implemented
+	var rev_unlc_proc_11 = status.new(msg: "-L/G...............DOWN",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_12 = status.new(msg: " •AT 800FT AGL:",                      active: 0, colour: "w"), # Not yet implemented
+	var rev_unlc_proc_13 = status.new(msg: "-TARGET SPD : VREF+40KT",              active: 0, colour: "c"), # Not yet implemented
+	var rev_unlc_proc_14 = status.new(msg: "-TARGET SPD : VREF+45KT",              active: 0, colour: "c"), # Not yet implemented
+	
+	var thr_lvr_flt      = status.new(msg: "APPR PROC THR LEVER",                  active: 0, colour: "a"), # Not yet implemented
+	var thr_lvr_flt_2    = status.new(msg: "-AUTOLAND...........USE",              active: 0, colour: "c"), # Not yet implemented
+	var thr_lvr_flt_3    = status.new(msg: " •IF AUTOLAND NOT USED:",              active: 0, colour: "w"), # Not yet implemented
+	var thr_lvr_flt_4    = status.new(msg: "   •AT 500FT AGL :",                   active: 0, colour: "w"), # Not yet implemented
+	var thr_lvr_flt_5    = status.new(msg: "-ENG MASTER 1.......OFF",              active: 0, colour: "c"), # Not yet implemented
+	var thr_lvr_flt_6    = status.new(msg: "-ENG MASTER 2.......OFF",              active: 0, colour: "c"), # Not yet implemented
+	
+	var fuel_ctl_flt     = status.new(msg: "APPR PROC FUEL CTL FAULT",             active: 0, colour: "a"), # Not yet implemented
+	var fuel_ctl_flt_2   = status.new(msg: "REV 1........DO NOT USE",              active: 0, colour: "w"), # Not yet implemented
+	var fuel_ctl_flt_3   = status.new(msg: "REV 2........DO NOT USE",              active: 0, colour: "w"), # Not yet implemented
+	var fuel_ctl_flt_4   = status.new(msg: " •AFTER TOUCHDOWN:",                   active: 0, colour: "w"), # Not yet implemented
+	var fuel_ctl_flt_5   = status.new(msg: "-ENG MASTER 1.......OFF",              active: 0, colour: "c"), # Not yet implemented
+	var fuel_ctl_flt_6   = status.new(msg: "-ENG MASTER 2.......OFF",              active: 0, colour: "c"), # Not yet implemented
+]);
+
 var statusProc           = std.Vector.new();
 var statusInfo           = std.Vector.new();
 var statusCancelled      = std.Vector.new();
