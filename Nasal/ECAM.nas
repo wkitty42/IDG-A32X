@@ -207,6 +207,10 @@ var ECAM = {
 			ap_active = 1;
 		}
 		
+		if (ap_active == 1 and getprop("/it-autoflight/output/ap-warning") == 1 and getprop("/sim/time/elapsed-sec") > (getprop("/ECAM/ap-off-time") + 3) and getprop("/ECAM/warnings/master-warning-light") == 1) {
+			setprop("/ECAM/warnings/master-warning-light", 0);
+		}
+		
 		if (athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 0) {
 			athr_active = 0;
 		} elsif (athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 1 and getprop("/sim/time/elapsed-sec") > (getprop("/ECAM/athr-off-time") + 9)) {
@@ -285,6 +289,13 @@ var LowerECAM = {
 			setprop("/it-autoflight/output/athr-warning", 0);
 			setprop("/ECAM/Lower/light/clr", 0);
 			setprop("/ECAM/warnings/master-caution-light", 0);
+			#call status
+		}
+		
+		if (b == "clr" and getprop("/it-autoflight/output/ap-warning") == 2) {
+			setprop("/it-autoflight/output/ap-warning", 0);
+			setprop("/ECAM/Lower/light/clr", 0);
+			setprop("/ECAM/warnings/master-warning-light", 0);
 			#call status
 		}
 		

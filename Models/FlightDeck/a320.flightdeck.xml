@@ -5091,6 +5091,24 @@
 				<property>ECAM/warnings/master-warning-light</property>
 				<value>0</value>
 			</binding>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>nasal</command>
+				<script>
+					if (getprop("/it-autoflight/output/ap-warning") == 1) {
+						setprop("/it-autoflight/output/ap-warning", 0);
+					}
+					if (getprop("/it-autoflight/sound/apoffsound") == 1 or getprop("/it-autoflight/sound/apoffsound2") == 1) {
+						setprop("/it-autoflight/sound/apoffsound", 0);
+						setprop("/it-autoflight/sound/apoffsound2", 0);
+					}
+				</script>
+			</binding>
 		</action>
 	</animation>
 	

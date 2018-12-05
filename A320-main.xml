@@ -1327,6 +1327,10 @@
 							}
 							libraries.apOff("soft","B");
 						} else {
+							if (getprop("/it-autoflight/sound/apoffsound") == 1 or getprop("/it-autoflight/sound/apoffsound2") == 1) {
+								setprop("/it-autoflight/sound/apoffsound", 0);
+								setprop("/it-autoflight/sound/apoffsound2", 0);
+							}
 							setprop("/it-autoflight/output/ap-warning", 0);
 						}
 					</script>

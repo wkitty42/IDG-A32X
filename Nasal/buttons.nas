@@ -261,8 +261,10 @@ var apOff = func(type, side) {
 	if (type == "soft") {
 		setprop("/ECAM/ap-off-time", getprop("/sim/time/elapsed-sec"));
 		setprop("/it-autoflight/output/ap-warning", 1);
+		setprop("/ECAM/warnings/master-warning-light", 1);
 	} else {
 		setprop("/it-autoflight/output/ap-warning", 2);
+		libraries.LowerECAM.clrLight();
 	}
 }
 

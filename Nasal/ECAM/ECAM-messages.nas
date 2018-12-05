@@ -18,10 +18,11 @@ var warningsOld               = std.Vector.new([
 ]);
 
 var warnings				  = std.Vector.new([
-	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),var athr_off_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "c", aural: "none",  light: "none",    noRepeat: 0),
+	var ap_offw				  = warning.new(msg: "AUTO FLT AP OFF",			 active: 0, colour: "r", aural: "calv",  light: "warning", noRepeat: 0),
+	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
 	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
+	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0)
 ]);
 
 var leftmemos                 = std.Vector.new([

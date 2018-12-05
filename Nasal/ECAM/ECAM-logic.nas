@@ -17,6 +17,13 @@ var messages_priority_3 = func {
 }
 
 var messages_priority_2 = func {
+	if (getprop("/it-autoflight/output/ap-warning") == 2) {
+		ap_offw.active = 1;
+	} else {
+		ap_offw.active = 0;
+		ap_offw.noRepeat = 0;
+	}
+	
 	if ((getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7) and getprop("/it-autoflight/thr-locked") == 1) {
 		athr_lock.active = 1;
 		athr_lock_1.active = 1;

@@ -818,9 +818,45 @@
 		
 		<apoff>
 			<name>apoff</name>
+			<mode>loop</mode>
 			<path>/Aircraft/IDG-A32X/Sounds/apoff.wav</path>
 			<condition>
 				<and>
+					<equals>
+						<property>/it-autoflight/output/ap-warning</property>
+						<value>2</value>
+					</equals>
+					<equals>
+						<property>/it-autoflight/output/ap1</property>
+						<value>0</value>
+					</equals>
+					<equals>
+						<property>/it-autoflight/output/ap2</property>
+						<value>0</value>
+					</equals>
+					<or>
+						<property>/it-autoflight/sound/apoffsound</property>
+						<property>/it-autoflight/sound/apoffsound2</property>
+					</or>
+				</and>
+			</condition>
+			<volume>
+				<factor>40.0</factor>
+			</volume>
+		</apoff>
+		
+		<apoff>
+			<name>apoff</name>
+			<mode>once</mode>
+			<path>/Aircraft/IDG-A32X/Sounds/apoff.wav</path>
+			<condition>
+				<and>
+					<not>
+						<equals>
+							<property>/it-autoflight/output/ap-warning</property>
+							<value>2</value>
+						</equals>
+					</not>
 					<equals>
 						<property>/it-autoflight/output/ap1</property>
 						<value>0</value>
