@@ -4053,6 +4053,10 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
 			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>libraries.apOff("hard","L");</script>
+			</binding>
 		</action>
 	</animation>
 	<animation>
@@ -4086,6 +4090,10 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
 			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>libraries.apOff("hard","R");</script>
+			</binding>
 		</action>
 	</animation>
 	<animation>
@@ -4118,6 +4126,10 @@
 			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>libraries.athrOff("hard");</script>
 			</binding>
 		</action>
 	</animation>
@@ -5098,6 +5110,20 @@
 				<command>property-assign</command>
 				<property>ECAM/warnings/master-caution-light</property>
 				<value>0</value>
+			</binding>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
+				<command>nasal</command>
+				<script>
+					if (getprop("/it-autoflight/output/athr-warning") == 1) {
+						setprop("/it-autoflight/output/athr-warning", 0);
+					}
+				</script>
 			</binding>
 		</action>
 	</animation>

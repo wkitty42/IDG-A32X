@@ -216,6 +216,7 @@ var update_loop = func {
 		if (getprop("/it-autoflight/output/ap2") == 1) {
 			setprop("/it-autoflight/input/ap2", 0);
 		}
+		libraries.apOff("hard", "B");
 	} else {
 		if (getprop("/it-fbw/protections/overspeed") != 0) {
 			setprop("/it-fbw/protections/overspeed", 0);

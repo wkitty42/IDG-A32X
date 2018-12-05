@@ -251,3 +251,32 @@ var decreaseManVS = func {
 		setprop("/systems/pressurization/outflowpos-man", manvs - 0.001);
 	}
 }
+
+var apOff = func(type, side) {
+	if ((side == "L" and getprop("/it-autoflight/input/ap1") == 1) or (side == "R" and getprop("/it-autoflight/input/ap2") == 1)) {
+		setprop("/it-autoflight/output/ap-warning", 0);
+		return;
+	}
+	
+	if (type == "soft") {
+		setprop("/ECAM/ap-off-time", getprop("/sim/time/elapsed-sec"));
+		setprop("/it-autoflight/output/ap-warning", 1);
+	} else {
+		setprop("/it-autoflight/output/ap-warning", 2);
+	}
+}
+
+var athrOff = func(type) {
+	if (getprop("it-autoflight/input/athr") == 1) {
+		setprop("/it-autoflight/output/athr-warning", 0);
+		return;
+	}
+	if (type == "soft") {
+		setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
+		setprop("/it-autoflight/output/athr-warning", 1);
+	} else {
+		libraries.LowerECAM.clrLight();
+		setprop("/it-autoflight/output/athr-warning", 2);
+	}
+	setprop("/ECAM/warnings/master-caution-light", 1);
+}

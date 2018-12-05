@@ -138,7 +138,7 @@ var ECAM_controller = {
 		# check active messages
 		# config_warnings();
 		# messages_priority_3();
-		# messages_priority_2();
+		messages_priority_2();
 		# messages_priority_1();
 		# messages_priority_0();
 		messages_memo();
@@ -157,14 +157,16 @@ var ECAM_controller = {
 		
 		# write to ECAM
 		
-		# foreach (var w; warnings.vector) {
-		#	w.write();
-		#	w.warnlight();
-		#	w.sound();
-		# }
+		foreach (var w; warnings.vector) {
+			w.write();
+			w.warnlight();
+			w.sound();
+		}
 		
-		foreach (var l; leftmemos.vector) {
-			l.write();
+		if (getprop("/ECAM/msg/line1") == "") { # disable left memos if a warning exists. Warnings are processed first, so this stops leftmemos if line1 is not empty
+			foreach (var l; leftmemos.vector) {
+				l.write();
+			}
 		}
 		
 		foreach (var sL; specialLines.vector) {

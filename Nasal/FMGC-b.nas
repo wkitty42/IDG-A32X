@@ -170,7 +170,7 @@ setlistener("/it-autoflight/input/athr", func {
 	var atmas = getprop("/it-autoflight/input/athr");
 	if (atmas == 0) {
 		setprop("/it-autoflight/output/athr", 0);
-		if (getprop("/it-autoflight/sound/enableathrsound") == 1 and getprop("/it-autoflight/output/athr") == 0 and getprop("/position/gear-agl-ft") > 50) {
+		if (getprop("/it-autoflight/sound/enableathrsound") == 1 and getprop("/it-autoflight/output/athr-warning") == 1 and getprop("/it-autoflight/output/athr") == 0 and getprop("/position/gear-agl-ft") > 50) {
 			setprop("/it-autoflight/sound/athrsound", 1);	
 			setprop("/it-autoflight/sound/enableathrsound", 0);	  
 		}
@@ -640,6 +640,7 @@ var ap_various = func {
 		if (getprop("/controls/flight/aileron") > 0.2 or getprop("/controls/flight/aileron") < -0.2 or getprop("/controls/flight/elevator") > 0.2 or getprop("/controls/flight/elevator") < -0.2) {
 			setprop("/it-autoflight/input/ap1", 0);
 			setprop("/it-autoflight/input/ap2", 0);
+			libraries.apOff("hard", "B");
 		}
 	}
 }

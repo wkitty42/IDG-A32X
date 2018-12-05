@@ -42,8 +42,7 @@ var ENGCounting = 0;
 var flapLever = 0;
 var CRZTime = 0;
 var CRZCondition = 0;
-var ap1_active = 0;
-var ap2_active = 0;
+var ap_active = 0;
 var athr_active = 0;
 setprop("/ECAM/left-msg", "NONE");
 setprop("/position/gear-agl-ft", 0);
@@ -79,11 +78,11 @@ var ECAM = {
 		setprop("/ECAM/Lower/light/clr", 0);
 		setprop("/ECAM/warning-phase", 1);
 		setprop("/ECAM/warning-phase-10-time", 0);
-		setprop("/ECAM/ap1-off-time", 0);
-		setprop("/ECAM/ap2-off-time", 0);
+		setprop("/ECAM/ap-off-time", 0);
 		setprop("/ECAM/athr-off-time", 0);
-		var ap1_off_time = getprop("/ECAM/ap1-off-time");
-		var ap2_off_time = getprop("/ECAM/ap2-off-time");
+		setprop("/it-autoflight/output/ap-warning", 0);
+		setprop("/it-autoflight/output/athr-warning", 0);
+		var ap_off_time = getprop("/ECAM/ap-off-time");
 		var athr_off_time = getprop("/ECAM/athr-off-time");
 		LowerECAM.reset();
 	},
@@ -198,17 +197,30 @@ var ECAM = {
 		}
 		
 		# AP / ATHR warnings
-		if (ap1_active == 1 and getprop("/it-autoflight/input/ap1") == 0 and (getprop("/ECAM/ap1-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
-			ap1_active = 0;
+		# No evidence found that re-engagement disconnects warnings - if anyone has any evidence to the contrary let me know
+		if (ap_active == 1 and getprop("/it-autoflight/output/ap-warning") == 0) {
+			ap_active = 0;
+		} elsif (ap_active == 1 and getprop("/it-autoflight/output/ap-warning") == 1 and getprop("/sim/time/elapsed-sec") > (getprop("/ECAM/ap-off-time") + 9)) {
+			ap_active = 0;
+			setprop("/it-autoflight/output/ap-warning", 0);
+		} elsif (ap_active == 0 and getprop("/it-autoflight/output/ap-warning") != 0) {
+			ap_active = 1;
 		}
 		
-		if (ap2_active == 1 and getprop("/it-autoflight/input/ap2") == 0 and (getprop("/ECAM/ap2-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
-			ap2_active = 0;
-		}
-		
-		if (athr_active == 1 and getprop("/it-autoflight/input/athr") == 0 and (getprop("/ECAM/athr-off-time") + 9 < getprop("/sim/time/elapsed-sec"))) {
+		if (athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 0) {
 			athr_active = 0;
+		} elsif (athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 1 and getprop("/sim/time/elapsed-sec") > (getprop("/ECAM/athr-off-time") + 9)) {
+			athr_active = 0;
+			setprop("/it-autoflight/output/athr-warning", 0);
+		} elsif (athr_active == 0 and getprop("/it-autoflight/output/athr-warning") != 0) {
+			athr_active = 1;
 		}
+		
+		
+		if (athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 1 and getprop("/sim/time/elapsed-sec") > (getprop("/ECAM/athr-off-time") + 3) and getprop("/ECAM/warnings/master-caution-light") == 1) {
+			setprop("/ECAM/warnings/master-caution-light", 0);
+		}
+		
 		
 		# Warning Phases
 		if (getprop("/systems/electrical/bus/ac1") < 110 and getprop("/systems/electrical/bus/ac2") < 110 and getprop("/systems/electrical/bus/ac-ess") < 110) { # Reset warning phases
@@ -269,6 +281,12 @@ ECAM.MSGclr();
 var LowerECAM = {
 	button: func(b) {
 		man_sel = getprop("/ECAM/Lower/man-select");
+		if (b == "clr" and getprop("/it-autoflight/output/athr-warning") == 2) {
+			setprop("/it-autoflight/output/athr-warning", 0);
+			setprop("/ECAM/Lower/light/clr", 0);
+			setprop("/ECAM/warnings/master-caution-light", 0);
+			#call status
+		}
 		
 		if (getprop("/ECAM/Lower/fault-select") == 0) {
 			if (b != "clr") {
@@ -481,29 +499,7 @@ var LowerECAM = {
 		setprop("/ECAM/Lower/page", page);
 		setprop("/ECAM/Lower/light/clr", 1);
 	},
+	clrLight: func() {
+		setprop("/ECAM/Lower/light/clr", 1);
+	}
 };
-
-# Logic for autopilot disconnect warning
-
-setlistener("/it-autoflight/input/ap1", func {
-	if (getprop("/it-autoflight/input/ap1") == 0) {
-		ap1_active = 1;
-		setprop("/ECAM/ap1-off-time", getprop("/sim/time/elapsed-sec"));
-	}
-}, 0, 0);
-
-setlistener("/it-autoflight/input/ap2", func {
-	if (getprop("/it-autoflight/input/ap2") == 0) {
-		ap2_active = 1;
-		setprop("/ECAM/ap2-off-time", getprop("/sim/time/elapsed-sec"));
-	}
-}, 0, 0);
-
-setlistener("/it-autoflight/input/athr", func {
-	if (getprop("/it-autoflight/input/athr") == 0) {
-		if (getprop("/position/gear-agl-ft") > 50) {
-			athr_active = 1;
-			setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
-		}
-	}
-}, 0, 0);

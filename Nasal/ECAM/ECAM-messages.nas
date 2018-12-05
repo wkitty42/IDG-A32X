@@ -8,13 +8,20 @@
 # messages stored in vectors
 
 # Left E/WD
-var warnings                  = std.Vector.new([
+var warningsOld               = std.Vector.new([
 	var lg_not_dn             = warning.new(msg: "L/G GEAR NOT DOWN",        active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
 	var pack1_fault           = warning.new(msg: "AIR PACK 1 FAULT ",        active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
 	var pack2_fault           = warning.new(msg: "AIR PACK 2 FAULT ",        active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
 	var park_brk_on           = warning.new(msg: "PARK BRK ON",              active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
+]);
+
+var warnings				  = std.Vector.new([
+	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),var athr_off_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "c", aural: "none",  light: "none",    noRepeat: 0),
+	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
+	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
+	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
 ]);
 
 var leftmemos                 = std.Vector.new([

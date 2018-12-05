@@ -44,6 +44,10 @@
 			<command>property-toggle</command>
 			<property>/it-autoflight/input/athr</property>
 			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>libraries.athrOff("hard");</script>
+			</binding>
 		</button>
 		<button>
 			<legend>AP1</legend>
@@ -52,6 +56,10 @@
 			<command>property-toggle</command>
 			<property>/it-autoflight/input/ap1</property>
 			</binding>
+			<binding>
+			<command>nasal</command>
+			<script>libraries.apOff("hard","L");</script>
+			</binding>
 		</button>
 		<button>
 			<legend>AP2</legend>
@@ -59,6 +67,10 @@
 			<binding>
 			<command>property-toggle</command>
 			<property>/it-autoflight/input/ap2</property>
+			</binding>
+			<binding>
+			<command>nasal</command>
+			<script>libraries.apOff("hard","R");</script>
 			</binding>
 		</button>
 		<button>

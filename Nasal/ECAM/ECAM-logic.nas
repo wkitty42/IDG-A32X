@@ -15,7 +15,30 @@ var messages_priority_3 = func {
 		setprop("/systems/gear/landing-gear-warning-light", 0);
 	}
 }
+
 var messages_priority_2 = func {
+	if ((getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7) and getprop("/it-autoflight/thr-locked") == 1) {
+		athr_lock.active = 1;
+		athr_lock_1.active = 1;
+	} else {
+		athr_lock.active = 0;
+		athr_lock_1.active = 0;
+		athr_lock.noRepeat = 0;
+		athr_lock_1.noRepeat = 0;
+	}
+	
+	if (getprop("/it-autoflight/output/athr-warning") == 2 and getprop("/ECAM/warning-phase") != 4 and getprop("/ECAM/warning-phase") != 8 and getprop("/ECAM/warning-phase") != 10) {
+		athr_offw.active = 1;
+		athr_offw_1.active = 1;
+	} else {
+		athr_offw.active = 0;
+		athr_offw_1.active = 0;
+		athr_offw.noRepeat = 0;
+		athr_offw_1.noRepeat = 0;
+	}
+}
+
+var messages_priority_2_old = func {
 	if ((((getprop("/ECAM/warning-phase") >= 1 and getprop("/ECAM/warning-phase") <= 2) or (getprop("/ECAM/warning-phase") >= 9 and getprop("/ECAM/warning-phase") <= 10) and (wow and getprop("/engines/engine[0]/state") == 3)) or getprop("/ECAM/warning-phase") == 6) and getprop("/systems/failures/pack1") == 1) {
 		pack1_fault.active = 1;
 	} else {
@@ -132,7 +155,7 @@ var messages_right_memo = func {
 		land_asap_a.active = 0;
 	}
 	
-	if (libraries.ap1_active == 1 or libraries.ap2_active == 1) {
+	if (libraries.ap_active == 1) {
 		ap_off.active = 1;
 	} else {
 		ap_off.active = 0;
