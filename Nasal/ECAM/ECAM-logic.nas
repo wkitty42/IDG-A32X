@@ -43,6 +43,16 @@ var messages_priority_2 = func {
 		athr_offw.noRepeat = 0;
 		athr_offw_1.noRepeat = 0;
 	}
+	
+	if (getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7)) {
+		athr_lim.active = 1;
+		athr_lim_1.active = 1;
+	} else {
+		athr_lim.active = 0;
+		athr_lim_1.active = 0;
+		athr_lim.noRepeat = 0;
+		athr_lim_1.noRepeat = 0;
+	}
 }
 
 var messages_priority_2_old = func {
@@ -162,13 +172,13 @@ var messages_right_memo = func {
 		land_asap_a.active = 0;
 	}
 	
-	if (libraries.ap_active == 1) {
+	if (libraries.ap_active == 1 and getprop("/it-autoflight/output/ap-warning") == 1) {
 		ap_off.active = 1;
 	} else {
 		ap_off.active = 0;
 	}
 	
-	if (libraries.athr_active == 1) {
+	if (libraries.athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 1) {
 		athr_off.active = 1;
 	} else {
 		athr_off.active = 0;

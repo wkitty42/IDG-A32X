@@ -817,7 +817,7 @@
 		</retard>
 		
 		<apoff>
-			<name>apoff</name>
+			<name>apoff-looped</name>
 			<mode>looped</mode>
 			<path>/Aircraft/IDG-A32X/Sounds/apoff.wav</path>
 			<condition>
@@ -846,17 +846,15 @@
 		</apoff>
 		
 		<apoff>
-			<name>apoff</name>
+			<name>apoff-single</name>
 			<mode>once</mode>
 			<path>/Aircraft/IDG-A32X/Sounds/apoff.wav</path>
 			<condition>
 				<and>
-					<not>
-						<equals>
-							<property>/it-autoflight/output/ap-warning</property>
-							<value>2</value>
-						</equals>
-					</not>
+					<equals>
+						<property>/it-autoflight/output/ap-warning</property>
+						<value>1</value>
+					</equals>
 					<equals>
 						<property>/it-autoflight/output/ap1</property>
 						<value>0</value>
