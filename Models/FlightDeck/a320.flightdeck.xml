@@ -4055,7 +4055,10 @@
 			</binding>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.apOff("hard","L");</script>
+				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
+							libraries.apOff("hard","L");
+						}
+				</script>
 			</binding>
 		</action>
 	</animation>
@@ -4092,7 +4095,10 @@
 			</binding>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.apOff("hard","R");</script>
+				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
+							libraries.apOff("hard","R");
+						}
+				</script>
 			</binding>
 		</action>
 	</animation>

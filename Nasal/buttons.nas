@@ -253,7 +253,7 @@ var decreaseManVS = func {
 }
 
 var apOff = func(type, side) {
-	if ((side == "L" and getprop("/it-autoflight/input/ap1") == 1) or (side == "R" and getprop("/it-autoflight/input/ap2") == 1)) {
+	if ((side == "L" and getprop("/it-autoflight/output/ap1") == 1) or (side == "R" and getprop("/it-autoflight/output/ap2") == 1)) {
 		setprop("/it-autoflight/output/ap-warning", 0);
 		return;
 	}
@@ -269,7 +269,7 @@ var apOff = func(type, side) {
 }
 
 var athrOff = func(type) {
-	if (getprop("it-autoflight/input/athr") == 1) {
+	if (getprop("it-autoflight/output/athr") == 1) {
 		setprop("/it-autoflight/output/athr-warning", 0);
 		return;
 	}

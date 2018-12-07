@@ -196,10 +196,10 @@ var atoff_request = func {
 	state1 = getprop("/systems/thrust/state1");
 	state2 = getprop("/systems/thrust/state2");
 	if ((state1 == "IDLE") and (state2 == "IDLE") and (getprop("/systems/thrust/alpha-floor") == 0) and (getprop("/systems/thrust/toga-lk") == 0)) {
-		setprop("/it-autoflight/input/athr", 0);
-		if (getprop("/it-autoflight/output/athr") == 0 and getprop("/position/gear-agl-ft") > 50) {
+		if (getprop("/it-autoflight/output/athr") == 1 and getprop("/position/gear-agl-ft") > 50) {
 			libraries.athrOff("soft");
 		}
+		setprop("/it-autoflight/input/athr", 0);
 	}
 }
 
