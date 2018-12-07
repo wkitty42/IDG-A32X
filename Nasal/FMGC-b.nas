@@ -640,7 +640,7 @@ var ap_various = func {
 		if (getprop("/controls/flight/aileron") > 0.2 or getprop("/controls/flight/aileron") < -0.2 or getprop("/controls/flight/elevator") > 0.2 or getprop("/controls/flight/elevator") < -0.2) {
 			setprop("/it-autoflight/input/ap1", 0);
 			setprop("/it-autoflight/input/ap2", 0);
-			libraries.apOff("hard", "B");
+			libraries.apOff("hard", 0);
 		}
 	}
 }

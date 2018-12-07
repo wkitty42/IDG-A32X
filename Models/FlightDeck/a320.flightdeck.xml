@@ -4056,7 +4056,7 @@
 			<binding>
 				<command>nasal</command>
 				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
-							libraries.apOff("hard","L");
+							libraries.apOff("hard",1);
 						}
 				</script>
 			</binding>
@@ -4096,7 +4096,7 @@
 			<binding>
 				<command>nasal</command>
 				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
-							libraries.apOff("hard","R");
+							libraries.apOff("hard",2);
 						}
 				</script>
 			</binding>

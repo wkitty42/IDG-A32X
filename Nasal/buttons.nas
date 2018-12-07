@@ -253,7 +253,7 @@ var decreaseManVS = func {
 }
 
 var apOff = func(type, side) {
-	if ((side == "L" and getprop("/it-autoflight/output/ap1") == 1) or (side == "R" and getprop("/it-autoflight/output/ap2") == 1)) {
+	if ((side == 1 and getprop("/it-autoflight/output/ap1") == 1) or (side == 2 and getprop("/it-autoflight/output/ap2") == 1)) {
 		setprop("/it-autoflight/output/ap-warning", 0);
 		return;
 	}
