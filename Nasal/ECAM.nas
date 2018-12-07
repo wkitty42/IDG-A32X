@@ -299,6 +299,8 @@ var LowerECAM = {
 			#call status
 		}
 		
+
+		
 		if (getprop("/ECAM/Lower/fault-select") == 0) {
 			if (b != "clr") {
 				if (!man_sel) {
@@ -316,6 +318,8 @@ var LowerECAM = {
 						setprop("/ECAM/Lower/light/" ~ b, 1);
 					}
 				}
+			} elsif (getprop("/ECAM/Lower/light/clr") == 1) {
+				setprop("/ECAM/Lower/light/clr", 0);
 			}
 		} else {
 			if (b == "clr") {
