@@ -561,6 +561,18 @@ var lightsLoop = maketimer(0.2, func {
 			setprop("/controls/lighting/no-smoking-sign", 0); # sign stays on in cabin but sound still occurs
 		}
 	}
+	
+	if (getprop("controls/lighting/landing-lights[1]") >= 0.5) {
+		setprop("/fdm/jsbsim/rubbish/landL", 1);
+	} else {
+		setprop("/fdm/jsbsim/rubbish/landL", 0);
+	}
+	
+	if (getprop("controls/lighting/landing-lights[2]") >= 0.5) {
+		setprop("/fdm/jsbsim/rubbish/landR", 1);
+	} else {
+		setprop("/fdm/jsbsim/rubbish/landR", 0);
+	}
 });
 
 var lTray = func {
