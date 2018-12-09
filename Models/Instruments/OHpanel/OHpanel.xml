@@ -5634,11 +5634,11 @@
 			<button>3</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-adjust</command>
+				<command>property-cycle</command>
 				<property>controls/switches/seatbelt-sign</property>
-				<step>1</step>
-				<min>0</min>
-				<max>1</max>
+				<value>0.0</value>
+				<!--value>0.5</value-->
+				<value>1.0</value>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -5650,11 +5650,11 @@
 			<button>4</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-adjust</command>
+				<command>property-cycle</command>
 				<property>controls/switches/seatbelt-sign</property>
-				<step>-1</step>
-				<min>0</min>
-				<max>1</max>
+				<value>1.0</value>
+				<!--value>0.5</value-->
+				<value>0.0</value>
 			</binding>
 			<binding>
 				<command>nasal</command>
