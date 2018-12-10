@@ -365,7 +365,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>rubbish/landL</property>
-				<value>0.025</value>
+				<value>0.0016</value>
 			</product>
 		</function>
 		
@@ -375,7 +375,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<property>rubbish/landR</property>
-				<value>0.025</value>
+				<value>0.0016</value>
 			</product>
 		</function>
 	
