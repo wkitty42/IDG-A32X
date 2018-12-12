@@ -20,7 +20,7 @@
 		<spring_coeff unit="LBS/FT"> 30935.5 </spring_coeff>
 		<damping_coeff unit="LBS/FT/SEC"> 16978.5 </damping_coeff>
 		<max_steer unit="DEG"> 70 </max_steer>
-		<brake_group> NONE </brake_group>
+		<brake_group> NOSE </brake_group>
 		<retractable>1</retractable>
 		<table name="CORNERING_COEFF" type="internal">
 			<tableData> <!-- jsbsim-pacejka.py 3.0 0.03 2.85 1.4 1.03 1.4 -->
