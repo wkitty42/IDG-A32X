@@ -76,9 +76,9 @@
 		<spring_coeff unit="LBS/FT"> 59785 </spring_coeff>
 		<damping_coeff unit="LBS/FT/SEC"> 23957 </damping_coeff>
 		<max_steer unit="DEG"> 0.0 </max_steer>
-		<table name="CORNERING_COEFF" type="internal">
-			<tableData> <!-- jsbsim-pacejka.py 3.0 0.015 2.85 1.8 1.03 1.4 -->
-				-90.0   -1.09606496421397
+		<!--<table name="CORNERING_COEFF" type="internal">
+			<tableData>--> <!-- jsbsim-pacejka.py 3.0 0.015 2.85 1.8 1.03 1.4 -->
+				<!---90.0   -1.09606496421397
 				-87.0   -1.1118683102220852
 				-84.0   -1.1279939869815452
 				-81.0   -1.1443723877144338
@@ -140,7 +140,7 @@
 				87.0    1.1118683102220852
 				90.0    1.09606496421397
 			</tableData>
-		</table>
+		</table>-->
 		<brake_group> LEFT </brake_group>
 		<retractable> 1 </retractable>
 	</contact>
@@ -156,7 +156,7 @@
 		<spring_coeff unit="LBS/FT"> 59785 </spring_coeff>
 		<damping_coeff unit="LBS/FT/SEC"> 23957 </damping_coeff>
 		<max_steer unit="DEG"> 0.0 </max_steer>
-		<table name="CORNERING_COEFF" type="internal">
+		<!--<table name="CORNERING_COEFF" type="internal">
 			<tableData>
 				-90.0   -1.09606496421397
 				-87.0   -1.1118683102220852
@@ -220,7 +220,7 @@
 				87.0    1.1118683102220852
 				90.0    1.09606496421397
 			</tableData>
-		</table>
+		</table>-->
 		<brake_group> RIGHT </brake_group>
 		<retractable> 1 </retractable>
 	</contact>
