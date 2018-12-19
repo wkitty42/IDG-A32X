@@ -35,30 +35,30 @@ TODO: add conditions for not yet implemented stuff:
 					<and>
 						<equals>
 							<property>controls/switches/seatbelt-sign</property>
-							<value>true</value>
+							<value>1</value>
 						</equals>
-						<equals>
+						<greater-than>
 							<property>controls/switches/no-smoking-sign</property>
-							<value>true</value>
-						</equals>
+							<value>0</value>
+						</greater-than>
 					</and>
 				</condition>
 				<binding>
 					<command>property-assign</command>
 					<property>controls/switches/seatbelt-sign</property>
-					<value>true</value>
+					<value>1</value>
 				</binding>
 				<binding>
 					<command>property-assign</command>
 					<property>controls/switches/no-smoking-sign</property>
-					<value>true</value>
+					<value>0.5</value>
 				</binding>
-                                <marker>
-                                        <x-m>4.6733</x-m>
-                                        <y-m>0.0300</y-m>
-                                        <z-m>0.8825</z-m>
-                                        <scale>2.5500</scale>
-                                </marker>
+                <marker>
+					<x-m>4.6733</x-m>
+					<y-m>0.0300</y-m>
+					<z-m>0.8825</z-m>
+					<scale>2.5500</scale>
+				</marker>
 			</item>
 			<item>
 				<name>ADIRS</name>
