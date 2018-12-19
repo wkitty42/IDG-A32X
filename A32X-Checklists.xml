@@ -1202,20 +1202,20 @@ TODO: add conditions for not yet implemented stuff:
 			<condition>
 					<equals>
 						<property>controls/switches/no-smoking-sign</property>
-						<value>false</value>
+						<value>0</value>
 					</equals>
 			</condition>
 			<binding>
 				<command>property-assign</command>
 				<property>controls/switches/no-smoking-sign</property>
-				<value>false</value>
+				<value>0</value>
 			</binding>
-                        <marker>
-                                <x-m>4.6958</x-m>
-                                <y-m>0.0275</y-m>
-                                <z-m>0.8775</z-m>
-                                <scale>1.4000</scale>
-                        </marker>
+            <marker>
+				<x-m>4.6958</x-m>
+				<y-m>0.0275</y-m>
+				<z-m>0.8775</z-m>
+				<scale>1.4000</scale>
+            </marker>
 		</item>
 		<item>
 			<name>APU AND BAT</name>
