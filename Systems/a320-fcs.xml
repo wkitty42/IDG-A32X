@@ -1,5 +1,4 @@
 <!-- Airbus A320 FCS/FBW -->
-<!-- Joshua Davidson (it0uchpods) -->
 
 <!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
 
@@ -807,7 +806,7 @@
 						<independentVar lookup="column">fbw/pitch/g-pi-switched</independentVar>
 						<tableData>
 							          -1         0       
-							 0.523598 -0.026180  0.000000
+							 0.436332 -0.026180  0.000000
 							 0.523599 -0.087266  0.000000
 						</tableData>
 					</table>
