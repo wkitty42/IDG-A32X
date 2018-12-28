@@ -51,24 +51,28 @@
 			<legend>AP1</legend>
 			<pref-width>43</pref-width>
 			<binding>
-			<command>property-toggle</command>
-			<property>/it-autoflight/input/ap1</property>
-			</binding>
-			<binding>
-			<command>nasal</command>
-			<script>libraries.apOff("hard", 1);</script>
+				<command>nasal</command>
+				<script>
+					if (getprop("/it-autoflight/input/ap1") == 0) {
+						setprop("it-autoflight/input/ap1", 1);
+					} else {
+						libraries.apOff("hard", 1);
+					}
+				</script>
 			</binding>
 		</button>
 		<button>
 			<legend>AP2</legend>
 			<pref-width>43</pref-width>
 			<binding>
-			<command>property-toggle</command>
-			<property>/it-autoflight/input/ap2</property>
-			</binding>
-			<binding>
-			<command>nasal</command>
-			<script>libraries.apOff("hard", 2);</script>
+				<command>nasal</command>
+				<script>
+					if (getprop("/it-autoflight/input/ap2") == 0) {
+						setprop("it-autoflight/input/ap2", 1);
+					} else {
+						libraries.apOff("hard", 2);
+					}
+				</script>
 			</binding>
 		</button>
 		<button>

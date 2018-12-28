@@ -208,7 +208,9 @@ var update_loop = func {
 		if (getprop("/it-fbw/protections/overspeed") != 1) {
 			setprop("/it-fbw/protections/overspeed", 1);
 		}
-		libraries.apOff("hard", 0);
+		if (getprop("/it-autoflight/input/ap1") == 1 or getprop("/it-autoflight/input/ap2") == 1) {
+			libraries.apOff("hard", 0);
+		}
 	} else {
 		if (getprop("/it-fbw/protections/overspeed") != 0) {
 			setprop("/it-fbw/protections/overspeed", 0);
