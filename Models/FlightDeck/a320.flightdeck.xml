@@ -4042,18 +4042,17 @@
 			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-toggle</command>
-				<property>it-autoflight/input/ap1</property>
-			</binding>
-			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
 			</binding>
 			<binding>
 				<command>nasal</command>
-				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
-							libraries.apOff("hard",1);
-						}
+				<script>
+				if (getprop("/it-autoflight/input/ap1") == 0) {
+						setprop("it-autoflight/input/ap1", 1);
+					} else {
+						libraries.apOff("hard", 1);
+					}
 				</script>
 			</binding>
 		</action>
@@ -4082,18 +4081,17 @@
 			<button>0</button>
 			<repeatable type="bool">false</repeatable>
 			<binding>
-				<command>property-toggle</command>
-				<property>it-autoflight/input/ap2</property>
-			</binding>
-			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
 			</binding>
 			<binding>
 				<command>nasal</command>
-				<script>if (getprop("/it-autoflight/output/ap1") == 0) {
-							libraries.apOff("hard",2);
-						}
+				<script>
+				if (getprop("/it-autoflight/input/ap2") == 0) {
+						setprop("it-autoflight/input/ap2", 1);
+					} else {
+						libraries.apOff("hard", 2);
+					}
 				</script>
 			</binding>
 		</action>
@@ -4122,16 +4120,18 @@
 			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-toggle</command>
-				<property>it-autoflight/input/athr</property>
-			</binding>
-			<binding>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/btn1", 1);</script>
 			</binding>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.athrOff("hard");</script>
+				<script>
+					if (getprop("/it-autoflight/input/athr") == 0) {
+						setprop("it-autoflight/input/athr", 1);
+					} else {
+						libraries.athrOff("hard");
+					}
+				</script>
 			</binding>
 		</action>
 	</animation>

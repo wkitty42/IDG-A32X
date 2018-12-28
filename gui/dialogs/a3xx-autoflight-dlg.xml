@@ -54,7 +54,7 @@
 			</binding>
 			<binding>
 			<command>nasal</command>
-			<script>libraries.apOff("hard",1);</script>
+			<script>libraries.apOff("hard", 1);</script>
 			</binding>
 		</button>
 		<button>
@@ -66,7 +66,7 @@
 			</binding>
 			<binding>
 			<command>nasal</command>
-			<script>libraries.apOff("hard",2);</script>
+			<script>libraries.apOff("hard", 2);</script>
 			</binding>
 		</button>
 		<button>

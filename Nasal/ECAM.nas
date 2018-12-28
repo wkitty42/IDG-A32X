@@ -157,10 +157,10 @@ var ECAM = {
 		
 		if (stateL == 3 and stateR == 3 and getprop("/ECAM/engine-start-time") + 120 < getprop("/sim/time/elapsed-sec") and getprop("/ECAM/to-memo-enable") == 1 and wow == 1) {
 			setprop("/ECAM/left-msg", "TO-MEMO");
-		} else if (getprop("/ECAM/ldg-memo-enable") == 1) {
+		} elsif (getprop("/ECAM/ldg-memo-enable") == 1) {
 			setprop("/ECAM/left-msg", "LDG-MEMO");
-		} else if (getprop("/ECAM/show-left-msg") == 1) {
-			setprop("/ECAM/left-msg", "MSG");
+		} elsif (getprop("/ECAM/show-left-msg") == 1) {
+			setprop("/ECAM/left-msg", "MSG"); # messages should have priority over memos - how?
 		} else {
 			setprop("/ECAM/left-msg", "NONE");
 		}

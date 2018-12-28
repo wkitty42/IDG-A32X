@@ -251,27 +251,40 @@ var decreaseManVS = func {
 }
 
 var apOff = func(type, side) {
-	if ((side == 1 and getprop("/it-autoflight/output/ap1") == 1) or (side == 2 and getprop("/it-autoflight/output/ap2") == 1)) {
-		setprop("/it-autoflight/output/ap-warning", 0);
-		return;
+	if (side == 0) {
+		setprop("/it-autoflight/input/ap1", 0);
+		setprop("/it-autoflight/input/ap2", 0);
+	} elsif (side == 1) {
+		setprop("/it-autoflight/input/ap1", 0);
+	} elsif (side == 2) {
+		setprop("/it-autoflight/input/ap2", 0);
 	}
-	
-	if (type == "soft") {
+	apWarn(type);
+}
+
+var apWarn = func(type) {
+	if (type == "none") {
+		return;
+	} elsif (type == "soft") {
 		setprop("/ECAM/ap-off-time", getprop("/sim/time/elapsed-sec"));
 		setprop("/it-autoflight/output/ap-warning", 1);
 		setprop("/ECAM/warnings/master-warning-light", 1);
 	} else {
 		setprop("/it-autoflight/output/ap-warning", 2);
+		# master warning handled by warning system in this case
 		libraries.LowerECAM.clrLight();
 	}
 }
 
 var athrOff = func(type) {
-	if (getprop("it-autoflight/output/athr") == 1) {
-		setprop("/it-autoflight/output/athr-warning", 0);
-		return;
-	}
-	if (type == "soft") {
+	setprop("/it-autoflight/input/athr", 0);
+	athrWarn(type);
+}
+
+var athrWarn = func(type) {
+	if (type == "none") { 
+		return; 
+	} elsif (type == "soft") {
 		setprop("/ECAM/athr-off-time", getprop("/sim/time/elapsed-sec"));
 		setprop("/it-autoflight/output/athr-warning", 1);
 	} else {
