@@ -1,5 +1,4 @@
 <!-- Airbus A320 FCS/FBW -->
-<!-- Joshua Davidson (it0uchpods) -->
 
 <!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
 
@@ -277,8 +276,8 @@
 						<tableData>
 							          -1         0         1
 							-0.575959  0.261799  0.000000  0.000000
-							-0.575958  0.000000  0.000000  0.000000
-							 0.575958  0.000000  0.000000  0.000000
+							-0.488692  0.000000  0.000000  0.000000
+							 0.488692  0.000000  0.000000  0.000000
 							 0.575959  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
@@ -306,11 +305,11 @@
 						<independentVar lookup="row">attitude/roll-rad</independentVar>
 						<independentVar lookup="column">fbw/roll/a-i</independentVar>
 						<tableData>
-							          -1         0         1
-							-1.169370  0.261799  0.000000  0.000000
-							-1.169369  0.000000  0.000000  0.000000
-							 1.169369  0.000000  0.000000  0.000000
-							 1.169370  0.000000  0.000000 -0.261799
+							          -1.0      -0.1       0.0       0.1       1.0
+							-1.169370  0.261799  0.000000  0.000000  0.000000  0.000000
+							-1.082100  0.000000  0.000000  0.000000  0.000000  0.000000
+							 1.082100  0.000000  0.000000  0.000000  0.000000  0.000000
+							 1.169370  0.000000  0.000000  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
 					<table>
@@ -367,8 +366,8 @@
 						<tableData>
 							          -1         0         1
 							-0.698132  0.261799  0.000000  0.000000
-							-0.698131  0.000000  0.000000  0.000000
-							 0.698131  0.000000  0.000000  0.000000
+							-0.610865  0.000000  0.000000  0.000000
+							 0.610865  0.000000  0.000000  0.000000
 							 0.698132  0.000000  0.000000 -0.261799
 						</tableData>
 					</table>
@@ -436,14 +435,10 @@
 			</test>
 		</switch>
 		
-		<fcs_function name="fbw/roll/rate-error">
-			<function>
-				<difference>
-					<property>fbw/roll/p-r_s-s</property>
-					<property>fbw/roll/rate-demand-lag</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/roll/rate-error">
+			<input>fbw/roll/p-r_s-s</input>
+			<input>-fbw/roll/rate-demand-lag</input>
+		</summer>
 		
 		<switch name="fbw/roll/trigger">
 			<default value="0"/>
@@ -735,14 +730,10 @@
 			</function>
 		</fcs_function>
 		
-		<fcs_function name="fbw/pitch/g-error">
-			<function>
-				<difference>
-					<property>fbw/pitch/g-computed</property>
-					<property>fbw/pitch/g-demand</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/pitch/g-error">
+			<input>fbw/pitch/g-computed</input>
+			<input>-fbw/pitch/g-demand</input>
+		</summer>
 		
 		<!-- Goes to Systems/fbw-pitch.xml then back as fbw/pitch/g-pi -->
 		
@@ -777,8 +768,8 @@
 						<tableData>
 							          -1         0         1
 							-0.261799  0.000000  0.000000  0.087266
-							-0.261798  0.000000  0.000000  0.000000
-							 0.523598  0.000000  0.000000  0.000000
+							-0.174533  0.000000  0.000000  0.000000
+							 0.436332  0.000000  0.000000  0.000000
 							 0.523599 -0.087266  0.000000  0.000000
 						</tableData>
 					</table>
@@ -815,7 +806,7 @@
 						<independentVar lookup="column">fbw/pitch/g-pi-switched</independentVar>
 						<tableData>
 							          -1         0       
-							 0.523598 -0.026180  0.000000
+							 0.436332 -0.026180  0.000000
 							 0.523599 -0.087266  0.000000
 						</tableData>
 					</table>
@@ -883,14 +874,10 @@
 			</test>
 		</switch>
 		
-		<fcs_function name="fbw/pitch/rate-error">
-			<function>
-				<difference>
-					<property>fbw/pitch/t-r_s-s</property>
-					<property>fbw/pitch/rate-demand-lag</property>
-				</difference>
-			</function>
-		</fcs_function>
+		<summer name="fbw/pitch/rate-error">
+			<input>fbw/pitch/t-r_s-s</input>
+			<input>-fbw/pitch/rate-demand-lag</input>
+		</summer>
 		
 		<switch name="fbw/pitch/trigger">
 			<default value="0"/>
