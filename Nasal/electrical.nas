@@ -759,7 +759,7 @@ var ELEC = {
 			setprop("/controls/lighting/overhead-panel-norm", getprop("/controls/lighting/overhead-panel-knb"));
 		}
 		
-		if getprop("systems/electrical/on") == 0) {
+		if (getprop("systems/electrical/on") == 0) {
 			setprop("/systems/thrust/thr-locked", 0);
 		}
 		
