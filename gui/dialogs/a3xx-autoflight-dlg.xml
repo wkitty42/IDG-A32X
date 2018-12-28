@@ -37,12 +37,14 @@
 			<legend>A/THR</legend>
 			<pref-width>43</pref-width>
 			<binding>
-			<command>property-toggle</command>
-			<property>/it-autoflight/input/athr</property>
-			</binding>
-			<binding>
 				<command>nasal</command>
-				<script>libraries.athrOff("hard");</script>
+				<script>
+					if (getprop("/it-autoflight/input/athr") == 0) {
+						setprop("it-autoflight/input/athr", 1);
+					} else {
+						libraries.athrOff("hard");
+					}
+				</script>
 			</binding>
 		</button>
 		<button>
