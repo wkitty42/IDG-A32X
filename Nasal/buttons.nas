@@ -277,7 +277,12 @@ var apWarn = func(type) {
 }
 
 var athrOff = func(type) {
+	if (type == "hard") {
+		lockThr();
+	}
+	
 	setprop("/it-autoflight/input/athr", 0);
+	
 	athrWarn(type);
 }
 
@@ -293,3 +298,25 @@ var athrWarn = func(type) {
 	}
 	setprop("/ECAM/warnings/master-caution-light", 1);
 }
+
+var lockThr = func() {
+	state1 = getprop("/systems/thrust/state1");
+	state2 = getprop("/systems/thrust/state2");
+	if ((state1 == "CL" and state2 == "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 == "MCT" and state2 == "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
+		setprop("/systems/thrust/thr-locked", 1);
+	}
+	
+	lockTimer.start();
+}
+
+var checkLockThr = func() {
+	state1 = getprop("/systems/thrust/state1");
+	state2 = getprop("/systems/thrust/state2");
+	if ((state1 != "CL" and state2 != "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 != "MCT" and state2 != "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
+		setprop("/systems/thrust/thr-locked", 0);
+		lockTimer.stop();
+	}
+}
+
+
+var lockTimer = maketimer(0.02, checkLockThr);

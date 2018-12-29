@@ -187,6 +187,37 @@ var ECAM_controller = {
 			setprop("/ECAM/warnings/overflow", 0);
 		}
 	},
+	reset: func() {
+		foreach (var w; warnings.vector) {
+			if (w.active == 1) {
+				w.active = 0;
+			}
+		}
+		
+		foreach (var l; leftmemos.vector) {
+			if (l.active == 1) {
+				l.active = 0;
+			}
+		}
+		
+		foreach (var sL; specialLines.vector) {
+			if (sL.active == 1) {
+				sL.active = 0;
+			}
+		}
+		
+		foreach (var sF; secondaryFailures.vector) {
+			if (sF.active == 1) {
+				sF.active = 0;
+			}
+		}
+		
+		foreach (var m; memos.vector) {
+			if (m.active == 1) {
+				m.active = 0;
+			}
+		}
+	},
 };
 
 var ECAMloopTimer = maketimer(0.2, func {
