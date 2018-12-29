@@ -133,6 +133,7 @@ var status = {
 var ECAM_controller = {
 	init: func() {
 		ECAMloopTimer.start();
+		me.reset();
 	},
 	loop: func() {
 		# check active messages
@@ -219,6 +220,12 @@ var ECAM_controller = {
 		}
 	},
 };
+
+setlistener("/systems/electrical/bus/ac-ess", func {
+	if (getprop("/systems/electrical/bus/ac-ess") < 110) {
+		ECAM_controller.reset();
+	}
+}, 0, 0);
 
 var ECAMloopTimer = maketimer(0.2, func {
 	ECAM_controller.loop();
