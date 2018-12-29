@@ -687,6 +687,7 @@ var ELEC = {
 				setprop("/it-autoflight/input/ap2", 0);
 			}
 			setprop("systems/electrical/on", 0);
+			setprop("/systems/thrust/thr-locked", 0);
 			setprop("/systems/electrical/outputs/adf", 0);
 			setprop("/systems/electrical/outputs/audio-panel", 0);
 			setprop("/systems/electrical/outputs/audio-panel[1]", 0);
@@ -757,10 +758,6 @@ var ELEC = {
 			setprop("/controls/lighting/fcu-panel-norm", getprop("/controls/lighting/fcu-panel-knb"));
 			setprop("/controls/lighting/main-panel-norm", getprop("/controls/lighting/main-panel-knb"));
 			setprop("/controls/lighting/overhead-panel-norm", getprop("/controls/lighting/overhead-panel-knb"));
-		}
-		
-		if (getprop("systems/electrical/on") == 0) {
-			setprop("/systems/thrust/thr-locked", 0);
 		}
 		
 		setprop("/systems/electrical/ac1-src", ac1_src);
