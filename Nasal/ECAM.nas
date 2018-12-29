@@ -329,7 +329,6 @@ var LowerECAM = {
 				setprop("/ECAM/Lower/man-select", 1);
 				setprop("/ECAM/Lower/page", b);
 				setprop("/ECAM/Lower/light/" ~ b, 1);
-				print("calling SD page manually");
 			} else {
 				if (b == getprop("/ECAM/Lower/page")) {
 					setprop("/ECAM/Lower/man-select", 0);
