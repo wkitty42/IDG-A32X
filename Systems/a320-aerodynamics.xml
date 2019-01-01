@@ -1,11 +1,7 @@
 <!-- Airbus A320 Aerodynamics -->
 <!-- Joshua Davidson (it0uchpods) -->
 
-<!--
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
--->
+<!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
 
 <aerodynamics>
 	
@@ -406,7 +402,7 @@
 			<product>
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
-				<property>fcs/rudder-pos-rad</property>
+				<toradians><property>hydraulics/rudder/final-deg</property></toradians>
 				<value>0.2653</value>
 			</product>
 		</function>

@@ -1,9 +1,7 @@
 # A3XX Engine Control
 # Joshua Davidson (it0uchpods)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2018 Joshua Davidson (it0uchpods)
 
 if (getprop("/options/eng") == "IAE") {
 	io.include("engines-iae.nas");
@@ -68,21 +66,23 @@ setlistener("/controls/APU/master", func {
 	} else if (getprop("/controls/APU/master") == 1) {
 		apuBleedChk.stop();
 		setprop("/systems/apu/bleed-counting", 0);
+		setprop("/systems/apu/bleed-used", 0);
 	}
 });
 
 var apu_stop = func {
-	if (getprop("/systems/apu/bleed-used") == 1 and getprop("/systems/apu/bleed-counting") != 1) {
+	if (getprop("/systems/apu/bleed-used") == 1 and getprop("/systems/apu/bleed-counting") != 1 and getprop("/systems/acconfig/autoconfig-running") != 1) {
 		setprop("/systems/apu/bleed-counting", 1);
 		setprop("/systems/apu/bleed-time", getprop("/sim/time/elapsed-sec"));
 	}
-	if (getprop("/systems/apu/bleed-used") == 1 and getprop("/systems/apu/bleed-counting") == 1) {
+	if (getprop("/systems/apu/bleed-used") == 1 and getprop("/systems/apu/bleed-counting") == 1 and getprop("/systems/acconfig/autoconfig-running") != 1) {
 		apuBleedChk.start();
 	} else {
 		apuBleedChk.stop();
 		interpolate("/systems/apu/rpm", 0, 30);
 		interpolate("/systems/apu/egt", 42, 40);
 		setprop("/systems/apu/bleed-counting", 0);
+		setprop("/systems/apu/bleed-used", 0);
 	}
 }
 
@@ -93,6 +93,7 @@ var apuBleedChk = maketimer(0.1, func {
 			interpolate("/systems/apu/rpm", 0, 30);
 			interpolate("/systems/apu/egt", 42, 40);
 			setprop("/systems/apu/bleed-counting", 0);
+			setprop("/systems/apu/bleed-used", 0);
 		}
 	}
 });

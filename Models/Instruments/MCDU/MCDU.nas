@@ -1,9 +1,6 @@
 # A3XX MCDU
-# Joshua Davidson (it0uchpods)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2018 Joshua Davidson (it0uchpods)
 
 var MCDU_1 = nil;
 var MCDU_2 = nil;
@@ -94,7 +91,7 @@ var canvas_MCDU_base = {
 		"PERFTO_V2","PERFTO_FE","PERFTO_SE","PERFTO_OE"];
 	},
 	update: func() {
-		if (getprop("/systems/electrical/bus/ac1") >= 110) {
+		if (getprop("/systems/electrical/bus/ac1") >= 110 and getprop("/controls/lighting/DU/mcdu1") > 0.01) {
 			MCDU_1.update();
 			MCDU_1.updateFast();
 			updateL = 1;
@@ -103,7 +100,7 @@ var canvas_MCDU_base = {
 			updateL = 0;
 			MCDU_1.page.hide();
 		}
-		if (getprop("/systems/electrical/bus/ac2") >= 110) {
+		if (getprop("/systems/electrical/bus/ac2") >= 110 and getprop("/controls/lighting/DU/mcdu2") > 0.01) {
 			MCDU_2.update();
 			MCDU_2.updateFast();
 			updateR = 1;
@@ -1741,13 +1738,11 @@ var MCDU_update_fast = maketimer(0.125, func {
 });
 
 var showMCDU1 = func {
-	var mcdu1_dlg = gui.Dialog.new("sim/gui/dialogs/mcdu1/dialog", "Aircraft/IDG-A32X/Systems/mcdu1-dlg.xml");
-	mcdu1_dlg.open();
+	gui.showDialog("mcdu1");
 }
 
 var showMCDU2 = func {
-	var mcdu2_dlg = gui.Dialog.new("sim/gui/dialogs/mcdu2/dialog", "Aircraft/IDG-A32X/Systems/mcdu2-dlg.xml");
-	mcdu2_dlg.open();
+	gui.showDialog("mcdu2");
 }
 
 setlistener("/MCDU[0]/page", func {

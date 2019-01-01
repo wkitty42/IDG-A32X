@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 
-<!--
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
--->
+<!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
 
 <!-- IT-AUTOFLIGHT -->
 
@@ -691,7 +687,11 @@
 				<sum>
 					<div>
 						<property>/orientation/roll-deg</property>
-						<value>1.8</value>
+						<table>
+							<property>/fdm/jsbsim/velocities/vc-kts</property>
+							<entry><ind>140</ind><dep>1.8</dep></entry>
+							<entry><ind>360</ind><dep>2.8</dep></entry>
+						</table>
 					</div>
 					<property>/it-autoflight/internal/heading-deg</property>
 				</sum>
@@ -708,7 +708,11 @@
 				<sum>
 					<div>
 						<property>/orientation/roll-deg</property>
-						<value>1.8</value>
+						<table>
+							<property>/fdm/jsbsim/velocities/vc-kts</property>
+							<entry><ind>140</ind><dep>1.8</dep></entry>
+							<entry><ind>360</ind><dep>2.8</dep></entry>
+						</table>
 					</div>
 					<property>/it-autoflight/internal/track-deg</property>
 				</sum>

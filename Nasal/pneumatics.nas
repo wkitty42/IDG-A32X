@@ -1,9 +1,7 @@
 # A3XX Pneumatic System
 # Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2018 Joshua Davidson (it0uchpods)
 
 var altitude = 0;
 var bleed1_sw = 0;
@@ -198,7 +196,9 @@ var PNEU = {
 		# Air Sources/PSI
 		if (rpmapu >= 94.9 and bleedapu_sw and !bleedapu_fail) {
 			setprop("/systems/pneumatic/bleedapu", 34);
-			setprop("/systems/apu/bleed-used", 1);
+			if (getprop("/controls/APU/master") == 1) {
+				setprop("/systems/apu/bleed-used", 1);
+			}
 		} else {
 			setprop("/systems/pneumatic/bleedapu", 0);
 		}

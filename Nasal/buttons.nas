@@ -1,9 +1,7 @@
 # A3XX Buttons
 # Joshua Davidson (it0uchpods)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2018 Joshua Davidson (it0uchpods)
 
 # Resets buttons to the default values
 var variousReset = func {
@@ -48,6 +46,8 @@ var variousReset = func {
 	setprop("/controls/lighting/DU/du4", 1);
 	setprop("/controls/lighting/DU/du5", 1);
 	setprop("/controls/lighting/DU/du6", 1);
+	setprop("/controls/lighting/DU/mcdu1", 1);
+	setprop("/controls/lighting/DU/mcdu2", 1);
 	setprop("/modes/fcu/hdg-time", 0);
 	setprop("/controls/switching/ATTHDG", 0);
 	setprop("/controls/switching/AIRDATA", 0);
