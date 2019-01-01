@@ -967,6 +967,29 @@
 	
 	<animation>
 		<type>select</type>
+		<object-name>audio_hf1_led</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+				<and>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+					<equals>
+						<property>systems/audio/acp[1]/call_chan</property>
+						<value type="string">hf1</value>
+					</equals>
+				</and>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
 		<object-name>audio_hf2_led</object-name>
 		<condition>
 			<or>
