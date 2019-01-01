@@ -1,7 +1,7 @@
 # A320 Main Libraries
 # Joshua Davidson (it0uchpods)
 
-# Copyright (c) 2018 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 print("-----------------------------------------------------------------------------");
 print("Copyright (c) 2017-2018 Joshua Davidson (it0uchpods)");
