@@ -4,7 +4,7 @@
 # Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 print("-----------------------------------------------------------------------------");
-print("Copyright (c) 2017-2018 Joshua Davidson (it0uchpods)");
+print("Copyright (c) 2016-2019 Joshua Davidson (it0uchpods)");
 print("-----------------------------------------------------------------------------");
 
 setprop("/sim/replay/was-active", 0);
