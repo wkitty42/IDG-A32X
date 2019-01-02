@@ -1869,23 +1869,82 @@
 			</test>
 		</switch>
 		
-		<fcs_function name="hydraulics/tiller/function">
+		<fcs_function name="hydraulics/tiller/steer-input">
 			<function>
-				<table>
-					<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
-					<independentVar lookup="column">hydraulics/tiller/switch</independentVar>
-					<tableData>
-						       -1     0  1
-						30.000 -70.0  0  70.0
-						30.001 -10.0  0  10.0
-					</tableData>
-				</table>
+				<product>
+					<value>75</value>
+					<property>hydraulics/tiller/switch</property>
+				</product>
 			</function>
 		</fcs_function>
 		
+		<fcs_function name="hydraulics/tiller/function-spd-L">
+			<function>
+				<product>
+					<sum>
+						<product>
+							<value>-0.016667</value>
+							<difference>
+								<property>/velocities/groundspeed-kt</property>
+								<v>20</v>
+							</difference>
+						</product>
+						<value>1</value>
+					</sum>
+					<property>hydraulics/tiller/steer-input</property>
+				</product>
+			</function>
+			<clipto>
+				<min>-75</min>
+				<max>  0</max>
+			</clipto>
+		</fcs_function>
+		
+		<fcs_function name="hydraulics/tiller/function-spd-R">
+			<function>
+				<product>
+					<sum>
+						<product>
+							<value>-0.016667</value>
+							<difference>
+								<property>/velocities/groundspeed-kt</property>
+								<v>20</v>
+							</difference>
+						</product>
+						<value>1</value>
+					</sum>
+					<property>hydraulics/tiller/steer-input</property>
+				</product>
+			</function>
+			<clipto>
+				<min>  0</min>
+				<max> 75</max>
+			</clipto>
+		</fcs_function>
+		
+		<switch name="hydraulics/tiller/steer-cmd">
+			<test logic="OR" value="0">
+				position/wow eq 0
+			</test>
+			<test logic="AND" value="hydraulics/tiller/steer-input">
+				/velocities/groundspeed-kt LE 20.000
+				position/wow eq 1
+			</test>
+			<test logic="AND" value="hydraulics/tiller/function-spd-L">
+				/velocities/groundspeed-kt GT 20.000
+				position/wow eq 1
+				hydraulics/tiller/steer-input LT 0
+			</test>
+			<test logic="AND" value="hydraulics/tiller/function-spd-R">
+				/velocities/groundspeed-kt GT 20.000
+				position/wow eq 1
+				hydraulics/tiller/steer-input GT 0
+			</test>
+		</switch>
+		
 		<actuator name="fcs/steer-deg">
-			<input>hydraulics/tiller/function</input>
-			<rate_limit>70</rate_limit>
+			<input>hydraulics/tiller/steer-cmd</input>
+			<rate_limit>75</rate_limit>
 			<output>fcs/steer-pos-deg[0]</output>
 		</actuator>
 		
