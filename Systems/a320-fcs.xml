@@ -1885,7 +1885,7 @@
 		
 		<actuator name="fcs/steer-deg">
 			<input>hydraulics/tiller/function</input>
-			<rate_limit>70</rate_limit>
+			<rate_limit>75</rate_limit>
 			<output>fcs/steer-pos-deg[0]</output>
 		</actuator>
 		
