@@ -276,7 +276,7 @@ setlistener("/options/steep-ils", func {
 
 canvas.Text._lastText = canvas.Text["_lastText"];
 canvas.Text.setText = func(text) {
-	if (text == me._lastText) {return me;}
+	if (text == me._lastText and text != nil and size(text) == size(me._lastText)) {return me;}
 	me._lastText = text;
 	me.set("text", typeof(text) == 'scalar' ? text : "");
 };
