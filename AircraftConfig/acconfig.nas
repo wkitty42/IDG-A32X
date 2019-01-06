@@ -1,7 +1,7 @@
 # Aircraft Config Center
 # Joshua Davidson (it0uchpods)
 
-# Copyright (c) 2018 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 var spinning = maketimer(0.05, func {
 	var spinning = getprop("/systems/acconfig/spinning");
@@ -108,7 +108,6 @@ var updated_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/updated/dialog", "Air
 var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dialog", "Aircraft/IDG-A32X/AircraftConfig/error-mismatch.xml");
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A32X/AircraftConfig/groundservices.xml");
 var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A32X/AircraftConfig/du-quality.xml");
-var autopush_dlg = gui.Dialog.new("sim/gui/dialogs/autopush/dialog", "Aircraft/IDG-A32X/AircraftConfig/autopush.xml");
 var rendering_dlg = gui.Dialog.new("sim/gui/dialogs/rendering/dialog", "Aircraft/IDG-A32X/AircraftConfig/rendering.xml");
 spinning.start();
 init_dlg.open();
@@ -233,6 +232,7 @@ var writeSettings = func {
 var colddark = func {
 	if (getprop("/systems/acconfig/mismatch-code") == "0x000") {
 		spinning.start();
+		ps_loaded_dlg.close();
 		ps_load_dlg.open();
 		setprop("/systems/acconfig/autoconfig-running", 1);
 		setprop("/controls/gear/brake-left", 1);
@@ -281,6 +281,7 @@ var colddark_b = func {
 var beforestart = func {
 	if (getprop("/systems/acconfig/mismatch-code") == "0x000") {
 		spinning.start();
+		ps_loaded_dlg.close();
 		ps_load_dlg.open();
 		setprop("/systems/acconfig/autoconfig-running", 1);
 		setprop("/controls/gear/brake-left", 1);
@@ -358,6 +359,7 @@ var beforestart_b = func {
 var taxi = func {
 	if (getprop("/systems/acconfig/mismatch-code") == "0x000") {
 		spinning.start();
+		ps_loaded_dlg.close();
 		ps_load_dlg.open();
 		setprop("/systems/acconfig/autoconfig-running", 1);
 		setprop("/controls/gear/brake-left", 1);

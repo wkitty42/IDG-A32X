@@ -1,7 +1,7 @@
 # A3XX Electronic Centralised Aircraft Monitoring System
 # Jonathan Redpath (legoboyvdlp)
 
-# Copyright (c) 2018 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 # Colors:
 # 1 - Red, 2 - Amber, 3 - Cyan 4 - Green 5 - White
