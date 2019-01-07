@@ -1018,6 +1018,17 @@
 		<name>Panel lighting</name>
 		<type>material</type>
 		<object-name>Panel</object-name>
+		<emission>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
 		<object-name>Eng1FireCover</object-name>
 		<object-name>Eng2FireCover</object-name>
 		<object-name>APUFireCover</object-name>
@@ -1056,10 +1067,26 @@
 		<object-name>Eng1ManStartProt</object-name>
 		<object-name>Eng2ManStartProt</object-name>
 		<object-name>EmerCallProt</object-name>
+		<object-name>StbyCompassLtSwtch</object-name>
+		<object-name>ManVSCTLSwitch</object-name>
+		<object-name>DomeLtSwtch</object-name>
+		<object-name>AnnunciatorLtSwtch</object-name>
+		<object-name>SeatBeltSwtch</object-name>
+		<object-name>NoSmokingSwtch</object-name>
+		<object-name>EmerExtLtSwtch</object-name>
+		<object-name>SwitchSockets</object-name>
+		<object-name>StrobeLtSwtch</object-name>
+		<object-name>BeaconLtSwtch</object-name>
+		<object-name>WingLtSwtch</object-name>
+		<object-name>NavLogoLtSwtch</object-name>
+		<object-name>NoseLtSwtch</object-name>
+		<object-name>TurnoffLtSwtch</object-name>
+		<object-name>LandingLtLSwtch</object-name>
+		<object-name>LandingLtRSwtch</object-name>
 		<emission>
-			<red>0.3</red>
-			<green>0.3</green>
-			<blue>0.3</blue>
+			<red>0.2</red>
+			<green>0.2</green>
+			<blue>0.2</blue>
 			<factor-prop>sim/model/lights/dome-light</factor-prop>
 		</emission>
 	</animation>
