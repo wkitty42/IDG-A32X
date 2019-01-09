@@ -217,7 +217,7 @@
 				<difference>
 					<table>
 						<property>/fdm/jsbsim/atmosphere/density-altitude</property> 
-						<entry><ind>    0</ind><dep>0.9813</dep></entry>
+						<entry><ind>    0</ind><dep>0.9824</dep></entry>
 						<entry><ind>43000</ind><dep>0.8581</dep></entry>
 					</table>
 					<table>
