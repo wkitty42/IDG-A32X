@@ -682,12 +682,23 @@ var ELEC = {
 			setprop("/systems/electrical/battery2-volts", math.clamp(battery2_percent * (24) / (10), 0, 24));
 		}
 		
-		if (getprop("/systems/electrical/bus/ac-ess") < 110) {
-			if (getprop("/it-autoflight/output/ap1") == 1) {
-				setprop("/it-autoflight/input/ap1", 0);
-			}
+		dc_ess = getprop("/systems/electrical/bus/dc-ess");
+		
+		if (dc2 < 25) {
 			if (getprop("/it-autoflight/output/ap2") == 1) {
-				setprop("/it-autoflight/input/ap2", 0);
+				libraries.apOff("hard", 2);
+			}
+		}
+		
+		if (dc_ess < 25 and dc2 < 25) {
+			if (getprop("/it-autoflight/output/athr") == 1) {
+				libraries.athrOff("hard");
+			}
+		}
+		
+		if (dc_ess < 25) {
+			if (getprop("/it-autoflight/output/ap1") == 1) {
+				libraries.apOff("hard", 1);
 			}
 			setprop("systems/electrical/on", 0);
 			setprop("/systems/thrust/thr-locked", 0);

@@ -272,11 +272,8 @@ var fbw_loop = func {
 	}
 	
 	if (getprop("/it-fbw/law") != 0) {
-		if (getprop("/it-autoflight/output/ap1") == 1) {
-			setprop("/it-autoflight/input/ap1", 0);
-		}
-		if (getprop("/it-autoflight/output/ap2") == 1) {
-			setprop("/it-autoflight/input/ap2", 0);
+		if (getprop("/it-autoflight/output/ap1") == 1 or getprop("/it-autoflight/output/ap2") == 1) {
+			libraries.apOff("hard", 0);
 		}
 	}
 }
