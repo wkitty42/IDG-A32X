@@ -1,6 +1,6 @@
 # A3XX Upper ECAM Canvas
 
-# Copyright (c) 2018 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 var upperECAM_cfm_eis2 = nil;
 var upperECAM_iae_eis2 = nil;

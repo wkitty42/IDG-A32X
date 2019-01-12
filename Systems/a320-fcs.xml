@@ -1,6 +1,6 @@
 <!-- Airbus A320 FCS/FBW -->
 
-<!-- Copyright (c) 2018 Joshua Davidson (it0uchpods) -->
+<!-- Copyright (c) 2019 Joshua Davidson (it0uchpods) -->
 
 <system name="A320: FCS">
 	
@@ -1482,49 +1482,6 @@
 	
 	</channel>
 	
-	<channel name="Pitch Aero">
-		
-		<scheduled_gain name="hydraulics/elevator-l/final-deg-aero">
-			<input>hydraulics/elevator-l/final-deg</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0     43000
-					0.0  1.00  0.850
-					0.9  0.02  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
-		
-		<scheduled_gain name="hydraulics/elevator-r/final-deg-aero">
-			<input>hydraulics/elevator-r/final-deg</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0     43000
-					0.0  1.00  0.850
-					0.9  0.02  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
-		
-		<scheduled_gain name="hydraulics/elevator-trim/final-deg-aero">
-			<input>hydraulics/elevator-trim/final-deg</input>
-			<table>
-				<independentVar lookup="row">velocities/mach</independentVar>
-				<independentVar lookup="column">atmosphere/density-altitude</independentVar>
-				<tableData>
-					     0     43000
-					0.0  1.00  0.850
-					0.9  0.02  0.750
-				</tableData>
-			</table>
-		</scheduled_gain>
-	
-	</channel>
-	
 	<channel name="Rudder">
 		
 		<fcs_function name="hydraulics/rudder/max-deg-fac">
@@ -1870,15 +1827,27 @@
 		
 		<fcs_function name="hydraulics/tiller/function">
 			<function>
-				<table>
-					<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
-					<independentVar lookup="column">hydraulics/tiller/switch</independentVar>
-					<tableData>
-						       -1     0  1
-						30.000 -70.0  0  70.0
-						30.001 -10.0  0  10.0
-					</tableData>
-				</table>
+				<ifthen>
+					<eq>
+						<property>/sim/model/pushback/connected</property>
+						<value>1</value>
+					</eq>
+					<product>
+						<property>hydraulics/tiller/autopush-cmd</property>
+						<value>70</value>
+					</product>
+					<table>
+						<independentVar lookup="row">/velocities/groundspeed-kt</independentVar>
+						<independentVar lookup="column">hydraulics/tiller/switch</independentVar>
+						<tableData>
+								   -1     0    1
+							 0.500  00.0  0.0  00.0
+							 1.000 -70.0  0.0  70.0
+							30.000 -70.0  0.0  70.0
+							30.001 -10.0  0.0  10.0
+						</tableData>
+					</table>
+				</ifthen>
 			</function>
 		</fcs_function>
 		
@@ -1891,7 +1860,7 @@
 		<switch name="fcs/pushback-steer-deg">
 			<default value="0"/>
 			<test value="fcs/steer-deg">
-				/sim/model/pushback/position-norm gt 0.999
+				/sim/model/pushback/connected eq 1
 			</test>
 		</switch>
 	

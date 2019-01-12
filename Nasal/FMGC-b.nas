@@ -1,7 +1,7 @@
 # A3XX FMGC/Autoflight
 # Joshua Davidson (it0uchpods) and Jonathan Redpath (legoboyvdlp)
 
-# Copyright (c) 2018 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (it0uchpods)
 
 #################################
 # IT-AUTOFLIGHT Based Autopilot #
@@ -27,6 +27,8 @@ var R = 0;
 var dist_coeff = 0;
 var turn_dist = 0;
 var vsnow = 0;
+var fpanow = 0;
+var altinput = 0;
 setprop("/it-autoflight/internal/heading-deg", getprop("/orientation/heading-magnetic-deg"));
 setprop("/it-autoflight/internal/track-deg", getprop("/orientation/track-magnetic-deg"));
 setprop("/it-autoflight/internal/vert-speed-fpm", 0);
@@ -450,9 +452,9 @@ var vertical = func {
 		alandt1.stop();
 		mng_sys_stop();
 		setprop("/it-autoflight/output/appr-armed", 0);
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
-		vsnow = math.round(getprop("/it-autoflight/internal/vert-speed-fpm"), 100);
+		vsnow = math.clamp(math.round(getprop("/it-autoflight/internal/vert-speed-fpm"), 100), -6000, 6000);
 		setprop("/it-autoflight/input/vs", vsnow);
 		setprop("/it-autoflight/output/vert", 1);
 		setprop("/it-autoflight/mode/vert", "V/S");
@@ -510,7 +512,7 @@ var vertical = func {
 		alandt1.stop();
 		mng_sys_stop();
 		setprop("/it-autoflight/output/appr-armed", 0);
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
 		var calt = getprop("/instrumentation/altimeter/indicated-altitude-ft");
 		var alt = getprop("/it-autoflight/internal/alt");
@@ -532,9 +534,9 @@ var vertical = func {
 		alandt1.stop();
 		mng_sys_stop();
 		setprop("/it-autoflight/output/appr-armed", 0);
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
-		var fpanow = math.round(getprop("/it-autoflight/internal/fpa"), 0.1);
+		fpanow = math.clamp(math.round(getprop("/it-autoflight/internal/fpa"), 0.1), -9.9, 9.9);
 		setprop("/it-autoflight/input/fpa", fpanow);
 		setprop("/it-autoflight/output/vert", 5);
 		setprop("/it-autoflight/mode/vert", "FPA");
@@ -565,7 +567,7 @@ var vertical = func {
 		} else {
 			setprop("/it-autoflight/mode/arm", " ");
 		}
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
 		thrustmodet.start();
 	} else if (vertset == 8) {
@@ -577,7 +579,7 @@ var vertical = func {
 			mng_run();
 			setprop("/it-autoflight/mode/vert", "mng");
 			setprop("/it-autoflight/mode/arm", " ");
-			var altinput = getprop("/it-autoflight/input/alt");
+			altinput = getprop("/it-autoflight/input/alt");
 			setprop("/it-autoflight/internal/alt", altinput);
 			if (getprop("/it-autoflight/output/loc-armed")) {
 				setprop("/it-autoflight/mode/arm", "LOC");
@@ -597,7 +599,7 @@ var vertical = func {
 		alandt1.stop();
 		mng_sys_stop();
 		setprop("/it-autoflight/output/appr-armed", 0);
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
 		setprop("/it-autoflight/output/vert", 9);
 		setprop("/it-autoflight/mode/vert", " ");
@@ -844,7 +846,7 @@ var altcapt = func {
 			}
 		}
 	}
-	var altinput = getprop("/it-autoflight/input/alt");
+	altinput = getprop("/it-autoflight/input/alt");
 	setprop("/it-autoflight/internal/alt", altinput);
 }
 
@@ -1020,7 +1022,7 @@ var aland1 = func {
 # Managed Climb/Descent
 var mng_main = func {
 	if (getprop("/autopilot/route-manager/route/num") > 0 and getprop("/autopilot/route-manager/active") == 1) {
-		var altinput = getprop("/it-autoflight/input/alt");
+		altinput = getprop("/it-autoflight/input/alt");
 		setprop("/it-autoflight/internal/alt", altinput);
 		var wp_curr = getprop("/autopilot/route-manager/current-wp");
 		var mng_alt_wp = getprop("/autopilot/route-manager/route/wp",wp_curr,"altitude-ft");
