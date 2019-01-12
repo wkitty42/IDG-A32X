@@ -1,9 +1,6 @@
 # A3XX Electronic Centralised Aircraft Monitoring System
-# Jonathan Redpath (legoboyvdlp)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Jonathan Redpath (legoboyvdlp)
 
 # messages stored in vectors
 

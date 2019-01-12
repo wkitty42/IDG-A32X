@@ -1,9 +1,6 @@
 # A3XX Electronic Centralised Aircraft Monitoring System
-# Jonathan Redpath (legoboyvdlp)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Jonathan Redpath (legoboyvdlp)
 
 var num_lines = 6;
 var msg = nil;
@@ -11,9 +8,12 @@ var spacer = nil;
 var line = nil;
 var right_line = nil;
 var wow = getprop("/gear/gear[1]/wow");
+var light = 0;
+var flash = 0;
 setprop("/ECAM/show-left-msg", 1);
 setprop("/ECAM/show-right-msg", 1);
 setprop("/ECAM/warnings/master-warning-light", 0);
+setprop("/ECAM/warnings/master-warning-flash", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
 setprop("/ECAM/warnings/overflow", 0);
 setprop("/ECAM/warnings/overflow-left", 0);
@@ -221,8 +221,8 @@ var ECAM_controller = {
 	},
 };
 
-setlistener("/systems/electrical/bus/ac-ess", func {
-	if (getprop("/systems/electrical/bus/ac-ess") < 110) {
+setlistener("/systems/electrical/bus/dc-ess", func {
+	if (getprop("/systems/electrical/bus/dc-ess") < 25) {
 		ECAM_controller.reset();
 	}
 }, 0, 0);
@@ -230,3 +230,28 @@ setlistener("/systems/electrical/bus/ac-ess", func {
 var ECAMloopTimer = maketimer(0.2, func {
 	ECAM_controller.loop();
 });
+
+# Flash Master Warning Light
+var warnTimer = maketimer(0.2, func {
+	flash = getprop("/ECAM/warnings/master-warning-flash");
+	light = getprop("/ECAM/warnings/master-warning-light");
+	if (!light) {
+		warnTimer.stop();
+		setprop("/ECAM/warnings/master-warning-flash", 0);
+	} else if (flash != 1) {
+		setprop("/ECAM/warnings/master-warning-flash", 1);
+	} else {
+		setprop("/ECAM/warnings/master-warning-flash", 0);
+	}
+});
+
+setlistener("/ECAM/warnings/master-warning-light", func {
+	light = getprop("/ECAM/warnings/master-warning-light");
+	if (light == 1) {
+		setprop("/ECAM/warnings/master-warning-flash", 0);
+		warnTimer.start();
+	} else {
+		warnTimer.stop();
+		setprop("/ECAM/warnings/master-warning-flash", 0);
+	}
+}, 0, 0);

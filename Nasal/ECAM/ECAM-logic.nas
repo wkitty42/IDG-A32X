@@ -1,9 +1,6 @@
 # A3XX Electronic Centralised Aircraft Monitoring System
-# Jonathan Redpath (legoboyvdlp)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Jonathan Redpath (legoboyvdlp)
 
 var messages_priority_3 = func {
 	if ((getprop("/position/gear-agl-ft") < 750 and getprop("/gear/gear[1]/position-norm") != 1 and (getprop("/ECAM/warning-phase") <= 3 and getprop("/ECAM/warning-phase") >= 5)) and ((((getprop("/engines/engine[0]/n1-actual") < 75.0 and getprop("/engines/engine[1]/n1-actual") < 75.0)) or ((getprop("/engines/engine[0]/n1-actual") < 77.0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) or (getprop("/engines/engine[1]/n1-actual") < 77.0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0))) or getprop("/controls/flight/flap-pos") > 1)) {

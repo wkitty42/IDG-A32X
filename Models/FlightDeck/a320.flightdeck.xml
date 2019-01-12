@@ -5238,7 +5238,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>ECAM/warnings/master-warning-light</property>
+					<property>ECAM/warnings/master-warning-flash</property>
 					<value>1</value>
 				</equals>
 			</or>
