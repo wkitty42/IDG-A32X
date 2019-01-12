@@ -232,7 +232,7 @@ var ECAMloopTimer = maketimer(0.2, func {
 });
 
 # Flash Master Warning Light
-var warnTimer = maketimer(0.2, func {
+var warnTimer = maketimer(0.25, func {
 	flash = getprop("/ECAM/warnings/master-warning-flash");
 	light = getprop("/ECAM/warnings/master-warning-light");
 	if (!light) {
