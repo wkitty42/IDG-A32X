@@ -116,7 +116,7 @@ var light = {
 	power_consumption: func() {
 		
 		if (getprop(me.control_prop) != 0 and getprop(me.elec_prop) != 0) {
-			light_power_consumption = me.max_watts;
+			light_power_consumption = me.max_watts * getprop(me.control_prop);
 		} else {
 			light_power_consumption = 0;
 		} 
@@ -265,7 +265,10 @@ var ELEC = {
 			light.new(name: "left-turnoff", max_watts:21, control_prop:"/controls/lighting/leftturnoff", elec_prop:"/systems/electrical/bus/ac1"),
 			light.new(name: "right-turnoff", max_watts:21, control_prop:"/controls/lighting/rightturnoff", elec_prop:"/systems/electrical/bus/ac2"),
 			light.new(name: "left-wing", max_watts:24, control_prop:"/controls/lighting/wing-lights", elec_prop:"/systems/electrical/bus/ac1"),
-			light.new(name: "right-wing", max_watts:24, control_prop:"/controls/lighting/wing-lights", elec_prop:"/systems/electrical/bus/ac2")];
+			light.new(name: "right-wing", max_watts:24, control_prop:"/controls/lighting/wing-lights", elec_prop:"/systems/electrical/bus/ac2"),
+			
+			light.new(name: "left-dome", max_watts:10, control_prop:"/controls/lighting/dome-norm", elec_prop:"/systems/electrical/bus/dc-ess"),
+			light.new(name: "right-dome", max_watts:10, control_prop:"/controls/lighting/dome-norm", elec_prop:"/systems/electrical/bus/dc-ess")];
 	},
 	loop: func() {
 		galley_sw = getprop("/controls/electrical/switches/galley");
