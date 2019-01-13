@@ -40,6 +40,8 @@ var ENGCounting = 0;
 var flapLever = 0;
 var CRZTime = 0;
 var CRZCondition = 0;
+var CRZCounting = 0;
+var agl = 0;
 var ap_active = 0;
 var athr_active = 0;
 setprop("/ECAM/left-msg", "NONE");
@@ -348,68 +350,70 @@ var LowerECAM = {
 		fault_sel = getprop("/ECAM/Lower/fault-select");
 		fault_page = getprop("/ECAM/Lower/fault-page");
 		page = getprop("/ECAM/Lower/page");
-		aileron = getprop("/fdm/jsbsim/fbw/aileron-sidestick");
-		elevator = getprop("/fdm/jsbsim/fbw/elevator-sidestick");
-		APUMaster = getprop("/controls/APU/master");
-		APURPM = getprop("/systems/apu/rpm");
-		stateL = getprop("/engines/engine[0]/state");
-		stateR = getprop("/engines/engine[1]/state");
-		engModeSel = getprop("/controls/engines/engine-start-switch");
-		elapsedSec = getprop("/sim/time/elapsed-sec");
-		
-		if (warnPhase == 2) {
-			if (abs(aileron) > 0.3 or abs(elevator) > 0.3) {
-				fctlTime = elapsedSec;
-				fctlCounting = 1;
-			} else if (fctlCounting) {
-				if (fctlTime + 20 < elapsedSec) {
-					fctlCounting = 0;
-				}
-			}
-		} else {
-			fctlCounting = 0;
-		}
-		
-		if (APURPM > 95) {
-			if (APUTime + 10 < elapsedSec) {
-				APUCounting = 0;
-			}
-		} else {
-			if (APUMaster) {
-				APUTime = elapsedSec;
-				APUCounting = 1;
-			} else {
-				APUCounting = 0;
-			}
-		}
-		
-		if ((APURPM <= 95 or APUCounting) and APUMaster) {
-			showAPUPage = 1;
-		} else {
-			showAPUPage = 0;
-		}
-		
-		if (stateL == 3 and stateR == 3) {
-			if (ENGCounting and ENGTime + 10 < elapsedSec) {
-				ENGCounting = 0;
-			}
-		} else if ((stateL > 0 or stateR > 0) and engModeSel == 2) {
-			ENGTime = elapsedSec;
-			ENGCounting = 1;
-		} else if ((stateL == 0 and stateR == 0) or engModeSel < 2) {
-			ENGCounting = 0;
-		}
-		
-		if (ENGCounting or engModeSel != 1) {
-			showENGPage = 1;
-		} else {
-			showENGPage = 0;
-		}
 		
 		if (!man_sel) {
 			if (!fault_sel) {
 				warnPhase = getprop("/ECAM/warning-phase");
+				aileron = getprop("/fdm/jsbsim/fbw/aileron-sidestick");
+				elevator = getprop("/fdm/jsbsim/fbw/elevator-sidestick");
+				APUMaster = getprop("/controls/APU/master");
+				APURPM = getprop("/systems/apu/rpm");
+				stateL = getprop("/engines/engine[0]/state");
+				stateR = getprop("/engines/engine[1]/state");
+				engModeSel = getprop("/controls/engines/engine-start-switch");
+				elapsedSec = getprop("/sim/time/elapsed-sec");
 				
+				if (warnPhase == 2) {
+					if (abs(aileron) > 0.3 or abs(elevator) > 0.3) {
+						fctlTime = elapsedSec;
+						fctlCounting = 1;
+					} else if (fctlCounting) {
+						if (fctlTime + 20 < elapsedSec) {
+							fctlCounting = 0;
+						}
+					}
+				} else {
+					fctlCounting = 0;
+				}
+
+				if (APURPM > 95) {
+					if (APUTime + 10 < elapsedSec) {
+						APUCounting = 0;
+					}
+				} else {
+					if (APUMaster) {
+						APUTime = elapsedSec;
+						APUCounting = 1;
+					} else {
+						APUCounting = 0;
+					}
+				}
+
+				if ((APURPM <= 95 or APUCounting) and APUMaster) {
+					showAPUPage = 1;
+				} else {
+					showAPUPage = 0;
+				}
+
+				if (stateL == 3 or stateR == 3) {
+					if (ENGCounting and ENGTime + 10 < elapsedSec) {
+						ENGCounting = 0;
+					}
+				}
+
+				if (((stateL > 0 and stateL != 3) or (stateR > 0 and stateR != 3)) and engModeSel == 2) {
+					ENGTime = elapsedSec;
+					ENGCounting = 1;
+				} else if ((stateL == 0 and stateR == 0) or engModeSel == 1) {
+					ENGCounting = 0;
+				}
+				
+				if (ENGCounting or engModeSel == 0) {
+					showENGPage = 1;
+				} else {
+					showENGPage = 0;
+				}
+
 				if (warnPhase == 1 or warnPhase == 10) {
 					if (showENGPage) {
 						if (page != "eng") {
@@ -439,22 +443,48 @@ var LowerECAM = {
 					} else if (page != "wheel") {
 						setprop("/ECAM/Lower/page", "wheel");
 					}
-				} else if (warnPhase >= 3 and warnPhase < 10) {
+				} else if (warnPhase >= 3 and warnPhase <= 5) {
+					if (page != "eng") {
+						setprop("/ECAM/Lower/page", "eng");
+					}
+				} else if (warnPhase >= 7 and warnPhase <= 9) {
+					if (showENGPage) {
+						if (page != "eng") {
+							setprop("/ECAM/Lower/page", "eng");
+						}
+					} else if (showAPUPage) {
+						if (page != "apu") {
+							setprop("/ECAM/Lower/page", "apu");
+						}
+					} else if (page != "wheel") {
+						setprop("/ECAM/Lower/page", "wheel");
+					}
+				} else if (warnPhase == 6) {
 					flapLever = getprop("/controls/flight/flap-lever");
+					gearLever = getprop("/controls/gear/gear-down");
+					agl = getprop("/position/gear-agl-ft");
 					
-					if ((toPowerSet or flapLever > 0) and warnPhase == 6) {
+					if (CRZCounting and (toPowerSet or flapLever > 0) and !CRZCondition) {
 						if (CRZTime + 60 < elapsedSec) {
 							CRZCondition = 1;
+							CRZCounting = 0;
 						} else {
 							CRZCondition = 0;
 						}
-					} else {
+					} 
+
+					if (!CRZCounting and (toPowerSet or flapLever > 0) and !CRZCondition) {
 						CRZTime = elapsedSec;
 						CRZCondition = 0;
+						CRZCounting = 1;
 					}
 					
-					if (CRZCondition or (warnPhase == 6 and flapLever == 0 and !toPowerSet)) {
-						if (page != "crz") {
+					if (CRZCondition or (flapLever == 0 and !toPowerSet)) {
+						if (gearLever and agl <= 16000) {
+							if (page != "wheel") {
+								setprop("/ECAM/Lower/page", "wheel");
+							}
+						} else if (page != "crz") {
 							setprop("/ECAM/Lower/page", "crz");
 						}
 					} else {
