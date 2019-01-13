@@ -40,6 +40,8 @@ var ENGCounting = 0;
 var flapLever = 0;
 var CRZTime = 0;
 var CRZCondition = 0;
+var CRZCounting = 0;
+var agl = 0;
 var ap_active = 0;
 var athr_active = 0;
 setprop("/ECAM/left-msg", "NONE");
@@ -389,18 +391,20 @@ var LowerECAM = {
 			showAPUPage = 0;
 		}
 		
-		if (stateL == 3 and stateR == 3) {
+		if (stateL == 3 or stateR == 3) {
 			if (ENGCounting and ENGTime + 10 < elapsedSec) {
 				ENGCounting = 0;
 			}
-		} else if ((stateL > 0 or stateR > 0) and engModeSel == 2) {
+		}
+
+		if (((stateL > 0 and stateL != 3) or (stateR > 0 and stateR != 3)) and engModeSel == 2) {
 			ENGTime = elapsedSec;
 			ENGCounting = 1;
-		} else if ((stateL == 0 and stateR == 0) or engModeSel < 2) {
+		} else if ((stateL == 0 and stateR == 0) or engModeSel == 1) {
 			ENGCounting = 0;
 		}
 		
-		if (ENGCounting or engModeSel != 1) {
+		if (ENGCounting or engModeSel == 0) {
 			showENGPage = 1;
 		} else {
 			showENGPage = 0;
@@ -439,22 +443,48 @@ var LowerECAM = {
 					} else if (page != "wheel") {
 						setprop("/ECAM/Lower/page", "wheel");
 					}
-				} else if (warnPhase >= 3 and warnPhase < 10) {
+				} else if (warnPhase >= 3 and warnPhase <= 5) {
+					if (page != "eng") {
+						setprop("/ECAM/Lower/page", "eng");
+					}
+				} else if (warnPhase >= 7 and warnPhase <= 9) {
+					if (showENGPage) {
+						if (page != "eng") {
+							setprop("/ECAM/Lower/page", "eng");
+						}
+					} else if (showAPUPage) {
+						if (page != "apu") {
+							setprop("/ECAM/Lower/page", "apu");
+						}
+					} else if (page != "wheel") {
+						setprop("/ECAM/Lower/page", "wheel");
+					}
+				} else if (warnPhase == 6) {
 					flapLever = getprop("/controls/flight/flap-lever");
+					gearLever = getprop("/controls/gear/gear-down");
+					agl = getprop("/position/gear-agl-ft");
 					
-					if ((toPowerSet or flapLever > 0) and warnPhase == 6) {
+					if (CRZCounting and (toPowerSet or flapLever > 0) and !CRZCondition) {
 						if (CRZTime + 60 < elapsedSec) {
 							CRZCondition = 1;
+							CRZCounting = 0;
 						} else {
 							CRZCondition = 0;
 						}
-					} else {
+					} 
+
+					if (!CRZCounting and (toPowerSet or flapLever > 0) and !CRZCondition) {
 						CRZTime = elapsedSec;
 						CRZCondition = 0;
+						CRZCounting = 1;
 					}
 					
-					if (CRZCondition or (warnPhase == 6 and flapLever == 0 and !toPowerSet)) {
-						if (page != "crz") {
+					if (CRZCondition or (flapLever == 0 and !toPowerSet)) {
+						if (gearLever and agl <= 16000) {
+							if (page != "wheel") {
+								setprop("/ECAM/Lower/page", "wheel");
+							}
+						} else if (page != "crz") {
 							setprop("/ECAM/Lower/page", "crz");
 						}
 					} else {
