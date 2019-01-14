@@ -289,17 +289,17 @@ var LowerECAM = {
 			setprop("/it-autoflight/output/athr-warning", 0);
 			setprop("/ECAM/Lower/light/clr", 0);
 			setprop("/ECAM/warnings/master-caution-light", 0);
-			#call status
+			LowerECAM.failCall("sts");
+			return;
 		}
 		
 		if (b == "clr" and getprop("/it-autoflight/output/ap-warning") == 2) {
 			setprop("/it-autoflight/output/ap-warning", 0);
 			setprop("/ECAM/Lower/light/clr", 0);
 			setprop("/ECAM/warnings/master-warning-light", 0);
-			#call status
+			LowerECAM.failCall("sts");
+			return;
 		}
-		
-
 		
 		if (getprop("/ECAM/Lower/fault-select") == 0) {
 			if (b != "clr") {
