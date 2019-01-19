@@ -987,7 +987,6 @@
 		</emission>
 	</animation>
 	
-	<!-- Panel lighting -->
 	<animation>
 		<name>Panel lighting</name>
 		<type>material</type>
