@@ -1516,7 +1516,6 @@
 		</fmgc>
 		<mcdu>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/MCDU.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU/F-PLNA.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITA.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITB.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFCLB.nas</file>
