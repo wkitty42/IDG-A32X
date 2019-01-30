@@ -1387,12 +1387,12 @@
 		<object-name>rmp-active-test</object-name>
 		<condition>
 			<and>
-				<not-equals>
+				<equals>
 					<property>controls/switches/annun-test</property>
 					<value>1</value>
-				</not-equals>
+				</equals>
 				<equals>
-					<property>controls/radio/rmp[0]/on</property>
+					<property>controls/radio/rmp[1]/on</property>
 					<value>1</value>
 				</equals>
 				<greater-than-equals>
@@ -1481,12 +1481,12 @@
 		<object-name>rmp-standby-test</object-name>
 		<condition>
 			<and>
-				<not-equals>
+				<equals>
 					<property>controls/switches/annun-test</property>
 					<value>1</value>
-				</not-equals>
+				</equals>
 				<equals>
-					<property>controls/radio/rmp[0]/on</property>
+					<property>controls/radio/rmp[1]/on</property>
 					<value>1</value>
 				</equals>
 				<greater-than-equals>
