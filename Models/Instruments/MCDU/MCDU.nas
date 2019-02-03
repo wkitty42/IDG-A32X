@@ -11,8 +11,6 @@ var symbol = "helvetica_medium.txf";
 var normal = 70;
 var small = 56;
 var page = "";
-var page1 = getprop("/MCDU[0]/page");
-var page2 = getprop("/MCDU[1]/page");
 var engrdy = "";
 setprop("/MCDUC/colors/wht/r", 1);
 setprop("/MCDUC/colors/wht/g", 1);
