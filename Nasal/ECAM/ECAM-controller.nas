@@ -220,7 +220,13 @@ var ECAM_controller = {
 		}
 	},
 	clear: func() {
-		print("Clear!");
+		foreach (var w; warnings.vector) {
+			if (w.active == 1) {
+				w.active = 0;   # todo: need to hit CLR to clear condition, not automatic
+				w.noRepeat = 0; # should warning only clear if condition is not true?
+				break;
+			}
+		}
 	},
 };
 
