@@ -1367,19 +1367,19 @@
 			</clipto>
 		</switch>
 		
-		<actuator name="hydraulics/aileron-l/final">
+		<aerosurface_scale name="hydraulics/aileron-l/cmd-deg">
 			<input>hydraulics/aileron-l/switch</input>
-			<rate_limit>100</rate_limit>
-			<lag>14.5</lag>
-		</actuator>
-		
-		<aerosurface_scale name="hydraulics/aileron-l/final-deg">
-			<input>hydraulics/aileron-l/final</input>
 			<range>
 				<min>-25</min>
 				<max>25</max>
 			</range>
 		</aerosurface_scale>
+		
+		<actuator name="hydraulics/aileron-l/final-deg">
+			<input>hydraulics/aileron-l/cmd-deg</input>
+			<rate_limit>150</rate_limit>
+			<lag>26.5</lag>
+		</actuator>
 	
 	</channel>
 	
@@ -1442,19 +1442,19 @@
 			</clipto>
 		</switch>
 		
-		<actuator name="hydraulics/aileron-r/final">
+		<aerosurface_scale name="hydraulics/aileron-r/cmd-deg">
 			<input>hydraulics/aileron-r/switch</input>
-			<rate_limit>100</rate_limit>
-			<lag>14.5</lag>
-		</actuator>
-		
-		<aerosurface_scale name="hydraulics/aileron-r/final-deg">
-			<input>hydraulics/aileron-r/final</input>
 			<range>
 				<min>-25</min>
 				<max>25</max>
 			</range>
 		</aerosurface_scale>
+		
+		<actuator name="hydraulics/aileron-r/final-deg">
+			<input>hydraulics/aileron-r/cmd-deg</input>
+			<rate_limit>150</rate_limit>
+			<lag>26.5</lag>
+		</actuator>
 	
 	</channel>
 	
@@ -1499,19 +1499,19 @@
 			</clipto>
 		</switch>
 		
-		<actuator name="hydraulics/elevator-l/final">
+		<aerosurface_scale name="hydraulics/elevator-l/cmd-deg">
 			<input>hydraulics/elevator-l/switch</input>
-			<rate_limit>100</rate_limit>
-			<lag>14.5</lag>
-		</actuator>
-		
-		<aerosurface_scale name="hydraulics/elevator-l/final-deg">
-			<input>hydraulics/elevator-l/final</input>
 			<range>
 				<min>-30</min>
 				<max>17</max>
 			</range>
 		</aerosurface_scale>
+		
+		<actuator name="hydraulics/elevator-l/final-deg">
+			<input>hydraulics/elevator-l/cmd-deg</input>
+			<rate_limit>150</rate_limit>
+			<lag>26.5</lag>
+		</actuator>
 	
 	</channel>
 	
@@ -1537,23 +1537,30 @@
 			</clipto>
 		</switch>
 		
-		<actuator name="hydraulics/elevator-r/final">
+		<aerosurface_scale name="hydraulics/elevator-r/cmd-deg">
 			<input>hydraulics/elevator-r/switch</input>
-			<rate_limit>100</rate_limit>
-			<lag>14.5</lag>
-		</actuator>
-		
-		<aerosurface_scale name="hydraulics/elevator-r/final-deg">
-			<input>hydraulics/elevator-r/final</input>
 			<range>
 				<min>-30</min>
 				<max>17</max>
 			</range>
 		</aerosurface_scale>
+		
+		<actuator name="hydraulics/elevator-r/final-deg">
+			<input>hydraulics/elevator-r/cmd-deg</input>
+			<rate_limit>150</rate_limit>
+			<lag>26.5</lag>
+		</actuator>
 	
 	</channel>
 	
 	<channel name="Pitch Trim">
+		
+		<switch name="hydraulics/elevator-trim/rate">
+			<default value="0.125"/>
+			<test value="0.25">
+				/systems/hydraulic/green-psi ge 1500
+			</test>
+		</switch>
 		
 		<aerosurface_scale name="hydraulics/elevator-trim/cmd-deg">
 			<input>/controls/flight/elevator-trim</input>
@@ -1567,30 +1574,11 @@
 			</range>
 		</aerosurface_scale>
 		
-		<switch name="hydraulics/elevator-trim/rate">
-			<default value="0.01"/>
-			<test value="0.02">
-				/systems/hydraulic/green-psi ge 1500
-			</test>
-		</switch>
-		
-		<actuator name="hydraulics/elevator-trim/final">
-			<input>/controls/flight/elevator-trim</input>
+		<actuator name="hydraulics/elevator-trim/final-deg">
+			<input>hydraulics/elevator-trim/cmd-deg</input>
 			<rate_limit>hydraulics/elevator-trim/rate</rate_limit>
-			<lag>10.5</lag>
+			<lag>22.5</lag>
 		</actuator>
-		
-		<aerosurface_scale name="hydraulics/elevator-trim/final-deg">
-			<input>hydraulics/elevator-trim/final</input>
-			<domain>
-				<min>-1.00</min>
-				<max>0.32</max>
-			</domain>
-			<range>
-				<min>-12.5</min>
-				<max>4.0</max>
-			</range>
-		</aerosurface_scale>
 	
 	</channel>
 	
@@ -1646,19 +1634,19 @@
 			</clipto>
 		</switch>
 		
-		<actuator name="hydraulics/rudder/final">
+		<aerosurface_scale name="hydraulics/rudder/cmd-deg">
 			<input>hydraulics/rudder/switch</input>
-			<rate_limit>100</rate_limit>
-			<lag>13.5</lag>
-		</actuator>
-		
-		<aerosurface_scale name="hydraulics/rudder/final-deg">
-			<input>hydraulics/rudder/final</input>
 			<range>
 				<min>-25</min>
 				<max>25</max>
 			</range>
 		</aerosurface_scale>
+		
+		<actuator name="hydraulics/rudder/final-deg">
+			<input>hydraulics/rudder/cmd-deg</input>
+			<rate_limit>150</rate_limit>
+			<lag>25.5</lag>
+		</actuator>
 	
 	</channel>
 	
