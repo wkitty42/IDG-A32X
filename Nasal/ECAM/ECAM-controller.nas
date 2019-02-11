@@ -7,7 +7,6 @@ var msg = nil;
 var spacer = nil;
 var line = nil;
 var right_line = nil;
-var wow = getprop("/gear/gear[1]/wow");
 var light = 0;
 var flash = 0;
 setprop("/ECAM/show-left-msg", 1);
