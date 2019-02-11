@@ -16,6 +16,21 @@ var warningsOld               = std.Vector.new([
 
 var warnings				  = std.Vector.new([
 	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	
+	# Config
+	var slats_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var flaps_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var flaps_config_1        = warning.new(msg: "FLAPS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var spd_brk_config        = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var spd_brk_config_1      = warning.new(msg: "SPD BRK NOT RETRACTED",               active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var pitch_trim_config     = warning.new(msg: "CONFIG PITCH TRIM",                   active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var pitch_trim_config_1   = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var rud_trim_config       = warning.new(msg: "CONFIG RUD TRIM",                     active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var rud_trim_config_1     = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var park_brk_config       = warning.new(msg: "CONFIG PARK BRK ON",                  active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	
+	# Autopilot
 	var ap_offw				  = warning.new(msg: "AUTO FLT AP OFF",			 active: 0, colour: "r", aural: "calv",  light: "warning", noRepeat: 0),
 	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
 	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),

@@ -11,6 +11,64 @@ var messages_priority_3 = func {
 		flap_not_zero.noRepeat = 0;
 	}
 	
+	# CONFIG
+	if ((getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever")) == 4 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		slats_config.active = 1;
+		slats_config_1.active = 1;
+	} else {
+		slats_config.active = 0;
+		slats_config.noRepeat = 0;
+		slats_config_1.active = 0;
+		slats_config_1.noRepeat = 0;
+	}
+	
+	if ((getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		flaps_config.active = 1;
+		flaps_config_1.active = 1;
+	} else {
+		flaps_config.active = 0;
+		flaps_config.noRepeat = 0;
+		flaps_config_1.active = 0;
+		flaps_config_1.noRepeat = 0;
+	}
+	
+	if (getprop("/controls/flight/speedbrake") != 0 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		spd_brk_config.active = 1;
+		spd_brk_config_1.active = 1;
+	} else {
+		spd_brk_config.active = 0;
+		spd_brk_config.noRepeat = 0;
+		spd_brk_config_1.active = 0;
+		spd_brk_config_1.noRepeat = 0;
+	}
+	
+	if ((getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		pitch_trim_config.active = 1;
+		pitch_trim_config_1.active = 1;
+	} else {
+		pitch_trim_config.active = 0;
+		pitch_trim_config.noRepeat = 0;
+		pitch_trim_config_1.active = 0;
+		pitch_trim_config_1.noRepeat = 0;
+	}
+	
+	if ((getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		rud_trim_config.active = 1;
+		rud_trim_config_1.active = 1;
+	} else {
+		rud_trim_config.active = 0;
+		rud_trim_config.noRepeat = 0;
+		rud_trim_config_1.active = 0;
+		rud_trim_config_1.noRepeat = 0;
+	}
+	
+	if (getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+		park_brk_config.active = 1;
+	} else {
+		park_brk_config.active = 0;
+		park_brk_config.noRepeat = 0;
+	}
+	
 	# AUTOFLT
 	if (getprop("/it-autoflight/output/ap-warning") == 2) {
 		ap_offw.active = 1;
