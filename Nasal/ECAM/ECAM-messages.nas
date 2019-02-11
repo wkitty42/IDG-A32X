@@ -4,55 +4,58 @@
 
 # messages stored in vectors
 
+# Lights: 0 = red, 1 = yellow, 9 = none
+# Sounds: 0 = master warn, 1 = chime, 9 = other
+
 # Left E/WD
 var warningsOld               = std.Vector.new([
-	var lg_not_dn             = warning.new(msg: "L/G GEAR NOT DOWN",        active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var pack1_fault           = warning.new(msg: "AIR PACK 1 FAULT ",        active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
-	var pack2_fault           = warning.new(msg: "AIR PACK 2 FAULT ",        active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
-	var park_brk_on           = warning.new(msg: "PARK BRK ON",              active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0)
+	var lg_not_dn             = warning.new(msg: "L/G GEAR NOT DOWN",        active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var pack1_fault           = warning.new(msg: "AIR PACK 1 FAULT ",        active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
+	var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var pack2_fault           = warning.new(msg: "AIR PACK 2 FAULT ",        active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
+	var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var park_brk_on           = warning.new(msg: "PARK BRK ON",              active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0)
 ]);
 
 var warnings				  = std.Vector.new([
-	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
 
 	# Config
-	var slats_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var flaps_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var flaps_config_1        = warning.new(msg: "FLAPS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var spd_brk_config        = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var spd_brk_config_1      = warning.new(msg: "SPD BRK NOT RETRACTED",               active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var pitch_trim_config     = warning.new(msg: "CONFIG PITCH TRIM",                   active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var pitch_trim_config_1   = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var rud_trim_config       = warning.new(msg: "CONFIG RUD TRIM",                     active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var rud_trim_config_1     = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	var park_brk_config       = warning.new(msg: "CONFIG PARK BRK ON",                  active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
+	var slats_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var flaps_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var flaps_config_1        = warning.new(msg: "FLAPS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var spd_brk_config        = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var spd_brk_config_1      = warning.new(msg: "SPD BRK NOT RETRACTED",               active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var pitch_trim_config     = warning.new(msg: "CONFIG PITCH TRIM",                   active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var pitch_trim_config_1   = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var rud_trim_config       = warning.new(msg: "CONFIG RUD TRIM",                     active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var rud_trim_config_1     = warning.new(msg: "   NOT IN T.O. RANGE",                active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
+	var park_brk_config       = warning.new(msg: "CONFIG PARK BRK ON",                  active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
 	
 	# Autopilot
-	var ap_offw				  = warning.new(msg: "AUTO FLT AP OFF",			 active: 0, colour: "r", aural: "calv",  light: "warning", noRepeat: 0),
-	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
-	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0),
-	var athr_lim			  = warning.new(msg: "AUTO FLT A/THR LIMITED",   active: 0, colour: "a", aural: "chime", light: "caution", noRepeat: 0),
-	var athr_lim_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: "none",  light: "none",    noRepeat: 0)
+	var ap_offw				  = warning.new(msg: "AUTO FLT AP OFF",			 active: 0, colour: "r", aural: 9,  light: 0, noRepeat: 0, clearFlag: 0),
+	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
+	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
+	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var athr_lim			  = warning.new(msg: "AUTO FLT A/THR LIMITED",   active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
+	var athr_lim_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0)
 ]);
 
 var leftmemos                 = std.Vector.new([
-	var company_alert         = warning.new(msg: "COMPANY ALERT",            active: 0, colour: "g", aural: "buzz",  light: "none", noRepeat: 0), # Not yet implemented, buzzer sound
-	var refuelg               = warning.new(msg: "REFUELG",                  active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var irs_in_align          = warning.new(msg: "IRS IN ALIGN",             active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0), # Not yet implemented
-	var gnd_splrs             = warning.new(msg: "GND SPLRS ARMED",          active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var seatbelts             = warning.new(msg: "SEAT BELTS",               active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var nosmoke               = warning.new(msg: "NO SMOKING",               active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var strobe_lt_off         = warning.new(msg: "STROBE LT OFF",            active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var outr_tk_fuel_xfrd     = warning.new(msg: "OUTR TK FUEL XFRD",        active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0), # Not yet implemented
-	var fob_3T                = warning.new(msg: "FOB BELOW 3T",             active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var gpws_flap_mode_off    = warning.new(msg: "GPWS FLAP MODE OFF",       active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0),
-	var atc_datalink_stby     = warning.new(msg: "ATC DATALINK STBY",        active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0), # Not yet implemented
-	var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY",    active: 0, colour: "g", aural: "none",  light: "none", noRepeat: 0) # Not yet implemented
+	var company_alert         = warning.new(msg: "COMPANY ALERT",            active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0), # Not yet implemented, buzzer sound
+	var refuelg               = warning.new(msg: "REFUELG",                  active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var irs_in_align          = warning.new(msg: "IRS IN ALIGN",             active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0), # Not yet implemented
+	var gnd_splrs             = warning.new(msg: "GND SPLRS ARMED",          active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var seatbelts             = warning.new(msg: "SEAT BELTS",               active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var nosmoke               = warning.new(msg: "NO SMOKING",               active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var strobe_lt_off         = warning.new(msg: "STROBE LT OFF",            active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var outr_tk_fuel_xfrd     = warning.new(msg: "OUTR TK FUEL XFRD",        active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0), # Not yet implemented
+	var fob_3T                = warning.new(msg: "FOB BELOW 3T",             active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var gpws_flap_mode_off    = warning.new(msg: "GPWS FLAP MODE OFF",       active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0),
+	var atc_datalink_stby     = warning.new(msg: "ATC DATALINK STBY",        active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0), # Not yet implemented
+	var company_datalink_stby = warning.new(msg: "COMPANY DATALINK STBY",    active: 0, colour: "g", aural: 9,  light: 9, noRepeat: 0, clearFlag: 0) # Not yet implemented
 ]);
 
 # Right E/WD

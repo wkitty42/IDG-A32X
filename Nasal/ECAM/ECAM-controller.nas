@@ -15,9 +15,15 @@ setprop("/ECAM/show-right-msg", 1);
 setprop("/ECAM/warnings/master-warning-light", 0);
 setprop("/ECAM/warnings/master-warning-flash", 0);
 setprop("/ECAM/warnings/master-caution-light", 0);
-setprop("/ECAM/warnings/overflow", 0);
-setprop("/ECAM/warnings/overflow-left", 0);
-setprop("/ECAM/warnings/overflow-right", 0);
+
+var lines = [props.globals.getNode("/ECAM/msg/line1", 1), props.globals.getNode("/ECAM/msg/line2", 1), props.globals.getNode("/ECAM/msg/line3", 1), props.globals.getNode("/ECAM/msg/line4", 1), props.globals.getNode("/ECAM/msg/line5", 1), props.globals.getNode("/ECAM/msg/line6", 1), props.globals.getNode("/ECAM/msg/line7", 1), props.globals.getNode("/ECAM/msg/line8", 1)];
+var linesCol = [props.globals.getNode("/ECAM/msg/linec1", 1), props.globals.getNode("/ECAM/msg/linec2", 1), props.globals.getNode("/ECAM/msg/linec3", 1), props.globals.getNode("/ECAM/msg/linec4", 1), props.globals.getNode("/ECAM/msg/linec5", 1), props.globals.getNode("/ECAM/msg/linec6", 1), props.globals.getNode("/ECAM/msg/linec7", 1), props.globals.getNode("/ECAM/msg/linec8", 1)];
+var leftOverflow  = props.globals.initNode("/ECAM/warnings/overflow-left", "BOOL", 0);
+var rightOverflow = props.globals.initNode("/ECAM/warnings/overflow-right", "BOOL", 0);
+var overflow = props.globals.initNode("/ECAM/warnings/overflow", "BOOL", 0);
+
+var lights = [props.globals.initNode("/ECAM/warnings/master-warning-light", "BOOL", 0), props.globals.initNode("/ECAM/warnings/master-caution-light", "BOOL", 0)]; 
+var aural = [props.globals.initNode("/sim/sound/warnings/crc", "BOOL", 0), props.globals.initNode("/sim/sound/warnings/chime", "BOOL", 0)];
 
 var warning = {
 	msg: "",
@@ -26,7 +32,8 @@ var warning = {
 	aural: "",
 	light: "",
 	noRepeat: 0,
-	new: func(msg,active,colour,aural,light,noRepeat) {
+	clearFlag: 0,
+	new: func(msg,active,colour,aural,light,noRepeat,clearFlag) {
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
@@ -35,40 +42,42 @@ var warning = {
 		t.aural = aural;
 		t.light = light;
 		t.noRepeat = noRepeat;
+		t.clearFlag = clearFlag;
 		
 		return t
 	},
 	write: func() {
+		if (me.active == 0) {return;}
 		line = 1;
-		while (getprop("/ECAM/msg/line" ~ line) != "" and line <= 8) {
+		while (lines[line].getValue()) != "" and line <= 8) {
 			line = line + 1; # go to next line until empty line
 		}
 		
 		if (line > 8) {
-			setprop("/ECAM/warnings/overflow-left", 1);
-		} elsif (getprop("/ECAM/warnings/overflow-left") == 1) {
-			setprop("/ECAM/warnings/overflow-left", 0);
+			leftOverflow.setBoolValue(1);
+		} elsif (leftOverflow.getBoolValue() == 1) {
+			leftOverflow.setBoolValue(0);
 		}
 		
-		if (getprop("/ECAM/msg/line" ~ line) == "" and me.active == 1 and me.msg != "" and line <= 8) { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
-			setprop("/ECAM/msg/line" ~ line, me.msg);
-			setprop("/ECAM/msg/linec" ~ line, me.colour);
+		if (lines[line].getValue() == "" and me.msg != "" and line <= 8) { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
+			lines[line].setValue(me.msg);
+			linesCol[line].setValue(me.colour);
 		}
 	},
 	warnlight: func() {
-		if ((me.light != "none" or me.light != "") and me.noRepeat == 0 and me.active == 1) { # only toggle light once per message, allows canceling 
-			setprop("/ECAM/warnings/master-"~me.light~"-light", 1);
+		if (me.active == 0 or me.light >= 1) {return;}
+		
+		if (me.noRepeat == 0 and lights[me.light].getBoolValue() == 0) { # only toggle light once per message, allows canceling 
+			lights[me.light].setBoolValue(1);
 			me.noRepeat = 1;
 		}
 	},
 	sound: func() {
-		if (me.active and (me.aural != "none" or me.aural != "") and getprop("/sim/sound/warnings/"~me.aural) != 1) {
-			setprop("/sim/sound/warnings/"~me.aural, 1);
-		} else if (!me.active or me.aural == "none") {
-			if (getprop("/sim/sound/warnings/"~me.aural) == 1) {
-				setprop("/sim/sound/warnings/"~me.aural, 0);
-			}
+		if (me.active == 0 or me.aural >= 1) {return;}
+		if (aural[me.aural].getBoolValue() != 1) {
+			aural[me.aural].setBoolValue(1);
 		}
+		# have to cancel it anyway, I think it does not go out even if failure is removed
 	},
 };
 
@@ -86,20 +95,22 @@ var memo = {
 		return t
 	},
 	write: func() {
-		right_line = 1;
-		while (getprop("/ECAM/rightmsg/line" ~ right_line) != "" and right_line <= 8) {
-			right_line = right_line + 1; # go to next line until empty line
-		} 
-		
-		if (right_line > 8) {
-			setprop("/ECAM/warnings/overflow-right", 1);
-		} elsif (getprop("/ECAM/warnings/overflow-right") == 1) {
-			setprop("/ECAM/warnings/overflow-right", 0);
-		}
-		
-		if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and me.active == 1 and right_line <= 8) { # at empty line
-			setprop("/ECAM/rightmsg/line" ~ right_line, me.msg);
-			setprop("/ECAM/rightmsg/linec" ~ right_line, me.colour);
+		if (me.active == 1) {
+			right_line = 1;
+			while (getprop("/ECAM/rightmsg/line" ~ right_line) != "" and right_line <= 8) {
+				right_line = right_line + 1; # go to next line until empty line
+			} 
+			
+			if (right_line > 8) {
+				setprop("/ECAM/warnings/overflow-right", 1);
+			} elsif (getprop("/ECAM/warnings/overflow-right") == 1) {
+				setprop("/ECAM/warnings/overflow-right", 0);
+			}
+			
+			if (getprop("/ECAM/rightmsg/line" ~ right_line) == "" and right_line <= 8) { # at empty line
+				setprop("/ECAM/rightmsg/line" ~ right_line, me.msg);
+				setprop("/ECAM/rightmsg/linec" ~ right_line, me.colour);
+			}
 		}
 	},
 };
@@ -118,14 +129,16 @@ var status = {
 		return t
 	},
 	write: func() {
-		status_line = 1;
-		while (getprop("/ECAM/status/line" ~ status_line) != "" and status_line <= 8) {
-			status_line = status_line + 1; # go to next line until empty line
-		} 
-		
-		if (getprop("/ECAM/status/line" ~ status_line) == "" and me.active == 1 and status_line <= 8) { # at empty line
-			setprop("/ECAM/status/line" ~ status_line, me.msg);
-			setprop("/ECAM/status/linec" ~ status_line, me.colour);
+		if (me.active == 1) {
+			status_line = 1;
+			while (getprop("/ECAM/status/line" ~ status_line) != "" and status_line <= 8) {
+				status_line = status_line + 1; # go to next line until empty line
+			} 
+			
+			if (getprop("/ECAM/status/line" ~ status_line) == "" and status_line <= 8) { # at empty line
+				setprop("/ECAM/status/line" ~ status_line, me.msg);
+				setprop("/ECAM/status/linec" ~ status_line, me.colour);
+			}
 		}
 	},
 };
@@ -137,7 +150,6 @@ var ECAM_controller = {
 	},
 	loop: func() {
 		# check active messages
-		# config_warnings();
 		messages_priority_3();
 		messages_priority_2();
 		messages_priority_1();
@@ -224,6 +236,17 @@ var ECAM_controller = {
 			if (w.active == 1) {
 				w.active = 0;   # todo: need to hit CLR to clear condition, not automatic
 				w.noRepeat = 0; # should warning only clear if condition is not true?
+				w.clearFlag = 1;
+				break;
+			}
+		}
+	},
+	recall: func() {
+		foreach (var w; warnings.vector) {
+			if (w.clearFlag == 1) {
+				w.active = 1;
+				w.noRepeat = 1;
+				w.clearFlag = 0;
 				break;
 			}
 		}
