@@ -16,7 +16,7 @@ var warningsOld               = std.Vector.new([
 
 var warnings				  = std.Vector.new([
 	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
-	
+
 	# Config
 	var slats_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
 	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: "crc",   light: "warning", noRepeat: 0),
