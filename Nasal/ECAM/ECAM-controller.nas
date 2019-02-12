@@ -17,12 +17,12 @@ setprop("/ECAM/warnings/master-caution-light", 0);
 
 var lines = [props.globals.getNode("/ECAM/msg/line1", 1), props.globals.getNode("/ECAM/msg/line2", 1), props.globals.getNode("/ECAM/msg/line3", 1), props.globals.getNode("/ECAM/msg/line4", 1), props.globals.getNode("/ECAM/msg/line5", 1), props.globals.getNode("/ECAM/msg/line6", 1), props.globals.getNode("/ECAM/msg/line7", 1), props.globals.getNode("/ECAM/msg/line8", 1)];
 var linesCol = [props.globals.getNode("/ECAM/msg/linec1", 1), props.globals.getNode("/ECAM/msg/linec2", 1), props.globals.getNode("/ECAM/msg/linec3", 1), props.globals.getNode("/ECAM/msg/linec4", 1), props.globals.getNode("/ECAM/msg/linec5", 1), props.globals.getNode("/ECAM/msg/linec6", 1), props.globals.getNode("/ECAM/msg/linec7", 1), props.globals.getNode("/ECAM/msg/linec8", 1)];
-var leftOverflow  = props.globals.initNode("/ECAM/warnings/overflow-left", "BOOL", 0);
-var rightOverflow = props.globals.initNode("/ECAM/warnings/overflow-right", "BOOL", 0);
-var overflow = props.globals.initNode("/ECAM/warnings/overflow", "BOOL", 0);
+var leftOverflow  = props.globals.initNode("/ECAM/warnings/overflow-left", 0, "BOOL");
+var rightOverflow = props.globals.initNode("/ECAM/warnings/overflow-right", 0, "BOOL");
+var overflow = props.globals.initNode("/ECAM/warnings/overflow", 0, "BOOL");
 
-var lights = [props.globals.initNode("/ECAM/warnings/master-warning-light", "BOOL", 0), props.globals.initNode("/ECAM/warnings/master-caution-light", "BOOL", 0)]; 
-var aural = [props.globals.initNode("/sim/sound/warnings/crc", "BOOL", 0), props.globals.initNode("/sim/sound/warnings/chime", "BOOL", 0)];
+var lights = [props.globals.initNode("/ECAM/warnings/master-warning-light", 0, "BOOL"), props.globals.initNode("/ECAM/warnings/master-caution-light", 0, "BOOL")]; 
+var aural = [props.globals.initNode("/sim/sound/warnings/crc", 0, "BOOL"), props.globals.initNode("/sim/sound/warnings/chime", 0, "BOOL")];
 
 var warning = {
 	msg: "",
@@ -47,20 +47,20 @@ var warning = {
 	},
 	write: func() {
 		if (me.active == 0) {return;}
-		line = 1;
-		while (lines[line].getValue()) != "" and line <= 8) {
-			line = line + 1; # go to next line until empty line
+		lineIndex = 0;
+		while (lines[lineIndex].getValue() != "" and lineIndex <= 7) {
+			lineIndex = lineIndex + 1; # go to next line until empty line
 		}
 		
-		if (line > 8) {
+		if (lineIndex > 7) {
 			leftOverflow.setBoolValue(1);
 		} elsif (leftOverflow.getBoolValue() == 1) {
 			leftOverflow.setBoolValue(0);
 		}
 		
-		if (lines[line].getValue() == "" and me.msg != "" and line <= 8) { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
-			lines[line].setValue(me.msg);
-			linesCol[line].setValue(me.colour);
+		if (lines[lineIndex].getValue() == "" and me.msg != "" and lineIndex <= 7) { # at empty line. Also checks if message is not blank to allow for some warnings with no displayed msg, eg stall
+			lines[lineIndex].setValue(me.msg);
+			linesCol[lineIndex].setValue(me.colour);
 		}
 	},
 	warnlight: func() {
