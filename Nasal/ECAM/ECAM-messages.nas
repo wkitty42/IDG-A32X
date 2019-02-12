@@ -8,14 +8,6 @@
 # Sounds: 0 = master warn, 1 = chime, 9 = other
 
 # Left E/WD
-var warningsOld               = std.Vector.new([
-	var lg_not_dn             = warning.new(msg: "L/G GEAR NOT DOWN",        active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
-	var pack1_fault           = warning.new(msg: "AIR PACK 1 FAULT ",        active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
-	var pack1_fault_subwarn_1 = warning.new(msg: "-PACK 1.............OFF ", active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
-	var pack2_fault           = warning.new(msg: "AIR PACK 2 FAULT ",        active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
-	var pack2_fault_subwarn_1 = warning.new(msg: "-PACK 2.............OFF ", active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
-	var park_brk_on           = warning.new(msg: "PARK BRK ON",              active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0)
-]);
 
 var warnings				  = std.Vector.new([
 	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),

@@ -33,7 +33,7 @@ var messages_priority_3 = func {
 		flaps_config_1.noRepeat = 0;
 	}
 	
-	if (getprop("/controls/flight/speedbrake") != 0 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((spd_brk_config.clearFlag == 0) and getprop("/controls/flight/speedbrake") != 0 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		spd_brk_config.active = 1;
 		spd_brk_config_1.active = 1;
 	} else {
@@ -43,7 +43,7 @@ var messages_priority_3 = func {
 		spd_brk_config_1.noRepeat = 0;
 	}
 	
-	if ((getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((pitch_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		pitch_trim_config.active = 1;
 		pitch_trim_config_1.active = 1;
 	} else {
@@ -53,7 +53,7 @@ var messages_priority_3 = func {
 		pitch_trim_config_1.noRepeat = 0;
 	}
 	
-	if ((getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((rud_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		rud_trim_config.active = 1;
 		rud_trim_config_1.active = 1;
 	} else {
@@ -63,7 +63,7 @@ var messages_priority_3 = func {
 		rud_trim_config_1.noRepeat = 0;
 	}
 	
-	if (getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((park_brk_config.clearFlag == 0) and getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		park_brk_config.active = 1;
 	} else {
 		park_brk_config.active = 0;
@@ -71,14 +71,14 @@ var messages_priority_3 = func {
 	}
 	
 	# AUTOFLT
-	if (getprop("/it-autoflight/output/ap-warning") == 2) {
+	if ((ap_offw.clearFlag == 0) and getprop("/it-autoflight/output/ap-warning") == 2) {
 		ap_offw.active = 1;
 	} else {
 		ap_offw.active = 0;
 		ap_offw.noRepeat = 0;
 	}
 	
-	if (getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7 and getprop("/systems/thrust/thr-locked") == 1) {
+	if ((athr_lock.clearFlag == 0) and getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7 and getprop("/systems/thrust/thr-locked") == 1) {
 		athr_lock.active = 1;
 		athr_lock_1.active = 1;
 	} else {
@@ -88,7 +88,7 @@ var messages_priority_3 = func {
 		athr_lock_1.noRepeat = 0;
 	}
 	
-	if (getprop("/it-autoflight/output/athr-warning") == 2 and getprop("/ECAM/warning-phase") != 4 and getprop("/ECAM/warning-phase") != 8 and getprop("/ECAM/warning-phase") != 10) {
+	if ((athr_offw.clearFlag == 0) and getprop("/it-autoflight/output/athr-warning") == 2 and getprop("/ECAM/warning-phase") != 4 and getprop("/ECAM/warning-phase") != 8 and getprop("/ECAM/warning-phase") != 10) {
 		athr_offw.active = 1;
 		athr_offw_1.active = 1;
 	} else {
@@ -98,7 +98,7 @@ var messages_priority_3 = func {
 		athr_offw_1.noRepeat = 0;
 	}
 	
-	if (getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7)) {
+	if ((athr_lim.clearFlag == 0) and getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7)) {
 		athr_lim.active = 1;
 		athr_lim_1.active = 1;
 	} else {
