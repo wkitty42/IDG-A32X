@@ -4,15 +4,16 @@
 
 var messages_priority_3 = func {
 	# FCTL
-	if (getprop("/ECAM/warning-phase") == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
+	if ((flap_not_zero.clearFlag == 0) and getprop("/ECAM/warning-phase") == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
 		flap_not_zero.active = 1;
 	} else {
 		flap_not_zero.active = 0;
 		flap_not_zero.noRepeat = 0;
+		flap_not_zero.clearFlag = 0;
 	}
 	
 	# CONFIG
-	if ((getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever")) == 4 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((slats_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever")) == 4 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		slats_config.active = 1;
 		slats_config_1.active = 1;
 	} else {
@@ -22,7 +23,7 @@ var messages_priority_3 = func {
 		slats_config_1.noRepeat = 0;
 	}
 	
-	if ((getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((flaps_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
 		flaps_config.active = 1;
 		flaps_config_1.active = 1;
 	} else {
