@@ -192,7 +192,7 @@ var canvas_IESI = {
 	},
 };
 
-setlistener("/sim/signals/hack-canvas", func {
+setlistener("sim/signals/fdm-initialized", func {
 	IESI_display = canvas.new({
 		"name": "IESI",
 		"size": [1024, 1024],

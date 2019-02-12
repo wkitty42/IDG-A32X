@@ -5,6 +5,7 @@
 <PropertyList>
 
 	<sim>
+
 		<author>it0uchpods Design Group: Joshua Davidson (it0uchpods), Jonathan Redpath (legoboyvdlp), Thorsten Herrmann (TH-555)</author>
 		
 		<status>Pre V1.0</status>
@@ -402,11 +403,7 @@
 			<z-offset-max-m type="float">300.0</z-offset-max-m>
 		</current-view>
 		
-		<minimum-fg-version>2018.1.0</minimum-fg-version>
-		
-		<signals n="0">
-			<hack-canvas type="bool">0</hack-canvas>
-		</signals>
+		 <minimum-fg-version>2018.1.0</minimum-fg-version>
 	</sim>
 	
 	<consumables>

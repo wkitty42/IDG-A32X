@@ -1159,7 +1159,7 @@ var canvas_upperECAM_test = {
 	},
 };
 
-setlistener("/sim/signals/hack-canvas", func {
+setlistener("sim/signals/fdm-initialized", func {
 	upperECAM_display = canvas.new({
 		"name": "upperECAM",
 		"size": [1024, 1024],

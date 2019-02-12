@@ -287,7 +287,7 @@ var canvas_ND_2_test = {
 	},
 };
 
-setlistener("/sim/signals/hack-canvas", func {
+setlistener("sim/signals/fdm-initialized", func {
 	setprop("instrumentation/efis[0]/inputs/plan-wpt-index", -1);
 	setprop("instrumentation/efis[1]/inputs/plan-wpt-index", -1);
 

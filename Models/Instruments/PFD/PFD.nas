@@ -1283,7 +1283,7 @@ var canvas_PFD_2_mismatch = {
 	},
 };
 
-setlistener("/sim/signals/hack-canvas", func {
+setlistener("sim/signals/fdm-initialized", func {
 	PFD1_display = canvas.new({
 		"name": "PFD1",
 		"size": [1024, 1024],
