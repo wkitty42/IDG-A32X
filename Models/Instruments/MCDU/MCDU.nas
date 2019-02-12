@@ -1742,7 +1742,7 @@ var canvas_MCDU_2 = {
 	},
 };
 
-setlistener("sim/signals/fdm-initialized", func {
+setlistener("/sim/signals/hack-canvas", func {
 	MCDU1_display = canvas.new({
 		"name": "MCDU1",
 		"size": [1024, 864],
