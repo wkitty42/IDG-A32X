@@ -112,7 +112,7 @@ var memo = {
 				rightOverflow.setBoolValue(0);
 			}
 			
-			if (rightLines[rightLineIndex].getValue() != "" == "" and rightLineIndex <= 7) { # at empty line
+			if (rightLines[rightLineIndex].getValue() == "" and rightLineIndex <= 7) { # at empty line
 				rightLines[rightLineIndex].setValue(me.msg);
 				rightLinesCol[rightLineIndex].setValue(me.colour);
 			}
