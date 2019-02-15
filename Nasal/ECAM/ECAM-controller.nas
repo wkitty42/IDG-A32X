@@ -68,7 +68,6 @@ var warning = {
 		if (me.light >= 1) {return;}
 		if (me.active == 1 and me.noRepeat == 0) { # only toggle light once per message, allows canceling 
 			lights[me.light].setBoolValue(1);
-			print(lights[me.light].getBoolValue());
 			me.noRepeat = 1;
 		}
 	},
@@ -268,7 +267,6 @@ var ECAMloopTimer = maketimer(0.2, func {
 # Flash Master Warning Light
 var warnTimer = maketimer(0.25, func {
 	if (!lights[0].getBoolValue()) {
-		print("quitting!");
 		warnTimer.stop();
 		warningFlash.setBoolValue(0);
 	} else if (!warningFlash.getBoolValue()) {
