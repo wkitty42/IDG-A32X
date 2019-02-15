@@ -255,7 +255,7 @@ var messages_right_memo = func {
 		nw_strg_disc.colour = "g";
 	}
 	
-	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and !wow) {
+	if (getprop("/controls/electrical/switches/emer-gen") == 1 and getprop("/controls/hydraulic/rat-deployed") == 1 and getprop("/gear/gear[1]/wow") == 0) {
 		emer_gen.active = 1;
 	} else {
 		emer_gen.active = 0;
