@@ -55,7 +55,7 @@ var warning = {
 		
 		if (lineIndex > 7) {
 			leftOverflow.setBoolValue(1);
-		} elsif (leftOverflow.getBoolValue() == 1) {
+		} elsif (leftOverflow.getBoolValue()) {
 			leftOverflow.setBoolValue(0);
 		}
 		
@@ -65,24 +65,24 @@ var warning = {
 		}
 	},
 	warnlight: func() {
-		if (me.active == 0 or me.light >= 1) {return;}
-		if (me.noRepeat == 0) { # only toggle light once per message, allows canceling 
+		if (me.light >= 1) {return;}
+		if (me.active == 1 and me.noRepeat == 0) { # only toggle light once per message, allows canceling 
 			lights[me.light].setBoolValue(1);
+			print(lights[me.light].getBoolValue());
 			me.noRepeat = 1;
 		}
 	},
 	sound: func() {
-		if (me.aural >= 1) {return;} 
+		if (me.aural > 1) {return;} 
 		if (me.active == 1) {
-			if (aural[me.aural].getValue() != 1) {
+			if (!aural[me.aural].getBoolValue()) {
 				aural[me.aural].setBoolValue(1);
 			}
 		} else {
-			if (aural[me.aural].getValue() == 1) {
+			if (aural[me.aural].getBoolValue()) {
 				aural[me.aural].setBoolValue(0);
 			}
 		}
-		# have to cancel it anyway, I think it does not go out even if failure is removed
 	},
 };
 
@@ -108,7 +108,7 @@ var memo = {
 			
 			if (rightLineIndex > 7) {
 				rightOverflow.setBoolValue(1);
-			} elsif (rightOverflow.getBoolValue() == 1) {
+			} elsif (rightOverflow.getBoolValue()) {
 				rightOverflow.setBoolValue(0);
 			}
 			
@@ -267,10 +267,11 @@ var ECAMloopTimer = maketimer(0.2, func {
 
 # Flash Master Warning Light
 var warnTimer = maketimer(0.25, func {
-	if (lights[0].getValue() == 0) {
+	if (!lights[0].getBoolValue()) {
+		print("quitting!");
 		warnTimer.stop();
 		warningFlash.setBoolValue(0);
-	} else if (warningFlash.getBoolValue() != 1) {
+	} else if (!warningFlash.getBoolValue()) {
 		warningFlash.setBoolValue(1);
 	} else {
 		warningFlash.setBoolValue(0);
@@ -278,7 +279,7 @@ var warnTimer = maketimer(0.25, func {
 });
 
 setlistener("/ECAM/warnings/master-warning-light", func {
-	if (lights[0].getValue() == 1) {
+	if (lights[0].getBoolValue()) {
 		warningFlash.setBoolValue(0);
 		warnTimer.start();
 	} else {
