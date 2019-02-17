@@ -77,10 +77,6 @@ var warning = {
 			if (!aural[me.aural].getBoolValue()) {
 				aural[me.aural].setBoolValue(1);
 			}
-		} else {
-			if (aural[me.aural].getBoolValue()) {
-				aural[me.aural].setBoolValue(0);
-			}
 		}
 	},
 };
