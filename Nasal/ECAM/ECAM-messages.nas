@@ -11,7 +11,35 @@
 
 var warnings				  = std.Vector.new([
 	var flap_not_zero         = warning.new(msg: "F/CTL FLAP LVR NOT ZERO",  active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
-
+	
+	# DUAL ENG FAIL
+	var dualFail              = warning.new(msg: "ENG DUAL FAILURE",         active: 0, colour: "r", aural: 0, light: 0, noRepeat: 0, clearFlag: 0),
+	var dualFailModeSel       = warning.new(msg: " -ENG MODE SEL.......IGN", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailLevers        = warning.new(msg: " -THR LEVERS........IDLE", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailRelightSPD    = warning.new(msg: " OPTIMUM RELIGHT SPD.280", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailRelightSPDCFM = warning.new(msg: " OPTIMUM RELIGHT SPD.300", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailElec          = warning.new(msg: " -EMER ELEC PWR...MAN ON", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailRadio         = warning.new(msg: " -VHF1/ATC1..........USE", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailFAC           = warning.new(msg: " -FAC 1......OFF THEN ON", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailRelight       = warning.new(msg: "•IF NO RELIGHT AFTER 30S", active: 0, colour: "w", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailMasters       = warning.new(msg: " -ENG MASTERS.OFF 30S/ON", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailSuccess       = warning.new(msg: "   •IF UNSUCCESSFUL :   ", active: 0, colour: "w", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailAPU           = warning.new(msg: " -APU (IF AVAIL)...START", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailMastersAPU    = warning.new(msg: " -ENG MASTERS.OFF 30S/ON", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailSPDGD         = warning.new(msg: " OPTIMUM SPEED.....G DOT", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailAPPR          = warning.new(msg: "    •EARLY IN APPR :    ", active: 0, colour: "w", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailcabin         = warning.new(msg: " -CAB SECURE.......ORDER", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailrudd          = warning.new(msg: " -USE RUDDER WITH CARE  ", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailflap          = warning.new(msg: " -FOR LDG.....USE FLAP 3", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFail5000          = warning.new(msg: "   •AT 5000 FT AGL :    ", active: 0, colour: "w", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailgear          = warning.new(msg: " -L/G.........GRVTY EXTN", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailfinalspeed    = warning.new(msg: " TARGET SPEED.....150 KT", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailtouch         = warning.new(msg: "    •AT TOUCH DOWN :    ", active: 0, colour: "w", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailmasteroff     = warning.new(msg: " -ENG MASTERS........OFF", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailapuoff        = warning.new(msg: " -APU MASTER SW......OFF", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailevac          = warning.new(msg: " -EVAC..........INITIATE", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	var dualFailbatt          = warning.new(msg: " -BAT 1+2............OFF", active: 0, colour: "c", aural: 9, light: 9, noRepeat: 0, clearFlag: 0),
+	
 	# Config
 	var slats_config          = warning.new(msg: "CONFIG",                              active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
 	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",            active: 0, colour: "r", aural: 0,   light: 0, noRepeat: 0, clearFlag: 0),
@@ -28,11 +56,11 @@ var warnings				  = std.Vector.new([
 	# Autopilot
 	var ap_offw				  = warning.new(msg: "AUTO FLT AP OFF",			 active: 0, colour: "r", aural: 9,  light: 0, noRepeat: 0, clearFlag: 0),
 	var athr_offw			  = warning.new(msg: "AUTO FLT A/THR OFF", 	     active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
-	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var athr_offw_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "c", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
 	var athr_lock			  = warning.new(msg: "ENG THRUST LOCKED", 		 active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
-	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
+	var athr_lock_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "c", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0),
 	var athr_lim			  = warning.new(msg: "AUTO FLT A/THR LIMITED",   active: 0, colour: "a", aural: 1, light: 1, noRepeat: 0, clearFlag: 0),
-	var athr_lim_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "b", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0)
+	var athr_lim_1			  = warning.new(msg: "-THR LEVERS........MOVE",  active: 0, colour: "c", aural: 9,  light: 9,    noRepeat: 0, clearFlag: 0)
 ]);
 
 var leftmemos                 = std.Vector.new([

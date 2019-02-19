@@ -49,11 +49,11 @@ var warning = {
 	write: func() {
 		if (me.active == 0) {return;}
 		lineIndex = 0;
-		while (lines[lineIndex].getValue() != "" and lineIndex <= 7) {
+		while (lineIndex < 7 and lines[lineIndex].getValue() != "") {
 			lineIndex = lineIndex + 1; # go to next line until empty line
 		}
 		
-		if (lineIndex > 7) {
+		if (lineIndex == 7) {
 			leftOverflow.setBoolValue(1);
 		} elsif (leftOverflow.getBoolValue()) {
 			leftOverflow.setBoolValue(0);

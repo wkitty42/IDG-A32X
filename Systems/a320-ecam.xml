@@ -1,0 +1,33 @@
+<!-- Airbus A320 ECAM -->
+<!-- Jonathan Redpath -->
+
+<!--
+##############################################
+# Copyright (c) Joshua Davidson (it0uchpods) #
+##############################################
+-->
+
+<system name="A320: ECAM">
+
+	<channel name="Dual Failure">
+		<switch name="systems/ecam/dual-failure-enabled">
+			<default value="0"/>
+			<!--<test logic="AND" value="1">
+				position/wow eq 0
+				/engines/engine[0]/n2 lt 60.9
+				/engines/engine[1]/n2 lt 60.9
+			</test> IAE -->
+			<test logic="AND" value="1">
+				position/wow eq 0
+				/engines/engine[0]/n2 lt 61.2
+				/engines/engine[1]/n2 lt 61.2
+			</test>
+			<test logic="AND" value="1">
+				position/wow eq 0
+				fcs/engine-cutoff[0] eq 1
+				fcs/engine-cutoff[1] eq 1
+			</test>
+		</switch>
+	</channel>
+
+</system>

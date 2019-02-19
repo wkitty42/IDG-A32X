@@ -2,9 +2,18 @@
 
 # Copyright (c) 2019 Jonathan Redpath (legoboyvdlp)
 
+# props.nas:
+
+var dualFailNode = props.globals.getNode("/fdm/jsbsim/systems/ecam/dual-failure-enabled", 1);
+var phaseNode    = props.globals.getNode("/ECAM/warning-phase", 1);
+
+# local variables
+var phaseVar = nil;
+
 var messages_priority_3 = func {
+	phaseVar = phaseNode.getValue();
 	# FCTL
-	if ((flap_not_zero.clearFlag == 0) and getprop("/ECAM/warning-phase") == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
+	if ((flap_not_zero.clearFlag == 0) and phaseVar == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
 		flap_not_zero.active = 1;
 	} else {
 		flap_not_zero.active = 0;
@@ -12,8 +21,66 @@ var messages_priority_3 = func {
 		flap_not_zero.clearFlag = 0;
 	}
 	
+	# ENG DUAL FAIL
+	
+	if (phaseVar >= 5 and phaseVar <= 7 and dualFailNode.getBoolValue()) {
+		dualFail.active = 1;
+	} elsif (dualFailbatt.clearFlag == 1 and dualFail.clearFlag == 1) {
+		dualFail.active = 0;
+		dualFail.noRepeat = 0;
+		dualFail.clearFlag = 0;
+	}
+	
+	if (dualFail.active == 1) {
+		if (getprop("/controls/engines/engine-start-switch") != 2 and dualFailModeSel.clearFlag == 0) {
+			dualFailModeSel.active = 1;
+		} else {
+			dualFailModeSel.active = 0;
+		}
+		
+		if (getprop("/fdm/jsbsim/fcs/throttle-lever[0]") > 0.01 and getprop("/fdm/jsbsim/fcs/throttle-lever[1]") > 0.01 and dualFailLevers.clearFlag == 0) {
+			dualFailLevers.active = 1;
+		} else {
+			dualFailLevers.active = 0;
+		}
+		
+		if (getprop("/options/eng") == "IAE" and dualFailRelightSPD.clearFlag == 0) {
+			dualFailRelightSPD.active = 1;
+		} else {
+			dualFailRelightSPD.active = 0;
+		}
+		
+		if (getprop("/options/eng") != "IAE" and dualFailRelightSPDCFM.clearFlag == 0) {
+			dualFailRelightSPDCFM.active = 1;
+		} else {
+			dualFailRelightSPDCFM.active = 0;
+		}
+		
+		dualFailElec.active = 1;
+		dualFailRadio.active = 1;
+		dualFailFAC.active = 1;
+		dualFailRelight.active = 1;
+		dualFailMasters.active = 1;
+		dualFailSuccess.active = 1;
+		dualFailAPU.active = 1;
+		dualFailMastersAPU.active = 1;
+		dualFailSPDGD.active = 1;
+		dualFailAPPR.active = 1;
+		dualFailcabin.active = 1;
+		dualFailrudd.active = 1;
+		dualFailflap.active = 1;
+		dualFail5000.active = 1;
+		dualFailgear.active = 1;
+		dualFailfinalspeed.active = 1;
+		dualFailtouch.active = 1;
+		dualFailmasteroff.active = 1;
+		dualFailapuoff.active = 1;
+		dualFailevac.active = 1;
+		dualFailbatt.active = 1;
+	}
+	
 	# CONFIG
-	if ((slats_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever")) == 4 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((slats_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever")) == 4 and phaseVar >= 3 and phaseVar <= 4) {
 		slats_config.active = 1;
 		slats_config_1.active = 1;
 	} else {
@@ -23,7 +90,7 @@ var messages_priority_3 = func {
 		slats_config_1.noRepeat = 0;
 	}
 	
-	if ((flaps_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((flaps_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and phaseVar >= 3 and phaseVar <= 4) {
 		flaps_config.active = 1;
 		flaps_config_1.active = 1;
 	} else {
@@ -33,7 +100,7 @@ var messages_priority_3 = func {
 		flaps_config_1.noRepeat = 0;
 	}
 	
-	if ((spd_brk_config.clearFlag == 0) and getprop("/controls/flight/speedbrake") != 0 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((spd_brk_config.clearFlag == 0) and getprop("/controls/flight/speedbrake") != 0 and phaseVar >= 3 and phaseVar <= 4) {
 		spd_brk_config.active = 1;
 		spd_brk_config_1.active = 1;
 	} else {
@@ -43,7 +110,7 @@ var messages_priority_3 = func {
 		spd_brk_config_1.noRepeat = 0;
 	}
 	
-	if ((pitch_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((pitch_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and phaseVar >= 3 and phaseVar <= 4) {
 		pitch_trim_config.active = 1;
 		pitch_trim_config_1.active = 1;
 	} else {
@@ -53,7 +120,7 @@ var messages_priority_3 = func {
 		pitch_trim_config_1.noRepeat = 0;
 	}
 	
-	if ((rud_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((rud_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and phaseVar >= 3 and phaseVar <= 4) {
 		rud_trim_config.active = 1;
 		rud_trim_config_1.active = 1;
 	} else {
@@ -63,7 +130,7 @@ var messages_priority_3 = func {
 		rud_trim_config_1.noRepeat = 0;
 	}
 	
-	if ((park_brk_config.clearFlag == 0) and getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 4) {
+	if ((park_brk_config.clearFlag == 0) and getprop("/controls/gear/brake-parking") == 1 and phaseVar >= 3 and phaseVar <= 4) {
 		park_brk_config.active = 1;
 	} else {
 		park_brk_config.active = 0;
@@ -78,7 +145,7 @@ var messages_priority_3 = func {
 		ap_offw.noRepeat = 0;
 	}
 	
-	if ((athr_lock.clearFlag == 0) and getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7 and getprop("/systems/thrust/thr-locked") == 1) {
+	if ((athr_lock.clearFlag == 0) and phaseVar >= 5 and phaseVar <= 7 and getprop("/systems/thrust/thr-locked") == 1) {
 		athr_lock.active = 1;
 		athr_lock_1.active = 1;
 	} else {
@@ -88,7 +155,7 @@ var messages_priority_3 = func {
 		athr_lock_1.noRepeat = 0;
 	}
 	
-	if ((athr_offw.clearFlag == 0) and getprop("/it-autoflight/output/athr-warning") == 2 and getprop("/ECAM/warning-phase") != 4 and getprop("/ECAM/warning-phase") != 8 and getprop("/ECAM/warning-phase") != 10) {
+	if ((athr_offw.clearFlag == 0) and getprop("/it-autoflight/output/athr-warning") == 2 and phaseVar != 4 and phaseVar != 8 and phaseVar != 10) {
 		athr_offw.active = 1;
 		athr_offw_1.active = 1;
 	} else {
@@ -98,7 +165,7 @@ var messages_priority_3 = func {
 		athr_offw_1.noRepeat = 0;
 	}
 	
-	if ((athr_lim.clearFlag == 0) and getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (getprop("/ECAM/warning-phase") >= 5 and getprop("/ECAM/warning-phase") <= 7)) {
+	if ((athr_lim.clearFlag == 0) and getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (phaseVar >= 5 and phaseVar <= 7)) {
 		athr_lim.active = 1;
 		athr_lim_1.active = 1;
 	} else {
@@ -114,6 +181,7 @@ var messages_priority_1 = func {}
 var messages_priority_0 = func {}
 
 var messages_memo = func {
+	phaseVar = phaseNode.getValue();
 	if (getprop("/services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
 		refuelg.active = 1;
 	} else {
@@ -159,32 +227,33 @@ var messages_memo = func {
 }
 
 var messages_right_memo = func {
-	if (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 5) {
+	phaseVar = phaseNode.getValue();
+	if (phaseVar >= 3 and phaseVar <= 5) {
 		to_inhibit.active = 1;
 	} else {
 		to_inhibit.active = 0;
 	}
 	
-	if (getprop("/ECAM/warning-phase") >= 7 and getprop("/ECAM/warning-phase") <= 7) {
+	if (phaseVar >= 7 and phaseVar <= 7) {
 		ldg_inhibit.active = 1;
 	} else {
 		ldg_inhibit.active = 0;
 	}
 	
-	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8)) {
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
 		land_asap_r.active = 1;
 	} else {
 		land_asap_r.active = 0;
 	}
 	
-	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8)) {
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
 		# todo: emer elec
 		land_asap_r.active = 1;
 	} else {
 		land_asap_r.active = 0;
 	}
 	
-	if (land_asap_r.active == 0 and getprop("/gear/gear[1]/wow") == 0 and ((getprop("/fdm/jsbsim/propulsion/tank[0]/contents-lbs") < 1650 and getprop("/fdm/jsbsim/propulsion/tank[1]/contents-lbs") < 1650) or ((getprop("/systems/electrical/bus/dc2") < 25 and (getprop("/systems/failures/elac1") == 1 or getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/green-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/yellow-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/blue-psi") < 1500 and (getprop("/systems/failures/elac2") == 1 and getprop("/systems/failures/sec2") == 1))) or (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 8 and (getprop("/engines/engine[0]/state") != 3 or getprop("/engines/engine[1]/state") != 3)))) {
+	if (land_asap_r.active == 0 and getprop("/gear/gear[1]/wow") == 0 and ((getprop("/fdm/jsbsim/propulsion/tank[0]/contents-lbs") < 1650 and getprop("/fdm/jsbsim/propulsion/tank[1]/contents-lbs") < 1650) or ((getprop("/systems/electrical/bus/dc2") < 25 and (getprop("/systems/failures/elac1") == 1 or getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/green-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/yellow-psi") < 1500 and (getprop("/systems/failures/elac1") == 1 and getprop("/systems/failures/sec1") == 1)) or (getprop("/systems/hydraulic/blue-psi") < 1500 and (getprop("/systems/failures/elac2") == 1 and getprop("/systems/failures/sec2") == 1))) or (phaseVar >= 3 and phaseVar <= 8 and (getprop("/engines/engine[0]/state") != 3 or getprop("/engines/engine[1]/state") != 3)))) {
 		land_asap_a.active = 1;
 	} else {
 		land_asap_a.active = 0;
@@ -202,24 +271,24 @@ var messages_right_memo = func {
 		athr_off.active = 0;
 	}
 	
-	if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 7) and getprop("controls/flight/speedbrake") != 0) {
+	if ((phaseVar >= 2 and phaseVar <= 7) and getprop("controls/flight/speedbrake") != 0) {
 		spd_brk.active = 1;
 	} else {
 		spd_brk.active = 0;
 	}
 	
-	if (getprop("/systems/thrust/state1") == "IDLE" and getprop("/systems/thrust/state2") == "IDLE" and getprop("/ECAM/warning-phase") >= 6 and getprop("/ECAM/warning-phase") <= 7) {
+	if (getprop("/systems/thrust/state1") == "IDLE" and getprop("/systems/thrust/state2") == "IDLE" and phaseVar >= 6 and phaseVar <= 7) {
 		spd_brk.colour = "g";
-	} else if ((getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 5) or ((getprop("/systems/thrust/state1") != "IDLE" or getprop("/systems/thrust/state2") != "IDLE") and (getprop("/ECAM/warning-phase") >= 6 and getprop("/ECAM/warning-phase") <= 7))) {
+	} else if ((phaseVar >= 2 and phaseVar <= 5) or ((getprop("/systems/thrust/state1") != "IDLE" or getprop("/systems/thrust/state2") != "IDLE") and (phaseVar >= 6 and phaseVar <= 7))) {
 		spd_brk.colour = "a";
 	}
 	
-	if (getprop("/controls/gear/brake-parking") == 1 and getprop("/ECAM/warning-phase") != 3) {
+	if (getprop("/controls/gear/brake-parking") == 1 and phaseVar != 3) {
 		park_brk.active = 1;
 	} else {
 		park_brk.active = 0;
 	}
-	if (getprop("/ECAM/warning-phase") >= 4 and getprop("/ECAM/warning-phase") <= 8) {
+	if (phaseVar >= 4 and phaseVar <= 8) {
 		park_brk.colour = "a";
 	} else {
 		park_brk.colour = "g";
@@ -237,7 +306,7 @@ var messages_right_memo = func {
 		rat.active = 0;
 	}
 	
-	if (getprop("/ECAM/warning-phase") >= 1 and getprop("/ECAM/warning-phase") <= 2) {
+	if (phaseVar >= 1 and phaseVar <= 2) {
 		rat.colour = "a";
 	} else {
 		rat.colour = "g";
@@ -303,24 +372,24 @@ var messages_right_memo = func {
 		wing_aice.active = 0;
 	}
 	
-	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and (getprop("/ECAM/warning-phase") == 1 or getprop("/ECAM/warning-phase") == 2 or getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") == 9 or getprop("/ECAM/warning-phase") == 10)) {
+	if (getprop("/instrumentation/comm[2]/frequencies/selected-mhz") != 0 and (phaseVar == 1 or phaseVar == 2 or phaseVar == 6 or phaseVar == 9 or phaseVar == 10)) {
 		vhf3_voice.active = 1;
 	} else {
 		vhf3_voice.active = 0;
 	}
-	if (getprop("/controls/autobrake/mode") == 1 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
+	if (getprop("/controls/autobrake/mode") == 1 and (phaseVar == 7 or phaseVar == 8)) {
 		auto_brk_lo.active = 1;
 	} else {
 		auto_brk_lo.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 2 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
+	if (getprop("/controls/autobrake/mode") == 2 and (phaseVar == 7 or phaseVar == 8)) {
 		auto_brk_med.active = 1;
 	} else {
 		auto_brk_med.active = 0;
 	}
 
-	if (getprop("/controls/autobrake/mode") == 3 and (getprop("/ECAM/warning-phase") == 7 or getprop("/ECAM/warning-phase") == 8)) {
+	if (getprop("/controls/autobrake/mode") == 3 and (phaseVar == 7 or phaseVar == 8)) {
 		auto_brk_max.active = 1;
 	} else {
 		auto_brk_max.active = 0;
@@ -332,7 +401,7 @@ var messages_right_memo = func {
 		fuelx.active = 0;
 	}
 	
-	if (getprop("/ECAM/warning-phase") >= 3 and getprop("/ECAM/warning-phase") <= 5) {
+	if (phaseVar >= 3 and phaseVar <= 5) {
 		fuelx.colour = "a";
 	} else {
 		fuelx.colour = "g";
@@ -344,7 +413,7 @@ var messages_right_memo = func {
 		gpws_flap3.active = 0;
 	}
 	
-	if (getprop("/ECAM/warning-phase") >= 2 and getprop("/ECAM/warning-phase") <= 9 and getprop("/systems/fuel/only-use-ctr-tank") == 1 and getprop("/systems/electrical/bus/ac1") >= 115 and getprop("/systems/electrical/bus/ac2") >= 115) {
+	if (phaseVar >= 2 and phaseVar <= 9 and getprop("/systems/fuel/only-use-ctr-tank") == 1 and getprop("/systems/electrical/bus/ac1") >= 115 and getprop("/systems/electrical/bus/ac2") >= 115) {
 		ctr_tk_feedg.active = 1;
 	} else {
 		ctr_tk_feedg.active = 0;
