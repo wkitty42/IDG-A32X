@@ -26,23 +26,16 @@ var rightLineIndex = 0;
 var statusIndex = 0;
 
 var warning = {
-	msg: "",
-	active: 0,
-	colour: "",
-	aural: "",
-	light: "",
-	noRepeat: 0,
-	clearFlag: 0,
-	new: func(msg,active,colour,aural,light,noRepeat,clearFlag) {
+	new: func(msg,colour,aural,light) {
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
-		t.active = active;
+		t.active = 0;
 		t.colour = colour;
 		t.aural = aural;
 		t.light = light;
-		t.noRepeat = noRepeat;
-		t.clearFlag = clearFlag;
+		t.noRepeat = 0;
+		t.clearFlag = 0;
 		
 		return t
 	},
@@ -82,14 +75,11 @@ var warning = {
 };
 
 var memo = {
-	msg: "",
-	active: 0,
-	colour: "",
-	new: func(msg,active,colour) {
+	new: func(msg,colour) {
 		var t = {parents:[memo]};
 		
 		t.msg = msg;
-		t.active = active;
+		t.active = 0;
 		t.colour = colour;
 		
 		return t
@@ -116,14 +106,11 @@ var memo = {
 };
 
 var status = {
-	msg: "",
-	active: 0,
-	colour: "",
-	new: func(msg,active,colour) {
+	new: func(msg,colour) {
 		var t = {parents:[status]};
 		
 		t.msg = msg;
-		t.active = active;
+		t.active = 0;
 		t.colour = colour;
 		
 		return t
