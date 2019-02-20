@@ -33,12 +33,12 @@ var messages_priority_3 = func {
 	
 	if (phaseVar >= 5 and phaseVar <= 7 and dualFailNode.getBoolValue()) {
 		dualFail.active = 1;
-	} elsif (dualFailbatt.clearFlag == 1 and dualFail.clearFlag == 1) {
+	} elsif (dualFail.clearFlag == 1) {
 		dualFail.active = 0;
 		dualFail.noRepeat = 0;
 		dualFail.clearFlag = 0;
 		
-		dualFailFACActive = 1;
+		dualFailFACActive = 1; # reset FAC local variable
 	}
 	
 	if (dualFail.active == 1) {

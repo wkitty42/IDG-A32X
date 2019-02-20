@@ -5329,6 +5329,10 @@
 					if (getprop("/it-autoflight/output/athr-warning") == 1) {
 						setprop("/it-autoflight/output/athr-warning", 0);
 					}
+					
+					if (getprop("/sim/sound/warnings/chime") == 1) {
+						setprop("/sim/sound/warnings/chime", 0);
+					}
 				</script>
 			</binding>
 		</action>

@@ -234,6 +234,7 @@ var ECAM_controller = {
 	clear: func() {
 		foreach (var w; warnings.vector) {
 			if (w.active == 1) {
+				# if (w.msg == "ENG DUAL FAILURE") { continue; }
 				w.clearFlag = 1;
 				break;
 			}
