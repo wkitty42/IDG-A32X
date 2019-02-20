@@ -6,12 +6,20 @@
 
 var dualFailNode = props.globals.getNode("/fdm/jsbsim/systems/ecam/dual-failure-enabled", 1);
 var phaseNode    = props.globals.getNode("/ECAM/warning-phase", 1);
+var leftMsgNode  = props.globals.getNode("/ECAM/left-msg", 1);
+var apWarn       = props.globals.getNode("/it-autoflight/output/ap-warning", 1);
+var athrWarn     = props.globals.getNode("/it-autoflight/output/athr-warning", 1);
+var emerGen      = props.globals.getNode("/controls/electrical/switches/emer-gen", 1);
+
+var fac1Node = props.globals.getNode("/controls/fctl/fac1", 1);
 
 # local variables
 var phaseVar = nil;
+var dualFailFACActive = 1;
 
 var messages_priority_3 = func {
 	phaseVar = phaseNode.getValue();
+	
 	# FCTL
 	if ((flap_not_zero.clearFlag == 0) and phaseVar == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
 		flap_not_zero.active = 1;
@@ -29,6 +37,8 @@ var messages_priority_3 = func {
 		dualFail.active = 0;
 		dualFail.noRepeat = 0;
 		dualFail.clearFlag = 0;
+		
+		dualFailFACActive = 1;
 	}
 	
 	if (dualFail.active == 1) {
@@ -56,22 +66,90 @@ var messages_priority_3 = func {
 			dualFailRelightSPDCFM.active = 0;
 		}
 		
-		dualFailElec.active = 1;
-		dualFailRadio.active = 1;
-		dualFailFAC.active = 1;
-		dualFailRelight.active = 1;
-		dualFailMasters.active = 1;
-		dualFailSuccess.active = 1;
-		dualFailAPU.active = 1;
-		dualFailMastersAPU.active = 1;
-		dualFailSPDGD.active = 1;
-		dualFailAPPR.active = 1;
-		dualFailcabin.active = 1;
-		dualFailrudd.active = 1;
-		dualFailflap.active = 1;
-		dualFail5000.active = 1;
-		dualFailgear.active = 1;
-		dualFailfinalspeed.active = 1;
+		if (emerGen.getValue() == 0 and dualFailElec.clearFlag == 0) {
+			dualFailElec.active = 1;
+		} else {
+			dualFailElec.active = 0;
+		}
+		
+		if (dualFailRadio.clearFlag == 0) {
+			dualFailRadio.active = 1;
+		} else {
+			dualFailRadio.active = 0;
+		}
+		
+		if (dualFailFACActive == 1 and dualFailFAC.clearFlag == 0) {
+			dualFailFAC.active = 1;
+		} else {
+			dualFailFAC.active = 0;
+		}
+		
+		if (dualFailAPU.clearFlag == 0) { # assumption - not cleared till you clear APU message
+			dualFailRelight.active = 1;
+			dualFailMasters.active = 1;
+			dualFailSuccess.active = 1;
+			dualFailAPU.active = 1;
+		} else {
+			dualFailRelight.active = 1;
+			dualFailMasters.active = 1;
+			dualFailSuccess.active = 1;
+			dualFailAPU.active = 1;
+		}
+		
+		if (dualFailMastersAPU.clearFlag == 0) {
+			dualFailMastersAPU.active = 1;
+		} else {
+			dualFailMastersAPU.active = 0;
+		}
+		
+		if (dualFailSPDGD.clearFlag == 0) {
+			dualFailSPDGD.active = 1;
+		} else {
+			dualFailSPDGD.active = 0;
+		}
+		
+		if (dualFailflap.clearFlag == 0) {
+			dualFailAPPR.active = 1;
+		} else {
+			dualFailAPPR.active = 0;
+		}
+		
+		if (dualFailcabin.clearFlag == 0) {
+			dualFailcabin.active = 1;
+		} else {
+			dualFailcabin.active = 0;
+		}
+		
+		if (dualFailrudd.clearFlag == 0) {
+			dualFailrudd.active = 1;
+		} else {
+			dualFailrudd.active = 0;
+		}
+		
+		if (dualFailflap.clearFlag == 0) {
+			dualFailflap.active = 1;
+		} else {
+			dualFailflap.active = 0;
+		}
+		
+		if (dualFailfinalspeed.clearFlag == 0) {
+			dualFail5000.active = 1;
+		} else {
+			dualFail5000.active = 0;
+		}
+		
+		if (dualFailgear.clearFlag == 0) {
+			dualFailgear.active = 1;
+		} else {
+			dualFailgear.active = 0;
+		}
+		
+		if (dualFailfinalspeed.clearFlag == 0) {
+			dualFailfinalspeed.active = 1;
+		} else {
+			dualFailfinalspeed.active = 0;
+		}
+		
 		dualFailtouch.active = 1;
 		dualFailmasteroff.active = 1;
 		dualFailapuoff.active = 1;
@@ -138,7 +216,7 @@ var messages_priority_3 = func {
 	}
 	
 	# AUTOFLT
-	if ((ap_offw.clearFlag == 0) and getprop("/it-autoflight/output/ap-warning") == 2) {
+	if ((ap_offw.clearFlag == 0) and apWarn.getValue() == 2) {
 		ap_offw.active = 1;
 	} else {
 		ap_offw.active = 0;
@@ -155,7 +233,7 @@ var messages_priority_3 = func {
 		athr_lock_1.noRepeat = 0;
 	}
 	
-	if ((athr_offw.clearFlag == 0) and getprop("/it-autoflight/output/athr-warning") == 2 and phaseVar != 4 and phaseVar != 8 and phaseVar != 10) {
+	if ((athr_offw.clearFlag == 0) and athrWarn.getValue() == 2 and phaseVar != 4 and phaseVar != 8 and phaseVar != 10) {
 		athr_offw.active = 1;
 		athr_offw_1.active = 1;
 	} else {
@@ -182,7 +260,7 @@ var messages_priority_0 = func {}
 
 var messages_memo = func {
 	phaseVar = phaseNode.getValue();
-	if (getprop("/services/fuel-truck/enable") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
+	if (getprop("/services/fuel-truck/enable") == 1 and leftMsgNode.getValue() != "TO-MEMO" and leftMsgNode.getValue() != "LDG-MEMO") {
 		refuelg.active = 1;
 	} else {
 		refuelg.active = 0;
@@ -194,25 +272,25 @@ var messages_memo = func {
 		gnd_splrs.active = 0;
 	}
 	
-	if (getprop("/controls/lighting/seatbelt-sign") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") {
+	if (getprop("/controls/lighting/seatbelt-sign") == 1 and leftMsgNode.getValue() != "TO-MEMO" and leftMsgNode.getValue() != "LDG-MEMO") {
 		seatbelts.active = 1;
 	} else {
 		seatbelts.active = 0;
 	}
 	
-	if (getprop("/controls/lighting/no-smoking-sign") == 1 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # should go off after takeoff assuming switch is in auto due to old logic from the days when smoking was allowed!
+	if (getprop("/controls/lighting/no-smoking-sign") == 1 and leftMsgNode.getValue() != "TO-MEMO" and leftMsgNode.getValue() != "LDG-MEMO") { # should go off after takeoff assuming switch is in auto due to old logic from the days when smoking was allowed!
 		nosmoke.active = 1;
 	} else {
 		nosmoke.active = 0;
 	}
 
-	if (getprop("/controls/lighting/strobe") == 0 and getprop("/gear/gear[1]/wow") == 0 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # todo: use gear branch properties
+	if (getprop("/controls/lighting/strobe") == 0 and getprop("/gear/gear[1]/wow") == 0 and leftMsgNode.getValue() != "TO-MEMO" and leftMsgNode.getValue() != "LDG-MEMO") { # todo: use gear branch properties
 		strobe_lt_off.active = 1;
 	} else {
 		strobe_lt_off.active = 0;
 	}
 
-	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and getprop("/ECAM/left-msg") != "TO-MEMO" and getprop("/ECAM/left-msg") != "LDG-MEMO") { # assuming US short ton 2000lb
+	if (getprop("/consumables/fuel/total-fuel-lbs") < 6000 and leftMsgNode.getValue() != "TO-MEMO" and leftMsgNode.getValue() != "LDG-MEMO") { # assuming US short ton 2000lb
 		fob_3T.active = 1;
 	} else {
 		fob_3T.active = 0;
@@ -240,13 +318,7 @@ var messages_right_memo = func {
 		ldg_inhibit.active = 0;
 	}
 	
-	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
-		land_asap_r.active = 1;
-	} else {
-		land_asap_r.active = 0;
-	}
-	
-	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and (getprop("/engines/engine[0]/state") == 3) and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and getprop("/engines/engine[0]/state") == 3 and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
 		# todo: emer elec
 		land_asap_r.active = 1;
 	} else {
@@ -259,13 +331,13 @@ var messages_right_memo = func {
 		land_asap_a.active = 0;
 	}
 	
-	if (libraries.ap_active == 1 and getprop("/it-autoflight/output/ap-warning") == 1) {
+	if (libraries.ap_active == 1 and apWarn.getValue() == 1) {
 		ap_off.active = 1;
 	} else {
 		ap_off.active = 0;
 	}
 	
-	if (libraries.athr_active == 1 and getprop("/it-autoflight/output/athr-warning") == 1) {
+	if (libraries.athr_active == 1 and athrWarn.getValue() == 1) {
 		athr_off.active = 1;
 	} else {
 		athr_off.active = 0;
@@ -419,3 +491,14 @@ var messages_right_memo = func {
 		ctr_tk_feedg.active = 0;
 	}
 }
+
+# Listener
+setlistener("/controls/fctl/fac1", func() {
+	if (dualFail.active == 0) { return; }
+	
+	if (fac1Node.getBoolValue()) {
+		dualFailFACActive = 0;
+	} else {
+		dualFailFACActive = 1;
+	}
+}, 0, 0);
