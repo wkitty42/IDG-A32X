@@ -388,10 +388,21 @@ var APPanel = {
 		if (dcEss.getValue() >= 25) {
 			var vertTemp = vertMode.getValue();
 			if ((locArm.getBoolValue() or latMode.getValue() == 2) and !apprArm.getBoolValue() and vertTemp != 2 and vertTemp != 6) {
-				setprop("/it-autoflight/input/lat", 0);
+				if (latMode.getValue() == 2) {
+					setprop("/it-autoflight/input/lat", 0);
+				} else {
+					fmgc.disarmLOC();
+				}
+				if (vertTemp == 2 or vertTemp == 6) {
+					me.VSPull();
+				} else {
+					fmgc.disarmGS();
+				}
 			} else {
 				setprop("/it-autoflight/input/lat", 2);
-				if (apprArm.getBoolValue() or vertTemp == 2) {
+				if (vertTemp == 2 or vertTemp == 6) {
+					me.VSPull();
+				} else {
 					fmgc.disarmGS();
 				}
 			}
@@ -513,8 +524,16 @@ var APPanel = {
 		if (dcEss.getValue() >= 25) {
 			var vertTemp = vertMode.getValue();
 			if ((locArm.getBoolValue() or latMode.getValue() == 2) and (apprArm.getBoolValue() or vertTemp == 2 or vertTemp == 6)) {
-				setprop("/it-autoflight/input/lat", 0);
-				me.VSPull();
+				if (latMode.getValue() == 2) {
+					setprop("/it-autoflight/input/lat", 0);
+				} else {
+					fmgc.disarmLOC();
+				}
+				if (vertTemp == 2 or vertTemp == 6) {
+					me.VSPull();
+				} else {
+					fmgc.disarmGS();
+				}
 			} else {
 				setprop("/it-autoflight/input/vert", 2);
 			}
