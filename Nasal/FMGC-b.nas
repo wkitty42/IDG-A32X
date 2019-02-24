@@ -614,6 +614,10 @@ var vertical = func {
 	}
 }
 
+var disarmLOC = func {
+	setprop("/it-autoflight/output/loc-armed", 0);
+}
+
 var disarmGS = func {
 	alandt.stop();
 	alandt1.stop();
