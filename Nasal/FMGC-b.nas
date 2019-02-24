@@ -614,6 +614,12 @@ var vertical = func {
 	}
 }
 
+var disarmGS = func {
+	alandt.stop();
+	alandt1.stop();
+	setprop("/it-autoflight/output/appr-armed", 0);
+}
+
 # Helpers
 var toggle_trkfpa = func {
 	var trkfpa = getprop("/it-autoflight/custom/trk-fpa");
