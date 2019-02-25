@@ -234,7 +234,7 @@ var APPanel = {
 			}
 		}
 	},
-	APDiscSoft: func() {
+	APDisc: func() {
 		if (ap1.getBoolValue() or ap2.getBoolValue()) {
 			libraries.apOff("soft", 0);
 		} else {
@@ -246,7 +246,7 @@ var APPanel = {
 			setprop("/ECAM/warnings/master-warning-light", 0);
 		}
 	},
-	ATDiscSoft: func() {
+	ATDisc: func() {
 		if (athr.getBoolValue()) {
 			libraries.athrOff("soft");
 			setprop("/ECAM/warnings/master-caution-light", 1);

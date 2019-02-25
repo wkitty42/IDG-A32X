@@ -1081,7 +1081,7 @@
 				<desc>Autothrottle Disconnect</desc>
 				<binding>
 					<command>nasal</command>
-					<script>libraries.APPanel.ATDiscSoft();</script>
+					<script>libraries.APPanel.ATDisc();</script>
 				</binding>
 			</key>
 			<key n="6">
@@ -1320,7 +1320,7 @@
 				<desc>Autopilot Disconnect</desc>
 				<binding>
 					<command>nasal</command>
-					<script>libraries.APPanel.APDiscSoft();</script>
+					<script>libraries.APPanel.APDisc();</script>
 				</binding>
 			</key>
 			<key n="70">
