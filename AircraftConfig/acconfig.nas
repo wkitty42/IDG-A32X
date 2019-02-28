@@ -357,6 +357,8 @@ var beforestart_b = func {
 	setprop("/controls/radio/rmp[0]/on", 1);
 	setprop("/controls/radio/rmp[1]/on", 1);
 	setprop("/controls/radio/rmp[2]/on", 1);
+	setprop("/systems/fadec/power-avail", 1);
+	setprop("/systems/fadec/powered-time", -310);
 	settimer(func {
 		setprop("/controls/gear/brake-left", 0);
 		setprop("/controls/gear/brake-right", 0);
@@ -438,6 +440,8 @@ var taxi_b = func {
 	setprop("/controls/radio/rmp[0]/on", 1);
 	setprop("/controls/radio/rmp[1]/on", 1);
 	setprop("/controls/radio/rmp[2]/on", 1);
+	setprop("/systems/fadec/power-avail", 1);
+	setprop("/systems/fadec/powered-time", -310);
 	setprop("/controls/lighting/turnoff-light-switch", 1);
 	setprop("/controls/lighting/taxi-light-switch", 0.5);
 	setprop("/controls/switches/landing-lights-l", 0.5);
