@@ -25,7 +25,6 @@
 	<property value="0">fbw/fmgc/roll-cmd</property>
 	<property value="0">fbw/fmgc/pitch-cmd</property>
 	<property value="0">fbw/fmgc/yaw-cmd</property>
-	<property value="1">c1</property>
 	
 	<channel name="Libraries">
 		
@@ -208,7 +207,7 @@
 		
 		<lag_filter name="fbw/pitch/vc-kts-rate-lag">
 			<input>fbw/pitch/vc-kts-rate</input>
-			<c1>c1</c1>
+			<c1>1.0</c1>
 		</lag_filter>
 		
 	</channel>
