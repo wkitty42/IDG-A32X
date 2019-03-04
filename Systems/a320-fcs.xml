@@ -1254,8 +1254,8 @@
 			<ki>0.0</ki>
 			<kd>fbw/yaw/tc-d-gain</kd>
 			<clipto>
-				<min>-0.2</min>
-				<max>0.2</max>
+				<min>-0.4</min>
+				<max>0.4</max>
 			</clipto>
 			<output>fbw/yaw/tc-pd</output>
 		</pid>
