@@ -186,7 +186,6 @@
 				</menu>
 				<menu n="101">
 					<label>System</label>
-					<enabled type="bool">true</enabled>
 					<item>
 						<label>Aircraft Config</label>
 						<binding>
