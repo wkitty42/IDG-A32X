@@ -148,7 +148,7 @@
 					<independentVar lookup="column">fbw/pitch/gain-switch</independentVar>
 					<tableData>
 						     0    1
-						140  1.0  0.0
+						140  2.0  0.0
 						350  0.4  0.0
 					</tableData>
 				</table>
