@@ -4,7 +4,7 @@
 
 # props.nas:
 
-var dualFailNode = props.globals.initNode("/ECAM/dual-failure-enabled", 0 "BOOL");
+var dualFailNode = props.globals.initNode("/ECAM/dual-failure-enabled", 0, "BOOL");
 var phaseNode    = props.globals.getNode("/ECAM/warning-phase", 1);
 var leftMsgNode  = props.globals.getNode("/ECAM/left-msg", 1);
 var apWarn       = props.globals.getNode("/it-autoflight/output/ap-warning", 1);
