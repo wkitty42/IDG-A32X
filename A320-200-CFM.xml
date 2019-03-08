@@ -138,7 +138,6 @@ xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 	<system file="a320-fcs"/>
 	<system file="a320-spoiler"/>
 	<system file="a320-lights"/>
-	<system file="a320-ecam"/>
 	
 	<flight_control name="none"/>
 	
