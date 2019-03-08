@@ -560,7 +560,7 @@
 		
 		<switch name="fbw/aileron-output">
 			<default value="0"/>
-			<test logic="AND" value="fbw/mixer/roll/output">
+			<test logic="AND" value="fbw/mixer/roll/output"> <!-- Mix stick and control law for transition from ground law -->
 				position/wow eq 0
 				/it-fbw/law eq 0
 			</test>
