@@ -11,7 +11,12 @@ var apWarn       = props.globals.getNode("/it-autoflight/output/ap-warning", 1);
 var athrWarn     = props.globals.getNode("/it-autoflight/output/athr-warning", 1);
 var emerGen      = props.globals.getNode("/controls/electrical/switches/emer-gen", 1);
 
-var fac1Node = props.globals.getNode("/controls/fctl/fac1", 1);
+var fac1Node   = props.globals.getNode("/controls/fctl/fac1", 1);
+var state1Node = props.globals.getNode("/engines/engine[0]/state", 1);
+var state2Node = props.globals.getNode("/engines/engine[1]/state", 1);
+var cutoff1Node = props.globals.getNode("/fdm/jsbsim/fcs/engine-cutoff[0]", 1);
+var cutoff2Node = props.globals.getNode("/fdm/jsbsim/fcs/engine-cutoff[1]", 1);
+var wowNode    = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 
 # local variables
 var phaseVar = nil;
@@ -492,7 +497,7 @@ var messages_right_memo = func {
 	}
 }
 
-# Listener
+# Listeners
 setlistener("/controls/fctl/fac1", func() {
 	if (dualFail.active == 0) { return; }
 	
@@ -500,5 +505,21 @@ setlistener("/controls/fctl/fac1", func() {
 		dualFailFACActive = 0;
 	} else {
 		dualFailFACActive = 1;
+	}
+}, 0, 0);
+
+setlistener("/engines/engine[0]/state", func() {
+	if ((state1Node.getValue() != 3 and state2Node.getValue() != 3) and wowNode.getValue() == 0) {
+		dualFailNode.setBoolValue(1);
+	} else {
+		dualFailNode.setBoolValue(0);
+	}
+}, 0, 0);
+
+setlistener("/engines/engine[1]/state", func() {
+	if ((state1Node.getValue() != 3 and state2Node.getValue() != 3) and wowNode.getValue() == 0) {
+		dualFailNode.setBoolValue(1);
+	} else {
+		dualFailNode.setBoolValue(0);
 	}
 }, 0, 0);
