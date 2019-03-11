@@ -26,7 +26,7 @@ var rightLineIndex = 0;
 var statusIndex = 0;
 
 var warning = {
-	new: func(msg,colour,aural,light) {
+	new: func(msg,colour,aural,light,hasSubmsg = 0,lastSubmsg = 0) {
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
@@ -36,6 +36,8 @@ var warning = {
 		t.light = light;
 		t.noRepeat = 0;
 		t.clearFlag = 0;
+		t.hasSubmsg = hasSubmsg;
+		t.lastSubmsg = lastSubmsg;
 		
 		return t
 	},
