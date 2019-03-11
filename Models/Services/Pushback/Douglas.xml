@@ -58,7 +58,7 @@
 	<animation>
 		<type>select</type>
 		<condition>
-			<property>sim/model/pushback/enabled</property>
+			<property>sim/model/autopush/enabled</property>
 			<property>gear/gear[0]/wow</property>
 		</condition>
 	</animation>
