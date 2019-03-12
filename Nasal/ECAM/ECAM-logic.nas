@@ -14,8 +14,6 @@ var emerGen      = props.globals.getNode("/controls/electrical/switches/emer-gen
 var fac1Node   = props.globals.getNode("/controls/fctl/fac1", 1);
 var state1Node = props.globals.getNode("/engines/engine[0]/state", 1);
 var state2Node = props.globals.getNode("/engines/engine[1]/state", 1);
-var cutoff1Node = props.globals.getNode("/fdm/jsbsim/fcs/engine-cutoff[0]", 1);
-var cutoff2Node = props.globals.getNode("/fdm/jsbsim/fcs/engine-cutoff[1]", 1);
 var wowNode    = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 
 # local variables

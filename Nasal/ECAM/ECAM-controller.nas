@@ -26,18 +26,18 @@ var rightLineIndex = 0;
 var statusIndex = 0;
 
 var warning = {
-	new: func(msg,colour,aural,light,hasSubmsg = 0,lastSubmsg = 0) {
+	new: func(msg,colour = "g",aural = 9,light = 9,hasSubmsg = 0,lastSubmsg = 0) {
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
-		t.active = 0;
 		t.colour = colour;
 		t.aural = aural;
 		t.light = light;
-		t.noRepeat = 0;
-		t.clearFlag = 0;
 		t.hasSubmsg = hasSubmsg;
 		t.lastSubmsg = lastSubmsg;
+		t.active = 0;
+		t.noRepeat = 0;
+		t.clearFlag = 0;
 		
 		return t
 	},
@@ -77,12 +77,12 @@ var warning = {
 };
 
 var memo = {
-	new: func(msg,colour) {
+	new: func(msg,colour = "g") {
 		var t = {parents:[memo]};
 		
 		t.msg = msg;
-		t.active = 0;
 		t.colour = colour;
+		t.active = 0;
 		
 		return t
 	},
@@ -112,8 +112,8 @@ var status = {
 		var t = {parents:[status]};
 		
 		t.msg = msg;
-		t.active = 0;
 		t.colour = colour;
+		t.active = 0;
 		
 		return t
 	},
@@ -223,7 +223,7 @@ var ECAM_controller = {
 	clear: func() {
 		foreach (var w; warnings.vector) {
 			if (w.active == 1) {
-				# if (w.msg == "ENG DUAL FAILURE") { continue; }
+				if (w.hasSubmsg == 1) { continue; }
 				w.clearFlag = 1;
 				break;
 			}
