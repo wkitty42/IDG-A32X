@@ -192,7 +192,7 @@ var systemsInit = func {
 	systems.fire_init();
 	systems.autobrake_init();
 	fadec.FADEC.init();
-  	fmgc.APinit();			
+  	fmgc.ITAF.init();
 	fmgc.FMGCinit();
 	mcdu.MCDU_init(0);
 	mcdu.MCDU_init(1);
@@ -233,10 +233,6 @@ var systemsLoop = maketimer(0.1, func {
 		setprop("/systems/shake/effect", 1);
 	} else {
 		setprop("/systems/shake/effect", 0);
-	}
-	
-	if (getprop("/it-autoflight/custom/show-hdg") == 0 and getprop("/it-autoflight/output/lat") != 4) {
-		setprop("/it-autoflight/input/hdg", math.round(getprop("/instrumentation/pfd/heading-scale")));
 	}
 	
 	if (getprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-all-override") == 1 or (getprop("/instrumentation/mk-viii/inputs/discretes/momentary-flap-3-override") == 1 and getprop("/controls/flight/flap-pos") >= 4)) {

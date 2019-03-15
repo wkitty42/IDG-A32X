@@ -256,7 +256,7 @@ var eng_one_n2_check = maketimer(0.5, func {
 			setprop("/controls/engines/engine[0]/igniter-b", 0);
 		}
 	}
-	if (getprop("/engines/engine[0]/n2-actual") >= 61.1) {
+	if (getprop("/engines/engine[0]/n2-actual") >= 57.0) {
 		eng_one_n2_check.stop();
 		setprop("/systems/pneumatic/eng1-starter", 0);
 		setprop("/engines/engine[0]/state", 3);
@@ -319,7 +319,7 @@ var eng_two_n2_check = maketimer(0.5, func {
 			setprop("/controls/engines/engine[1]/igniter-b", 0);
 		}
 	}
-	if (getprop("/engines/engine[1]/n2-actual") >= 61.1) {
+	if (getprop("/engines/engine[1]/n2-actual") >= 57.0) {
 		eng_two_n2_check.stop();
 		setprop("/systems/pneumatic/eng2-starter", 0);
 		setprop("/engines/engine[1]/state", 3);
