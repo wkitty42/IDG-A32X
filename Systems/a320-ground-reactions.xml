@@ -9,7 +9,7 @@
 			<y> 0 </y>
 			<z> -4.31395 </z>
 		</location>
-		<static_friction>  1.4 </static_friction> <!-- Arbitrarily high to help nose wheel steering - no effect on braking -->
+		<static_friction> 1.4 </static_friction> <!-- Arbitrarily high to help nose wheel steering - no effect on braking -->
 		<dynamic_friction> 0.6 </dynamic_friction>
 		<rolling_friction> 0.02 </rolling_friction>
 		<spring_coeff unit="LBS/FT"> 30935.5 </spring_coeff>
