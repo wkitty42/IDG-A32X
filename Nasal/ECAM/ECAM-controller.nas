@@ -39,6 +39,7 @@ var warning = {
 		t.lastSubmsg = lastSubmsg;
 		t.active = 0;
 		t.noRepeat = 0;
+		t.noRepeat2 = 0;
 		t.clearFlag = 0;
 		
 		return t
@@ -62,16 +63,19 @@ var warning = {
 		}
 	},
 	warnlight: func() {
-		if (me.light >= 1 or me.noRepeat == 1 or me.active == 0) {return;}
+		if (me.light > 1 or me.noRepeat == 1 or me.active == 0) {return;}
 		lights[me.light].setBoolValue(1);
 		me.noRepeat = 1;
 	},
 	sound: func() {
-		if (me.aural > 1 or me.active == 0) {return;} 
-		#if (!aural[me.aural].getBoolValue()) {
-			aural[me.aural].setBoolValue(1);
-		#}
+		if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;} 
+		warning.cycleSound(me.aural);
+		me.noRepeat2 = 1;
 	},
+	cycleSound: func(type) {
+		aural[type].setBoolValue(0);
+		aural[type].setBoolValue(1);
+	}
 };
 
 var memo = {
@@ -166,7 +170,9 @@ var ECAM_controller = {
 				if (w2.noRepeat == 0) {
 					w2.warnlight();
 				}
-				w2.sound();
+				if (w2.noRepeat2 == 0) {
+					w2.sound();
+				}
 				break
 			}
 		}
@@ -234,6 +240,10 @@ var ECAM_controller = {
 				break;
 			}
 		}
+		
+		if (lines[0].getValue() == "") { # all messages cleared - call status
+			libraries.LowerECAM.failCall("sts");
+		}
 	},
 	recall: func() {
 		foreach (var w; warnings.vector) {
@@ -243,6 +253,11 @@ var ECAM_controller = {
 				break;
 			}
 		}
+	},
+	warningReset: func(warning) {
+		warning.active = 0;
+		warning.noRepeat = 0;
+		warning.noRepeat2 = 0;
 	},
 };
 

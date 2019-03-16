@@ -53,6 +53,7 @@ setprop("/engines/flex-derate", 0);
 setprop("/systems/thrust/eng-out", 0);
 setprop("/systems/thrust/thr-locked", 0);
 setprop("/systems/thrust/thr-locked-alert", 0);
+setprop("/systems/thrust/thr-locked-flash", 0);
 setprop("/systems/thrust/thr-lock-time", 0);
 setprop("/systems/thrust/thr-lock-cmd[0]", 0);
 setprop("/systems/thrust/thr-lock-cmd[1]", 0);

@@ -279,3 +279,6 @@ var statusInfo           = std.Vector.new();
 var statusCancelled      = std.Vector.new();
 var statusInop           = std.Vector.new();
 var statusMaintenance    = std.Vector.new();
+
+# hack thrust lock message:
+var msgSave = athr_lock.msg;

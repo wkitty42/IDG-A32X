@@ -655,6 +655,7 @@ var checkLockThr = func() {
 	if ((state1 == "CL" and state2 == "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 == "MCT" and state2 == "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
 		setprop("/systems/thrust/thr-locked-alert", 1);
 		setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
+		setprop("/systems/thrust/thr-locked-flash", 1);
 		lockTimer.stop();
 		lockTimer2.start();
 	}
@@ -662,14 +663,12 @@ var checkLockThr = func() {
 
 var checkLockThr2 = func() {
 	if (getprop("/systems/thrust/thr-lock-time") + 5 < getprop("/sim/time/elapsed-sec")) { 
-		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
 		settimer(func() {
-			setprop("/systems/thrust/thr-locked-alert", 1);
+			setprop("/systems/thrust/thr-locked-flash", 1);
 			setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
-			print(ecam.athr_lock.noRepeat);
 			ecam.athr_lock.noRepeat = 0;
-			print(ecam.athr_lock.noRepeat);
-		}, 0.2);
+		}, 0.15);
 	}
 	
 	state1 = getprop("/systems/thrust/state1");
@@ -677,6 +676,7 @@ var checkLockThr2 = func() {
 	if ((state1 != "CL" and state2 != "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 != "MCT" and state2 != "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
 		setprop("/systems/thrust/thr-locked", 0);
 		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
 		lockTimer2.stop();
 	}
 }

@@ -28,9 +28,7 @@ var messages_priority_3 = func {
 	if ((flap_not_zero.clearFlag == 0) and phaseVar == 6 and getprop("/controls/flight/flap-lever") != 0 and getprop("/instrumentation/altimeter/indicated-altitude-ft") > 22000) {
 		flap_not_zero.active = 1;
 	} else {
-		flap_not_zero.active = 0;
-		flap_not_zero.noRepeat = 0;
-		flap_not_zero.clearFlag = 0;
+		ECAM_controller.warningReset(flap_not_zero);
 	}
 	
 	# ENG DUAL FAIL
@@ -38,9 +36,7 @@ var messages_priority_3 = func {
 	if (phaseVar >= 5 and phaseVar <= 7 and dualFailNode.getBoolValue()) {
 		dualFail.active = 1;
 	} elsif (dualFail.clearFlag == 1) {
-		dualFail.active = 0;
-		dualFail.noRepeat = 0;
-		dualFail.clearFlag = 0;
+		ECAM_controller.warningReset(dualFail);
 		
 		dualFailFACActive = 1; # reset FAC local variable
 	}
@@ -166,78 +162,74 @@ var messages_priority_3 = func {
 		slats_config.active = 1;
 		slats_config_1.active = 1;
 	} else {
-		slats_config.active = 0;
-		slats_config.noRepeat = 0;
-		slats_config_1.active = 0;
-		slats_config_1.noRepeat = 0;
+		ECAM_controller.warningReset(slats_config);
+		ECAM_controller.warningReset(slats_config_1);
 	}
 	
 	if ((flaps_config.clearFlag == 0) and (getprop("/controls/flight/flap-lever") == 0 or getprop("/controls/flight/flap-lever") == 4) and phaseVar >= 3 and phaseVar <= 4) {
 		flaps_config.active = 1;
 		flaps_config_1.active = 1;
 	} else {
-		flaps_config.active = 0;
-		flaps_config.noRepeat = 0;
-		flaps_config_1.active = 0;
-		flaps_config_1.noRepeat = 0;
+		ECAM_controller.warningReset(flaps_config);
+		ECAM_controller.warningReset(flaps_config_1);
 	}
 	
 	if ((spd_brk_config.clearFlag == 0) and getprop("/controls/flight/speedbrake") != 0 and phaseVar >= 3 and phaseVar <= 4) {
 		spd_brk_config.active = 1;
 		spd_brk_config_1.active = 1;
 	} else {
-		spd_brk_config.active = 0;
-		spd_brk_config.noRepeat = 0;
-		spd_brk_config_1.active = 0;
-		spd_brk_config_1.noRepeat = 0;
+		ECAM_controller.warningReset(spd_brk_config);
+		ECAM_controller.warningReset(spd_brk_config_1);
 	}
 	
 	if ((pitch_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") > 1.75 or getprop("/fdm/jsbsim/hydraulics/elevator-trim/final-deg") < -3.65) and phaseVar >= 3 and phaseVar <= 4) {
 		pitch_trim_config.active = 1;
 		pitch_trim_config_1.active = 1;
 	} else {
-		pitch_trim_config.active = 0;
-		pitch_trim_config.noRepeat = 0;
-		pitch_trim_config_1.active = 0;
-		pitch_trim_config_1.noRepeat = 0;
+		ECAM_controller.warningReset(pitch_trim_config);
+		ECAM_controller.warningReset(pitch_trim_config_1);
 	}
 	
 	if ((rud_trim_config.clearFlag == 0) and (getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") < -3.55 or getprop("/fdm/jsbsim/hydraulics/rudder/trim-cmd-deg") > 3.55) and phaseVar >= 3 and phaseVar <= 4) {
 		rud_trim_config.active = 1;
 		rud_trim_config_1.active = 1;
 	} else {
-		rud_trim_config.active = 0;
-		rud_trim_config.noRepeat = 0;
-		rud_trim_config_1.active = 0;
-		rud_trim_config_1.noRepeat = 0;
+		ECAM_controller.warningReset(rud_trim_config);
+		ECAM_controller.warningReset(rud_trim_config_1);
 	}
 	
 	if ((park_brk_config.clearFlag == 0) and getprop("/controls/gear/brake-parking") == 1 and phaseVar >= 3 and phaseVar <= 4) {
 		park_brk_config.active = 1;
 	} else {
-		park_brk_config.active = 0;
-		park_brk_config.noRepeat = 0;
+		ECAM_controller.warningReset(park_brk_config);
 	}
 	
 	# AUTOFLT
 	if ((ap_offw.clearFlag == 0) and apWarn.getValue() == 2) {
 		ap_offw.active = 1;
 	} else {
-		ap_offw.active = 0;
-		ap_offw.noRepeat = 0;
+		ECAM_controller.warningReset(ap_offw);
+		if (getprop("/it-autoflight/output/ap-warning") == 2) {
+			setprop("/it-autoflight/output/ap-warning", 0);
+			setprop("/ECAM/Lower/light/clr", 0);
+			setprop("/ECAM/warnings/master-warning-light", 0);
+		}
 	}
 	
 	if ((athr_lock.clearFlag == 0) and phaseVar >= 5 and phaseVar <= 7 and getprop("/systems/thrust/thr-locked-alert") == 1) {
+		if (getprop("/systems/thrust/thr-locked-flash") == 0) {
+			athr_lock.msg = " ";
+		} else {
+			athr_lock.msg = msgSave
+		}
 		athr_lock.active = 1;
 		athr_lock_1.active = 1;
 	} else {
-		athr_lock.active = 0;
-		athr_lock_1.active = 0;
-		athr_lock.noRepeat = 0;
-		athr_lock_1.noRepeat = 0;
+		ECAM_controller.warningReset(athr_lock);
+		ECAM_controller.warningReset(athr_lock_1);
 	}
 	
-	if (getprop("/systems/thrust/thr-locked") == 1) {
+	if (getprop("/systems/thrust/thr-locked-alert") == 1) {
 		flash = 1;
 	} else {
 		flash = 0;
@@ -247,20 +239,21 @@ var messages_priority_3 = func {
 		athr_offw.active = 1;
 		athr_offw_1.active = 1;
 	} else {
-		athr_offw.active = 0;
-		athr_offw_1.active = 0;
-		athr_offw.noRepeat = 0;
-		athr_offw_1.noRepeat = 0;
+		ECAM_controller.warningReset(athr_offw);
+		ECAM_controller.warningReset(athr_offw_1);
+		if (getprop("/it-autoflight/output/athr-warning") == 2) {
+			setprop("/it-autoflight/output/athr-warning", 0);
+			setprop("/ECAM/Lower/light/clr", 0);
+			setprop("/ECAM/warnings/master-caution-light", 0);
+		}
 	}
 	
 	if ((athr_lim.clearFlag == 0) and getprop("/it-autoflight/output/athr") == 1 and ((getprop("/systems/thrust/eng-out") != 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN")) or (getprop("/systems/thrust/eng-out") == 1 and (getprop("/systems/thrust/state1") == "MAN" or getprop("/systems/thrust/state2") == "MAN" or (getprop("/systems/thrust/state1") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83) or (getprop("/systems/thrust/state2") == "MAN THR" and getprop("/controls/engines/engine[0]/throttle-pos") <= 0.83)))) and (phaseVar >= 5 and phaseVar <= 7)) {
 		athr_lim.active = 1;
 		athr_lim_1.active = 1;
 	} else {
-		athr_lim.active = 0;
-		athr_lim_1.active = 0;
-		athr_lim.noRepeat = 0;
-		athr_lim_1.noRepeat = 0;
+		ECAM_controller.warningReset(athr_lim);
+		ECAM_controller.warningReset(athr_lim_1);
 	}
 }
 
