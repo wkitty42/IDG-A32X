@@ -635,23 +635,52 @@ var athrWarn = func(type) {
 }
 
 var lockThr = func() {
-	state1 = getprop("/systems/thrust/state1");
-	state2 = getprop("/systems/thrust/state2");
-	if ((state1 == "CL" and state2 == "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 == "MCT" and state2 == "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
-		setprop("/systems/thrust/thr-locked", 1);
-	}
-	
+	setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
+	setprop("/systems/thrust/thr-locked", 1);
 	lockTimer.start();
 }
 
 var checkLockThr = func() {
+	if (getprop("/systems/thrust/thr-lock-time") + 5 > getprop("/sim/time/elapsed-sec")) { return; }
+	
+	if (getprop("/systems/thrust/thr-locked") == 0) {
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-lock-time", 0);
+		lockTimer.stop();
+	}
+	
+	state1 = getprop("/systems/thrust/state1");
+	state2 = getprop("/systems/thrust/state2");
+	
+	if ((state1 == "CL" and state2 == "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 == "MCT" and state2 == "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
+		setprop("/systems/thrust/thr-locked-alert", 1);
+		setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
+		lockTimer.stop();
+		lockTimer2.start();
+	}
+}
+
+var checkLockThr2 = func() {
+	if (getprop("/systems/thrust/thr-lock-time") + 5 < getprop("/sim/time/elapsed-sec")) { 
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		settimer(func() {
+			setprop("/systems/thrust/thr-locked-alert", 1);
+			setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
+			print(ecam.athr_lock.noRepeat);
+			ecam.athr_lock.noRepeat = 0;
+			print(ecam.athr_lock.noRepeat);
+		}, 0.2);
+	}
+	
 	state1 = getprop("/systems/thrust/state1");
 	state2 = getprop("/systems/thrust/state2");
 	if ((state1 != "CL" and state2 != "CL" and getprop("/systems/thrust/eng-out") == 0) or (state1 != "MCT" and state2 != "MCT" and getprop("/systems/thrust/eng-out") == 1)) {
 		setprop("/systems/thrust/thr-locked", 0);
-		lockTimer.stop();
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		lockTimer2.stop();
 	}
 }
 
 
 var lockTimer = maketimer(0.02, checkLockThr);
+var lockTimer2 = maketimer(0.02, checkLockThr2);

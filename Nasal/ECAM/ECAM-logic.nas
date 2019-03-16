@@ -19,6 +19,7 @@ var wowNode    = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 # local variables
 var phaseVar = nil;
 var dualFailFACActive = 1;
+var flash = 0;
 
 var messages_priority_3 = func {
 	phaseVar = phaseNode.getValue();
@@ -226,7 +227,7 @@ var messages_priority_3 = func {
 		ap_offw.noRepeat = 0;
 	}
 	
-	if ((athr_lock.clearFlag == 0) and phaseVar >= 5 and phaseVar <= 7 and getprop("/systems/thrust/thr-locked") == 1) {
+	if ((athr_lock.clearFlag == 0) and phaseVar >= 5 and phaseVar <= 7 and getprop("/systems/thrust/thr-locked-alert") == 1) {
 		athr_lock.active = 1;
 		athr_lock_1.active = 1;
 	} else {
@@ -234,6 +235,12 @@ var messages_priority_3 = func {
 		athr_lock_1.active = 0;
 		athr_lock.noRepeat = 0;
 		athr_lock_1.noRepeat = 0;
+	}
+	
+	if (getprop("/systems/thrust/thr-locked") == 1) {
+		flash = 1;
+	} else {
+		flash = 0;
 	}
 	
 	if ((athr_offw.clearFlag == 0) and athrWarn.getValue() == 2 and phaseVar != 4 and phaseVar != 8 and phaseVar != 10) {

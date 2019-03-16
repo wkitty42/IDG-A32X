@@ -25,6 +25,8 @@ var lineIndex = 0;
 var rightLineIndex = 0;
 var statusIndex = 0;
 
+var flash = 0;
+
 var warning = {
 	new: func(msg,colour = "g",aural = 9,light = 9,hasSubmsg = 0,lastSubmsg = 0) {
 		var t = {parents:[warning]};
@@ -60,19 +62,15 @@ var warning = {
 		}
 	},
 	warnlight: func() {
-		if (me.light >= 1) {return;}
-		if (me.active == 1 and me.noRepeat == 0) { # only toggle light once per message, allows canceling 
-			lights[me.light].setBoolValue(1);
-			me.noRepeat = 1;
-		}
+		if (me.light >= 1 or me.noRepeat == 1 or me.active == 0) {return;}
+		lights[me.light].setBoolValue(1);
+		me.noRepeat = 1;
 	},
 	sound: func() {
-		if (me.aural > 1) {return;} 
-		if (me.active == 1) {
-			if (!aural[me.aural].getBoolValue()) {
-				aural[me.aural].setBoolValue(1);
-			}
-		}
+		if (me.aural > 1 or me.active == 0) {return;} 
+		#if (!aural[me.aural].getBoolValue()) {
+			aural[me.aural].setBoolValue(1);
+		#}
 	},
 };
 
@@ -161,11 +159,19 @@ var ECAM_controller = {
 		
 		foreach (var w; warnings.vector) {
 			w.write();
-			w.warnlight();
-			w.sound();
 		}
 		
-		if (lines[0].getValue() == "") { # disable left memos if a warning exists. Warnings are processed first, so this stops leftmemos if line1 is not empty
+		foreach (var w2; warnings.vector) {
+			if (w2.active == 1) {
+				if (w2.noRepeat == 0) {
+					w2.warnlight();
+				}
+				w2.sound();
+				break
+			}
+		}
+		
+		if (lines[0].getValue() == "" and flash == 0) { # disable left memos if a warning exists. Warnings are processed first, so this stops leftmemos if line1 is not empty
 			foreach (var l; leftmemos.vector) {
 				l.write();
 			}
