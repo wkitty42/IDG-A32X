@@ -19,7 +19,6 @@ var wowNode    = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 # local variables
 var phaseVar = nil;
 var dualFailFACActive = 1;
-var flash = 0;
 
 var messages_priority_3 = func {
 	phaseVar = phaseNode.getValue();
@@ -227,12 +226,6 @@ var messages_priority_3 = func {
 	} else {
 		ECAM_controller.warningReset(athr_lock);
 		ECAM_controller.warningReset(athr_lock_1);
-	}
-	
-	if (getprop("/systems/thrust/thr-locked-alert") == 1) {
-		flash = 1;
-	} else {
-		flash = 0;
 	}
 	
 	if ((athr_offw.clearFlag == 0) and athrWarn.getValue() == 2 and phaseVar != 4 and phaseVar != 8 and phaseVar != 10) {

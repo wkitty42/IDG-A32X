@@ -870,23 +870,6 @@
 			</volume>
 		</apoff>
 		
-		<apoff>
-			<name>athroff</name>
-			<path>Aircraft/IDG-A32X/Sounds/Cockpit/chime.wav</path>
-			<condition>
-				<and>
-					<equals>
-						<property>/it-autoflight/output/athr</property>
-						<value>0</value>
-					</equals>
-					<property>/it-autoflight/sound/athrsound</property>
-				</and>
-			</condition>
-			<volume>
-				<factor>40.0</factor>
-			</volume>
-		</apoff>
-		
 		<gear>
 			<name>gear0</name>
 			<mode>in-transit</mode>

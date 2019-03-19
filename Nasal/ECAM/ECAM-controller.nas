@@ -68,14 +68,17 @@ var warning = {
 		me.noRepeat = 1;
 	},
 	sound: func() {
-		if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;} 
-		warning.cycleSound(me.aural);
-		me.noRepeat2 = 1;
-	},
-	cycleSound: func(type) {
-		aural[type].setBoolValue(0);
-		aural[type].setBoolValue(1);
-	}
+        if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;} 
+        me.noRepeat2 = 1;
+        if (aural[me.aural].getBoolValue()) { 
+            aural[me.aural].setBoolValue(0); 
+            settimer(func() {
+                aural[me.aural].setBoolValue(1);
+            }, 0.15);
+        } else {
+            aural[me.aural].setBoolValue(1);
+        }
+    },
 };
 
 var memo = {
@@ -267,7 +270,7 @@ setlistener("/systems/electrical/bus/dc-ess", func {
 	}
 }, 0, 0);
 
-var ECAMloopTimer = maketimer(0.2, func {
+var ECAMloopTimer = maketimer(0.15, func {
 	ECAM_controller.loop();
 });
 

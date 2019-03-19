@@ -643,10 +643,22 @@ var lockThr = func() {
 var checkLockThr = func() {
 	if (getprop("/systems/thrust/thr-lock-time") + 5 > getprop("/sim/time/elapsed-sec")) { return; }
 	
-	if (getprop("/systems/thrust/thr-locked") == 0) {
+	if (fmgc.Output.athr.getBoolValue()) {
+		lockTimer.stop();
+		setprop("/systems/thrust/thr-locked", 0);
 		setprop("/systems/thrust/thr-locked-alert", 0);
 		setprop("/systems/thrust/thr-lock-time", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
+		return;
+	}
+	
+	if (getprop("/systems/thrust/thr-locked") == 0) {
 		lockTimer.stop();
+		setprop("/systems/thrust/thr-locked", 0);
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-lock-time", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
+		return;
 	}
 	
 	state1 = getprop("/systems/thrust/state1");
@@ -662,13 +674,32 @@ var checkLockThr = func() {
 }
 
 var checkLockThr2 = func() {
+	if (fmgc.Output.athr.getBoolValue()) {
+		lockTimer2.stop();
+		setprop("/systems/thrust/thr-locked", 0);
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-lock-time", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
+		return;
+	}
+	
+	if (getprop("/systems/thrust/thr-locked") == 0) {
+		lockTimer2.stop();
+		setprop("/systems/thrust/thr-locked", 0);
+		setprop("/systems/thrust/thr-locked-alert", 0);
+		setprop("/systems/thrust/thr-lock-time", 0);
+		setprop("/systems/thrust/thr-locked-flash", 0);
+		return;
+	}
+	
 	if (getprop("/systems/thrust/thr-lock-time") + 5 < getprop("/sim/time/elapsed-sec")) { 
 		setprop("/systems/thrust/thr-locked-flash", 0);
 		settimer(func() {
 			setprop("/systems/thrust/thr-locked-flash", 1);
 			setprop("/systems/thrust/thr-lock-time", getprop("/sim/time/elapsed-sec"));
 			ecam.athr_lock.noRepeat = 0;
-		}, 0.15);
+			ecam.athr_lock.noRepeat2 = 0;
+		}, 0.2);
 	}
 	
 	state1 = getprop("/systems/thrust/state1");
@@ -682,5 +713,5 @@ var checkLockThr2 = func() {
 }
 
 
-var lockTimer = maketimer(0.02, checkLockThr);
-var lockTimer2 = maketimer(0.02, checkLockThr2);
+var lockTimer = maketimer(0.1, checkLockThr);
+var lockTimer2 = maketimer(0.1, checkLockThr2);
