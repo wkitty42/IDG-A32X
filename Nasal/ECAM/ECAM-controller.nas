@@ -26,6 +26,8 @@ var rightLineIndex = 0;
 var statusIndex = 0;
 
 var flash = 0;
+var hasCleared = 0;
+var statusFlag = 0;
 
 var warning = {
 	new: func(msg,colour = "g",aural = 9,light = 9,hasSubmsg = 0,lastSubmsg = 0) {
@@ -45,7 +47,7 @@ var warning = {
 		return t
 	},
 	write: func() {
-		if (me.active == 0) {return;}
+		if (me.active == 0) { return; }
 		lineIndex = 0;
 		while (lineIndex < 7 and lines[lineIndex].getValue() != "") {
 			lineIndex = lineIndex + 1; # go to next line until empty line
@@ -69,15 +71,11 @@ var warning = {
 	},
 	sound: func() {
         if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;} 
+        aural[me.aural].setBoolValue(0); 
         me.noRepeat2 = 1;
-        if (aural[me.aural].getBoolValue()) { 
-            aural[me.aural].setBoolValue(0); 
-            settimer(func() {
-                aural[me.aural].setBoolValue(1);
-            }, 0.15);
-        } else {
-            aural[me.aural].setBoolValue(1);
-        }
+		settimer(func() {
+			aural[me.aural].setBoolValue(1);
+		}, 0.15);
     },
 };
 
@@ -236,16 +234,20 @@ var ECAM_controller = {
 		}
 	},
 	clear: func() {
+		hasCleared = 0;
 		foreach (var w; warnings.vector) {
 			if (w.active == 1) {
 				if (w.hasSubmsg == 1) { continue; }
 				w.clearFlag = 1;
+				hasCleared = 1;
+				statusFlag = 1;
 				break;
 			}
 		}
 		
-		if (lines[0].getValue() == "") { # all messages cleared - call status
+		if (hasCleared == 0 and statusFlag == 1) {
 			libraries.LowerECAM.failCall("sts");
+			statusFlag = 0;
 		}
 	},
 	recall: func() {
