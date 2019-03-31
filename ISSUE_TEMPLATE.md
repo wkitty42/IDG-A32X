@@ -1,5 +1,6 @@
 <!-- Provide a general summary of the issue in the title above. -->
 <!-- Issues are for reporting bugs or problems only. If you have a feature request, please write in the forums. -->
+<!-- Did you already have a look into our FAQ page at https://github.com/it0uchpods/IDG-A32X/blob/master/FAQ.md ? -->
 
 ### Expected Behavior
 <!-- Tell us what should happen. -->
