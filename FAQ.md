@@ -43,4 +43,7 @@ Besides describing it with words, you may do two things, which helps us reproduc
 
 ### Q. The current version has a bug, but I still want to keep flying. Can I downgrade?
 
-NEVER downgrade your aircraft without resetting/deleting your `IDG-A32X-config.xml` file. You may find it in `$FGHOME/Export`.
+First of all, did you ensure that the bug is reported on our [issues page](https://github.com/it0uchpods/IDG-A32X/issues/new)? If no, please do so (see also questions above on how to report them)!
+
+Besides that, **never** downgrade your aircraft without resetting/deleting your `IDG-A32X-config.xml` file as well. You may find it in `$FGHOME/Export`.
+
