@@ -54,5 +54,5 @@ Increasing the simulation speed is quite tricky for the simulator. Depending on 
 In general, one could say:
 
 * Don't increase the simulation speed above 4x. A simulation speed of 8x is already quite heavy load for everything.
-* Check your frame rate (you are able to enable it in the "Debug" menu) when increasing the simulation speed. As a rule of thumb, if the frame rate stays constantly above 10fps, you are fine. Keep in mind that already one little phase (and not just the average) where the frame rate drops significantly, you are in danger facing issues.
+* Check your frame rate (you can enable showing it using the "View" menu, option "View Options", toggle "Show frame rate" there) when increasing the simulation speed. As a rule of thumb, if the frame rate stays constantly above 10fps, you are fine. Keep in mind that already one little phase (and not just the average) where the frame rate drops significantly, you are in danger facing issues.
 
