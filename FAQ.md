@@ -1,4 +1,4 @@
-# Frequently Asked Questios
+# Frequently Asked Questions
 
 ## Start-up
 
@@ -33,7 +33,7 @@ Instead, for documenting issues, please perform the steps mentioned in the next 
 
 Besides describing it with words, you may do two things, which helps us reproducing your issue locally such that it can be debugged:
 
-1. Hit the screenshot buttons often and send them all in! Five screenshots with redundant data isn't a problem to sort out, but one screenshot missing out which would have contained vital information may prevent understanding the problem properly.
+1. Hit the screenshot buttons (hotkey `F3` by default) often and send them all in! Five screenshots with redundant data isn't a problem to sort out, but one screenshot missing out which would have contained vital information may prevent understanding the problem properly.
 
 2. If able you may also dump the property tree (see menu "Debug"). That is also a very helpful source of information. 
 
