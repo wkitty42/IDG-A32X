@@ -47,3 +47,12 @@ First of all, did you ensure that the bug is reported on our [issues page](https
 
 Besides that, **never** downgrade your aircraft without resetting/deleting your `IDG-A32X-config.xml` file as well. You may find it in `$FGHOME/Export`.
 
+### Q. I like increasing the simulation speed on long flights. However, I encounter issues with it once in a while. What's up?
+
+Increasing the simulation speed is quite tricky for the simulator. Depending on hardware capabilities it can be very stressful and the algorithms behind the scenes can be challenged quite heavily. If the simulation is running faster than the corresponding algorithms can be computed, many funny (or even [ugly things](https://github.com/it0uchpods/IDG-A32X/issues/86#issuecomment-478328407)) may happen. So, be careful with that.
+
+In general, one could say:
+
+* Don't increase the simulation speed above 4x. A simulation speed of 8x is already quite heavy load for everything.
+* Check your frame rate (you are able to enable it in the "Debug" menu) when increasing the simulation speed. As a rule of thumb, if the frame rate stays constantly above 10fps, you are fine. Keep in mind that already one little phase (and not just the average) where the frame rate drops significantly, you are in danger facing issues.
+
