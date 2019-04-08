@@ -41,7 +41,7 @@ var messages_priority_3 = func {
 	
 	if (phaseVar >= 5 and phaseVar <= 7 and dualFailNode.getBoolValue()) {
 		dualFail.active = 1;
-	} elsif (dualFail.clearFlag == 1) {
+	} elsif (dualFailbatt.clearFlag == 1) {
 		ECAM_controller.warningReset(dualFail);
 		
 		dualFailFACActive = 1; # reset FAC local variable
