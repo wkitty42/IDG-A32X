@@ -15,7 +15,14 @@ var fac1Node   = props.globals.getNode("/controls/fctl/fac1", 1);
 var state1Node = props.globals.getNode("/engines/engine[0]/state", 1);
 var state2Node = props.globals.getNode("/engines/engine[1]/state", 1);
 var wowNode    = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
-
+var apu_rpm    = props.globals.getNode("/systems/apu/rpm", 1);
+var wing_pb    = props.globals.getNode("/controls/switches/wing", 1);
+var apumaster  = props.globals.getNode("/controls/APU/master", 1);
+var apu_bleedSw   = props.globals.getNode("/controls/pneumatic/switches/bleedapu", 1);
+var gear       = props.globals.getNode("/gear/gear-pos-norm", 1);
+var cutoff1    = props.globals.getNode("/controls/engines/engine[0]/cutoff-switch", 1);
+var cutoff2    = props.globals.getNode("/controls/engines/engine[1]/cutoff-switch", 1);
+var engOpt     = props.globals.getNode("/options/eng", 1);
 # local variables
 var phaseVar = nil;
 var dualFailFACActive = 1;
@@ -44,116 +51,145 @@ var messages_priority_3 = func {
 		if (getprop("/controls/engines/engine-start-switch") != 2 and dualFailModeSel.clearFlag == 0) {
 			dualFailModeSel.active = 1;
 		} else {
-			dualFailModeSel.active = 0;
+			ECAM_controller.warningReset(dualFailModeSel);
 		}
 		
 		if (getprop("/fdm/jsbsim/fcs/throttle-lever[0]") > 0.01 and getprop("/fdm/jsbsim/fcs/throttle-lever[1]") > 0.01 and dualFailLevers.clearFlag == 0) {
 			dualFailLevers.active = 1;
 		} else {
-			dualFailLevers.active = 0;
+			ECAM_controller.warningReset(dualFailLevers);
 		}
 		
-		if (getprop("/options/eng") == "IAE" and dualFailRelightSPD.clearFlag == 0) {
+		if (engOpt.getValue() == "IAE" and dualFailRelightSPD.clearFlag == 0) {
 			dualFailRelightSPD.active = 1;
 		} else {
-			dualFailRelightSPD.active = 0;
+			ECAM_controller.warningReset(dualFailRelightSPD);
 		}
 		
-		if (getprop("/options/eng") != "IAE" and dualFailRelightSPDCFM.clearFlag == 0) {
+		if (engOpt.getValue() != "IAE" and dualFailRelightSPDCFM.clearFlag == 0) {
 			dualFailRelightSPDCFM.active = 1;
 		} else {
-			dualFailRelightSPDCFM.active = 0;
+			ECAM_controller.warningReset(dualFailRelightSPDCFM);
 		}
 		
 		if (emerGen.getValue() == 0 and dualFailElec.clearFlag == 0) {
 			dualFailElec.active = 1;
 		} else {
-			dualFailElec.active = 0;
+			ECAM_controller.warningReset(dualFailElec);
 		}
 		
 		if (dualFailRadio.clearFlag == 0) {
 			dualFailRadio.active = 1;
 		} else {
-			dualFailRadio.active = 0;
+			ECAM_controller.warningReset(dualFailRadio);
 		}
 		
 		if (dualFailFACActive == 1 and dualFailFAC.clearFlag == 0) {
 			dualFailFAC.active = 1;
 		} else {
-			dualFailFAC.active = 0;
+			ECAM_controller.warningReset(dualFailFAC);
 		}
 		
-		if (dualFailAPU.clearFlag == 0) { # assumption - not cleared till you clear APU message
-			dualFailRelight.active = 1;
+		
+		if (dualFailMasters.clearFlag == 0) {
+			dualFailRelight.active = 1; # assumption
 			dualFailMasters.active = 1;
-			dualFailSuccess.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailRelight);
+			ECAM_controller.warningReset(dualFailMasters);
+		}
+		
+		if (dualFailSPDGD.clearFlag == 0) {
+			dualFailSuccess.active = 1; # assumption
+			dualFailSPDGD.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailSuccess);
+			ECAM_controller.warningReset(dualFailSPDGD);
+		}
+		
+		if (dualFailAPU.clearFlag == 0) {
 			dualFailAPU.active = 1;
 		} else {
-			dualFailRelight.active = 1;
-			dualFailMasters.active = 1;
-			dualFailSuccess.active = 1;
-			dualFailAPU.active = 1;
+			ECAM_controller.warningReset(dualFailAPU);
+		}
+		
+		if (dualFailAPUwing.clearFlag == 0 and apu_rpm.getValue() > 94.9 and wing_pb.getBoolValue()) {
+			dualFailAPUwing.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailAPUwing);
+		}
+		
+		if (dualFailAPUbleed.clearFlag == 0 and apu_rpm.getValue() > 94.9 and !apu_bleedSw.getBoolValue()) {
+			dualFailAPUbleed.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailAPUbleed);
 		}
 		
 		if (dualFailMastersAPU.clearFlag == 0) {
 			dualFailMastersAPU.active = 1;
 		} else {
-			dualFailMastersAPU.active = 0;
-		}
-		
-		if (dualFailSPDGD.clearFlag == 0) {
-			dualFailSPDGD.active = 1;
-		} else {
-			dualFailSPDGD.active = 0;
+			ECAM_controller.warningReset(dualFailMastersAPU);
 		}
 		
 		if (dualFailflap.clearFlag == 0) {
-			dualFailAPPR.active = 1;
+			dualFailAPPR.active = 1; # assumption
+			dualFailflap.active = 1;
 		} else {
-			dualFailAPPR.active = 0;
+			ECAM_controller.warningReset(dualFailAPPR);
+			ECAM_controller.warningReset(dualFailflap);
 		}
 		
 		if (dualFailcabin.clearFlag == 0) {
 			dualFailcabin.active = 1;
 		} else {
-			dualFailcabin.active = 0;
+			ECAM_controller.warningReset(dualFailcabin);
 		}
 		
 		if (dualFailrudd.clearFlag == 0) {
 			dualFailrudd.active = 1;
 		} else {
-			dualFailrudd.active = 0;
+			ECAM_controller.warningReset(dualFailrudd);
 		}
 		
-		if (dualFailflap.clearFlag == 0) {
-			dualFailflap.active = 1;
-		} else {
-			dualFailflap.active = 0;
-		}
-		
-		if (dualFailfinalspeed.clearFlag == 0) {
-			dualFail5000.active = 1;
-		} else {
-			dualFail5000.active = 0;
-		}
-		
-		if (dualFailgear.clearFlag == 0) {
+		if (dualFailgear.clearFlag == 0 and gear.getValue() != 1) {
+			dualFail5000.active = 1; # according to doc
 			dualFailgear.active = 1;
 		} else {
-			dualFailgear.active = 0;
+			ECAM_controller.warningReset(dualFailgear);
+			ECAM_controller.warningReset(dualFail5000);
 		}
 		
 		if (dualFailfinalspeed.clearFlag == 0) {
 			dualFailfinalspeed.active = 1;
 		} else {
-			dualFailfinalspeed.active = 0;
+			ECAM_controller.warningReset(dualFailfinalspeed);
 		}
 		
-		dualFailtouch.active = 1;
-		dualFailmasteroff.active = 1;
-		dualFailapuoff.active = 1;
-		dualFailevac.active = 1;
-		dualFailbatt.active = 1;
+		if (dualFailmasteroff.clearFlag == 0 and (!cutoff1.getBoolValue() or !cutoff2.getBoolValue())) {
+			dualFailmasteroff.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailmasteroff);
+		}
+		
+		if (dualFailapuoff.clearFlag == 0 and apumaster.getBoolValue()) {
+			dualFailapuoff.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailapuoff);
+		}
+		
+		if (dualFailevac.clearFlag == 0) {
+			dualFailevac.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailevac);
+		}
+		
+		if (dualFailbatt.clearFlag == 0) { # elec power lost when batt goes off anyway I guess
+			dualFailbatt.active = 1;
+			dualFailtouch.active = 1;
+		} else {
+			ECAM_controller.warningReset(dualFailbatt);
+			ECAM_controller.warningReset(dualFailtouch);
+		}
 	}
 	
 	# CONFIG
