@@ -41,7 +41,7 @@ var messages_priority_3 = func {
 	
 	if (phaseVar >= 5 and phaseVar <= 7 and dualFailNode.getBoolValue()) {
 		dualFail.active = 1;
-	} elsif (dualFailbatt.clearFlag == 1) {
+	} elsif (dualFailbatt.clearFlag == 1 or !dualFailNode.getBoolValue()) {
 		ECAM_controller.warningReset(dualFail);
 		
 		dualFailFACActive = 1; # reset FAC local variable
@@ -190,6 +190,95 @@ var messages_priority_3 = func {
 			ECAM_controller.warningReset(dualFailbatt);
 			ECAM_controller.warningReset(dualFailtouch);
 		}
+	} else {
+		ECAM_controller.warningReset(dualFailModeSel);
+		ECAM_controller.warningReset(dualFailLevers);
+		ECAM_controller.warningReset(dualFailRelightSPD);
+		ECAM_controller.warningReset(dualFailRelightSPDCFM);
+		ECAM_controller.warningReset(dualFailElec);
+		ECAM_controller.warningReset(dualFailRadio);
+		ECAM_controller.warningReset(dualFailFAC);
+		ECAM_controller.warningReset(dualFailRelight);
+		ECAM_controller.warningReset(dualFailMasters);
+		ECAM_controller.warningReset(dualFailSuccess);
+		ECAM_controller.warningReset(dualFailSPDGD);
+		ECAM_controller.warningReset(dualFailAPU);
+		ECAM_controller.warningReset(dualFailAPUwing);
+		ECAM_controller.warningReset(dualFailAPUbleed);
+		ECAM_controller.warningReset(dualFailMastersAPU);
+		ECAM_controller.warningReset(dualFailAPPR);
+		ECAM_controller.warningReset(dualFailflap);
+		ECAM_controller.warningReset(dualFailcabin);
+		ECAM_controller.warningReset(dualFailrudd);
+		ECAM_controller.warningReset(dualFailgear);
+		ECAM_controller.warningReset(dualFail5000);
+		ECAM_controller.warningReset(dualFailfinalspeed);
+		ECAM_controller.warningReset(dualFailmasteroff);
+		ECAM_controller.warningReset(dualFailapuoff);
+		ECAM_controller.warningReset(dualFailevac);
+		ECAM_controller.warningReset(dualFailbatt);
+		ECAM_controller.warningReset(dualFailtouch);
+	}
+	
+	# ENG FIRE
+	if (eng1FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine1/warning-active") == 1 and phaseVar >= 5 and phaseVar <= 7) {
+		eng1FireFl.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1FireFl);
+	}
+	
+	if (eng1FireGnevacBat.clearFlag == 0 and getprop("/systems/fire/engine1/warning-active") == 1 and (phaseVar < 5 or phaseVar > 7)) {
+		eng1FireGn.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1FireGn);
+	}
+	
+	if (eng2FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine2/warning-active") == 1 and phaseVar >= 5 and phaseVar <= 7) {
+		eng2FireFl.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2FireFl);
+	}
+	
+	if (eng2FireGnevacBat.clearFlag == 0 and getprop("/systems/fire/engine2/warning-active") == 1 and (phaseVar < 5 or phaseVar > 7)) {
+		eng2FireGn.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2FireGn);
+	}
+	
+	if (eng1FireFl.active == 1) {
+		eng1FireFllever.active = 1;
+		eng1FireFlmaster.active = 1;
+		eng1FireFlPB.active = 1;
+		eng1FireFlAgent1.active = 1;
+		eng1FireFlATC.active = 1;
+		eng1FireFl30Sec.active = 1;
+		eng1FireFlAgent2.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1FireFllever);
+		ECAM_controller.warningReset(eng1FireFlmaster);
+		ECAM_controller.warningReset(eng1FireFlPB);
+		ECAM_controller.warningReset(eng1FireFlAgent1);
+		ECAM_controller.warningReset(eng1FireFlATC);
+		ECAM_controller.warningReset(eng1FireFl30Sec);
+		ECAM_controller.warningReset(eng1FireFlAgent2);
+	}
+	
+	if (eng2FireFl.active == 1) {
+		eng2FireFllever.active = 1;
+		eng2FireFlmaster.active = 1;
+		eng2FireFlPB.active = 1;
+		eng2FireFlAgent1.active = 1;
+		eng2FireFlATC.active = 1;
+		eng2FireFl30Sec.active = 1;
+		eng2FireFlAgent2.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2FireFllever);
+		ECAM_controller.warningReset(eng2FireFlmaster);
+		ECAM_controller.warningReset(eng2FireFlPB);
+		ECAM_controller.warningReset(eng2FireFlAgent1);
+		ECAM_controller.warningReset(eng2FireFlATC);
+		ECAM_controller.warningReset(eng2FireFl30Sec);
+		ECAM_controller.warningReset(eng2FireFlAgent2);
 	}
 	
 	# CONFIG

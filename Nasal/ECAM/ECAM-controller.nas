@@ -161,9 +161,14 @@ var ECAM_controller = {
 		}
 		
 		# write to ECAM
+		var counter = 0;
 		
 		foreach (var w; warnings.vector) {
-			w.write();
+			if (counter >= 9) { break; }
+			if (w.active == 1) {
+				w.write();
+				counter += 1;
+			}
 		}
 		
 		foreach (var w2; warnings.vector) {

@@ -182,21 +182,11 @@
 		<type>select</type>
 		<object-name>AftCargoIsoBtn1F</object-name>
 		<object-name>AftCargoIsoBtn2O</object-name>
-		<object-name>APUFireAgtBtn1S</object-name>
-		<object-name>APUFireAgtBtn2D</object-name>
 		<object-name>CargoHotAirBtn1F</object-name>
 		<object-name>CargoHotAirBtn2O</object-name>
 		<object-name>EmerCallBtn1C</object-name>
 		<object-name>EmerCallBtn2O</object-name>
 		<object-name>EmerGenInd1F</object-name>
-		<object-name>Eng1FireAgt1Btn1S</object-name>
-		<object-name>Eng1FireAgt1Btn2D</object-name>
-		<object-name>Eng1FireAgt2Btn1S</object-name>
-		<object-name>Eng1FireAgt2Btn2D</object-name>
-		<object-name>Eng2FireAgt1Btn1S</object-name>
-		<object-name>Eng2FireAgt1Btn2D</object-name>
-		<object-name>Eng2FireAgt2Btn1S</object-name>
-		<object-name>Eng2FireAgt2Btn2D</object-name>
 		<object-name>EvacCommandBtn1E</object-name>
 		<object-name>EvacCommandBtn2O</object-name>
 		<object-name>Gen1LineBtn1S</object-name>
@@ -6203,6 +6193,159 @@
         </axis>
     </animation>
 	
+	<animation>
+		<type>material</type>
+		<object-name>Eng1FireBtn</object-name>
+		<condition>
+			<property>systems/fire/engine1/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Eng1FireAgt1Btn1S</object-name>
+		<object-name>Eng1FireAgt1Btn2D</object-name>
+		<object-name>Eng1FireAgt1Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[0]/agent1-btn</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Eng1FireAgt2Btn1S</object-name>
+		<object-name>Eng1FireAgt2Btn2D</object-name>
+		<object-name>Eng1FireAgt2Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[0]/agent2-btn</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng1FireAgt1Btn1S</object-name>
+		<object-name>Eng1FireAgt2Btn1S</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/engines/engine[0]/fire-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>/controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng1FireAgt1Btn2D</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>/systems/fire/engine1/disch1</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>/controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng1FireAgt2Btn2D</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>/systems/fire/engine1/disch2</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>/controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<!-- Test -->
+	<animation>
+		<type>pick</type>
+		<object-name>Eng1FireTst</object-name>
+		<object-name>Eng2FireTst</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/fire/test-btn</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/fire/test-btn</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>APUFireTst</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/fire/apu-test-btn</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/fire/apu-test-btn</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
 	<!-- APU -->
 	<animation>
 		<type>pick</type>
@@ -6289,6 +6432,77 @@
         </axis>
     </animation>
 	
+	<animation>
+		<type>material</type>
+		<object-name>APUFireBtn</object-name>
+		<condition>
+			<property>systems/fire/apu/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>APUFireAgtBtn1S</object-name>
+		<object-name>APUFireAgtBtn2D</object-name>
+		<object-name>APUFireAgtBtn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/APU/agent-btn</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>APUFireAgtBtn1S</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/APU/fire-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/fire/apu-test-btn</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>APUFireAgtBtn2D</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>systems/fire/apu/disch</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/fire/apu-test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
 	<!-- Engine 2 -->
 	<animation>
 		<type>pick</type>
@@ -6374,6 +6588,115 @@
             <z>0</z>
         </axis>
     </animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>Eng2FireBtn</object-name>
+		<condition>
+			<property>systems/fire/engine2/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Eng2FireAgt1Btn1S</object-name>
+		<object-name>Eng2FireAgt1Btn2D</object-name>
+		<object-name>Eng2FireAgt1Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[1]/agent1-btn</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Eng2FireAgt2Btn1S</object-name>
+		<object-name>Eng2FireAgt2Btn2D</object-name>
+		<object-name>Eng2FireAgt2Btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[1]/agent2-btn</property>
+				<value>1</value>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng2FireAgt1Btn1S</object-name>
+		<object-name>Eng2FireAgt2Btn1S</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>controls/engines/engine[1]/fire-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng2FireAgt1Btn2D</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>systems/fire/engine2/disch1</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>Eng2FireAgt2Btn2D</object-name>
+		<condition>
+			<or>
+				<equals>
+					<property>systems/fire/engine2/disch2</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/fire/test-btn</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>controls/switches/annun-test</property>
+					<value>1</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
 	
 	<!-- Sounds -->
 	<animation>

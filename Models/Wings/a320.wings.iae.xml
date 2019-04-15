@@ -24,6 +24,26 @@
 			<z-m>-1.0170087</z-m>
 		</offsets>
 	</model>
+	
+	<model>
+		<name>Engine.IAE.Left.FireBBox</name>
+		<path>Aircraft/IDG-A32X/Models/Wings/a320-fire-left.xml</path>
+		<offsets>
+			<x-m>3.2</x-m>
+			<y-m>-5.755</y-m>
+			<z-m>-1.15</z-m>
+		</offsets>
+	</model>
+	
+	<model>
+		<name>Engine.IAE.RightFireBBox</name>
+		<path>Aircraft/IDG-A32X/Models/Wings/a320-fire-right.xml</path>
+		<offsets>
+			<x-m>3.2</x-m>
+			<y-m>5.755</y-m>
+			<z-m>-1.15</z-m>
+		</offsets>
+	</model>
 
 	<!-- ANIMATIONS -->
 	<!-- Ailerons -->

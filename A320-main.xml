@@ -95,6 +95,17 @@
 					<output-property>/systems/pitot/icing</output-property>
 				</iceable>
 			</icing>
+			<flame>
+				<red-high type="double">1.0</red-high>
+				<red-low type="double">0.95</red-low>
+				<red-base type="double">1.0</red-base>
+				<green-high type="double">0.741</green-high>
+				<green-low type="double">0.32</green-low>
+				<green-base type="double">0.741</green-base>
+				<blue-high type="double">0.10</blue-high>
+				<blue-low type="double">0.02</blue-low>
+				<blue-base type="double">0.09</blue-base>
+			</flame>
 		</model>
 		
 		<startup>
@@ -613,6 +624,10 @@
 				<throttle-fdm type="double">0</throttle-fdm>
 			</engine>
 		</engines>
+		<fire>
+			<apu-test-btn type="bool">0</apu-test-btn>
+			<test-btn type="bool">0</test-btn>
+		</fire>
 		<flight>
 			<aileron-drives-tiller type="bool">0</aileron-drives-tiller>
 			<aileron-input>0</aileron-input>
