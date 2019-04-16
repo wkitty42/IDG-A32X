@@ -11,14 +11,18 @@
 					   <table>
 							<independentVar lookup="row">/systems/failures/engine-left-fire</independentVar>
 							<tableData>
-								0    0
-							    1	 25
+								0    -5
+							    1	 10
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>
 					</product>
 				</sum>
             </function>
+			<clipto>
+				<min>0</min>
+				<max>300</max>
+			</clipto>
             <output>/systems/fire/engine1/temperature</output>
         </fcs_function>
 		
@@ -30,14 +34,18 @@
 					   <table>
 							<independentVar lookup="row">/systems/failures/engine-right-fire</independentVar>
 							<tableData>
-								0    0
-							    1	 25
+								0    -5
+							    1	 10
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>
 					</product>
 				</sum>
             </function>
+			<clipto>
+				<min>0</min>
+				<max>300</max>
+			</clipto>
             <output>/systems/fire/engine2/temperature</output>
         </fcs_function>
 		
@@ -49,14 +57,18 @@
 					   <table>
 							<independentVar lookup="row">/systems/failures/apu-fire</independentVar>
 							<tableData>
-								0    0
-							    1	 25
+								0    -5
+							    1	 10
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>
 					</product>
 				</sum>
             </function>
+			<clipto>
+				<min>0</min>
+				<max>300</max>
+			</clipto>
             <output>/systems/fire/apu/temperature</output>
         </fcs_function>
 	</channel>

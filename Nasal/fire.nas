@@ -229,7 +229,7 @@ var engFireDetectorUnit = {
 			detector.updateTemp(detector.sys, detector.type);
 		}
 		
-		if ((me.loopOne == 1 and me.loopTwo == 1) or (me.loopOne == 9 and me.loopTwo == 1)  or (me.loopOne == 1 and me.loopTwo == 9)) {
+		if ((me.loopOne == 1 and me.loopTwo == 1) or ((me.loopOne == 9 or me.loopOne == 8) and me.loopTwo == 1)  or (me.loopOne == 1 and (me.loopTwo == 9 or me.loopTwo == 8))) {
 			me.TriggerWarning(me.sys);
 		}
 	},
@@ -247,6 +247,12 @@ var engFireDetectorUnit = {
 		else { me.loopTwo = 9; }
 		
 		me.startFailTimer(loop);
+	},
+	noElec: func(loop) {
+		if (loop != 1 and loop != 2) { return; }
+	
+		if (loop == 1) { me.loopOne = 8; }
+		else { me.loopTwo = 8; }
 	},
 	startFailTimer: func(loop) {
 		if (me.sys != 2) {
@@ -282,14 +288,14 @@ var engFireDetectorUnit = {
 };
 
 var detectorLoop = {
-	type: 0,
 	sys: 9,
+	type: 0,
 	temperature: "",
 	elecProp: "",
-	new: func(type, sys, temperature, elecProp) {
+	new: func(sys, type, temperature, elecProp) {
 		var dL = {parents:[detectorLoop]};
-		dL.type = type;
 		dL.sys = sys;
+		dL.type = type;
 		dL.temperature = temperature;
 		dL.elecProp = props.globals.getNode(elecProp, 1);
 		
@@ -304,9 +310,11 @@ var detectorLoop = {
 		
 		if (propsNasFire.vector[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
 			me.sendSignal(system,typeLoop);
+		} elsif (me.elecProp.getValue() < 25) {
+			engFireDetectorUnits.vector[system].noElec(typeLoop);
 		}
 	},
-	sendSignal: func(system,typeLoop) {
+	sendSignal: func(system, typeLoop) {
 		engFireDetectorUnits.vector[system].receiveSignal(typeLoop);
 	}
 };
@@ -414,9 +422,9 @@ var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0), engFireD
 
 # Create detector loops
 var detectorLoops = std.Vector.new([ 
-detectorLoop.new(0, 0, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dcess"), detectorLoop.new(1, 0, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc2"),
-detectorLoop.new(0, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc2"), detectorLoop.new(1, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dcess"),
-detectorLoop.new(0, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat"),     detectorLoop.new(1, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat") 
+detectorLoop.new(0, 1, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc-ess"), detectorLoop.new(0, 2, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc2"),
+detectorLoop.new(1, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc2"),    detectorLoop.new(1, 2, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc-ess"),
+detectorLoop.new(2, 1, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat"),      detectorLoop.new(2, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat") 
 ]);
 
 # Create extinguisher bottles

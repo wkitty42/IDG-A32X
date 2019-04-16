@@ -20,10 +20,7 @@
 		<type>select</type>
 		<object-name>Bounding_box</object-name>
 		<condition>
-			<greater-than>
 				<property>systems/failures/engine-right-fire</property>
-				<value>0.8</value>
-			</greater-than>
 		</condition>
 	</animation>
 
