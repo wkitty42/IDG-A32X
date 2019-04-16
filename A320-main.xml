@@ -805,11 +805,25 @@
 			<spoiler-r3 type="bool">0</spoiler-r3>
 			<spoiler-r4 type="bool">0</spoiler-r4>
 			<spoiler-r5 type="bool">0</spoiler-r5>
+			<engine-left-fire type="bool">0</engine-left-fire>
+			<engine-right-fire type="bool">0</engine-right-fire>
+			<apu-fire type="bool">0</apu-fire>
 		</failures>
 		<fctl n="0">
 			<fac1 type="bool">0</fac1>
 			<fac2 type="bool">0</fac2>
 		</fctl>
+		<fire n="0">
+			<apu>
+				<temperature type="double">0</temperature>
+			</apu>
+			<engine1>
+				<temperature type="double">0</temperature>
+			</engine1>
+			<engine2>
+				<temperature type="double">0</temperature>
+			</engine2>
+		</fire>
 		<fuel n="0">
 			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>
 			<tank n="0">

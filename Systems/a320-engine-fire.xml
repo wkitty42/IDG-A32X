@@ -3,7 +3,7 @@
 <system name="A320: Engine Fire">
 
 	<channel name="Engine Fire">
-		<fcs_function name="engine-fire-1">
+		<fcs_function name="enginefire1">
               <function>
 				<sum>
 					<property>/systems/fire/engine1/temperature</property>
@@ -22,7 +22,7 @@
             <output>/systems/fire/engine1/temperature</output>
         </fcs_function>
 		
-		<fcs_function name="engine-fire-2">
+		<fcs_function name="enginefire2">
               <function>
 				<sum>
 					<property>/systems/fire/engine2/temperature</property>

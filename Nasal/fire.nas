@@ -229,7 +229,7 @@ var engFireDetectorUnit = {
 			detector.updateTemp(detector.sys, detector.type);
 		}
 		
-		if ((me.loopOne == 1 and me.loopOne == 2) or (me.loopOne == 9 and me.loopOne == 1)  or (me.loopOne == 1 and me.loopOne == 9)) {
+		if ((me.loopOne == 1 and me.loopTwo == 1) or (me.loopOne == 9 and me.loopTwo == 1)  or (me.loopOne == 1 and me.loopTwo == 9)) {
 			me.TriggerWarning(me.sys);
 		}
 	},
@@ -251,15 +251,15 @@ var engFireDetectorUnit = {
 	startFailTimer: func(loop) {
 		if (me.sys != 2) {
 			if (loop == 1) {
-				propsNasFireTime[sys].setValue(elapsedTime.getValue());
+				propsNasFireTime.vector[sys].setValue(elapsedTime.getValue());
 			} elsif (loop == 2) {
-				propsNasFireTime[sys + 1].setValue(elapsedTime.getValue());
+				propsNasFireTime.vector[sys + 1].setValue(elapsedTime.getValue());
 			}
 		} else {
 			if (loop == 1) {
-				propsNasFireTime[4].setValue(elapsedTime.getValue());
+				propsNasFireTime.vector[4].setValue(elapsedTime.getValue());
 			} elsif (loop == 2) {
-				propsNasFireTime[5].setValue(elapsedTime.getValue());
+				propsNasFireTime.vector[5].setValue(elapsedTime.getValue());
 			}
 		}
 		
@@ -302,12 +302,12 @@ var detectorLoop = {
 		
 		if (typeLoop == 1) { index += 1 }
 		
-		if (propsNasFire[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
+		if (propsNasFire.vector[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
 			me.sendSignal(system,typeLoop);
 		}
 	},
 	sendSignal: func(system,typeLoop) {
-		engFireDetectorUnits[system].receiveSignal(typeLoop);
+		engFireDetectorUnits.vector[system].receiveSignal(typeLoop);
 	}
 };
 
@@ -348,8 +348,8 @@ props.globals.getNode("/systems/fire/apu/loop1-failtime", 1), props.globals.getN
 
 var checkTimeFire1 = func() {
 	et = elapsedTime.getValue();
-	var loop1 = propsNasFireTime[0].getValue();
-	var loop2 = propsNasFireTime[1].getValue();
+	var loop1 = propsNasFireTime.vector[0].getValue();
+	var loop2 = propsNasFireTime.vector[1].getValue();
 	
 	if ((loop1 != 0 and et > loop1 + 5) or (loop2 != 0 and et > loop2 + 5))  {
 		fireTimer1.stop();
@@ -357,9 +357,9 @@ var checkTimeFire1 = func() {
 		loop2.setValue(0);
 	}
 	
-	if (engFireDetectorUnits[0].loop1 == 9 and engFireDetectorUnits[0].loop2 == 9) {
+	if (engFireDetectorUnits.vector[0].loop1 == 9 and engFireDetectorUnits.vector[0].loop2 == 9) {
 		fireTimer1.stop();
-		engFireDetectorUnits[0].TriggerWarning(engFireDetectorUnits[0].sys);
+		engFireDetectorUnits.vector[0].TriggerWarning(engFireDetectorUnits.vector[0].sys);
 		loop1.setValue(0);
 		loop2.setValue(0);
 	}
@@ -367,8 +367,8 @@ var checkTimeFire1 = func() {
 
 var checkTimeFire2 = func() {
 	et = elapsedTime.getValue();
-	var loop3 = propsNasFireTime[2].getValue();
-	var loop4 = propsNasFireTime[3].getValue();
+	var loop3 = propsNasFireTime.vector[2].getValue();
+	var loop4 = propsNasFireTime.vector[3].getValue();
 	
 	if ((loop3 != 0 and et > loop3 + 5) or (loop4 != 0 and et > loop4 + 5))  {
 		fireTimer2.stop();
@@ -376,17 +376,17 @@ var checkTimeFire2 = func() {
 		loop4.setValue(0);
 	}
 	
-	if (engFireDetectorUnits[1].loop1 == 9 and engFireDetectorUnits[1].loop2 == 9) {
+	if (engFireDetectorUnits.vector[1].loop1 == 9 and engFireDetectorUnits.vector[1].loop2 == 9) {
 		fireTimer2.stop();
-		engFireDetectorUnits[1].TriggerWarning(engFireDetectorUnits[1].sys);
+		engFireDetectorUnits.vector[1].TriggerWarning(engFireDetectorUnits.vector[1].sys);
 		loop3.setValue(0);
 		loop4.setValue(0);
 	}
 }
 var checkTimeFire3 = func() {
 	et = elapsedTime.getValue();
-	var loop4 = propsNasFireTime[3].getValue();
-	var loop5 = propsNasFireTime[4].getValue();
+	var loop4 = propsNasFireTime.vector[3].getValue();
+	var loop5 = propsNasFireTime.vector[4].getValue();
 	
 	if ((loop4 != 0 and et > loop4 + 5) or (loop5 != 0 and et > loop5 + 5)) {
 		fireTimer3.stop();
@@ -394,9 +394,9 @@ var checkTimeFire3 = func() {
 		loop5.setValue(0);
 	}
 	
-	if (engFireDetectorUnits[2].loop1 == 9 and engFireDetectorUnits[2].loop2 == 9) {
+	if (engFireDetectorUnits.vector[2].loop1 == 9 and engFireDetectorUnits.vector[2].loop2 == 9) {
 		fireTimer3.stop();
-		engFireDetectorUnits[2].TriggerWarning(engFireDetectorUnits[2].sys);
+		engFireDetectorUnits.vector[2].TriggerWarning(engFireDetectorUnits.vector[2].sys);
 		loop4.setValue(0);
 		loop5.setValue(0);
 	}
@@ -480,12 +480,19 @@ createFireBottleListener("/controls/engines/engine[0]/agent2-btn", 1);
 createFireBottleListener("/controls/engines/engine[1]/agent1-btn", 2);
 createFireBottleListener("/controls/engines/engine[1]/agent2-btn", 3);
 createFireBottleListener("/controls/APU/agent-btn", 4);
+
+var updateUnits = func() {
+	foreach (var units; engFireDetectorUnits.vector) {
+		units.update();
+	}
+}
 ###################
 # Update Function #
 ###################
 
 var update_fire = func {
 	master_fire();
+	updateUnits();
 }
 
 var fire_timer = maketimer(0.2, update_fire);
