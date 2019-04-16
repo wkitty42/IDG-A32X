@@ -1,0 +1,64 @@
+<!-- Copyright (c) 2019 Jonathan Redpath (legoboyvdlp) -->
+
+<system name="A320: Engine Fire">
+
+	<channel name="Engine Fire">
+		<fcs_function name="engine-fire-1">
+              <function>
+				<sum>
+					<property>/systems/fire/engine1/temperature</property>
+					<product>
+					   <table>
+							<independentVar lookup="row">/systems/failures/engine-left-fire</independentVar>
+							<tableData>
+								0    0
+							    1	 25
+							</tableData>
+						</table>
+						<property>simulation/channel-dt</property>
+					</product>
+				</sum>
+            </function>
+            <output>/systems/fire/engine1/temperature</output>
+        </fcs_function>
+		
+		<fcs_function name="engine-fire-2">
+              <function>
+				<sum>
+					<property>/systems/fire/engine2/temperature</property>
+					<product>
+					   <table>
+							<independentVar lookup="row">/systems/failures/engine-right-fire</independentVar>
+							<tableData>
+								0    0
+							    1	 25
+							</tableData>
+						</table>
+						<property>simulation/channel-dt</property>
+					</product>
+				</sum>
+            </function>
+            <output>/systems/fire/engine2/temperature</output>
+        </fcs_function>
+		
+		<fcs_function name="apufire">
+              <function>
+				<sum>
+					<property>/systems/fire/apu/temperature</property>
+					<product>
+					   <table>
+							<independentVar lookup="row">/systems/failures/apu-fire</independentVar>
+							<tableData>
+								0    0
+							    1	 25
+							</tableData>
+						</table>
+						<property>simulation/channel-dt</property>
+					</product>
+				</sum>
+            </function>
+            <output>/systems/fire/apu/temperature</output>
+        </fcs_function>
+	</channel>
+
+</system>

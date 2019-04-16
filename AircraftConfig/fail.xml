@@ -512,6 +512,16 @@
 			</checkbox>
 			
 			<checkbox>
+				<label>APU</label>
+				<halign>left</halign>
+				<property>/systems/failures/apu-fire</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+			
+			<checkbox>
 				<label>Right Engine</label>
 				<halign>left</halign>
 				<property>/systems/failures/engine-right-fire</property>

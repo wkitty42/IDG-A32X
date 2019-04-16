@@ -282,14 +282,16 @@ var engFireDetectorUnit = {
 };
 
 var detectorLoop = {
-	sys: 9,
 	type: 0,
+	sys: 9,
 	temperature: "",
-	new: func(type, sys, temperature) {
+	elecProp: "",
+	new: func(type, sys, temperature, elecProp) {
 		var dL = {parents:[detectorLoop]};
-		dL.sys = sys;
 		dL.type = type;
+		dL.sys = sys;
 		dL.temperature = temperature;
+		dL.elecProp = props.globals.getNode(elecProp, 1);
 		
 		return dL;
 	},
@@ -300,7 +302,7 @@ var detectorLoop = {
 		
 		if (typeLoop == 1) { index += 1 }
 		
-		if (propsNasFire[index].getValue() > 250) {
+		if (propsNasFire[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
 			me.sendSignal(system,typeLoop);
 		}
 	},
@@ -412,9 +414,9 @@ var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0), engFireD
 
 # Create detector loops
 var detectorLoops = std.Vector.new([ 
-detectorLoop.new(0, 0, "/systems/fire/engine1/temperature"), detectorLoop.new(1, 0, "/systems/fire/engine1/temperature"),
-detectorLoop.new(0, 1, "/systems/fire/engine2/temperature"), detectorLoop.new(1, 1, "/systems/fire/engine2/temperature"),
-detectorLoop.new(0, 2, "/systems/fire/apu/temperature"),     detectorLoop.new(1, 2, "/systems/fire/apu/temperature") 
+detectorLoop.new(0, 0, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dcess"), detectorLoop.new(1, 0, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc2"),
+detectorLoop.new(0, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc2"), detectorLoop.new(1, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dcess"),
+detectorLoop.new(0, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat"),     detectorLoop.new(1, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat") 
 ]);
 
 # Create extinguisher bottles
