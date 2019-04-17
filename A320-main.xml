@@ -626,7 +626,8 @@
 		</engines>
 		<fire>
 			<apu-test-btn type="bool">0</apu-test-btn>
-			<test-btn type="bool">0</test-btn>
+			<test-btn-1 type="bool">0</test-btn-1>
+			<test-btn-2 type="bool">0</test-btn-2>
 		</fire>
 		<flight>
 			<aileron-drives-tiller type="bool">0</aileron-drives-tiller>

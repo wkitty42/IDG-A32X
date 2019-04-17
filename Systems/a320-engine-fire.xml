@@ -12,7 +12,7 @@
 							<independentVar lookup="row">/systems/failures/engine-left-fire</independentVar>
 							<tableData>
 								0    -5
-							    1	 10
+							    1	 20
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>
@@ -35,7 +35,7 @@
 							<independentVar lookup="row">/systems/failures/engine-right-fire</independentVar>
 							<tableData>
 								0    -5
-							    1	 10
+							    1	 20
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>
@@ -58,7 +58,7 @@
 							<independentVar lookup="row">/systems/failures/apu-fire</independentVar>
 							<tableData>
 								0    -5
-							    1	 10
+							    1	 20
 							</tableData>
 						</table>
 						<property>simulation/channel-dt</property>

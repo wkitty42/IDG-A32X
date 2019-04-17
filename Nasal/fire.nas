@@ -31,7 +31,8 @@ var et = 0;
 
 var elapsedTime = props.globals.getNode("/sim/time/elapsed-sec");
 var apuTestBtn = props.globals.getNode("/controls/fire/apu-test-btn", 1);
-var testBtn = props.globals.getNode("/controls/fire/test-btn", 1);
+var testBtn = props.globals.getNode("/controls/fire/test-btn-1", 1);
+var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
@@ -322,21 +323,47 @@ var detectorLoop = {
 var extinguisherBottle = {
 	quantity: 100,
 	squib: 0,
+	number: 0,
 	lightProp: "",
 	elecProp: "",
-	new: func(lightProp, elecProp) {
+	failProp: "",
+	warningProp: "",
+	new: func(number, lightProp, elecProp, failProp, warningProp) {
 		var eB = {parents:[extinguisherBottle]};
 		eB.quantity = 100;
 		eB.squib = 0;
+		eB.number = number;
 		eB.lightProp = props.globals.getNode(lightProp, 1);
 		eB.elecProp = props.globals.getNode(elecProp, 1);
+		eB.failProp = props.globals.getNode(failProp, 1);
+		eB.warningProp = props.globals.getNode(warningProp, 1);
 		return eB;
 	},
 	emptyBottle: func() {
-		me.quantity = me.quantity - 1;
-		if (me.quantity > 0) { settimer(me.emptyBottle, 0.05); }
-		else {
+		me.quantity -= 1;
+		if (me.quantity > 0) { 
+			settimer(func() {
+				me.emptyBottle()
+			}, 0.05); 
+		} else {
 			me.lightProp.setValue(1);
+			# make things interesting. If your fire won't go out you should play the lottery
+			if (me.number == 0) {
+				if (rand() < 0.75) { 
+					me.failProp.setValue(0);
+					me.warningProp.setValue(0);
+				}
+			elsif (me.number == 1) {
+				if (rand() < 0.98) {
+					me.failProp.setValue(0);
+					me.warningProp.setValue(0);
+				}
+			} elsif (me.number == 9) {
+				if (rand() <= 0.999) {
+					me.failProp.setValue(0);
+					me.warningProp.setValue(0);
+				}
+			}
 		}
 	},
 	discharge: func() {
@@ -428,8 +455,9 @@ detectorLoop.new(2, 1, "/systems/fire/apu/temperature", "/systems/electrical/bus
 ]);
 
 # Create extinguisher bottles
-var extinguisherBottles = std.Vector.new([extinguisherBottle.new("/systems/fire/engine1/disch1", "/systems/electrical/bus/dcbat"), extinguisherBottle.new("/systems/fire/engine1/disch2", "/systems/electrical/bus/dc2"),
-extinguisherBottle.new("/systems/fire/engine2/disch1", "/systems/electrical/bus/dcbat"), extinguisherBottle.new("/systems/fire/engine2/disch2", "/systems/electrical/bus/dc2"), extinguisherBottle.new("/systems/fire/apu/disch", "/systems/electrical/bus/dcbat") ]);
+var extinguisherBottles = std.Vector.new([extinguisherBottle.new(0, "/systems/fire/engine1/disch1", "/systems/electrical/bus/dcbat", "/systems/failures/engine-left-fire", "/systems/fire/engine1/warning-active"), extinguisherBottle.new(1, "/systems/fire/engine1/disch2", "/systems/electrical/bus/dc2", "/systems/failures/engine-left-fire", "/systems/fire/engine1/warning-active"),
+extinguisherBottle.new(0, "/systems/fire/engine2/disch1", "/systems/electrical/bus/dcbat", "/systems/failures/engine-right-fire", "/systems/fire/engine2/warning-active"), extinguisherBottle.new(1, "/systems/fire/engine2/disch2", "/systems/electrical/bus/dc2", "/systems/failures/engine-right-fire", "/systems/fire/engine2/warning-active"), 
+extinguisherBottle.new(9, "/systems/fire/apu/disch", "/systems/electrical/bus/dcbat", "/systems/failures/apu-fire", "/systems/fire/apu/warning-active") ]);
 
 # Props.nas helper
 var propsNasFire = std.Vector.new();
@@ -438,40 +466,54 @@ foreach (detectorLoop; detectorLoops.vector) {
 };
 
 # Setlistener helper
-var createFireBottleListener = func(prop, index) {
+var createFireBottleListener = func(prop, fireBtnProp, index) {
 	if (index >= extinguisherBottles.size()) {
 		print("Error - calling listener on non-existent fire extinguisher bottle, index: " ~ index); 
 		return;
 	}
 	
 	setlistener(prop, func() {
-		if (getprop(prop) == 1) {
+		if (getprop(prop) == 1 and getprop(fireBtnProp) == 1) {
 			extinguisherBottles.vector[index].discharge();
 		}
 	}, 0, 0);
 }
 
 # Listeners 
-setlistener("/controls/engines/engine[0]/fire-btn", func() { eng1FireWarn.setBoolValue(0); }, 0, 0);
-setlistener("/controls/engines/engine[1]/fire-btn", func() { eng2FireWarn.setBoolValue(0); }, 0, 0);
-setlistener("/controls/APU/fire-btn", func() { apuFireWarn.setBoolValue(0); }, 0, 0);
+setlistener("/controls/engines/engine[0]/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
+setlistener("/controls/engines/engine[1]/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
+setlistener("/controls/APU/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
 
-setlistener("/controls/fire/test-btn", func() {
+setlistener("/controls/fire/test-btn-1", func() {
+	if (getprop("/systems/failures/engine-left-fire")) { return; }
+	
 	if (testBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			eng1FireWarn.setBoolValue(1);
-			eng2FireWarn.setBoolValue(1);
 		} else {
 			eng1FireWarn.setBoolValue(0);
-			eng2FireWarn.setBoolValue(0);
 		}
 	} else {
 		eng1FireWarn.setBoolValue(0);
+	}
+}, 0, 0);
+
+setlistener("/controls/fire/test-btn-2", func() {
+	if (getprop("/systems/failures/engine-right-fire")) { return; }
+	
+	if (testBtn2.getValue() == 1) {
+		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
+			eng2FireWarn.setBoolValue(1);
+		} else {
+			eng2FireWarn.setBoolValue(0);
+		}
+	} else {
 		eng2FireWarn.setBoolValue(0);
 	}
 }, 0, 0);
 
 setlistener("/controls/fire/apu-test-btn", func() {
+	if (getprop("/systems/failures/apu-fire")) { return; }
 	if (apuTestBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			apuFireWarn.setBoolValue(1);
@@ -483,11 +525,11 @@ setlistener("/controls/fire/apu-test-btn", func() {
 	}
 }, 0, 0);
 
-createFireBottleListener("/controls/engines/engine[0]/agent1-btn", 0);
-createFireBottleListener("/controls/engines/engine[0]/agent2-btn", 1);
-createFireBottleListener("/controls/engines/engine[1]/agent1-btn", 2);
-createFireBottleListener("/controls/engines/engine[1]/agent2-btn", 3);
-createFireBottleListener("/controls/APU/agent-btn", 4);
+createFireBottleListener("/controls/engines/engine[0]/agent1-btn", "/controls/engines/engine[0]/fire-btn", 0);
+createFireBottleListener("/controls/engines/engine[0]/agent2-btn", "/controls/engines/engine[0]/fire-btn", 1);
+createFireBottleListener("/controls/engines/engine[1]/agent1-btn", "/controls/engines/engine[1]/fire-btn", 2);
+createFireBottleListener("/controls/engines/engine[1]/agent2-btn", "/controls/engines/engine[1]/fire-btn", 3);
+createFireBottleListener("/controls/APU/agent-btn", "/controls/APU/fire-btn", 4);
 
 var updateUnits = func() {
 	foreach (var units; engFireDetectorUnits.vector) {

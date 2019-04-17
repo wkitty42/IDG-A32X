@@ -282,6 +282,10 @@ var ECAMloopTimer = maketimer(0.15, func {
 });
 
 # Flash Master Warning Light
+var shutUpYou = func() {
+	lights[0].setBoolValue(0);
+}
+
 var warnTimer = maketimer(0.25, func {
 	if (!lights[0].getBoolValue()) {
 		warnTimer.stop();

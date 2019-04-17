@@ -6185,7 +6185,7 @@
         <type>translate</type>
 		<object-name>Eng1FireBtn</object-name>
         <property>controls/engines/engine[0]/fire-btn</property>
-        <factor>0.0225</factor>
+        <factor>0.0025</factor>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -6249,7 +6249,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>/controls/fire/test-btn</property>
+					<property>/controls/fire/test-btn-1</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -6270,7 +6270,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>/controls/fire/test-btn</property>
+					<property>/controls/fire/test-btn-1</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -6291,7 +6291,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>/controls/fire/test-btn</property>
+					<property>/controls/fire/test-btn-1</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -6306,19 +6306,39 @@
 	<animation>
 		<type>pick</type>
 		<object-name>Eng1FireTst</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/fire/test-btn-1</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/fire/test-btn-1</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
 		<object-name>Eng2FireTst</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
 				<command>property-assign</command>
-				<property>controls/fire/test-btn</property>
+				<property>controls/fire/test-btn-2</property>
 				<value>1</value>
 			</binding>
 			<mod-up>
 				<binding>
 					<command>property-assign</command>
-					<property>controls/fire/test-btn</property>
+					<property>controls/fire/test-btn-2</property>
 					<value>0</value>
 				</binding>
 			</mod-up>
@@ -6424,7 +6444,7 @@
         <type>translate</type>
 		<object-name>APUFireBtn</object-name>
         <property>controls/APU/fire-btn</property>
-        <factor>0.0225</factor>
+        <factor>0.0025</factor>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -6581,7 +6601,7 @@
         <type>translate</type>
 		<object-name>Eng2FireBtn</object-name>
         <property>controls/engines/engine[1]/fire-btn</property>
-        <factor>0.0225</factor>
+        <factor>0.0025</factor>
         <axis>
             <x>1</x>
             <y>0</y>
@@ -6645,7 +6665,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>controls/fire/test-btn</property>
+					<property>controls/fire/test-btn-2</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -6666,7 +6686,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>controls/fire/test-btn</property>
+					<property>controls/fire/test-btn-2</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -6687,7 +6707,7 @@
 					<value>1</value>
 				</equals>
 				<equals>
-					<property>controls/fire/test-btn</property>
+					<property>controls/fire/test-btn-2</property>
 					<value>1</value>
 				</equals>
 				<equals>
