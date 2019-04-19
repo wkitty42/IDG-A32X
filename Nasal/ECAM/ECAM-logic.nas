@@ -245,6 +245,12 @@ var messages_priority_3 = func {
 		ECAM_controller.warningReset(eng2FireGn);
 	}
 	
+	if (apuFireMaster.clearFlag == 0 and getprop("/systems/fire/apu/warning-active") == 1) {
+		apuFire.active = 1;
+	} else {
+		ECAM_controller.warningReset(apuFire);
+	}
+	
 	if (eng1FireFl.active == 1) {
 		eng1FireFllever.active = 1;
 		eng1FireFlmaster.active = 1;
@@ -263,6 +269,38 @@ var messages_priority_3 = func {
 		ECAM_controller.warningReset(eng1FireFlAgent2);
 	}
 	
+	if (eng1FireGn.active == 1) {
+		eng1FireGnlever.active = 1;
+		eng1FireGnstopped.active = 1;
+		eng1FireGnparkbrk.active = 1;
+		eng1FireGnmaster.active = 1;
+		eng1FireGnPB.active = 1;
+		eng1FireGnAgent1.active = 1;
+		eng1FireGnAgent2.active = 1;
+		eng1FireGnmaster2.active = 1;
+		eng1FireGnATC.active = 1;
+		eng1FireGncrew.active = 1;
+		eng1FireGnevac.active = 1;
+		eng1FireGnevacSw.active = 1;
+		eng1FireGnevacApu.active = 1;
+		eng1FireGnevacBat.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1FireGnlever);
+		ECAM_controller.warningReset(eng1FireGnstopped);
+		ECAM_controller.warningReset(eng1FireGnparkbrk);
+		ECAM_controller.warningReset(eng1FireGnmaster);
+		ECAM_controller.warningReset(eng1FireGnPB);
+		ECAM_controller.warningReset(eng1FireGnAgent1);
+		ECAM_controller.warningReset(eng1FireGnAgent2);
+		ECAM_controller.warningReset(eng1FireGnmaster2);
+		ECAM_controller.warningReset(eng1FireGnATC);
+		ECAM_controller.warningReset(eng1FireGncrew);
+		ECAM_controller.warningReset(eng1FireGnevac);
+		ECAM_controller.warningReset(eng1FireGnevacSw);
+		ECAM_controller.warningReset(eng1FireGnevacApu);
+		ECAM_controller.warningReset(eng1FireGnevacBat);
+	}
+	
 	if (eng2FireFl.active == 1) {
 		eng2FireFllever.active = 1;
 		eng2FireFlmaster.active = 1;
@@ -279,6 +317,61 @@ var messages_priority_3 = func {
 		ECAM_controller.warningReset(eng2FireFlATC);
 		ECAM_controller.warningReset(eng2FireFl30Sec);
 		ECAM_controller.warningReset(eng2FireFlAgent2);
+	}
+	
+	if (eng2FireGn.active == 1) {
+		eng2FireGnlever.active = 1;
+		eng2FireGnstopped.active = 1;
+		eng2FireGnparkbrk.active = 1;
+		eng2FireGnmaster.active = 1;
+		eng2FireGnPB.active = 1;
+		eng2FireGnAgent1.active = 1;
+		eng2FireGnAgent2.active = 1;
+		eng2FireGnmaster2.active = 1;
+		eng2FireGnATC.active = 1;
+		eng2FireGncrew.active = 1;
+		eng2FireGnevac.active = 1;
+		eng2FireGnevacSw.active = 1;
+		eng2FireGnevacApu.active = 1;
+		eng2FireGnevacBat.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2FireGnlever);
+		ECAM_controller.warningReset(eng2FireGnstopped);
+		ECAM_controller.warningReset(eng2FireGnparkbrk);
+		ECAM_controller.warningReset(eng2FireGnmaster);
+		ECAM_controller.warningReset(eng2FireGnPB);
+		ECAM_controller.warningReset(eng2FireGnAgent1);
+		ECAM_controller.warningReset(eng2FireGnAgent2);
+		ECAM_controller.warningReset(eng2FireGnmaster2);
+		ECAM_controller.warningReset(eng2FireGnATC);
+		ECAM_controller.warningReset(eng2FireGncrew);
+		ECAM_controller.warningReset(eng2FireGnevac);
+		ECAM_controller.warningReset(eng2FireGnevacSw);
+		ECAM_controller.warningReset(eng2FireGnevacApu);
+		ECAM_controller.warningReset(eng2FireGnevacBat);
+	}
+	
+	# APU Fire
+	if (apuFire.active == 1) {
+		if (apuFirePB.clearFlag == 0 and !getprop("/controls/APU/fire-btn")) {
+			apuFirePB.active = 1;
+		} else {
+			ECAM_controller.warningReset(apuFirePB);
+		}
+		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch")) {
+			apuFireAgent.active = 1;
+		} else {
+			ECAM_controller.warningReset(apuFireAgent);
+		}
+		if (apuFireMaster.clearFlag == 0 and getprop("/controls/APU/master")) {
+			apuFireMaster.active = 1;
+		} else {
+			ECAM_controller.warningReset(apuFireMaster);
+		}
+	} else {
+		ECAM_controller.warningReset(apuFirePB);
+		ECAM_controller.warningReset(apuFireAgent);
+		ECAM_controller.warningReset(apuFireMaster);
 	}
 	
 	# CONFIG
@@ -439,7 +532,7 @@ var messages_right_memo = func {
 		ldg_inhibit.active = 0;
 	}
 	
-	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and getprop("/engines/engine[0]/state") == 3 and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
+	if ((getprop("/gear/gear[1]/wow") == 0) and (getprop("/systems/fire/engine1/warning-active") == 1 or getprop("/systems/fire/engine2/warning-active") == 1 or getprop("/systems/fire/apu/warning-active") == 1 or getprop("/systems/failures/cargo-aft-fire") == 1 or getprop("/systems/failures/cargo-fwd-fire") == 1) or (((getprop("/systems/hydraulic/green-psi") < 1500 and getprop("/engines/engine[0]/state") == 3) and (getprop("/systems/hydraulic/yellow-psi") < 1500 and getprop("/engines/engine[1]/state") == 3)) or ((getprop("/systems/hydraulic/green-psi") < 1500 or getprop("/systems/hydraulic/yellow-psi") < 1500) and getprop("/engines/engine[0]/state") == 3 and getprop("/engines/engine[1]/state") == 3) and phaseVar >= 3 and phaseVar <= 8)) {
 		# todo: emer elec
 		land_asap_r.active = 1;
 	} else {

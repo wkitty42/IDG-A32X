@@ -30,7 +30,7 @@ var hasCleared = 0;
 var statusFlag = 0;
 
 var warning = {
-	new: func(msg,colour = "g",aural = 9,light = 9,hasSubmsg = 0,lastSubmsg = 0) {
+	new: func(msg,colour = "g",aural = 9,light = 9,hasSubmsg = 0,lastSubmsg = 0, sdPage = "nil") {
 		var t = {parents:[warning]};
 		
 		t.msg = msg;
@@ -43,6 +43,8 @@ var warning = {
 		t.noRepeat = 0;
 		t.noRepeat2 = 0;
 		t.clearFlag = 0;
+		t.sdPage = sdPage;
+		t.hasCalled = 0;
 		
 		return t
 	},
@@ -77,6 +79,11 @@ var warning = {
 			aural[me.aural].setBoolValue(1);
 		}, 0.15);
     },
+	callPage: func() {
+		if (me.sdPage == "nil" or me.hasCalled == 1) { return; }
+		#libraries.LowerECAM.failCall(me.sdPage);
+		me.hasCalled = 1;
+	}
 };
 
 var memo = {
@@ -179,6 +186,7 @@ var ECAM_controller = {
 				if (w2.noRepeat2 == 0) {
 					w2.sound();
 				}
+				w2.callPage();
 				break
 			}
 		}

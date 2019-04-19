@@ -216,16 +216,19 @@ var engFireDetectorUnit = {
 	loopOne: 0,
 	loopTwo: 0,
 	condition: 100,
+	wow: "",
 	new: func(sys) {
 		var eF = {parents:[engFireDetectorUnit]};
 		eF.sys = sys;
 		eF.active = 0;
 		eF.loopOne = 0;
 		eF.loopTwo = 0;
-		
+		eF.wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 		return eF;
 	},
 	update: func() {
+		if (me.condition == 0) { return; }
+		
 		foreach(var detector; detectorLoops.vector) {
 			detector.updateTemp(detector.sys, detector.type);
 		}
@@ -235,11 +238,14 @@ var engFireDetectorUnit = {
 		}
 	},
 	receiveSignal: func(type) {
-		if (type == 1 and me.loopOne != 9) {
+		if (type == 1 and me.loopOne != 9 and me.condition != 0) {
 			me.loopOne = 1;
-		} elsif (type == 2 and me.loopTwo != 9) {
+		} elsif (type == 2 and me.loopTwo != 9 and me.condition != 0) {
 			me.loopTwo = 1;
 		}
+	},
+	failUnit: func() {
+		me.condition = 0;
 	},
 	fail: func(loop) {
 		if (loop != 1 and loop != 2) { return; }
@@ -281,8 +287,8 @@ var engFireDetectorUnit = {
 			eng2FireWarn.setBoolValue(1);
 		} elsif (system == 2) {
 			apuFireWarn.setBoolValue(1);
-			if (wow.getValue() == 1) {
-				extinguisherBottles[4].discharge();
+			if (me.wow.getValue() == 1) {
+				extinguisherBottles.vector[4].discharge();
 			}
 		}
 	}
@@ -310,12 +316,16 @@ var detectorLoop = {
 		if (typeLoop == 1) { index += 1 }
 		
 		if (propsNasFire.vector[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
-			me.sendSignal(system,typeLoop);
+			me.sendSignal(system, typeLoop);
 		} elsif (me.elecProp.getValue() < 25) {
 			engFireDetectorUnits.vector[system].noElec(typeLoop);
 		}
 	},
 	sendSignal: func(system, typeLoop) {
+		if (system == 0 and !getprop("/systems/failures/engine-left-fire")) { return; }
+		elsif (system == 1 and !getprop("/systems/failures/engine-right-fire")) { return; }
+		elsif (system == 2 and !getprop("/systems/failures/apu-fire")) { return; }
+		
 		engFireDetectorUnits.vector[system].receiveSignal(typeLoop);
 	}
 };
@@ -353,7 +363,7 @@ var extinguisherBottle = {
 					me.failProp.setValue(0);
 					me.warningProp.setValue(0);
 				}
-			elsif (me.number == 1) {
+			} elsif (me.number == 1) {
 				if (rand() < 0.98) {
 					me.failProp.setValue(0);
 					me.warningProp.setValue(0);
@@ -418,6 +428,7 @@ var checkTimeFire2 = func() {
 		loop4.setValue(0);
 	}
 }
+
 var checkTimeFire3 = func() {
 	et = elapsedTime.getValue();
 	var loop4 = propsNasFireTime.vector[3].getValue();
@@ -480,9 +491,23 @@ var createFireBottleListener = func(prop, fireBtnProp, index) {
 }
 
 # Listeners 
-setlistener("/controls/engines/engine[0]/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
-setlistener("/controls/engines/engine[1]/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
-setlistener("/controls/APU/fire-btn", func() { ecam.shutUpYou(); }, 0, 0);
+setlistener("/controls/engines/engine[0]/fire-btn", func() { 
+	if (getprop("/controls/engines/engine[0]/fire-btn") == 1) { 
+		ecam.shutUpYou();
+	}
+}, 0, 0);
+
+setlistener("/controls/engines/engine[1]/fire-btn", func() { 
+	if (getprop("/controls/engines/engine[1]/fire-btn") == 1) { 
+		ecam.shutUpYou(); 
+	}
+}, 0, 0);
+
+setlistener("/controls/APU/fire-btn", func() { 
+	if (getprop("/controls/APU/fire-btn") == 1) { 
+		ecam.shutUpYou(); 
+	}
+}, 0, 0);
 
 setlistener("/controls/fire/test-btn-1", func() {
 	if (getprop("/systems/failures/engine-left-fire")) { return; }
@@ -500,7 +525,6 @@ setlistener("/controls/fire/test-btn-1", func() {
 
 setlistener("/controls/fire/test-btn-2", func() {
 	if (getprop("/systems/failures/engine-right-fire")) { return; }
-	
 	if (testBtn2.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			eng2FireWarn.setBoolValue(1);
@@ -536,11 +560,12 @@ var updateUnits = func() {
 		units.update();
 	}
 }
+
 ###################
 # Update Function #
 ###################
 
-var update_fire = func {
+var update_fire = func() {
 	master_fire();
 	updateUnits();
 }

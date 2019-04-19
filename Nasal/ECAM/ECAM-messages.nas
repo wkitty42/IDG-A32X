@@ -96,6 +96,12 @@ var warnings				  = std.Vector.new([
 	var eng2FireGnevacApu     = warning.new(msg: " -APU MASTER SW......OFF",  colour: "c"),
 	var eng2FireGnevacBat     = warning.new(msg: " -BAT 1+2............OFF",  colour: "c"),
 	
+	# APU FIRE
+	var apuFire               = warning.new(msg: "APU FIRE                ",  colour: "r", aural: 0, light: 0, hasSubmsg: 1, sdPage: "apu"),
+	var apuFirePB             = warning.new(msg: " -APU FIRE P/B......PUSH",  colour: "c"),
+	var apuFireAgent          = warning.new(msg: " -AGENT AFT 10 S...DISCH",  colour: "c"),
+	var apuFireMaster         = warning.new(msg: " -MASTER SW..........OFF",  colour: "c"),
+	
 	# Config
 	var slats_config          = warning.new(msg: "CONFIG",                    colour: "r", aural: 0, light: 0),
 	var slats_config_1        = warning.new(msg: "SLATS NOT IN T.O. CONFIG",  colour: "r", aural: 0, light: 0),
