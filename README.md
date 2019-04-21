@@ -14,4 +14,4 @@ Present pack includes the following Airbus A320 Family variants:
 - A320-271N
 
 ## Frequently Asked Questions
-For answers on frequently asked questions, refer to our [FAQ page](./FAQ.md).
+For answers on frequently asked questions, refer to our [FAQ page](https://github.com/it0uchpods/IDG-A32X/blob/master/FAQ.md).
