@@ -36,9 +36,14 @@ var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
+var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent-timer", 0, "INT");
+var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent-timer", 0, "INT");
+var apuAgentTimer = props.globals.initNode("/systems/fire/apu/agent-timer", 0, "INT");
 var wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 var dcbatNode = props.globals.getNode("systems/electrical/bus/dcbat", 1);
 var dcessNode = props.globals.getNode("systems/electrical/bus/dc-ess", 1);
+var apuBleedNode = props.globals.getNode("/systems/apu/bleed-used", 1);
+var apuMaster = props.globals.getNode("/controls/APU/master", 1);
 
 var fire_init = func {
 	setprop("/controls/OH/protectors/fwddisch", 0);
@@ -288,7 +293,18 @@ var engFireDetectorUnit = {
 		} elsif (system == 2) {
 			apuFireWarn.setBoolValue(1);
 			if (me.wow.getValue() == 1) {
-				extinguisherBottles.vector[4].discharge();
+				if (apuMaster.getBoolValue()) {
+					apuBleedNode.setValue(0);
+					apuMaster.setValue(0);
+					Listener = setlistener("/systems/apu/rpm", func() {
+						if (getprop("/systems/apu/rpm") == 0) {
+							extinguisherBottles.vector[4].discharge();
+							removelistener(Listener);
+						}
+					}, 0, 0);
+				} else {
+					extinguisherBottles.vector[4].discharge();
+				}
 			}
 		}
 	}
@@ -494,18 +510,54 @@ var createFireBottleListener = func(prop, fireBtnProp, index) {
 setlistener("/controls/engines/engine[0]/fire-btn", func() { 
 	if (getprop("/controls/engines/engine[0]/fire-btn") == 1) { 
 		ecam.shutUpYou();
+		eng1AgentTimer.setValue(10);
+		createAgentTimerListener(1);
 	}
 }, 0, 0);
+
+var createAgentTimerListener = func(agent) {
+	var elapsedList = setlistener("/sim/time/elapsed-sec", func() {
+		if (agent == 1) {
+			if (eng1AgentTimer != 1) {
+				eng1AgentTimer.setValue(eng1AgentTimer.getValue() - 1);
+			} else {
+				eng1AgentTimer.setValue(0);
+				removelistener(elapsedList);
+				removeListener(createAgentTimerListener);
+			}
+		} elsif (agent == 2) {
+			if (eng2AgentTimer != 1) {
+				eng2AgentTimer.setValue(eng2AgentTimer.getValue() - 1);
+			} else {
+				eng2AgentTimer.setValue(0);
+				removelistener(elapsedList);
+				removeListener(createAgentTimerListener);
+			}
+		} elsif (agent == 3) {
+			if (apuAgentTimer != 1) {
+				eng1AgentTimer.setValue(apuAgentTimer.getValue() - 1);
+			} else {
+				apuAgentTimer.setValue(0);
+				removelistener(elapsedList);
+				removeListener(createAgentTimerListener);
+			}
+		}
+	}, 0, 0);
+}
 
 setlistener("/controls/engines/engine[1]/fire-btn", func() { 
 	if (getprop("/controls/engines/engine[1]/fire-btn") == 1) { 
 		ecam.shutUpYou(); 
+		eng2AgentTimer.setValue(10);
+		createAgentTimerListener(2);
 	}
 }, 0, 0);
 
 setlistener("/controls/APU/fire-btn", func() { 
 	if (getprop("/controls/APU/fire-btn") == 1) { 
 		ecam.shutUpYou(); 
+		apuAgentTimer.setValue(10);
+		createAgentTimerListener(3);
 	}
 }, 0, 0);
 

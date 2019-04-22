@@ -99,7 +99,8 @@ var warnings				  = std.Vector.new([
 	# APU FIRE
 	var apuFire               = warning.new(msg: "APU FIRE                ",  colour: "r", aural: 0, light: 0, hasSubmsg: 1, sdPage: "apu"),
 	var apuFirePB             = warning.new(msg: " -APU FIRE P/B......PUSH",  colour: "c"),
-	var apuFireAgent          = warning.new(msg: " -AGENT AFT 10 S...DISCH",  colour: "c"),
+	var apuFireAgentTimer     = warning.new(msg: " -AGENT AFT 10 S...DISCH",  colour: "c"),
+	var apuFireAgent          = warning.new(msg: " -AGENT............DISCH",  colour: "c"),
 	var apuFireMaster         = warning.new(msg: " -MASTER SW..........OFF",  colour: "c"),
 	
 	# Config

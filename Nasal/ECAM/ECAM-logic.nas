@@ -221,31 +221,31 @@ var messages_priority_3 = func {
 	}
 	
 	# ENG FIRE
-	if (eng1FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine1/warning-active") == 1 and phaseVar >= 5 and phaseVar <= 7) {
+	if (eng1FireFlAgent2.clearFlag == 0 and getprop("/systems/failures/engine-left-fire") == 1 and phaseVar >= 5 and phaseVar <= 7) {
 		eng1FireFl.active = 1;
 	} else {
 		ECAM_controller.warningReset(eng1FireFl);
 	}
 	
-	if (eng1FireGnevacBat.clearFlag == 0 and getprop("/systems/fire/engine1/warning-active") == 1 and (phaseVar < 5 or phaseVar > 7)) {
+	if (eng1FireGnevacBat.clearFlag == 0 and getprop("/systems/failures/engine-left-fire") == 1 and (phaseVar < 5 or phaseVar > 7)) {
 		eng1FireGn.active = 1;
 	} else {
 		ECAM_controller.warningReset(eng1FireGn);
 	}
 	
-	if (eng2FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine2/warning-active") == 1 and phaseVar >= 5 and phaseVar <= 7) {
+	if (eng2FireFlAgent2.clearFlag == 0 and getprop("/systems/failures/engine-right-fire") == 1 and phaseVar >= 5 and phaseVar <= 7) {
 		eng2FireFl.active = 1;
 	} else {
 		ECAM_controller.warningReset(eng2FireFl);
 	}
 	
-	if (eng2FireGnevacBat.clearFlag == 0 and getprop("/systems/fire/engine2/warning-active") == 1 and (phaseVar < 5 or phaseVar > 7)) {
+	if (eng2FireGnevacBat.clearFlag == 0 and getprop("/systems/failures/engine-right-fire") == 1 and (phaseVar < 5 or phaseVar > 7)) {
 		eng2FireGn.active = 1;
 	} else {
 		ECAM_controller.warningReset(eng2FireGn);
 	}
 	
-	if (apuFireMaster.clearFlag == 0 and getprop("/systems/fire/apu/warning-active") == 1) {
+	if (apuFireMaster.clearFlag == 0 and getprop("/systems/failures/apu-fire") == 1) {
 		apuFire.active = 1;
 	} else {
 		ECAM_controller.warningReset(apuFire);
@@ -358,11 +358,19 @@ var messages_priority_3 = func {
 		} else {
 			ECAM_controller.warningReset(apuFirePB);
 		}
-		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch")) {
+		
+		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") != 0) {
+			apuFireAgentTimer.active = 1;
+		} else {
+			ECAM_controller.warningReset(apuFireAgentTimer);
+		}
+		
+		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") == 0) {
 			apuFireAgent.active = 1;
 		} else {
 			ECAM_controller.warningReset(apuFireAgent);
 		}
+		
 		if (apuFireMaster.clearFlag == 0 and getprop("/controls/APU/master")) {
 			apuFireMaster.active = 1;
 		} else {
@@ -370,6 +378,7 @@ var messages_priority_3 = func {
 		}
 	} else {
 		ECAM_controller.warningReset(apuFirePB);
+		ECAM_controller.warningReset(apuFireAgentTimer);
 		ECAM_controller.warningReset(apuFireAgent);
 		ECAM_controller.warningReset(apuFireMaster);
 	}
