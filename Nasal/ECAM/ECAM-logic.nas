@@ -252,9 +252,24 @@ var messages_priority_3 = func {
 	}
 	
 	if (eng1FireFl.active == 1) {
-		eng1FireFllever.active = 1;
-		eng1FireFlmaster.active = 1;
-		eng1FireFlPB.active = 1;
+		if (eng1FireFllever.clearFlag == 0 and getprop("/fdm/jsbsim/fcs/throttle-lever[0]") > 0.01) {
+			eng1FireFllever.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFllever);
+		}
+		
+		if (eng1FireFlmaster.clearFlag == 0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) {
+			eng1FireFlmaster.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFlmaster);
+		}
+		
+		if (eng1FireFlPB.clearFlag == 0 and getprop("/controls/engines/engine[0]/fire-btn") == 0) {
+			eng1FireFlPB.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFlPB);
+		}
+		
 		eng1FireFlAgent1.active = 1;
 		eng1FireFlATC.active = 1;
 		eng1FireFl30Sec.active = 1;
@@ -357,6 +372,10 @@ var messages_priority_3 = func {
 			apuFirePB.active = 1;
 		} else {
 			ECAM_controller.warningReset(apuFirePB);
+		}
+		
+		if (getprop("/systems/fire/apu/agent-timer") != 0 and getprop("/systems/fire/apu/agent-timer") != 99) {
+			apuFireAgentTimer.msg = " -AGENT AFT " ~ getprop("/systems/fire/apu/agent-timer") ~ " S...DISCH";
 		}
 		
 		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") != 0) {

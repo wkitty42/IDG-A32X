@@ -36,9 +36,12 @@ var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
-var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent-timer", 0, "INT");
-var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent-timer", 0, "INT");
-var apuAgentTimer = props.globals.initNode("/systems/fire/apu/agent-timer", 0, "INT");
+var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent-timer", 99, "INT");
+var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent-timer", 99, "INT");
+var apuAgentTimer = props.globals.initNode("/systems/fire/apu/agent-timer", 99, "INT");
+var eng1AgentTimerTime = props.globals.initNode("/systems/fire/engine1/agent-timer-time", 0, "INT");
+var eng2AgentTimerTime = props.globals.initNode("/systems/fire/engine2/agent-timer-time", 0, "INT");
+var apuAgentTimerTime = props.globals.initNode("/systems/fire/apu/agent-timer-time", 0, "INT");
 var wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 var dcbatNode = props.globals.getNode("systems/electrical/bus/dcbat", 1);
 var dcessNode = props.globals.getNode("systems/electrical/bus/dc-ess", 1);
@@ -221,13 +224,15 @@ var engFireDetectorUnit = {
 	loopOne: 0,
 	loopTwo: 0,
 	condition: 100,
+	fireProp: "",
 	wow: "",
-	new: func(sys) {
+	new: func(sys, fireProp) {
 		var eF = {parents:[engFireDetectorUnit]};
 		eF.sys = sys;
 		eF.active = 0;
 		eF.loopOne = 0;
 		eF.loopTwo = 0;
+		eF.fireProp = props.globals.getNode(fireProp, 1);
 		eF.wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 		return eF;
 	},
@@ -236,6 +241,12 @@ var engFireDetectorUnit = {
 		
 		foreach(var detector; detectorLoops.vector) {
 			detector.updateTemp(detector.sys, detector.type);
+		}
+		
+		if (me.fireProp.getValue() == 0) {
+			me.loopOne = 0;
+			me.loopTwo = 0;
+			return;
 		}
 		
 		if ((me.loopOne == 1 and me.loopTwo == 1) or ((me.loopOne == 9 or me.loopOne == 8) and me.loopTwo == 1)  or (me.loopOne == 1 and (me.loopTwo == 9 or me.loopTwo == 8))) {
@@ -295,13 +306,8 @@ var engFireDetectorUnit = {
 			if (me.wow.getValue() == 1) {
 				if (apuMaster.getBoolValue()) {
 					apuBleedNode.setValue(0);
-					apuMaster.setValue(0);
-					Listener = setlistener("/systems/apu/rpm", func() {
-						if (getprop("/systems/apu/rpm") == 0) {
-							extinguisherBottles.vector[4].discharge();
-							removelistener(Listener);
-						}
-					}, 0, 0);
+					systems.apu_stop();
+					extinguisherBottles.vector[4].discharge();
 				} else {
 					extinguisherBottles.vector[4].discharge();
 				}
@@ -315,13 +321,14 @@ var detectorLoop = {
 	type: 0,
 	temperature: "",
 	elecProp: "",
-	new: func(sys, type, temperature, elecProp) {
+	fireProp: "",
+	new: func(sys, type, temperature, elecProp, fireProp) {
 		var dL = {parents:[detectorLoop]};
 		dL.sys = sys;
 		dL.type = type;
 		dL.temperature = temperature;
 		dL.elecProp = props.globals.getNode(elecProp, 1);
-		
+		dL.fireProp = props.globals.getNode(fireProp, 1);
 		return dL;
 	},
 	updateTemp: func(system, typeLoop) {
@@ -331,7 +338,7 @@ var detectorLoop = {
 		
 		if (typeLoop == 1) { index += 1 }
 		
-		if (propsNasFire.vector[index].getValue() > 250 and me.elecProp.getValue() >= 25) {
+		if ((propsNasFire.vector[index].getValue() > 250 and me.fireProp.getBoolValue()) and me.elecProp.getValue() >= 25) {
 			me.sendSignal(system, typeLoop);
 		} elsif (me.elecProp.getValue() < 25) {
 			engFireDetectorUnits.vector[system].noElec(typeLoop);
@@ -366,7 +373,7 @@ var extinguisherBottle = {
 		return eB;
 	},
 	emptyBottle: func() {
-		me.quantity -= 1;
+		me.quantity -= 5;
 		if (me.quantity > 0) { 
 			settimer(func() {
 				me.emptyBottle()
@@ -472,13 +479,13 @@ var fireTimer3 = maketimer(0.25, checkTimeFire3);
 fireTimer3.simulatedTime = 1;
 
 # Create engine fire systems
-var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0), engFireDetectorUnit.new(1), engFireDetectorUnit.new(2) ]);
+var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0, "/systems/failures/engine-left-fire"), engFireDetectorUnit.new(1, "/systems/failures/engine-right-fire"), engFireDetectorUnit.new(2, "/systems/failures/apu-fire") ]);
 
 # Create detector loops
 var detectorLoops = std.Vector.new([ 
-detectorLoop.new(0, 1, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc-ess"), detectorLoop.new(0, 2, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc2"),
-detectorLoop.new(1, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc2"),    detectorLoop.new(1, 2, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc-ess"),
-detectorLoop.new(2, 1, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat"),      detectorLoop.new(2, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat") 
+detectorLoop.new(0, 1, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc-ess", "/systems/failures/engine-left-fire"),  detectorLoop.new(0, 2, "/systems/fire/engine1/temperature", "/systems/electrical/bus/dc2", "/systems/failures/engine-left-fire"),
+detectorLoop.new(1, 1, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc2", "/systems/failures/engine-right-fire"),    detectorLoop.new(1, 2, "/systems/fire/engine2/temperature", "/systems/electrical/bus/dc-ess", "/systems/failures/engine-right-fire"),
+detectorLoop.new(2, 1, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat", "/systems/failures/apu-fire"),               detectorLoop.new(2, 2, "/systems/fire/apu/temperature", "/systems/electrical/bus/dcbat", "/systems/failures/apu-fire") 
 ]);
 
 # Create extinguisher bottles
@@ -510,56 +517,65 @@ var createFireBottleListener = func(prop, fireBtnProp, index) {
 setlistener("/controls/engines/engine[0]/fire-btn", func() { 
 	if (getprop("/controls/engines/engine[0]/fire-btn") == 1) { 
 		ecam.shutUpYou();
+		eng1AgentTimerMakeTimer.stop();
 		eng1AgentTimer.setValue(10);
-		createAgentTimerListener(1);
+		eng1AgentTimerTime.setValue(elapsedTime.getValue() + 10);
+		eng1AgentTimerMakeTimer.start();
 	}
 }, 0, 0);
 
-var createAgentTimerListener = func(agent) {
-	var elapsedList = setlistener("/sim/time/elapsed-sec", func() {
-		if (agent == 1) {
-			if (eng1AgentTimer != 1) {
-				eng1AgentTimer.setValue(eng1AgentTimer.getValue() - 1);
-			} else {
-				eng1AgentTimer.setValue(0);
-				removelistener(elapsedList);
-				removeListener(createAgentTimerListener);
-			}
-		} elsif (agent == 2) {
-			if (eng2AgentTimer != 1) {
-				eng2AgentTimer.setValue(eng2AgentTimer.getValue() - 1);
-			} else {
-				eng2AgentTimer.setValue(0);
-				removelistener(elapsedList);
-				removeListener(createAgentTimerListener);
-			}
-		} elsif (agent == 3) {
-			if (apuAgentTimer != 1) {
-				eng1AgentTimer.setValue(apuAgentTimer.getValue() - 1);
-			} else {
-				apuAgentTimer.setValue(0);
-				removelistener(elapsedList);
-				removeListener(createAgentTimerListener);
-			}
-		}
-	}, 0, 0);
+eng1AgentTimerMakeTimerFunc = func() {
+	if (eng1AgentTimer.getValue() > 0) {
+		var eng1Time = eng1AgentTimerTime.getValue();
+		var etEng1 = elapsedTime.getValue();
+		var timeToSetEng1 = eng1Time - etEng1;
+		eng1AgentTimer.setValue(timeToSetEng1);
+	} else {
+		eng1AgentTimerMakeTimer.stop();
+	}
 }
 
 setlistener("/controls/engines/engine[1]/fire-btn", func() { 
 	if (getprop("/controls/engines/engine[1]/fire-btn") == 1) { 
 		ecam.shutUpYou(); 
+		eng2AgentTimerMakeTimer.stop();
 		eng2AgentTimer.setValue(10);
-		createAgentTimerListener(2);
+		eng2AgentTimerTime.setValue(elapsedTime.getValue() + 10);
+		eng2AgentTimerMakeTimer.start();
 	}
 }, 0, 0);
+
+eng2AgentTimerMakeTimerFunc = func() {
+	if (eng2AgentTimer.getValue() > 0) {
+		var eng2Time = eng2AgentTimerTime.getValue();
+		var etEng2 = elapsedTime.getValue();
+		var timeToSetEng2 = eng2Time - etEng2;
+		eng2AgentTimer.setValue(timeToSetEng2);
+	} else {
+		eng2AgentTimerMakeTimer.stop();
+	}
+}
 
 setlistener("/controls/APU/fire-btn", func() { 
 	if (getprop("/controls/APU/fire-btn") == 1) { 
 		ecam.shutUpYou(); 
+		apuAgentTimerMakeTimer.stop();
 		apuAgentTimer.setValue(10);
-		createAgentTimerListener(3);
+		apuAgentTimerTime.setValue(elapsedTime.getValue() + 11);
+		apuAgentTimerMakeTimer.start();
 	}
 }, 0, 0);
+
+apuAgentTimerMakeTimerFunc = func() {
+	if (apuAgentTimer.getValue() > 0) {
+		var apuTime = apuAgentTimerTime.getValue();
+		var etApu = elapsedTime.getValue();
+		var timeToSetApu = apuTime - etApu;
+		apuAgentTimer.setValue(timeToSetApu);
+	} else {
+		apuAgentTimerMakeTimer.stop();
+	}
+}
 
 setlistener("/controls/fire/test-btn-1", func() {
 	if (getprop("/systems/failures/engine-left-fire")) { return; }
@@ -623,3 +639,6 @@ var update_fire = func() {
 }
 
 var fire_timer = maketimer(0.2, update_fire);
+var eng1AgentTimerMakeTimer = maketimer(0.1, eng1AgentTimerMakeTimerFunc);
+var eng2AgentTimerMakeTimer = maketimer(0.1, eng2AgentTimerMakeTimerFunc);
+var apuAgentTimerMakeTimer = maketimer(0.1, apuAgentTimerMakeTimerFunc);

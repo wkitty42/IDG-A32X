@@ -54,7 +54,7 @@ var warnings				  = std.Vector.new([
 	
 	# ENG 1 FIRE (ground)
 	var eng1FireGn            = warning.new(msg: "ENG 1 FIRE",                colour: "r", aural: 0, light: 0, hasSubmsg: 1),
-	var eng1FireGnlever       = warning.new(msg: " -THR LEVER 1.......IDLE",  colour: "c"),
+	var eng1FireGnlever       = warning.new(msg: " -THR LEVERS........IDLE",  colour: "c"),
 	var eng1FireGnstopped     = warning.new(msg: "  •WHEN A/C IS STOPPED:",   colour: "w"),
 	var eng1FireGnparkbrk     = warning.new(msg: " -PARKING BRK.........ON",  colour: "c"),
 	var eng1FireGnmaster      = warning.new(msg: " -ENG MASTER 1.......OFF",  colour: "c"),
@@ -81,11 +81,11 @@ var warnings				  = std.Vector.new([
 	
 	# ENG 2 FIRE (ground)
 	var eng2FireGn            = warning.new(msg: "ENG 2 FIRE",                colour: "r", aural: 0, light: 0, hasSubmsg: 1),
-	var eng2FireGnlever       = warning.new(msg: " -THR LEVER 2.......IDLE",  colour: "c"),
+	var eng2FireGnlever       = warning.new(msg: " -THR LEVERS........IDLE",  colour: "c"),
 	var eng2FireGnstopped     = warning.new(msg: "  •WHEN A/C IS STOPPED:",   colour: "w"),
 	var eng2FireGnparkbrk     = warning.new(msg: " -PARKING BRK.........ON",  colour: "c"),
 	var eng2FireGnmaster      = warning.new(msg: " -ENG MASTER 2.......OFF",  colour: "c"),
-	var eng2FireGnPB          = warning.new(msg: " -ENG 1 FIRE P/B....PUSH",  colour: "c"),
+	var eng2FireGnPB          = warning.new(msg: " -ENG 2 FIRE P/B....PUSH",  colour: "c"),
 	var eng2FireGnAgent1      = warning.new(msg: " -AGENT 1..........DISCH",  colour: "c"),
 	var eng2FireGnAgent2      = warning.new(msg: " -AGENT 2..........DISCH",  colour: "c"),
 	var eng2FireGnmaster2     = warning.new(msg: " -ENG MASTER 1.......OFF",  colour: "c"),
