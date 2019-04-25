@@ -36,11 +36,15 @@ var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
-var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent-timer", 99, "INT");
-var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent-timer", 99, "INT");
+var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent1-timer", 99, "INT");
+var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent1-timer", 99, "INT");
+var eng1Agent2Timer = props.globals.initNode("/systems/fire/engine1/agent2-timer", 99, "INT");
+var eng2Agent2Timer = props.globals.initNode("/systems/fire/engine2/agent2-timer", 99, "INT");
 var apuAgentTimer = props.globals.initNode("/systems/fire/apu/agent-timer", 99, "INT");
-var eng1AgentTimerTime = props.globals.initNode("/systems/fire/engine1/agent-timer-time", 0, "INT");
-var eng2AgentTimerTime = props.globals.initNode("/systems/fire/engine2/agent-timer-time", 0, "INT");
+var eng1AgentTimerTime = props.globals.initNode("/systems/fire/engine1/agent1-timer-time", 0, "INT");
+var eng2AgentTimerTime = props.globals.initNode("/systems/fire/engine2/agent1-timer-time", 0, "INT");
+var eng1Agent2TimerTime = props.globals.initNode("/systems/fire/engine1/agent2-timer-time", 0, "INT");
+var eng2Agent2TimerTime = props.globals.initNode("/systems/fire/engine2/agent2-timer-time", 0, "INT");
 var apuAgentTimerTime = props.globals.initNode("/systems/fire/apu/agent-timer-time", 0, "INT");
 var wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 var dcbatNode = props.globals.getNode("systems/electrical/bus/dcbat", 1);
@@ -373,7 +377,7 @@ var extinguisherBottle = {
 		return eB;
 	},
 	emptyBottle: func() {
-		me.quantity -= 5;
+		me.quantity -= 10;
 		if (me.quantity > 0) { 
 			settimer(func() {
 				me.emptyBottle()
@@ -519,8 +523,17 @@ setlistener("/controls/engines/engine[0]/fire-btn", func() {
 		ecam.shutUpYou();
 		eng1AgentTimerMakeTimer.stop();
 		eng1AgentTimer.setValue(10);
-		eng1AgentTimerTime.setValue(elapsedTime.getValue() + 10);
+		eng1AgentTimerTime.setValue(elapsedTime.getValue() + 11);
 		eng1AgentTimerMakeTimer.start();
+	}
+}, 0, 0);
+
+setlistener("/systems/fire/engine1/disch1", func() {
+	if (getprop("/systems/fire/engine1/disch1") == 1) {
+		eng1Agent2TimerMakeTimer.stop();
+		eng1Agent2Timer.setValue(30);
+		eng1Agent2TimerTime.setValue(elapsedTime.getValue() + 31);
+		eng1Agent2TimerMakeTimer.start();
 	}
 }, 0, 0);
 
@@ -535,13 +548,33 @@ eng1AgentTimerMakeTimerFunc = func() {
 	}
 }
 
+eng1Agent2TimerMakeTimerFunc = func() {
+	if (eng1Agent2Timer.getValue() > 0) {
+		var eng1Time2 = eng1AgentTimerTime.getValue();
+		var etEng12 = elapsedTime.getValue();
+		var timeToSetEng12 = eng1Time2 - etEng12;
+		eng1Agent2Timer.setValue(timeToSetEng12);
+	} else {
+		eng1Agent2TimerMakeTimer.stop();
+	}
+}
+
 setlistener("/controls/engines/engine[1]/fire-btn", func() { 
 	if (getprop("/controls/engines/engine[1]/fire-btn") == 1) { 
 		ecam.shutUpYou(); 
 		eng2AgentTimerMakeTimer.stop();
 		eng2AgentTimer.setValue(10);
-		eng2AgentTimerTime.setValue(elapsedTime.getValue() + 10);
+		eng2AgentTimerTime.setValue(elapsedTime.getValue() + 11);
 		eng2AgentTimerMakeTimer.start();
+	}
+}, 0, 0);
+
+setlistener("/systems/fire/engine2/disch1", func() {
+	if (getprop("/systems/fire/engine2/disch1") == 1) {
+		eng2Agent2TimerMakeTimer.stop();
+		eng2Agent2Timer.setValue(30);
+		eng2Agent2TimerTime.setValue(elapsedTime.getValue() + 31);
+		eng2Agent2TimerMakeTimer.start();
 	}
 }, 0, 0);
 
@@ -553,6 +586,17 @@ eng2AgentTimerMakeTimerFunc = func() {
 		eng2AgentTimer.setValue(timeToSetEng2);
 	} else {
 		eng2AgentTimerMakeTimer.stop();
+	}
+}
+
+eng2Agent2TimerMakeTimerFunc = func() {
+	if (eng2Agent2Timer.getValue() > 0) {
+		var eng2Time2 = eng2AgentTimerTime.getValue();
+		var etEng22 = elapsedTime.getValue();
+		var timeToSetEng22 = eng2Time2 - etEng22;
+		eng2Agent2Timer.setValue(timeToSetEng22);
+	} else {
+		eng2Agent2TimerMakeTimer.stop();
 	}
 }
 
@@ -641,4 +685,6 @@ var update_fire = func() {
 var fire_timer = maketimer(0.2, update_fire);
 var eng1AgentTimerMakeTimer = maketimer(0.1, eng1AgentTimerMakeTimerFunc);
 var eng2AgentTimerMakeTimer = maketimer(0.1, eng2AgentTimerMakeTimerFunc);
+var eng1Agent2TimerMakeTimer = maketimer(0.1, eng1Agent2TimerMakeTimerFunc);
+var eng2Agent2TimerMakeTimer = maketimer(0.1, eng2Agent2TimerMakeTimerFunc);
 var apuAgentTimerMakeTimer = maketimer(0.1, apuAgentTimerMakeTimerFunc);

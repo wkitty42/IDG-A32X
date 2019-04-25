@@ -270,10 +270,39 @@ var messages_priority_3 = func {
 			ECAM_controller.warningReset(eng1FireFlPB);
 		}
 		
-		eng1FireFlAgent1.active = 1;
-		eng1FireFlATC.active = 1;
-		eng1FireFl30Sec.active = 1;
-		eng1FireFlAgent2.active = 1;
+		if (getprop("/systems/fire/engine1/agent1-timer") != 0 and getprop("/systems/fire/engine1/agent1-timer") != 99) {
+			eng1FireFlAgent1Timer.msg = " -AGENT AFT " ~ getprop("/systems/fire/engine1/agent1-timer") ~ " S...DISCH";
+		}
+		
+		if (eng1FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine1/disch1") and getprop("/systems/fire/engine1/agent1-timer") != 0 and getprop("/systems/fire/engine1/agent1-timer") != 99) {
+			eng1FireFlAgent1Timer.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFlAgent1Timer);
+		}
+		
+		if (eng1FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine1/disch1") and (getprop("/systems/fire/engine1/agent1-timer") == 0 or getprop("/systems/fire/engine1/agent1-timer") == 99)) {
+			eng1FireFlAgent1.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFlAgent1);
+		}
+		
+		if (eng1FireFlATC.clearFlag == 0) {
+			eng1FireFlATC.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFlATC);
+		}
+		
+		if (getprop("/systems/fire/engine1/agent2-timer") != 0 and getprop("/systems/fire/engine1/agent2-timer") != 99) {
+			eng1FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine1/agent2-timer") ~ " S:";
+		}
+		
+		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2")) {
+			eng1FireFl30Sec.active = 1;
+			eng1FireFlAgent2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireFl30Sec);
+			ECAM_controller.warningReset(eng1FireFlAgent2);
+		}
 	} else {
 		ECAM_controller.warningReset(eng1FireFllever);
 		ECAM_controller.warningReset(eng1FireFlmaster);
@@ -317,13 +346,57 @@ var messages_priority_3 = func {
 	}
 	
 	if (eng2FireFl.active == 1) {
-		eng2FireFllever.active = 1;
-		eng2FireFlmaster.active = 1;
-		eng2FireFlPB.active = 1;
-		eng2FireFlAgent1.active = 1;
-		eng2FireFlATC.active = 1;
-		eng2FireFl30Sec.active = 1;
-		eng2FireFlAgent2.active = 1;
+		if (eng2FireFllever.clearFlag == 0 and getprop("/fdm/jsbsim/fcs/throttle-lever[1]") > 0.01) {
+			eng2FireFllever.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFllever);
+		}
+		
+		if (eng2FireFlmaster.clearFlag == 0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) {
+			eng2FireFlmaster.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFlmaster);
+		}
+		
+		if (eng2FireFlPB.clearFlag == 0 and getprop("/controls/engines/engine[1]/fire-btn") == 0) {
+			eng2FireFlPB.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFlPB);
+		}
+		
+		if (getprop("/systems/fire/engine2/agent1-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
+			eng2FireFlAgent1Timer.msg = " -AGENT AFT " ~ getprop("/systems/fire/engine2/agent1-timer") ~ " S...DISCH";
+		}
+		
+		if (eng2FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1") and getprop("/systems/fire/engine1/agent2-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
+			eng2FireFlAgent1Timer.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFlAgent1Timer);
+		}
+		
+		if (eng2FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1") and (getprop("/systems/fire/engine2/agent1-timer") == 0 or getprop("/systems/fire/engine2/agent1-timer") == 99)) {
+			eng2FireFlAgent1.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFlAgent1);
+		}
+		
+		if (eng2FireFlATC.clearFlag == 0) {
+			eng2FireFlATC.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFlATC);
+		}
+		
+		if (getprop("/systems/fire/engine2/agent2-timer") != 0 and getprop("/systems/fire/engine2/agent2-timer") != 99) {
+			eng2FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine2/agent2-timer") ~ " S:";
+		}
+		
+		if (eng2FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2")) {
+			eng2FireFl30Sec.active = 1;
+			eng2FireFlAgent2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFl30Sec);
+			ECAM_controller.warningReset(eng2FireFlAgent2);
+		}
 	} else {
 		ECAM_controller.warningReset(eng2FireFllever);
 		ECAM_controller.warningReset(eng2FireFlmaster);

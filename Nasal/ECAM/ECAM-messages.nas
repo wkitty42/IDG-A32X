@@ -47,9 +47,10 @@ var warnings				  = std.Vector.new([
 	var eng1FireFllever       = warning.new(msg: " -THR LEVER 1.......IDLE",  colour: "c"),
 	var eng1FireFlmaster      = warning.new(msg: " -ENG MASTER 1.......OFF",  colour: "c"),
 	var eng1FireFlPB          = warning.new(msg: " -ENG 1 FIRE P/B....PUSH",  colour: "c"),
-	var eng1FireFlAgent1      = warning.new(msg: " -AGENT 1 AFT 10 S.DISCH",  colour: "w"),
+	var eng1FireFlAgent1Timer = warning.new(msg: " -AGENT 1 AFT 10 S.DISCH",  colour: "w"),
+	var eng1FireFlAgent1      = warning.new(msg: " -AGENT 1..........DISCH",  colour: "c"),
 	var eng1FireFlATC         = warning.new(msg: " -ATC.............NOTIFY",  colour: "c"),
-	var eng1FireFl30Sec       = warning.new(msg: "  •IF FIRE AFTER 30 S:",    colour: "w"),
+	var eng1FireFl30Sec       = warning.new(msg: "  •IF FIRE AFTER 30 S:",    colour: "w", hasSubmsg: 1),
 	var eng1FireFlAgent2      = warning.new(msg: " -AGENT 2..........DISCH",  colour: "c"),
 	
 	# ENG 1 FIRE (ground)
