@@ -250,6 +250,7 @@ var engFireDetectorUnit = {
 		if (me.fireProp.getValue() == 0) {
 			me.loopOne = 0;
 			me.loopTwo = 0;
+			me.reset(me.sys);
 			return;
 		}
 		
@@ -316,6 +317,15 @@ var engFireDetectorUnit = {
 					extinguisherBottles.vector[4].discharge();
 				}
 			}
+		}
+	},
+	reset: func(system) {
+		if (system == 0) {
+			eng1FireWarn.setBoolValue(0);
+		} elsif (system == 1) {
+			eng2FireWarn.setBoolValue(0);
+		} elsif (system == 2) {
+			apuFireWarn.setBoolValue(0);
 		}
 	}
 };
