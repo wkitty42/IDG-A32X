@@ -386,12 +386,12 @@ var extinguisherBottle = {
 			me.lightProp.setValue(1);
 			# make things interesting. If your fire won't go out you should play the lottery
 			if (me.number == 0) {
-				if (rand() < 0.75) { 
+				if (rand() < 0.90) { 
 					me.failProp.setValue(0);
 					me.warningProp.setValue(0);
 				}
 			} elsif (me.number == 1) {
-				if (rand() < 0.98) {
+				if (rand() < 0.999) {
 					me.failProp.setValue(0);
 					me.warningProp.setValue(0);
 				}
@@ -550,7 +550,7 @@ eng1AgentTimerMakeTimerFunc = func() {
 
 eng1Agent2TimerMakeTimerFunc = func() {
 	if (eng1Agent2Timer.getValue() > 0) {
-		var eng1Time2 = eng1AgentTimerTime.getValue();
+		var eng1Time2 = eng1Agent2TimerTime.getValue();
 		var etEng12 = elapsedTime.getValue();
 		var timeToSetEng12 = eng1Time2 - etEng12;
 		eng1Agent2Timer.setValue(timeToSetEng12);
@@ -591,7 +591,7 @@ eng2AgentTimerMakeTimerFunc = func() {
 
 eng2Agent2TimerMakeTimerFunc = func() {
 	if (eng2Agent2Timer.getValue() > 0) {
-		var eng2Time2 = eng2AgentTimerTime.getValue();
+		var eng2Time2 = eng2Agent2TimerTime.getValue();
 		var etEng22 = elapsedTime.getValue();
 		var timeToSetEng22 = eng2Time2 - etEng22;
 		eng2Agent2Timer.setValue(timeToSetEng22);

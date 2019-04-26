@@ -296,11 +296,15 @@ var messages_priority_3 = func {
 			eng1FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine1/agent2-timer") ~ " S:";
 		}
 		
-		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2")) {
+		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2") and getprop("/systems/fire/engine1/agent2-timer") > 0) {
 			eng1FireFl30Sec.active = 1;
-			eng1FireFlAgent2.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng1FireFl30Sec);
+		}
+		
+		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2")) {
+			eng1FireFlAgent2.active = 1;
+		} else {
 			ECAM_controller.warningReset(eng1FireFlAgent2);
 		}
 	} else {
@@ -368,7 +372,7 @@ var messages_priority_3 = func {
 			eng2FireFlAgent1Timer.msg = " -AGENT AFT " ~ getprop("/systems/fire/engine2/agent1-timer") ~ " S...DISCH";
 		}
 		
-		if (eng2FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1") and getprop("/systems/fire/engine1/agent2-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
+		if (eng2FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1") and getprop("/systems/fire/engine2/agent1-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
 			eng2FireFlAgent1Timer.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng2FireFlAgent1Timer);
@@ -387,14 +391,18 @@ var messages_priority_3 = func {
 		}
 		
 		if (getprop("/systems/fire/engine2/agent2-timer") != 0 and getprop("/systems/fire/engine2/agent2-timer") != 99) {
-			eng2FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine2/agent2-timer") ~ " S:";
+			eng1FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine2/agent2-timer") ~ " S:";
+		}
+		
+		if (eng2FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2") and getprop("/systems/fire/engine2/agent2-timer") > 0) {
+			eng2FireFl30Sec.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireFl30Sec);
 		}
 		
 		if (eng2FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2")) {
-			eng2FireFl30Sec.active = 1;
 			eng2FireFlAgent2.active = 1;
 		} else {
-			ECAM_controller.warningReset(eng2FireFl30Sec);
 			ECAM_controller.warningReset(eng2FireFlAgent2);
 		}
 	} else {
