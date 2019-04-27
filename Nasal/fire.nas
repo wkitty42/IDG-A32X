@@ -230,13 +230,14 @@ var engFireDetectorUnit = {
 	condition: 100,
 	fireProp: "",
 	wow: "",
-	new: func(sys, fireProp) {
+	new: func(sys, fireProp, testProp) {
 		var eF = {parents:[engFireDetectorUnit]};
 		eF.sys = sys;
 		eF.active = 0;
 		eF.loopOne = 0;
 		eF.loopTwo = 0;
 		eF.fireProp = props.globals.getNode(fireProp, 1);
+		eF.testProp = props.globals.getNode(testProp, 1);
 		eF.wow = props.globals.getNode("/fdm/jsbsim/position/wow", 1);
 		return eF;
 	},
@@ -247,7 +248,7 @@ var engFireDetectorUnit = {
 			detector.updateTemp(detector.sys, detector.type);
 		}
 		
-		if (me.fireProp.getValue() == 0) {
+		if (me.fireProp.getValue() == 0 and me.testProp.getValue() == 0 and (me.loopOne != 9 and me.loopOne != 8) and (me.loopTwo != 9 and me.loopTwo != 8)) {
 			me.loopOne = 0;
 			me.loopTwo = 0;
 			me.reset(me.sys);
@@ -493,7 +494,7 @@ var fireTimer3 = maketimer(0.25, checkTimeFire3);
 fireTimer3.simulatedTime = 1;
 
 # Create engine fire systems
-var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0, "/systems/failures/engine-left-fire"), engFireDetectorUnit.new(1, "/systems/failures/engine-right-fire"), engFireDetectorUnit.new(2, "/systems/failures/apu-fire") ]);
+var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0, "/systems/failures/engine-left-fire", "/controls/fire/test-btn-1"), engFireDetectorUnit.new(1, "/systems/failures/engine-right-fire", "/controls/fire/test-btn-2"), engFireDetectorUnit.new(2, "/systems/failures/apu-fire", "/controls/fire/apu-test-btn") ]);
 
 # Create detector loops
 var detectorLoops = std.Vector.new([ 
@@ -637,11 +638,10 @@ setlistener("/controls/fire/test-btn-1", func() {
 	if (testBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			eng1FireWarn.setBoolValue(1);
-		} else {
-			eng1FireWarn.setBoolValue(0);
 		}
 	} else {
 		eng1FireWarn.setBoolValue(0);
+		ecam.shutUpYou();
 	}
 }, 0, 0);
 
@@ -650,11 +650,10 @@ setlistener("/controls/fire/test-btn-2", func() {
 	if (testBtn2.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			eng2FireWarn.setBoolValue(1);
-		} else {
-			eng2FireWarn.setBoolValue(0);
 		}
 	} else {
 		eng2FireWarn.setBoolValue(0);
+		ecam.shutUpYou();
 	}
 }, 0, 0);
 
@@ -663,11 +662,10 @@ setlistener("/controls/fire/apu-test-btn", func() {
 	if (apuTestBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			apuFireWarn.setBoolValue(1);
-		} else {
-			apuFireWarn.setBoolValue(0);
 		}
 	} else {
 		apuFireWarn.setBoolValue(0);
+		ecam.shutUpYou();
 	}
 }, 0, 0);
 
