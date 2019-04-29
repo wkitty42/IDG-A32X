@@ -398,18 +398,24 @@ var extinguisherBottle = {
 			# make things interesting. If your fire won't go out you should play the lottery
 			if (me.number == 0) {
 				if (rand() < 0.90) { 
-					me.failProp.setValue(0);
-					me.warningProp.setValue(0);
+					settimer(func() {
+						me.failProp.setValue(0);
+						me.warningProp.setValue(0);
+					}, rand() * 3);
 				}
 			} elsif (me.number == 1) {
 				if (rand() < 0.999) {
-					me.failProp.setValue(0);
-					me.warningProp.setValue(0);
+					settimer(func() {
+						me.failProp.setValue(0);
+						me.warningProp.setValue(0);
+					}, rand() * 3);
 				}
 			} elsif (me.number == 9) {
 				if (rand() <= 0.999) {
-					me.failProp.setValue(0);
-					me.warningProp.setValue(0);
+					settimer(func() {
+						me.failProp.setValue(0);
+						me.warningProp.setValue(0);
+					}, rand() * 3);
 				}
 			}
 		}

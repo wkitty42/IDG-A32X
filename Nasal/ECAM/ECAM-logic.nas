@@ -274,7 +274,7 @@ var messages_priority_3 = func {
 			eng1FireFlAgent1Timer.msg = " -AGENT AFT " ~ getprop("/systems/fire/engine1/agent1-timer") ~ " S...DISCH";
 		}
 		
-		if (eng1FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine1/disch1") and getprop("/systems/fire/engine1/agent1-timer") != 0 and getprop("/systems/fire/engine1/agent1-timer") != 99) {
+		if (eng1FireFlAgent1.clearFlag == 0 and getprop("/controls/engines/engine[0]/fire-btn") == 1 and !getprop("/systems/fire/engine1/disch1") and getprop("/systems/fire/engine1/agent1-timer") != 0 and getprop("/systems/fire/engine1/agent1-timer") != 99) {
 			eng1FireFlAgent1Timer.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng1FireFlAgent1Timer);
@@ -296,13 +296,13 @@ var messages_priority_3 = func {
 			eng1FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine1/agent2-timer") ~ " S:";
 		}
 		
-		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2") and getprop("/systems/fire/engine1/agent2-timer") > 0) {
+		if (eng1FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine1/disch1") and !getprop("/systems/fire/engine1/disch2") and getprop("/systems/fire/engine1/agent2-timer") > 0) {
 			eng1FireFl30Sec.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng1FireFl30Sec);
 		}
 		
-		if (eng1FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2")) {
+		if (eng1FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine1/disch1") and !getprop("/systems/fire/engine1/disch2")) {
 			eng1FireFlAgent2.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng1FireFlAgent2);
@@ -318,20 +318,81 @@ var messages_priority_3 = func {
 	}
 	
 	if (eng1FireGn.active == 1) {
-		eng1FireGnlever.active = 1;
-		eng1FireGnstopped.active = 1;
-		eng1FireGnparkbrk.active = 1;
-		eng1FireGnmaster.active = 1;
-		eng1FireGnPB.active = 1;
-		eng1FireGnAgent1.active = 1;
-		eng1FireGnAgent2.active = 1;
-		eng1FireGnmaster2.active = 1;
-		eng1FireGnATC.active = 1;
-		eng1FireGncrew.active = 1;
-		eng1FireGnevac.active = 1;
-		eng1FireGnevacSw.active = 1;
-		eng1FireGnevacApu.active = 1;
-		eng1FireGnevacBat.active = 1;
+		if (eng1FireGnlever.clearFlag == 0 and getprop("/fdm/jsbsim/fcs/throttle-lever[0]") > 0.01 and getprop("/fdm/jsbsim/fcs/throttle-lever[1]") > 0.01) {
+			eng1FireGnlever.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnlever);
+		}
+		
+		if (eng1FireGnparkbrk.clearFlag == 0 and getprop("/controls/gear/brake-parking") == 0) { 
+			eng1FireGnstopped.active = 1;
+			eng1FireGnparkbrk.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnstopped);
+			ECAM_controller.warningReset(eng1FireGnparkbrk);
+		}
+		
+		if (eng1FireGnmaster.clearFlag == 0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) {
+			eng1FireGnmaster.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnmaster);
+		}
+		
+		if (eng1FireGnPB.clearFlag == 0 and getprop("/controls/engines/engine[0]/fire-btn") == 0) {
+			eng1FireGnPB.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnPB);
+		}
+		
+		if (eng1FireGnAgent1.clearFlag == 0 and !getprop("/systems/fire/engine1/disch1")) {
+			eng1FireGnAgent1.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnAgent1);
+		}
+		
+		if (eng1FireGnAgent2.clearFlag == 0 and !getprop("/systems/fire/engine1/disch2")) {
+			eng1FireGnAgent2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnAgent2);
+		}
+		
+		if (eng1FireGnmaster2.clearFlag == 0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) {
+			eng1FireGnmaster2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnmaster2);
+		}
+		
+		if (eng1FireGnATC.clearFlag == 0) {
+			eng1FireGnATC.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnATC);
+		}
+		
+		if (eng1FireGncrew.clearFlag == 0) {
+			eng1FireGncrew.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGncrew);
+		}
+		
+		if (eng1FireGnevacSw.clearFlag == 0) {
+			eng1FireGnevac.active = 1;
+			eng1FireGnevacSw.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnevac);
+			ECAM_controller.warningReset(eng1FireGnevacSw);
+		}
+		
+		if (eng1FireGnevacApu.clearFlag == 0 and getprop("/controls/APU/master") and getprop("/systems/apu/rpm") > 99) {
+			eng1FireGnevacApu.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnevacApu);
+		}
+		
+		if (eng1FireGnevacBat.clearFlag == 0 and (getprop("/controls/electrical/switches/battery1") or getprop("/controls/electrical/switches/battery2"))) {
+			eng1FireGnevacBat.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng1FireGnevacBat);
+		}
 	} else {
 		ECAM_controller.warningReset(eng1FireGnlever);
 		ECAM_controller.warningReset(eng1FireGnstopped);
@@ -372,7 +433,7 @@ var messages_priority_3 = func {
 			eng2FireFlAgent1Timer.msg = " -AGENT AFT " ~ getprop("/systems/fire/engine2/agent1-timer") ~ " S...DISCH";
 		}
 		
-		if (eng2FireFlAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1") and getprop("/systems/fire/engine2/agent1-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
+		if (eng2FireFlAgent1.clearFlag == 0 and getprop("/controls/engines/engine[1]/fire-btn") == 1 and !getprop("/systems/fire/engine2/disch1") and getprop("/systems/fire/engine2/agent1-timer") != 0 and getprop("/systems/fire/engine2/agent1-timer") != 99) {
 			eng2FireFlAgent1Timer.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng2FireFlAgent1Timer);
@@ -394,13 +455,13 @@ var messages_priority_3 = func {
 			eng1FireFl30Sec.msg = "•IF FIRE AFTER " ~ getprop("/systems/fire/engine2/agent2-timer") ~ " S:";
 		}
 		
-		if (eng2FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2") and getprop("/systems/fire/engine2/agent2-timer") > 0) {
+		if (eng2FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine2/disch1") and !getprop("/systems/fire/engine2/disch2") and getprop("/systems/fire/engine2/agent2-timer") > 0) {
 			eng2FireFl30Sec.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng2FireFl30Sec);
 		}
 		
-		if (eng2FireFlAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2")) {
+		if (eng2FireFlAgent2.clearFlag == 0 and getprop("/systems/fire/engine2/disch1") and !getprop("/systems/fire/engine2/disch2")) {
 			eng2FireFlAgent2.active = 1;
 		} else {
 			ECAM_controller.warningReset(eng2FireFlAgent2);
@@ -416,20 +477,81 @@ var messages_priority_3 = func {
 	}
 	
 	if (eng2FireGn.active == 1) {
-		eng2FireGnlever.active = 1;
-		eng2FireGnstopped.active = 1;
-		eng2FireGnparkbrk.active = 1;
-		eng2FireGnmaster.active = 1;
-		eng2FireGnPB.active = 1;
-		eng2FireGnAgent1.active = 1;
-		eng2FireGnAgent2.active = 1;
-		eng2FireGnmaster2.active = 1;
-		eng2FireGnATC.active = 1;
-		eng2FireGncrew.active = 1;
-		eng2FireGnevac.active = 1;
-		eng2FireGnevacSw.active = 1;
-		eng2FireGnevacApu.active = 1;
-		eng2FireGnevacBat.active = 1;
+		if (eng2FireGnlever.clearFlag == 0 and getprop("/fdm/jsbsim/fcs/throttle-lever[0]") > 0.01 and getprop("/fdm/jsbsim/fcs/throttle-lever[1]") > 0.01) {
+			eng2FireGnlever.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnlever);
+		}
+		
+		if (eng2FireGnparkbrk.clearFlag == 0 and getprop("/controls/gear/brake-parking") == 0) { 
+			eng2FireGnstopped.active = 1;
+			eng2FireGnparkbrk.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnstopped);
+			ECAM_controller.warningReset(eng2FireGnparkbrk);
+		}
+		
+		if (eng2FireGnmaster.clearFlag == 0 and getprop("/controls/engines/engine[1]/cutoff-switch") == 0) {
+			eng2FireGnmaster.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnmaster);
+		}
+		
+		if (eng2FireGnPB.clearFlag == 0 and getprop("/controls/engines/engine[1]/fire-btn") == 0) {
+			eng2FireGnPB.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnPB);
+		}
+		
+		if (eng2FireGnAgent1.clearFlag == 0 and !getprop("/systems/fire/engine2/disch1")) {
+			eng2FireGnAgent1.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnAgent1);
+		}
+		
+		if (eng2FireGnAgent2.clearFlag == 0 and !getprop("/systems/fire/engine2/disch2")) {
+			eng2FireGnAgent2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnAgent2);
+		}
+		
+		if (eng2FireGnmaster2.clearFlag == 0 and getprop("/controls/engines/engine[0]/cutoff-switch") == 0) {
+			eng2FireGnmaster2.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnmaster2);
+		}
+		
+		if (eng2FireGnATC.clearFlag == 0) {
+			eng2FireGnATC.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnATC);
+		}
+		
+		if (eng2FireGncrew.clearFlag == 0) {
+			eng2FireGncrew.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGncrew);
+		}
+		
+		if (eng2FireGnevacSw.clearFlag == 0) {
+			eng2FireGnevac.active = 1;
+			eng2FireGnevacSw.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnevac);
+			ECAM_controller.warningReset(eng2FireGnevacSw);
+		}
+		
+		if (eng2FireGnevacApu.clearFlag == 0 and getprop("/controls/APU/master") and getprop("/systems/apu/rpm") > 99) {
+			eng2FireGnevacApu.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnevacApu);
+		}
+		
+		if (eng2FireGnevacBat.clearFlag == 0 and (getprop("/controls/electrical/switches/battery1") or getprop("/controls/electrical/switches/battery2"))) {
+			eng2FireGnevacBat.active = 1;
+		} else {
+			ECAM_controller.warningReset(eng2FireGnevacBat);
+		}
 	} else {
 		ECAM_controller.warningReset(eng2FireGnlever);
 		ECAM_controller.warningReset(eng2FireGnstopped);
@@ -459,13 +581,13 @@ var messages_priority_3 = func {
 			apuFireAgentTimer.msg = " -AGENT AFT " ~ getprop("/systems/fire/apu/agent-timer") ~ " S...DISCH";
 		}
 		
-		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") != 0) {
+		if (apuFireAgent.clearFlag == 0 and getprop("/controls/APU/fire-btn") and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") != 0) {
 			apuFireAgentTimer.active = 1;
 		} else {
 			ECAM_controller.warningReset(apuFireAgentTimer);
 		}
 		
-		if (apuFireAgent.clearFlag == 0 and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") == 0) {
+		if (apuFireAgent.clearFlag == 0 and getprop("/controls/APU/fire-btn") and !getprop("/systems/fire/apu/disch") and getprop("/systems/fire/apu/agent-timer") == 0) {
 			apuFireAgent.active = 1;
 		} else {
 			ECAM_controller.warningReset(apuFireAgent);
