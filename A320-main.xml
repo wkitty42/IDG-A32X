@@ -783,6 +783,9 @@
 		<acconfig n="0">
 			<autoconfig-running>0</autoconfig-running>
 		</acconfig>
+		<apu n="0">
+			<emer-shutdown type="bool">false</emer-shutdown>
+		</apu>
 		<electrical n="0">
 			<bus n="0">
 				<dc-ess>0</dc-ess>

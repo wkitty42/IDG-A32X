@@ -36,6 +36,7 @@ var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
+var apuEmerShutdown = props.globals.getNode("/systems/apu/emer-shutdown", 1);
 var eng1AgentTimer = props.globals.initNode("/systems/fire/engine1/agent1-timer", 99, "INT");
 var eng2AgentTimer = props.globals.initNode("/systems/fire/engine2/agent1-timer", 99, "INT");
 var eng1Agent2Timer = props.globals.initNode("/systems/fire/engine1/agent2-timer", 99, "INT");
@@ -313,9 +314,14 @@ var engFireDetectorUnit = {
 				if (apuMaster.getBoolValue()) {
 					apuBleedNode.setValue(0);
 					systems.apu_stop();
-					extinguisherBottles.vector[4].discharge();
+					apuEmerShutdown.setBoolValue(1);
+					settimer(func() {
+						extinguisherBottles.vector[4].discharge();
+					}, 2);
 				} else {
-					extinguisherBottles.vector[4].discharge();
+					settimer(func() {
+						extinguisherBottles.vector[4].discharge();
+					}, 2);
 				}
 			}
 		}

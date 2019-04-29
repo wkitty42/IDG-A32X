@@ -725,6 +725,11 @@ var checkLockThr2 = func() {
 	}
 }
 
+setlistener("/controls/APU/master", func() {
+	if (!getprop("/controls/APU/master") and systems.apuEmerShutdown.getBoolValue()) {
+		systems.apuEmerShutdown.setBoolValue(0);
+	}
+}, 0, 0);
 
 var lockTimer = maketimer(0.1, checkLockThr);
 var lockTimer2 = maketimer(0.1, checkLockThr2);

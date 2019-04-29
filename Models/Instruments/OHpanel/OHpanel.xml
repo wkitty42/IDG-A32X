@@ -5336,10 +5336,7 @@
 		<object-name>APUMasterBtn1F</object-name>
 		<condition>
 			<or>
-				<greater-than>
-					<property>systems/unused/unused-oh</property>
-					<value>150</value> <!-- I didn't model faults yet -->
-				</greater-than>
+				<property>systems/apu/emer-shutdown</property>
 				<equals>
 					<property>controls/switches/annun-test</property>
 					<value>1</value>
