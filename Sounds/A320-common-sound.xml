@@ -1504,7 +1504,10 @@
 				</and>
 			</condition>
 			<volume>
-				<property>sim/sound/effects/volume</property>
+				<product>
+					<value>5</value>
+					<property>sim/sound/effects/volume</property>
+				</product>
 			</volume>
 			<reference-dist>10</reference-dist>
 			<max-dist>100</max-dist>

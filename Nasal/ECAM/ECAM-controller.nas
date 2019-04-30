@@ -72,7 +72,7 @@ var warning = {
 		me.noRepeat = 1;
 	},
 	sound: func() {
-        if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;} 
+        if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;}
         aural[me.aural].setBoolValue(0); 
         me.noRepeat2 = 1;
 		settimer(func() {

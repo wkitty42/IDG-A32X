@@ -315,13 +315,13 @@ var engFireDetectorUnit = {
 					apuBleedNode.setValue(0);
 					systems.apu_stop();
 					apuEmerShutdown.setBoolValue(1);
-					settimer(func() {
+					settimer(func() { # 3 sec delay - source TTM ATA 26 FIRE PROTECTION p102
 						extinguisherBottles.vector[4].discharge();
-					}, 2);
+					}, 3);
 				} else {
 					settimer(func() {
 						extinguisherBottles.vector[4].discharge();
-					}, 2);
+					}, 3);
 				}
 			}
 		}
