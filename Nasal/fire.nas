@@ -7,6 +7,13 @@ var elapsedTime = props.globals.getNode("/sim/time/elapsed-sec");
 var apuTestBtn = props.globals.getNode("/controls/fire/apu-test-btn", 1);
 var testBtn = props.globals.getNode("/controls/fire/test-btn-1", 1);
 var testBtn2 = props.globals.getNode("/controls/fire/test-btn-2", 1);
+var dischTest = props.globals.initNode("/systems/fire/cargo/disch-test", 0, "BOOL");
+var cargoTestBtn = props.globals.initNode("/controls/fire/cargo/test", 0, "BOOL");
+var cargoTestTime = props.globals.initNode("/controls/fire/cargo/test-time", 0, "DOUBLE");
+var cargoTestTime2 = props.globals.initNode("/controls/fire/cargo/test-time2", 0, "DOUBLE");
+var cargoTestTime3 = props.globals.initNode("/controls/fire/cargo/test-time3", 0, "DOUBLE");
+var cargoTestTime4 = props.globals.initNode("/controls/fire/cargo/test-time4", 0, "DOUBLE");
+var cargoTestBtnOff = props.globals.initNode("/controls/fire/cargo/test-off", 0, "BOOL");
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
@@ -259,7 +266,6 @@ var cargoDetectorLoop = {
 		return cdL;
 	},
 	updateTemp: func(system, typeLoop) {
-		print(me.temperature.getValue() ~ " " ~ me.fireProp.getBoolValue());
 		
 		if (me.temperature.getValue() > 250 and me.fireProp.getBoolValue()) {
 			me.sendSignal(system, typeLoop);
@@ -282,9 +288,9 @@ var extinguisherBottle = {
 	failProp: "",
 	warningProp: "",
 	hack: 0,
-	new: func(number, lightProp, elecProp, failProp, warningProp, hack = 0) {
+	new: func(number, lightProp, elecProp, failProp, warningProp, quantity = 100, hack = 0) {
 		var eB = {parents:[extinguisherBottle]};
-		eB.quantity = 100;
+		eB.quantity = quantity;
 		eB.squib = 0;
 		eB.number = number;
 		eB.lightProp = props.globals.getNode(lightProp, 1);
@@ -327,18 +333,22 @@ var extinguisherBottle = {
 					}, rand() * 3);
 				}
 			} elsif (me.number == 7) {
-				if (rand() <= 0.999) {
+				if (rand() <= 0.95) {
 					settimer(func() {
 						me.failProp.setValue(0);
-						me.warningProp.setValue(0);
+						if (rand() <= 0.20) {
+							me.warningProp.setValue(0); # extinguishing agent detected as smoke, so warning likely to stay on
+						}
 					}, rand() * 3);
 					cargoExtinguisherBottles.vector[0].hack == 1;
 				}
 			} elsif (me.number == 8) {
-				if (rand() <= 0.999) {
+				if (rand() <= 0.95) {
 					settimer(func() {
 						me.failProp.setValue(0);
-						me.warningProp.setValue(0);
+						if (rand() <= 0.20) {
+							me.warningProp.setValue(0);
+						}
 					}, rand() * 3);
 					cargoExtinguisherBottles.vector[1].hack == 1;
 				}
@@ -454,7 +464,7 @@ extinguisherBottle.new(0, "/systems/fire/engine2/disch1", "/systems/electrical/b
 extinguisherBottle.new(9, "/systems/fire/apu/disch", "/systems/electrical/bus/dcbat", "/systems/failures/apu-fire", "/systems/fire/apu/warning-active") ]);
 
 # There is only one bottle but the system will think there are two, so other parts work
-var cargoExtinguisherBottles = std.Vector.new([extinguisherBottle.new(8, "/systems/fire/cargo/disch", "/systems/electrical/bus/dcbat", "/systems/failures/cargo-aft-fire", "/systems/fire/cargo/aft/warning-active"), extinguisherBottle.new(7, "/systems/fire/cargo/disch", "/systems/electrical/bus/dcbat", "/systems/failures/cargo-fwd-fire", "/systems/fire/cargo/fwd/warning-active")]);
+var cargoExtinguisherBottles = std.Vector.new([extinguisherBottle.new(8, "/systems/fire/cargo/disch", "/systems/electrical/bus/dcbat", "/systems/failures/cargo-aft-fire", "/systems/fire/cargo/aft/warning-active", 250), extinguisherBottle.new(7, "/systems/fire/cargo/disch", "/systems/electrical/bus/dcbat", "/systems/failures/cargo-fwd-fire", "/systems/fire/cargo/fwd/warning-active", 250)]);
 
 # Create CIDS channels
 var CIDSchannels = std.Vector.new([CIDSchannel.new("/systems/electrical/bus/dc-ess"), CIDSchannel.new("/systems/electrical/bus/dc2")]);
@@ -617,15 +627,100 @@ setlistener("/controls/fire/test-btn-2", func() {
 
 setlistener("/controls/fire/apu-test-btn", func() {
 	if (getprop("/systems/failures/apu-fire")) { return; }
-	if (apuTestBtn.getValue() == 1) {
+	if (cargoTestBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
-			apuFireWarn.setBoolValue(1);
+			fwdCargoFireWarn.setBoolValue(1);
+			aftCargoFireWarn.setBoolValue(1);
 		}
 	} else {
-		apuFireWarn.setBoolValue(0);
+		fwdCargoFireWarn.setBoolValue(0);
+		aftCargoFireWarn.setBoolValue(0);
 		ecam.shutUpYou();
 	}
 }, 0, 0);
+
+setlistener("/controls/fire/cargo/test", func() {
+	if (getprop("/systems/failures/aft-cargo-fire") or getprop("/systems/failures/fwd-cargo-fire") or dcbatNode.getValue() < 25 or dcessNode.getValue() < 25) { return; }
+	if (cargoTestBtn.getBoolValue()) {
+		cargoTestTime.setValue(elapsedTime.getValue());
+		cargoTestChecker.start();
+	} else {
+		aftCargoFireWarn.setBoolValue(0);
+		fwdCargoFireWarn.setBoolValue(0);
+		dischTest.setBoolValue(0);
+		ecam.shutUpYou();
+		cargoTestBtnOff.setBoolValue(1);
+	}
+}, 0, 0);
+
+var doCargoTest = func() {
+	if (dcbatNode.getValue() >= 25 or dcessNode.getValue() >= 25) {
+		aftCargoFireWarn.setBoolValue(1);
+		fwdCargoFireWarn.setBoolValue(1);
+		cargoTestTime2.setValue(elapsedTime.getValue());
+		cargoTestChecker2.start();
+	}
+}
+
+var doCargoTest2 = func() {
+	aftCargoFireWarn.setBoolValue(0);
+	fwdCargoFireWarn.setBoolValue(0);
+	ecam.shutUpYou();
+	cargoTestTime3.setValue(elapsedTime.getValue());
+	dischTest.setBoolValue(1);
+	cargoTestChecker3.start();
+}
+
+var doCargoTest3 = func() {
+	dischTest.setBoolValue(0);
+	if (dcbatNode.getValue() >= 25 or dcessNode.getValue() >= 25) {
+		aftCargoFireWarn.setBoolValue(1);
+		fwdCargoFireWarn.setBoolValue(1);
+		cargoTestTime4.setValue(elapsedTime.getValue());
+		cargoTestChecker4.start();
+	}
+}
+
+var doCargoTest4 = func() {
+	aftCargoFireWarn.setBoolValue(0);
+	fwdCargoFireWarn.setBoolValue(0);
+}
+
+var cargoTestCheckerFunc = func() {
+	if (!cargoTestBtn.getBoolValue()) {
+		cargoTestChecker.stop();
+	} elsif  (elapsedTime.getValue() > (cargoTestTime.getValue() + 3)) {
+		doCargoTest();
+		cargoTestChecker.stop();
+	}
+}
+
+var cargoTestCheckerFunc2 = func() {
+	if (!cargoTestBtn.getBoolValue()) {
+		cargoTestChecker2.stop();
+	} elsif  (elapsedTime.getValue() > (cargoTestTime2.getValue() + 3)) {
+		doCargoTest2();
+		cargoTestChecker2.stop();
+	}
+}
+
+var cargoTestCheckerFunc3 = func() {
+	if (!cargoTestBtn.getBoolValue()) {
+		cargoTestChecker3.stop();
+	} elsif  (elapsedTime.getValue() > (cargoTestTime3.getValue() + 3)) {
+		doCargoTest3();
+		cargoTestChecker3.stop();
+	}
+}
+
+var cargoTestCheckerFunc4 = func() {
+	if (!cargoTestBtn.getBoolValue()) {
+		cargoTestChecker4.stop();
+	} elsif  (elapsedTime.getValue() > (cargoTestTime4.getValue() + 3)) {
+		doCargoTest4();
+		cargoTestChecker4.stop();
+	}
+}
 
 createFireBottleListener("/controls/engines/engine[0]/agent1-btn", "/controls/engines/engine[0]/fire-btn", 0);
 createFireBottleListener("/controls/engines/engine[0]/agent2-btn", "/controls/engines/engine[0]/fire-btn", 1);
@@ -659,3 +754,7 @@ var eng2AgentTimerMakeTimer = maketimer(0.1, eng2AgentTimerMakeTimerFunc);
 var eng1Agent2TimerMakeTimer = maketimer(0.1, eng1Agent2TimerMakeTimerFunc);
 var eng2Agent2TimerMakeTimer = maketimer(0.1, eng2Agent2TimerMakeTimerFunc);
 var apuAgentTimerMakeTimer = maketimer(0.1, apuAgentTimerMakeTimerFunc);
+var cargoTestChecker = maketimer(0.1, cargoTestCheckerFunc);
+var cargoTestChecker2 = maketimer(0.2, cargoTestCheckerFunc2);
+var cargoTestChecker3 = maketimer(0.2, cargoTestCheckerFunc3);
+var cargoTestChecker4 = maketimer(0.2, cargoTestCheckerFunc4);

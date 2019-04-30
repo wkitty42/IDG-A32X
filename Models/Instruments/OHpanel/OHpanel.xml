@@ -282,6 +282,10 @@
 					<value>1</value>
 				</equals>
 				<equals>
+					<property>/systems/fire/cargo/disch-test</property>
+					<value>1</value>
+				</equals>
+				<equals>
 					<property>controls/switches/annun-test</property>
 					<value>1</value>
 				</equals>
@@ -296,6 +300,10 @@
 			<or>
 				<equals>
 					<property>/systems/fire/cargo/disch</property>
+					<value>1</value>
+				</equals>
+				<equals>
+					<property>/systems/fire/cargo/disch-test</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -328,6 +336,19 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<mod-up>
+				<binding>
+					<condition>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</condition>
+					<command>property-assign</command>
+					<property>controls/fire/cargo/test</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
 		</action>
 	</animation>
 	
