@@ -812,6 +812,8 @@
 			<engine-left-fire type="bool">0</engine-left-fire>
 			<engine-right-fire type="bool">0</engine-right-fire>
 			<apu-fire type="bool">0</apu-fire>
+			<cargo-fwd-fire type="bool">0</cargo-fwd-fire>
+			<cargo-aft-fire type="bool">0</cargo-aft-fire>
 		</failures>
 		<fctl n="0">
 			<fac1 type="bool">0</fac1>
@@ -827,6 +829,15 @@
 			<engine2>
 				<temperature type="double">0</temperature>
 			</engine2>
+			<cargo>
+				<disch type="bool">0</disch>
+				<aft>
+					<temperature type="double">0</temperature>
+				</aft>
+				<fwd>
+					<temperature type="double">0</temperature>
+				</fwd>
+			</cargo>
 		</fire>
 		<fuel n="0">
 			<only-use-ctr-tank type="bool">0</only-use-ctr-tank>

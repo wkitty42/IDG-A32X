@@ -125,9 +125,15 @@ var warnings				  = std.Vector.new([
 	var athr_lim			  = warning.new(msg: "AUTO FLT A/THR LIMITED",    colour: "a", aural: 1, light: 1),
 	var athr_lim_1			  = warning.new(msg: "-THR LEVERS........MOVE",   colour: "c"),
 	
+	# Cargo smoke
+	var cargoSmokeFwd         = warning.new(msg: "SMOKE FWD CARGO SMOKE",     colour: "r", aural: 0, light: 0, hasSubmsg: 1),
+	var cargoSmokeFwdAgent    = warning.new(msg: "-AGENT............DISCH",   colour: "c"),
+	var cargoSmokeAft         = warning.new(msg: "SMOKE AFT CARGO SMOKE",     colour: "r", aural: 0, light: 0, hasSubmsg: 1),
+	var cargoSmokeAftAgent    = warning.new(msg: "-AGENT............DISCH",   colour: "c"),
+	
 	# APU shutdown
-	var apuEmerShutdown      = warning.new(msg: "APU EMER SHUTDOWN",         colour: "a", aural: 1, light: 1, hasSubmsg: 1),
-	var apuEmerShutdownMast  = warning.new(msg: " -MASTER SW..........OFF",  colour: "c"),
+	var apuEmerShutdown       = warning.new(msg: "APU EMER SHUTDOWN",         colour: "a", aural: 1, light: 1, hasSubmsg: 1),
+	var apuEmerShutdownMast   = warning.new(msg: " -MASTER SW..........OFF",  colour: "c"),
 ]);
 
 var leftmemos                 = std.Vector.new([

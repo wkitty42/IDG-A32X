@@ -244,7 +244,7 @@
 		<condition>
 			<or>
 				<equals>
-					<property>/controls/fire/cargo/fwdsmokeLight</property>
+					<property>/systems/fire/cargo/fwd/warning-active</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -261,7 +261,7 @@
 		<condition>
 			<or>
 				<equals>
-					<property>/controls/fire/cargo/aftsmokeLight</property>
+					<property>/systems/fire/cargo/aft/warning-active</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -278,7 +278,7 @@
 		<condition>
 			<or>
 				<equals>
-					<property>/controls/fire/cargo/fwddischLight</property>
+					<property>/systems/fire/cargo/disch</property>
 					<value>1</value>
 				</equals>
 				<equals>
@@ -295,7 +295,7 @@
 		<condition>
 			<or>
 				<equals>
-					<property>/controls/fire/cargo/aftdischLight</property>
+					<property>/systems/fire/cargo/disch</property>
 					<value>1</value>
 				</equals>
 				<equals>

@@ -733,6 +733,34 @@ var messages_priority_3 = func {
 		ECAM_controller.warningReset(athr_lim);
 		ECAM_controller.warningReset(athr_lim_1);
 	}
+	
+	if (cargoSmokeFwd.clearFlag == 0 and systems.fwdCargoFireWarn.getBoolValue() and (getprop("/ECAM/warning-phase") <= 3 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") == 6)) {
+		cargoSmokeFwd.active = 1;
+	} elsif (cargoSmokeFwd.clearFlag == 1) {
+		ECAM_controller.warningReset(cargoSmokeFwd);
+		cargoSmokeFwd.hasSubmsg = 1;
+	}
+	
+	if (cargoSmokeFwdAgent.clearFlag == 0 and cargoSmokeFwd.active == 1 and !getprop("/systems/fire/cargo/disch")) {
+		cargoSmokeFwdAgent.active = 1;
+	} else {
+		ECAM_controller.warningReset(cargoSmokeFwdAgent);
+		cargoSmokeFwd.hasSubmsg = 0;
+	}
+
+	if (cargoSmokeAft.clearFlag == 0 and systems.aftCargoFireWarn.getBoolValue() and (getprop("/ECAM/warning-phase") <= 3 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") == 6)) {
+		cargoSmokeAft.active = 1;
+	} elsif (cargoSmokeAft.clearFlag == 1) {
+		ECAM_controller.warningReset(cargoSmokeAft);
+		cargoSmokeAft.hasSubmsg = 1;
+	}
+	
+	if (cargoSmokeAftAgent.clearFlag == 0 and cargoSmokeAft.active == 1 and !getprop("/systems/fire/cargo/disch")) {
+		cargoSmokeAftAgent.active = 1;
+	} else {
+		ECAM_controller.warningReset(cargoSmokeAftAgent);
+		cargoSmokeAft.hasSubmsg = 0;
+	}	
 }
 
 var messages_priority_2 = func {
