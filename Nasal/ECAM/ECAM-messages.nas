@@ -132,8 +132,19 @@ var warnings				  = std.Vector.new([
 	var cargoSmokeAftAgent    = warning.new(msg: "-AGENT............DISCH",   colour: "c"),
 	
 	# APU shutdown
-	var apuEmerShutdown       = warning.new(msg: "APU EMER SHUTDOWN",         colour: "a", aural: 1, light: 1, hasSubmsg: 1),
+	var apuEmerShutdown       = warning.new(msg: "APU EMER SHUT DOWN",        colour: "a", aural: 1, light: 1, hasSubmsg: 1),
 	var apuEmerShutdownMast   = warning.new(msg: " -MASTER SW..........OFF",  colour: "c"),
+
+	# FIRE det fault
+	var eng1FireDetFault      = warning.new(msg: "ENG 1 FIRE DET FAULT",      colour: "a", aura: 1, light: 1), 
+	var eng1LoopAFault        = warning.new(msg: "ENG 1 FIRE LOOP A FAULT",   colour: "a"),
+	var eng1LoopBFault        = warning.new(msg: "ENG 1 FIRE LOOP B FAULT",   colour: "a"),
+	var eng2FireDetFault      = warning.new(msg: "ENG 2 FIRE DET FAULT",      colour: "a", aura: 1, light: 1),
+	var eng2LoopAFault        = warning.new(msg: "ENG 2 FIRE LOOP A FAULT",   colour: "a"),
+	var eng2LoopBFault        = warning.new(msg: "ENG 2 FIRE LOOP B FAULT",   colour: "a"),
+	var apuFireDetFault       = warning.new(msg: "APU FIRE DET FAULT",        colour: "a", aura: 1, light: 1), 
+	var apuLoopAFault         = warning.new(msg: "APU FIRE LOOP A FAULT",     colour: "a"),
+	var apuLoopBFault         = warning.new(msg: "APU FIRE LOOP B FAULT",     colour: "a"),
 ]);
 
 var leftmemos                 = std.Vector.new([

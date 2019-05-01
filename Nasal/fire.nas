@@ -89,9 +89,9 @@ var engFireDetectorUnit = {
 		}
 	},
 	receiveSignal: func(type) {
-		if (type == 1 and me.loopOne != 9 and me.condition != 0) {
+		if (type == 1 and me.loopOne != 9 and me.loopOne != 8 and me.condition != 0) {
 			me.loopOne = 1;
-		} elsif (type == 2 and me.loopTwo != 9 and me.condition != 0) {
+		} elsif (type == 2 and me.loopTwo != 9 and me.loopTwo != 8 and me.condition != 0) {
 			me.loopTwo = 1;
 		}
 	},

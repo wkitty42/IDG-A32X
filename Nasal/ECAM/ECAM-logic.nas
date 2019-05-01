@@ -792,6 +792,60 @@ var messages_priority_2 = func {
 		ECAM_controller.warningReset(apuEmerShutdownMast);
 		apuEmerShutdown.hasSubmsg = 0;
 	}
+	
+	if (eng1FireDetFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[0].condition == 0 or (systems.engFireDetectorUnits.vector[0].loopOne == 9 and systems.engFireDetectorUnits.vector[0].loopTwo == 9)) and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
+		eng1FireDetFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1FireDetFault);
+	}
+	
+	if (eng1LoopAFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[0].loopOne == 9 or systems.engFireDetectorUnits.vector[0].loopOne == 8) and systems.engFireDetectorUnits.vector[0].loopTwo != 9 and systems.engFireDetectorUnits.vector[0].loopTwo != 8) {
+		eng1LoopAFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1LoopAFault);
+	}
+	
+	if (eng1LoopBFault.clearFlag == 0 and systems.engFireDetectorUnits.vector[0].loopOne != 9 and systems.engFireDetectorUnits.vector[0].loopOne != 8 and (systems.engFireDetectorUnits.vector[0].loopTwo == 9 or systems.engFireDetectorUnits.vector[0].loopTwo == 8)) {
+		eng1LoopBFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng1LoopBFault);
+	}
+	
+	if (eng2FireDetFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[1].condition == 0 or (systems.engFireDetectorUnits.vector[1].loopOne == 9 and systems.engFireDetectorUnits.vector[1].loopTwo == 9)) and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
+		eng2FireDetFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2FireDetFault);
+	}
+	
+	if (eng2LoopAFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[1].loopOne == 9 or systems.engFireDetectorUnits.vector[1].loopOne == 8) and systems.engFireDetectorUnits.vector[1].loopTwo != 9 and systems.engFireDetectorUnits.vector[1].loopTwo != 8) {
+		eng2LoopAFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2LoopAFault);
+	}
+	
+	if (eng2LoopBFault.clearFlag == 0 and systems.engFireDetectorUnits.vector[1].loopOne != 9 and systems.engFireDetectorUnits.vector[1].loopOne != 8 and (systems.engFireDetectorUnits.vector[1].loopTwo == 9 or systems.engFireDetectorUnits.vector[1].loopTwo == 8)) {
+		eng2LoopBFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(eng2LoopBFault);
+	}
+	
+	if (apuFireDetFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[2].condition == 0 or (systems.engFireDetectorUnits.vector[2].loopOne == 9 and systems.engFireDetectorUnits.vector[2].loopTwo == 9)) and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
+		apuFireDetFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(apuFireDetFault);
+	}
+	
+	if (apuLoopAFault.clearFlag == 0 and (systems.engFireDetectorUnits.vector[2].loopOne == 9 or systems.engFireDetectorUnits.vector[2].loopOne == 8) and systems.engFireDetectorUnits.vector[2].loopTwo != 9 and systems.engFireDetectorUnits.vector[2].loopTwo != 8) {
+		apuLoopAFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(apuLoopAFault);
+	}
+	
+	if (apuLoopBFault.clearFlag == 0 and systems.engFireDetectorUnits.vector[2].loopOne != 9 and systems.engFireDetectorUnits.vector[2].loopOne != 8 and (systems.engFireDetectorUnits.vector[2].loopTwo == 9 or systems.engFireDetectorUnits.vector[2].loopTwo == 8)) {
+		apuLoopBFault.active = 1;
+	} else {
+		ECAM_controller.warningReset(apuLoopBFault);
+	}
 }
 
 var messages_priority_1 = func {}
