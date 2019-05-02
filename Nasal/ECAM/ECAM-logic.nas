@@ -847,13 +847,13 @@ var messages_priority_2 = func {
 		ECAM_controller.warningReset(apuLoopBFault);
 	}
 	
-	if (crgAftFireDetFault.clearFlag == 0 and (cargoSmokeDetectorUnits.vector[0].condition == 0 or cargoSmokeDetectorUnits.vector[1].condition == 0) and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
+	if (crgAftFireDetFault.clearFlag == 0 and (systems.cargoSmokeDetectorUnits.vector[0].condition == 0 or systems.cargoSmokeDetectorUnits.vector[1].condition == 0) and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
 		crgAftFireDetFault.active = 1;
 	} else {
 		ECAM_controller.warningReset(crgAftFireDetFault);
 	}
 	
-	if (crgFwdFireDetFault.clearFlag == 0 and cargoSmokeDetectorUnits.vector[2].condition == 0 and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
+	if (crgFwdFireDetFault.clearFlag == 0 and systems.cargoSmokeDetectorUnits.vector[2].condition == 0 and (getprop("/ECAM/warning-phase") == 6 or getprop("/ECAM/warning-phase") >= 9 or getprop("/ECAM/warning-phase") <= 2)) {
 		crgFwdFireDetFault.active = 1;
 	} else {
 		ECAM_controller.warningReset(crgFwdFireDetFault);

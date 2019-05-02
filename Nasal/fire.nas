@@ -72,7 +72,6 @@ var engFireDetectorUnit = {
 	},
 	update: func() {
 		if (me.condition == 0) { return; }
-		
 		foreach(var detector; engDetectorLoops.vector) {
 			detector.updateTemp(detector.sys, detector.type);
 		}
@@ -84,7 +83,7 @@ var engFireDetectorUnit = {
 			return;
 		}
 		
-		if ((me.loopOne == 1 and me.loopTwo == 1) or ((me.loopOne == 9 or me.loopOne == 8) and me.loopTwo == 1)  or (me.loopOne == 1 and (me.loopTwo == 9 or me.loopTwo == 8))) {
+		if ((me.loopOne == 1 and me.loopTwo == 1) or ((me.loopOne == 9 or me.loopOne == 8) and me.loopTwo == 1) or (me.loopOne == 1 and (me.loopTwo == 9 or me.loopTwo == 8))) {
 			me.TriggerWarning(me.sys);
 		}
 	},
@@ -98,6 +97,9 @@ var engFireDetectorUnit = {
 	failUnit: func() {
 		me.condition = 0;
 	},
+	restoreUnit: func() {
+		me.condition = 100;
+	},
 	fail: func(loop) {
 		if (loop != 1 and loop != 2) { return; }
 		
@@ -106,11 +108,22 @@ var engFireDetectorUnit = {
 		
 		me.startFailTimer(loop);
 	},
+	restore: func(loop) {
+		if (loop != 1 and loop != 2) { return; }
+		if (loop == 1) { me.loopOne = 0; }
+		else { me.loopTwo = 0; }
+	},
 	noElec: func(loop) {
 		if (loop != 1 and loop != 2) { return; }
 	
 		if (loop == 1) { me.loopOne = 8; }
 		else { me.loopTwo = 8; }
+	},
+	restoreElec: func(loop) {
+		if (loop != 1 and loop != 2) { return; }
+	
+		if (loop == 1) { me.loopOne = 0; }
+		else { me.loopTwo = 0; }
 	},
 	startFailTimer: func(loop) {
 		if (me.sys != 2) {
@@ -240,7 +253,9 @@ var detectorLoop = {
 	updateTemp: func(system, typeLoop) {
 		if ((me.temperature.getValue() > 250 and me.fireProp.getBoolValue()) and me.elecProp.getValue() >= 25) {
 			me.sendSignal(system, typeLoop);
-		} elsif (me.elecProp.getValue() < 25) {
+		} elsif (me.elecProp.getValue() >= 25) {
+			engFireDetectorUnits.vector[system].restoreElec(typeLoop);
+		} else {
 			engFireDetectorUnits.vector[system].noElec(typeLoop);
 		}
 	},
