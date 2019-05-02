@@ -73,7 +73,9 @@ var warning = {
 	},
 	sound: func() {
         if (me.aural > 1 or me.noRepeat2 == 1 or me.active == 0) {return;}
-        aural[me.aural].setBoolValue(0); 
+		if (me.aural != 0) {
+			aural[me.aural].setBoolValue(0); 
+		}
         me.noRepeat2 = 1;
 		settimer(func() {
 			aural[me.aural].setBoolValue(1);
@@ -174,20 +176,9 @@ var ECAM_controller = {
 			if (counter >= 9) { break; }
 			if (w.active == 1) {
 				w.write();
+				w.warnlight();
+				w.sound();
 				counter += 1;
-			}
-		}
-		
-		foreach (var w2; warnings.vector) {
-			if (w2.active == 1) {
-				if (w2.noRepeat == 0) {
-					w2.warnlight();
-				}
-				if (w2.noRepeat2 == 0) {
-					w2.sound();
-				}
-				w2.callPage();
-				break
 			}
 		}
 		

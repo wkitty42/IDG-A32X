@@ -439,8 +439,8 @@ var checkTimeFire2 = func() {
 	if (engFireDetectorUnits.vector[1].loopOne == 9 and engFireDetectorUnits.vector[1].loopTwo == 9) {
 		fireTimer2.stop();
 		engFireDetectorUnits.vector[1].TriggerWarning(engFireDetectorUnits.vector[1].sys);
-		loop3.setValue(0);
-		loop4.setValue(0);
+		propsNasFireTime.vector[2].setValue(0);
+		propsNasFireTime.vector[3].setValue(0);
 	}
 }
 
@@ -458,8 +458,8 @@ var checkTimeFire3 = func() {
 	if (engFireDetectorUnits.vector[2].loopOne == 9 and engFireDetectorUnits.vector[2].loopTwo == 9) {
 		fireTimer3.stop();
 		engFireDetectorUnits.vector[2].TriggerWarning(engFireDetectorUnits.vector[2].sys);
-		loop4.setValue(0);
-		loop5.setValue(0);
+		propsNasFireTime.vector[4].setValue(0);
+		propsNasFireTime.vector[5].setValue(0);
 	}
 }
 
