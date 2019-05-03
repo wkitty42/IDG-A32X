@@ -17,6 +17,9 @@ var cargoTestBtnOff = props.globals.initNode("/controls/fire/cargo/test-off", 0,
 var eng1FireWarn = props.globals.initNode("/systems/fire/engine1/warning-active", 0, "BOOL");
 var eng2FireWarn = props.globals.initNode("/systems/fire/engine2/warning-active", 0, "BOOL");
 var apuFireWarn = props.globals.initNode("/systems/fire/apu/warning-active", 0, "BOOL");
+var eng1Inop = props.globals.initNode("/systems/fire/engine1/det-inop", 0, "BOOL");
+var eng2Inop = props.globals.initNode("/systems/fire/engine2/det-inop", 0, "BOOL");
+var apuInop = props.globals.initNode("/systems/fire/apu/det-inop", 0, "BOOL");
 var aftCargoFireWarn = props.globals.initNode("/systems/fire/cargo/aft/warning-active", 0, "BOOL");
 var fwdCargoFireWarn = props.globals.initNode("/systems/fire/cargo/fwd/warning-active", 0, "BOOL");
 var apuEmerShutdown = props.globals.getNode("/systems/apu/emer-shutdown", 1);
@@ -112,6 +115,18 @@ var engFireDetectorUnit = {
 		if (loop != 1 and loop != 2) { return; }
 		if (loop == 1) { me.loopOne = 0; }
 		else { me.loopTwo = 0; }
+		
+		
+		if (me.sys == 0) {
+			eng1Inop.setBoolValue(0);
+			checkTwoInop1Timer.stop();
+		} elsif (me.sys == 1) {
+			eng2Inop.setBoolValue(0);
+			checkTwoInop2Timer.stop();
+		} elsif (me.sys == 2) {
+			apuInop.setBoolValue(0);
+			checkTwoInop3Timer.stop();
+		}
 	},
 	noElec: func(loop) {
 		if (loop != 1 and loop != 2) { return; }
@@ -126,6 +141,9 @@ var engFireDetectorUnit = {
 		elsif (loop == 2 and me.loopTwo != 9) { me.loopTwo = 0; }
 	},
 	startFailTimer: func(loop) {
+		if (loop == 1 and me.loopTwo == 9) { return; }
+		if (loop == 2 and me.loopOne == 9) { return; }
+		
 		if (me.sys != 2) {
 			if (loop == 1) {
 				propsNasFireTime.vector[me.sys].setValue(elapsedTime.getValue());
@@ -413,15 +431,19 @@ var checkTimeFire1 = func() {
 	
 	if ((loop1 != 0 and et > loop1 + 5) or (loop2 != 0 and et > loop2 + 5))  {
 		fireTimer1.stop();
-		propsNasFireTime.vector[0].setValue(0);
-		propsNasFireTime.vector[1].setValue(0);
+		checkTwoInop1Timer.start();
 	}
 	
 	if (engFireDetectorUnits.vector[0].loopOne == 9 and engFireDetectorUnits.vector[0].loopTwo == 9) {
 		fireTimer1.stop();
 		engFireDetectorUnits.vector[0].TriggerWarning(engFireDetectorUnits.vector[0].sys);
-		propsNasFireTime.vector[0].setValue(0);
-		propsNasFireTime.vector[1].setValue(0);
+	}
+}
+
+var checkTwoInop1 = func() {
+	if (engFireDetectorUnits.vector[0].loopOne == 9 and engFireDetectorUnits.vector[0].loopTwo == 9) {
+		eng1Inop.setBoolValue(1);
+		checkTwoInop1Timer.stop();
 	}
 }
 
@@ -432,15 +454,19 @@ var checkTimeFire2 = func() {
 	
 	if ((loop3 != 0 and et > loop3 + 5) or (loop4 != 0 and et > loop4 + 5))  {
 		fireTimer2.stop();
-		propsNasFireTime.vector[2].setValue(0);
-		propsNasFireTime.vector[3].setValue(0);
+		checkTwoInop2Timer.start();
 	}
 	
 	if (engFireDetectorUnits.vector[1].loopOne == 9 and engFireDetectorUnits.vector[1].loopTwo == 9) {
 		fireTimer2.stop();
 		engFireDetectorUnits.vector[1].TriggerWarning(engFireDetectorUnits.vector[1].sys);
-		propsNasFireTime.vector[2].setValue(0);
-		propsNasFireTime.vector[3].setValue(0);
+	}
+}
+
+var checkTwoInop2 = func() {
+	if (engFireDetectorUnits.vector[1].loopOne == 9 and engFireDetectorUnits.vector[1].loopTwo == 9) {
+		eng2Inop.setBoolValue(1);
+		checkTwoInop2Timer.stop();
 	}
 }
 
@@ -451,15 +477,19 @@ var checkTimeFire3 = func() {
 	
 	if ((loop5 != 0 and et > loop6 + 5) or (loop6 != 0 and et > loop6 + 5)) {
 		fireTimer3.stop();
-		propsNasFireTime.vector[4].setValue(0);
-		propsNasFireTime.vector[5].setValue(0);
+		checkTwoInop3Timer.start();
 	}
 	
 	if (engFireDetectorUnits.vector[2].loopOne == 9 and engFireDetectorUnits.vector[2].loopTwo == 9) {
 		fireTimer3.stop();
 		engFireDetectorUnits.vector[2].TriggerWarning(engFireDetectorUnits.vector[2].sys);
-		propsNasFireTime.vector[4].setValue(0);
-		propsNasFireTime.vector[5].setValue(0);
+	}
+}
+
+var checkTwoInop3 = func() {
+	if (engFireDetectorUnits.vector[2].loopOne == 9 and engFireDetectorUnits.vector[2].loopTwo == 9) {
+		apuInop.setBoolValue(1);
+		checkTwoInop3Timer.stop();
 	}
 }
 
@@ -469,6 +499,9 @@ var fireTimer2 = maketimer(0.1, checkTimeFire2);
 fireTimer2.simulatedTime = 1;
 var fireTimer3 = maketimer(0.1, checkTimeFire3);
 fireTimer3.simulatedTime = 1;
+var checkTwoInop1Timer = maketimer(0.1, checkTwoInop1);
+var checkTwoInop2Timer = maketimer(0.1, checkTwoInop2);
+var checkTwoInop3Timer = maketimer(0.1, checkTwoInop3);
 
 # Create fire systems
 var engFireDetectorUnits = std.Vector.new([ engFireDetectorUnit.new(0, "/systems/failures/engine-left-fire", "/controls/fire/test-btn-1"), engFireDetectorUnit.new(1, "/systems/failures/engine-right-fire", "/controls/fire/test-btn-2"), engFireDetectorUnit.new(2, "/systems/failures/apu-fire", "/controls/fire/apu-test-btn") ]);
