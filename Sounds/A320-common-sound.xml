@@ -5,18 +5,18 @@
 		<apu>
 			<name>apu_in</name>
 			<mode>looped</mode>
-			<path>apu/apu_inside.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320.wav</path>
 			<condition>
 				<property>sim/current-view/internal</property>
 			</condition>
 			<volume>
 				<property>/systems/apu/rpm</property>
-				<factor>0.005</factor>
+				<factor>0.003</factor>
 				<min>0</min>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
-				<factor>0.01</factor>
+				<factor>0.05</factor>
 				<offset>0</offset>
 			</pitch>
 		</apu>
@@ -24,7 +24,7 @@
 		<apu>
 			<name>apu_out</name>
 			<mode>looped</mode>
-			<path>apu/turbine.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/x320_apu.wav</path>
 			<condition>
 				<not><property>sim/current-view/internal</property></not>
 			</condition>
@@ -890,7 +890,7 @@
 		<gear>
 			<name>gear0</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[0]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -900,7 +900,7 @@
 		<gear>
 			<name>gear1</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[1]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -910,7 +910,7 @@
 		<gear>
 			<name>gear2</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[2]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -918,7 +918,7 @@
 		</gear>
 		
 		<wind>
-			<path>FL2070/320wind.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/wind_cockpit.wav</path>
 			<mode>looped</mode>
 			<name>wind</name>
 			<condition>
@@ -937,7 +937,7 @@
 		<wow>
 			<mode>once</mode>
 			<name>wow0</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Nose.wav</path>
 			<condition>
 				<property>gear/gear[0]/wow</property>
 			</condition>
@@ -946,7 +946,7 @@
 		<wow>
 			<mode>once</mode>
 			<name>wow1</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Main.wav</path>
 			<condition>
 				<property>gear/gear[1]/wow</property>
 			</condition>
@@ -955,11 +955,47 @@
 		<wow>
 			<mode>once</mode>
 			<name>wow2</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Main.wav</path>
 			<condition>
 				<property>gear/gear[2]/wow</property>
 			</condition>
 		</wow>
+		
+		<roll>
+			<name>roll1</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[0]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
+		
+		<roll>
+			<name>roll2</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[1]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
+		
+		<roll>
+			<name>roll3</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[2]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
 		
 		<detenta>
 			<mode>once</mode>
@@ -1400,7 +1436,7 @@
 				</and>
 			</condition>
 			<volume>
-				<factor>0.60</factor>
+				<factor>0.40</factor>
 			</volume>
 		</relay>
 		
