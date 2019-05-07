@@ -32,6 +32,7 @@
 				<property>/systems/apu/rpm</property>
 				<factor>0.005</factor>
 				<min>0</min>
+				<max>0.3</max>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
