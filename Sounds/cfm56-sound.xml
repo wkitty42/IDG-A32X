@@ -115,7 +115,7 @@
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_rumble.wav</path>
 		<condition>
-			<not><property>sim/current-view/internal</property><not>
+			<not><property>sim/current-view/internal</property></not>
 		</condition>
 		<volume>
 			<property>a320/sound/xrumble-lv</property>
@@ -146,7 +146,7 @@
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrumble_side.wav</path>
 		<condition>
-			<not><property>sim/current-view/internal</property><not>
+			<not><property>sim/current-view/internal</property></not>
 		</condition>
 		<volume>
 			<property>a320/sound/xrumble-left-v</property>
@@ -177,7 +177,7 @@
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_rumble.wav</path>
 		<condition>
-			<not><property>sim/current-view/internal</property><not>
+			<not><property>sim/current-view/internal</property></not>
 		</condition>
 		<volume>
 			<property>a320/sound/xrumble-rv</property>
@@ -208,7 +208,7 @@
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrumble_side.wav</path>
 		<condition>
-			<not><property>sim/current-view/internal</property><not>
+			<not><property>sim/current-view/internal</property></not>
 		</condition>
 		<volume>
 			<property>a320/sound/xrumble-right-v</property>
