@@ -1,7 +1,7 @@
 # A3XX Fire System
 # Jonathan Redpath
 
-# Copyright (c) 2019 Joshua Davidson (it0uchpods)
+# Copyright (c) 2019 Joshua Davidson (Octal450)
 
 var elapsedTime = props.globals.getNode("/sim/time/elapsed-sec");
 var apuTestBtn = props.globals.getNode("/controls/fire/apu-test-btn", 1);
