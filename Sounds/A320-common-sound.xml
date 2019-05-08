@@ -1345,6 +1345,18 @@
 			</volume>
 		</switch>
 		
+		<switch>
+			<name>Flaps Lever</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flaplever.wav</path>
+			<condition>
+				<property>/sim/sounde/flaps-click</property>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
 		<cvrtone>
 			<name>CVRtone</name>
 			<mode>once</mode>

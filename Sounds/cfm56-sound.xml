@@ -746,7 +746,7 @@
 		</orientation>
 	</engine>
 	
-	<!-- internal starter -->
+	<!-- internal hum -->
 	<engine>
 		<name>a320_internal_hum_left</name>
 		<mode>looped</mode>
@@ -782,6 +782,96 @@
 		</volume>
 		<pitch>
 			<property>a320/sound/hum-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<!-- internal comb spool -->
+	<engine>
+		<name>a320_internal_comb_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm_comb.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb1-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb1-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_comb_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm_comb.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb1-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb1-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<!-- internal high comb -->
+	<engine>
+		<name>a320_internal_comb2_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/340_Comb_2.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb2-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb2-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_comb2_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/340_Comb_2.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb2-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb2-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
