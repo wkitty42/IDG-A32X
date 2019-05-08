@@ -27,8 +27,8 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>10</inner-angle>
-			<outer-angle>350</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.0</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
@@ -58,8 +58,8 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>10</inner-angle>
-			<outer-angle>350</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.0</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
