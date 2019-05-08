@@ -12,12 +12,12 @@
 			<volume>
 				<property>/systems/apu/rpm</property>
 				<factor>0.005</factor>
-				<max>0.3</max>
+				<max>0.25</max>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
 				<factor>0.05</factor>
-				<offset>0</offset>
+				<offset>-2</offset>
 			</pitch>
 		</apu>
 	
@@ -31,14 +31,13 @@
 			<volume>
 				<property>/systems/apu/rpm</property>
 				<factor>0.005</factor>
-				<min>0</min>
-				<max>0.3</max>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
 				<factor>0.01</factor>
 				<offset>0</offset>
 			</pitch>
+			<reference-dist>60</reference-dist>
 		</apu>
 		
 		<hyd-yellow>
@@ -934,6 +933,19 @@
 				<offset>0</offset>
 			</pitch>
 		</wind>
+		
+		<ac>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_aircond.wav</path>
+			<mode>looped</mode>
+			<name>air conditioning</name>
+			<condition>
+				<property>sim/current-view/internal</property>
+			</condition>
+			<volume>
+				<property>sim/sound/other/air-con</property>
+				<offset>0</offset>
+			</volume>
+		</ac>
 		
 		<wow>
 			<mode>once</mode>

@@ -4,7 +4,7 @@
   <fx>
 	<!-- reverser -->
 	<engine>
-		<name>a320_exterior_reverser</name>
+		<name>a320_exterior_reverser_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrevrs.wav</path>
 		<condition>
@@ -35,7 +35,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_exterior_reverser</name>
+		<name>a320_exterior_reverser_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrevrs.wav</path>
 		<condition>
@@ -66,7 +66,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_reverser</name>
+		<name>a320_internal_reverser_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/A320_reverse.wav</path>
 		<condition>
@@ -88,7 +88,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_reverser</name>
+		<name>a320_internal_reverser_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/A320_reverse.wav</path>
 		<condition>
@@ -111,7 +111,7 @@
 	
 	<!-- rumble -->
 	<engine>
-		<name>a320_exterior_rumble</name>
+		<name>a320_exterior_rumble_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_rumble.wav</path>
 		<condition>
@@ -142,7 +142,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_exterior_rumble_left</name>
+		<name>a320_exterior_rumble_side_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrumble_side.wav</path>
 		<condition>
@@ -173,7 +173,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_exterior_rumble</name>
+		<name>a320_exterior_rumble_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_rumble.wav</path>
 		<condition>
@@ -204,7 +204,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_exterior_rumble_right</name>
+		<name>a320_exterior_rumble_side_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/xrumble_side.wav</path>
 		<condition>
@@ -236,7 +236,7 @@
 	
 	<!-- external sounds -->
 	<engine>
-		<name>a320_external_idle</name>
+		<name>a320_external_idle_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_idle.wav</path>
 		<condition>
@@ -266,7 +266,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_idle</name>
+		<name>a320_external_idle_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_idle.wav</path>
 		<condition>
@@ -296,7 +296,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_idle_rear</name>
+		<name>a320_external_idle_rear_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_idle_rear.wav</path>
 		<condition>
@@ -327,7 +327,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_idle_rear</name>
+		<name>a320_external_idle_rear_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_idle_rear.wav</path>
 		<condition>
@@ -359,7 +359,7 @@
 	
 	<!-- external spool -->
 	<engine>
-		<name>a320_external_spool</name>
+		<name>a320_external_spool_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_spool.wav</path>
 		<condition>
@@ -389,7 +389,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_spool</name>
+		<name>a320_external_spool_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_spool.wav</path>
 		<condition>
@@ -420,7 +420,7 @@
 	
 	<!-- external spool -->
 	<engine>
-		<name>a320_external_buzz</name>
+		<name>a320_external_buzz_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_buzz.wav</path>
 		<condition>
@@ -450,7 +450,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_buzz</name>
+		<name>a320_external_buzz_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_buzz.wav</path>
 		<condition>
@@ -481,7 +481,7 @@
 	
 	<!-- internal sounds -->
 	<engine>
-		<name>a320_internal_idle</name>
+		<name>a320_internal_idle_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmidle.wav</path>
 		<condition>
@@ -503,7 +503,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_idle</name>
+		<name>a320_internal_idle_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmidle.wav</path>
 		<condition>
@@ -525,7 +525,51 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_spool</name>
+		<name>a320_internal_whine_idle_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmwhineidle.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/whine-idle-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/whine-idle-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_whine_idle_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmwhineidle.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/whine-idle-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/whine-idle-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_spool_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmspool.wav</path>
 		<condition>
@@ -547,7 +591,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_spool</name>
+		<name>a320_internal_spool_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmspool.wav</path>
 		<condition>
@@ -569,7 +613,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_buzz</name>
+		<name>a320_internal_buzz_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmbuzz.wav</path>
 		<condition>
@@ -591,7 +635,7 @@
 	</engine>
 	
 	<engine>
-		<name>a320_internal_buzz</name>
+		<name>a320_internal_buzz_right</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmbuzz.wav</path>
 		<condition>
@@ -603,6 +647,141 @@
 		</volume>
 		<pitch>
 			<property>a320/sound/buzz-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<!-- internal starter -->
+	<engine>
+		<name>a320_internal_starter_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/A320_cockpit_starter.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/starter-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_starter_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/A320_cockpit_starter.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/starter-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<!-- external starter -->
+	<engine>
+		<name>a320_external_starter_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_cfm_starter.wav</path>
+		<condition>
+			<not><property>sim/current-view/internal</property></not>
+		</condition>
+		<volume>
+			<property>a320/sound/xstarter-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+		<orientation>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+			<inner-angle>225</inner-angle>
+			<outer-angle>135</outer-angle>
+			<outer-gain>0.0</outer-gain>
+		</orientation>
+	</engine>
+	
+	<engine>
+		<name>a320_external_starter_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/x320_cfm_starter.wav</path>
+		<condition>
+			<not><property>sim/current-view/internal</property></not>
+		</condition>
+		<volume>
+			<property>a320/sound/xstarter-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+		<orientation>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+			<inner-angle>225</inner-angle>
+			<outer-angle>135</outer-angle>
+			<outer-gain>0.0</outer-gain>
+		</orientation>
+	</engine>
+	
+	<!-- internal starter -->
+	<engine>
+		<name>a320_internal_hum_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm_hum.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/hum-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/hum-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_hum_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm_hum.wav</path>
+		<condition>
+			<property>sim/current-view/internal</property>
+		</condition>
+		<volume>
+			<property>a320/sound/hum-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/hum-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
