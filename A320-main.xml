@@ -159,6 +159,13 @@
 			<!-- 10 is sound -->
 		</systems>
 
+		<sound>
+			<wingview-aft type="bool">0</wingview-aft>
+			<wingview-fwd type="bool">0</wingview-fwd>
+			<internal-custom type="bool">0</internal-custom>
+			<suppress-warning type="bool">1</suppress-warning>
+		</sound>
+		
 		<sounde>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
 			<no-smoking-sign type="bool">0</no-smoking-sign>
