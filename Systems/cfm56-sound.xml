@@ -2564,7 +2564,7 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/internal-custom</property>
+			<property>sim/sound/wingview-fwd</property>
 		</condition>
         <expression>
             <product>
@@ -2581,7 +2581,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/internal-custom</property></not>
+			<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2595,7 +2595,7 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/internal-custom</property>
+			<property>sim/sound/wingview-fwd</property>
 		</condition>
         <expression>
             <product>
@@ -2612,7 +2612,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/internal-custom</property></not>
+			<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2626,7 +2626,7 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/internal-custom</property>
+			<property>sim/sound/wingview-fwd</property>
 		</condition>
         <expression>
             <product>
@@ -2640,7 +2640,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/internal-custom</property></not>
+			<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2654,7 +2654,7 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/internal-custom</property>
+			<property>sim/sound/wingview-fwd</property>
 		</condition>
         <expression>
             <product>
@@ -2668,7 +2668,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/internal-custom</property></not>
+			<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2871,8 +2871,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.00</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.01</ind> <dep>0.30</dep></entry>
-					<entry><ind>0.05</ind> <dep>1.00</dep></entry>
+					<entry><ind>0.05</ind> <dep>0.50</dep></entry>
 					<entry><ind>0.15</ind> <dep>0.90</dep></entry>
 					<entry><ind>0.19</ind> <dep>0.00</dep></entry>
                 </table>
@@ -2902,8 +2901,7 @@
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.00</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.01</ind> <dep>0.30</dep></entry>
-					<entry><ind>0.05</ind> <dep>1.00</dep></entry>
+					<entry><ind>0.05</ind> <dep>0.50</dep></entry>
 					<entry><ind>0.15</ind> <dep>0.90</dep></entry>
 					<entry><ind>0.19</ind> <dep>0.00</dep></entry>
                 </table>
