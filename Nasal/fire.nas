@@ -691,12 +691,10 @@ setlistener("/controls/fire/apu-test-btn", func() {
 	if (getprop("/systems/failures/apu-fire")) { return; }
 	if (cargoTestBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
-			fwdCargoFireWarn.setBoolValue(1);
-			aftCargoFireWarn.setBoolValue(1);
+			apuFireWarn.setBoolValue(1);
 		}
 	} else {
-		fwdCargoFireWarn.setBoolValue(0);
-		aftCargoFireWarn.setBoolValue(0);
+		apuFireWarn.setBoolValue(0);
 		ecam.shutUpYou();
 	}
 }, 0, 0);
