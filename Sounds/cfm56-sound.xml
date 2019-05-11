@@ -782,6 +782,50 @@
 		</position>
 	</engine>
 	
+	<engine>
+		<name>a320_internal_idle_left_wing_aft</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmidle.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/idle-wing-aft-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/idle-wing-aft-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_idle_right_wing_aft</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfmidle-wingfwd.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/idle-wing-aft-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/idle-wing-aft-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
 	<!-- spool -->
 	<engine>
 		<name>a320_internal_spool_left_wing</name>
@@ -1087,6 +1131,51 @@
 		</volume>
 		<pitch>
 			<property>a320/sound/buzz-wing-fwd-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<!-- aft wing rumble -->
+	<engine>
+		<name>a320_internal_rumble_left_wing</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm-wingaft-rumble.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb2-wing-aft-left-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb2-wing-aft-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_internal_rumble_right_wing</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cfm-wingaft-rumble.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/comb2-wing-aft-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/comb2-wing-aft-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>

@@ -859,6 +859,130 @@
     </output>
 </filter>
 
+<!-- idle aft wing view -->
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.06</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.19</ind> <dep>0.80</dep></entry>
+					<entry><ind>0.45</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.55</ind> <dep>0.20</dep></entry>
+					<entry><ind>0.57</ind> <dep>0.05</dep></entry>
+					<entry><ind>0.60</ind> <dep>0.00</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/idle-wing-aft-left-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.06</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.19</ind> <dep>0.80</dep></entry>
+					<entry><ind>0.45</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.55</ind> <dep>0.20</dep></entry>
+					<entry><ind>0.57</ind> <dep>0.05</dep></entry>
+					<entry><ind>0.60</ind> <dep>0.00</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/idle-wing-aft-right-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.01</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.19</ind> <dep>1.00</dep></entry>
+					<entry><ind>0.50</ind> <dep>1.30</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/idle-wing-aft-left-p</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.01</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.19</ind> <dep>1.00</dep></entry>
+					<entry><ind>0.50</ind> <dep>1.30</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/idle-wing-aft-right-p</prop>
+    </output>
+</filter>
+
 <!-- idle jet whine cockpit -->
 <filter>
     <type>gain</type>
@@ -1354,7 +1478,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1371,7 +1498,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1385,7 +1515,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1402,7 +1535,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1416,7 +1552,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1431,7 +1570,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1445,7 +1587,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1460,7 +1605,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1475,7 +1623,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1493,7 +1644,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1507,7 +1661,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1525,7 +1682,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1539,7 +1699,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1553,7 +1716,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1567,7 +1733,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1581,7 +1750,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1596,7 +1768,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1616,7 +1791,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1630,7 +1808,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1650,7 +1831,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1664,7 +1848,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1679,7 +1866,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1693,7 +1883,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1708,7 +1901,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1723,7 +1919,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1743,7 +1942,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1757,7 +1959,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1777,7 +1982,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1791,7 +1999,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1805,7 +2016,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1819,7 +2033,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1833,7 +2050,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -1963,13 +2183,137 @@
     </output>
 </filter>
 
+<!-- aft wing comb2 -->
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.32</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.55</ind> <dep>0.01</dep></entry>
+					<entry><ind>0.65</ind> <dep>0.05</dep></entry>
+					<entry><ind>0.68</ind> <dep>0.35</dep></entry>
+					<entry><ind>0.75</ind> <dep>0.60</dep></entry>
+					<entry><ind>0.99</ind> <dep>0.65</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/comb2-wing-aft-left-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.32</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.55</ind> <dep>0.01</dep></entry>
+					<entry><ind>0.65</ind> <dep>0.05</dep></entry>
+					<entry><ind>0.68</ind> <dep>0.35</dep></entry>
+					<entry><ind>0.75</ind> <dep>0.60</dep></entry>
+					<entry><ind>0.99</ind> <dep>0.65</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/comb2-wing-aft-right-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.50</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.99</ind> <dep>1.00</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/comb2-wing-aft-left-p</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.50</ind> <dep>0.50</dep></entry>
+					<entry><ind>0.99</ind> <dep>1.00</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+			<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/comb2-wing-aft-right-p</prop>
+    </output>
+</filter>
+
 <!-- forward wing hum full -->
 <filter>
     <type>gain</type>
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -1986,7 +2330,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2000,7 +2347,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -2017,7 +2367,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2031,7 +2384,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -2045,7 +2401,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2059,7 +2418,10 @@
     <gain>1</gain>
     <input>
 		<condition>
-			<property>sim/sound/wingview-fwd</property>
+			<or>
+				<property>sim/sound/wingview-fwd</property>
+				<property>sim/sound/wingview-aft</property>
+			</or>
 		</condition>
         <expression>
             <product>
@@ -2073,7 +2435,10 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+			<and>
+				<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-aft</property></not>
+			</and>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2558,7 +2923,7 @@
     </output>
 </filter>
 
-<!-- buzz wing -->
+<!-- buzz wing fwd -->
 <filter>
     <type>gain</type>
     <gain>1</gain>
@@ -2581,7 +2946,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2612,7 +2977,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2640,7 +3005,7 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
@@ -2668,12 +3033,131 @@
     </input>
 	<input>
 		<condition>
-			<not><property>sim/sound/wingview-fwd</property></not>
+				<not><property>sim/sound/wingview-fwd</property></not>
 		</condition>
 		<expression><value>0</value></expression>
 	</input>
     <output>
         <prop>a320/sound/buzz-wing-fwd-right-p</prop>
+    </output>
+</filter>
+
+<!-- buzz wing aft -->
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.65</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.75</ind> <dep>0.10</dep></entry>
+					<entry><ind>0.80</ind> <dep>0.20</dep></entry>
+					<entry><ind>0.90</ind> <dep>0.30</dep></entry>
+					<entry><ind>1.02</ind> <dep>0.25</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+				<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/buzz-wing-aft-left-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.65</ind> <dep>0.00</dep></entry>
+					<entry><ind>0.75</ind> <dep>0.10</dep></entry>
+					<entry><ind>0.80</ind> <dep>0.20</dep></entry>
+					<entry><ind>0.90</ind> <dep>0.30</dep></entry>
+					<entry><ind>1.02</ind> <dep>0.25</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+				<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/buzz-wing-aft-right-v</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.70</ind> <dep>0.80</dep></entry>
+					<entry><ind>1.02</ind> <dep>1.28</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+				<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/buzz-wing-aft-left-p</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<property>sim/sound/wingview-aft</property>
+		</condition>
+        <expression>
+            <product>
+                <table>
+                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
+                    <entry><ind>0.70</ind> <dep>0.80</dep></entry>
+					<entry><ind>1.02</ind> <dep>1.28</dep></entry>
+                </table>
+            </product>
+        </expression> 
+    </input>
+	<input>
+		<condition>
+				<not><property>sim/sound/wingview-aft</property></not>
+		</condition>
+		<expression><value>0</value></expression>
+	</input>
+    <output>
+        <prop>a320/sound/buzz-wing-aft-right-p</prop>
     </output>
 </filter>
 
