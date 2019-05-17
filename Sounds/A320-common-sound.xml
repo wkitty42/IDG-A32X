@@ -925,6 +925,23 @@
 				<property>sim/current-view/internal</property>
 			</condition>
 			<volume>
+				<property>sim/sound/other/cockpit-wind</property>
+				<offset>0</offset>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/windp</property>
+				<offset>0</offset>
+			</pitch>
+		</wind>
+		
+		<wind>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/wind_cabin.wav</path>
+			<mode>looped</mode>
+			<name>wind</name>
+			<condition>
+				<property>sim/current-view/internal</property>
+			</condition>
+			<volume>
 				<property>sim/sound/other/wind</property>
 				<offset>0</offset>
 			</volume>
@@ -975,9 +992,50 @@
 		</wow>
 		
 		<roll>
-			<name>roll1</name>
+			<name>roll1c</name>
 			<mode>looped</mode>
 			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[0]/wow</property>
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
+		
+		<roll>
+			<name>roll2c</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[1]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
+		
+		<roll>
+			<name>roll3c</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[2]/wow</property>
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
+		
+		
+		<roll>
+			<name>roll1</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
 			<property>gear/gear[0]/wow</property>
 			<volume>
 				<property>sim/sound/other/roll</property>
@@ -991,7 +1049,7 @@
 		<roll>
 			<name>roll2</name>
 			<mode>looped</mode>
-			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
 			<property>gear/gear[1]/wow</property>
 			
 			<volume>
@@ -1003,7 +1061,7 @@
 		<roll>
 			<name>roll3</name>
 			<mode>looped</mode>
-			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
 			<property>gear/gear[2]/wow</property>
 			<volume>
 				<property>sim/sound/other/roll</property>
