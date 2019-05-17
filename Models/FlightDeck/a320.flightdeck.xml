@@ -459,6 +459,10 @@
 		<object-name>ecam_c_b_led</object-name>
 		<object-name>ecam_el_dc_led</object-name>
 		<object-name>ecam_sts_led</object-name>
+		<object-name>engine_fault_1</object-name>
+		<object-name>engine_fault_2</object-name>
+		<object-name>engine_fire_1</object-name>
+		<object-name>engine_fire_2</object-name>
 		<object-name>exped_led</object-name>
 		<object-name>hdg-text-test</object-name>
 		<object-name>qnh-test</object-name>
