@@ -2074,27 +2074,6 @@
             <product>
                 <table>
                     <product><property>/sim/current-view/z-offset-m</property><value>1</value>  </product>
-                    <entry><ind>-5.0</ind> <dep>0.11</dep></entry>
-                    <entry><ind>0.00</ind> <dep>1.00</dep></entry>
-                    <entry><ind>15.0</ind> <dep>0.11</dep></entry>
-                </table>
-                <property>sim/sound/internal-custom</property>
-            </product>
-        </expression> 
-    </input>
-    <output>
-        <prop>sim/sound/other/flaps</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/sim/current-view/z-offset-m</property><value>1</value>  </product>
                     <entry><ind>-8.0</ind> <dep>0.10</dep></entry>
                     <entry><ind>0.00</ind> <dep>1.00</dep></entry>
                     <entry><ind>22.0</ind> <dep>0.10</dep></entry>
@@ -2218,6 +2197,36 @@
 	</input>
     <output>
 		<prop>sim/sound/other/roll</prop>
+    </output>
+</filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<condition>
+			<or>
+				<property>sim/sound/wingview-aft</property>
+				<property>sim/sound/wingview-fwd</property>
+			</or>
+		</condition>
+		<value>1</value>
+    </input>
+	<input>
+		<condition>
+			<and>
+				<not>
+					<property>sim/sound/wingview-aft</property>
+				</not>
+				<not>
+					<property>sim/sound/wingview-fwd</property>
+				</not>
+			</and>
+		</condition>
+		<value>0</value>
+	</input>
+    <output>
+		<prop>sim/sound/other/flaps</prop>
     </output>
 </filter>
 

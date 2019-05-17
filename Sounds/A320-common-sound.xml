@@ -1369,10 +1369,8 @@
 			<mode>in-transit</mode>
 			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flapmotor.wav</path>
 			<property>/surface-positions/flap-pos-norm</property>
-			<condition>
-				<property>sim/sound/other/flaps</property>
-			</condition>
 			<volume>
+				<property>/sim/sound/other/flaps</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
