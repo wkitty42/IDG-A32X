@@ -943,7 +943,7 @@
 			</condition>
 			<volume>
 				<property>sim/sound/other/air-con</property>
-				<offset>0</offset>
+				<offset>0.2</offset>
 			</volume>
 		</ac>
 		
@@ -1364,6 +1364,19 @@
 			</volume>
 		</switch>
 		
+		<switch>
+			<name>Flaps Motor</name>
+			<mode>in-transit</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flapmotor.wav</path>
+			<property>/surface-positions/flap-pos-norm</property>
+			<condition>
+				<property>sim/sound/other/flaps</property>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
 		<cvrtone>
 			<name>CVRtone</name>
 			<mode>once</mode>
@@ -1468,7 +1481,7 @@
 				</and>
 			</condition>
 			<volume>
-				<factor>0.40</factor>
+				<factor>0.60</factor>
 			</volume>
 		</relay>
 		
@@ -1612,6 +1625,5 @@
 			<reference-dist>10</reference-dist>
 			<max-dist>100.0</max-dist>
 		</stall-voice>
-
 	  </fx>
 </PropertyList>
