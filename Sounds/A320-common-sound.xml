@@ -43,7 +43,7 @@
 		<hyd-yellow>
 			<name>yellowHydPump</name>
 			<mode>looped</mode>
-			<path>yellowHydPump.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/yellowHydPump.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -76,7 +76,7 @@
 		<announcement>
 			<name>PurserSnacks</name>
 			<mode>once</mode>
-			<path>purserSnacks.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/purserSnacks.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/cabinCall</property>
@@ -93,7 +93,7 @@
 		<announcement>
 			<name>MechCall</name>
 			<mode>once</mode>
-			<path>mechCall.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/mechCall.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/mechCall</property>
@@ -110,7 +110,7 @@
 		<announcement>
 			<name>EmerCall</name>
 			<mode>once</mode>
-			<path>tripleBelt.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/tripleBelt.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/emerCall</property>
@@ -127,7 +127,7 @@
 		<callout>
 			<name>V1</name>
 			<mode>once</mode>
-			<path>V1.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/V1.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -1520,7 +1520,7 @@
 		<relay>
 			<name>Avionics</name>
 			<mode>looped</mode>
-			<path>Aircraft/IDG-A32X/Sounds/FL2070/320efis.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/320efis.wav</path>
 			<condition>
 				<and>
 					<property>sim/current-view/internal</property>
@@ -1544,7 +1544,7 @@
 		<announcements>
 			<name>welcomeFA</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/welcome.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/welcome.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/welcomefa</property>
@@ -1559,7 +1559,7 @@
 		<announcements>
 			<name>welcomeCA</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/captwelcome.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/captwelcome.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/welcomecapt</property>
@@ -1574,7 +1574,7 @@
 		<announcements>
 			<name>doorsDep</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/doorsdepart.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/doorsdepart.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/doors</property>
@@ -1589,7 +1589,7 @@
 		<announcements>
 			<name>PrepTo</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/takeoff.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/takeoff.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/prepareto</property>
@@ -1604,7 +1604,7 @@
 		<announcements>
 			<name>seatbeltOff</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/belt10k.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/belt10k.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/seatbelt-10k</property>
@@ -1619,7 +1619,7 @@
 		<announcements>
 			<name>safety</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/safety.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/safety.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/safety</property>
