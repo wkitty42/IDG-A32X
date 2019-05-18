@@ -138,7 +138,7 @@
 	<engine>
 		<name>a320_cockpit_spool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-spool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -160,7 +160,7 @@
 	<engine>
 		<name>a320_cockpit_spool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-spool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -431,7 +431,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -463,7 +462,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -495,7 +493,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>60</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -527,7 +524,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>60</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -559,7 +555,6 @@
 			<outer-gain>0.90</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -591,7 +586,6 @@
 			<outer-gain>0.90</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -623,7 +617,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>300</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -655,7 +648,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>300</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -687,7 +679,6 @@
 			<outer-gain>0.30</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -719,7 +710,6 @@
 			<outer-gain>0.30</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -751,7 +741,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -783,7 +772,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -815,7 +803,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -847,7 +834,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
-		<max-dist>300</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -879,7 +865,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -911,7 +896,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -943,7 +927,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -975,7 +958,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
-		<max-dist>90</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1007,7 +989,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>100</reference-dist>
-		<max-dist>250</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1039,7 +1020,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>100</reference-dist>
-		<max-dist>250</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1071,7 +1051,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>250</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1103,7 +1082,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>250</reference-dist>
-		<max-dist>800</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1132,7 +1110,6 @@
 			<z>0</z>
 		</orientation>
 		<reference-dist>1000</reference-dist>
-		<max-dist>3000</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1161,7 +1138,6 @@
 			<z>0</z>
 		</orientation>
 		<reference-dist>1000</reference-dist>
-		<max-dist>3000</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1193,7 +1169,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1225,7 +1200,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1257,7 +1231,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1289,7 +1262,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1321,7 +1293,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1353,7 +1324,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>120</reference-dist>
-		<max-dist>600</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1385,7 +1355,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
-		<max-dist>1000</max-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1417,7 +1386,6 @@
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
-		<max-dist>1000</max-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
