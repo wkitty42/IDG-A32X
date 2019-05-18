@@ -997,7 +997,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
@@ -1027,7 +1027,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
@@ -1960,7 +1960,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
@@ -1990,7 +1990,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
@@ -2221,7 +2221,7 @@
 					<entry><ind>0.417</ind><dep>0.620</dep></entry>
 					<entry><ind>0.55</ind> <dep>0.964</dep></entry>
 					<entry><ind>0.572</ind><dep>1.000</dep></entry>
-					<entry><ind>0.83</ind> <dep>0.180</dep></entry>
+					<entry><ind>0.83</ind> <dep>0.180</dep></entry>r
                 </table>
             </product>
         </expression> 
@@ -3194,7 +3194,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
@@ -3224,7 +3224,7 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.70</ind> <dep>0.800</dep></entry>
 					<entry><ind>1.00</ind> <dep>0.995</dep></entry>
                 </table>
             </product>
