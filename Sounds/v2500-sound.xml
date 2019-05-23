@@ -1268,18 +1268,18 @@
 	</engine>
 	
 	<engine>
-		<name>a320_wingaft_idle2_left</name>
+		<name>a320_wingaft_whine_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-whine.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/wingaft/idle2-left-v</property>
+			<property>a320/sound/wingaft/whine-left-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/wingaft/idle2-left-p</property>
+			<property>a320/sound/wingaft/whine-left-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
@@ -1290,18 +1290,18 @@
 	</engine>
 	
 	<engine>
-		<name>a320_wingaft_idle2_right</name>
+		<name>a320_wingaft_whine_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-whine.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/wingaft/idle2-right-v</property>
+			<property>a320/sound/wingaft/whine-right-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/wingaft/idle2-right-p</property>
+			<property>a320/sound/wingaft/whine-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
@@ -1356,138 +1356,6 @@
 	</engine>
 	
 	<engine>
-		<name>a320_wingaft_spool_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-lowspool.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/spool-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/spool-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_spool_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-lowspool.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/spool-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/spool-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_hum_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-hum.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/hum-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/hum-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_hum_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-hum.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/hum-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/hum-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_humfull_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-humfull.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/fullhum-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/fullhum-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_humfull_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-humfull.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/fullhum-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/fullhum-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
 		<name>a320_wingaft_comb_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-comb.wav</path>
@@ -1532,18 +1400,18 @@
 	</engine>
 	
 	<engine>
-		<name>a320_wingaft_comb2_left</name>
+		<name>a320_wingaft_fullhum_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-fullhum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/wingaft/comb2-left-v</property>
+			<property>a320/sound/wingaft/fullhum-left-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/wingaft/comb2-left-p</property>
+			<property>a320/sound/wingaft/fullhum-left-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
@@ -1554,62 +1422,18 @@
 	</engine>
 	
 	<engine>
-		<name>a320_wingaft_comb2_right</name>
+		<name>a320_wingaft_fullhum_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-humfull.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/wingaft/comb2-right-v</property>
+			<property>a320/sound/wingaft/fullhum-right-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/wingaft/comb2-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_buzz_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-buzz.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/buzz-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/buzz-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_wingaft_buzz_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/wingaft/v2500-buzz.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/wingaft/buzz-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/wingaft/buzz-right-p</property>
+			<property>a320/sound/wingaft/fullhum-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<position>
