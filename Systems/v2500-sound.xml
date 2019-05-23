@@ -17,12 +17,13 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.15</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.19</ind> <dep>0.900</dep></entry>
-					<entry><ind>0.417</ind><dep>0.673</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.297</dep></entry>
-					<entry><ind>0.572</ind><dep>0.042</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.000</dep></entry>
+                    <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
+					<entry><ind>0.417</ind>    <dep>0.172</dep></entry>
+					<entry><ind>0.536424</ind> <dep>0.255</dep></entry>
+					<entry><ind>0.562914</ind> <dep>0.989</dep></entry>
+					<entry><ind>0.818985</ind> <dep>0.851</dep></entry>
+					<entry><ind>0.911700</ind> <dep>0.617</dep></entry>
+					<entry><ind>0.997792</ind> <dep>0.340</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -49,12 +50,13 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.15</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.19</ind> <dep>0.900</dep></entry>
-					<entry><ind>0.417</ind><dep>0.673</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.297</dep></entry>
-					<entry><ind>0.572</ind><dep>0.042</dep></entry>
-					<entry><ind>0.70</ind> <dep>0.000</dep></entry>
+                    <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
+					<entry><ind>0.417</ind>    <dep>0.172</dep></entry>
+					<entry><ind>0.536424</ind> <dep>0.255</dep></entry>
+					<entry><ind>0.562914</ind> <dep>0.989</dep></entry>
+					<entry><ind>0.818985</ind> <dep>0.851</dep></entry>
+					<entry><ind>0.911700</ind> <dep>0.617</dep></entry>
+					<entry><ind>0.997792</ind> <dep>0.340</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -81,8 +83,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-					<entry><ind>0.19</ind> <dep>1.10</dep></entry>
-					<entry><ind>0.425</ind><dep>1.65</dep></entry>
+					<entry><ind>0.58</ind>    <dep>1.00</dep></entry>
+					<entry><ind>0.993378</ind><dep>1.851064</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -109,8 +111,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-					<entry><ind>0.19</ind> <dep>1.10</dep></entry>
-					<entry><ind>0.425</ind><dep>1.65</dep></entry>
+					<entry><ind>0.58</ind>    <dep>1.00</dep></entry>
+					<entry><ind>0.993378</ind><dep>1.851064</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -126,371 +128,6 @@
     </output>
 </filter>
 
-<!-- idle2 -->
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.15</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.19</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.417</ind><dep>0.620</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.964</dep></entry>
-					<entry><ind>0.572</ind><dep>1.000</dep></entry>
-					<entry><ind>0.83</ind> <dep>0.180</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/idle2-left-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.15</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.19</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.417</ind><dep>0.620</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.964</dep></entry>
-					<entry><ind>0.572</ind><dep>1.000</dep></entry>
-					<entry><ind>0.83</ind> <dep>0.180</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/idle2-right-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-					<entry><ind>0.58</ind> <dep>1.00</dep></entry>
-					<entry><ind>0.82</ind> <dep>1.50</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/idle2-left-p</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-					<entry><ind>0.58</ind> <dep>1.00</dep></entry>
-					<entry><ind>0.82</ind> <dep>1.50</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/idle2-right-p</prop>
-    </output>
-</filter>
-
-<!-- spool -->
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.31</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.50</ind> <dep>0.07</dep></entry>
-					<entry><ind>0.69</ind> <dep>0.980</dep></entry>
-					<entry><ind>0.764</ind><dep>0.886</dep></entry>
-					<entry><ind>0.88</ind> <dep>0.172</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/spool-left-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.31</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.50</ind> <dep>0.07</dep></entry>
-					<entry><ind>0.69</ind> <dep>0.980</dep></entry>
-					<entry><ind>0.764</ind><dep>0.886</dep></entry>
-					<entry><ind>0.88</ind> <dep>0.172</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/spool-right-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.63</dep></entry>
-					<entry><ind>0.95</ind> <dep>2.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/spool-left-p</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.63</dep></entry>
-					<entry><ind>0.95</ind> <dep>2.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/spool-right-p</prop>
-    </output>
-</filter>
-
-<!-- hum -->
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.417</ind><dep>0.005</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.02</dep></entry>
-					<entry><ind>0.572</ind><dep>0.09</dep></entry>
-					<entry><ind>0.65</ind> <dep>0.80</dep></entry>
-					<entry><ind>0.75</ind> <dep>0.00</dep></entry>
-					<entry><ind>1.00</ind> <dep>0.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/hum-left-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.417</ind><dep>0.005</dep></entry>
-					<entry><ind>0.55</ind> <dep>0.02</dep></entry>
-					<entry><ind>0.572</ind><dep>0.09</dep></entry>
-					<entry><ind>0.65</ind> <dep>0.80</dep></entry>
-					<entry><ind>0.75</ind> <dep>0.00</dep></entry>
-					<entry><ind>1.00</ind> <dep>0.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/hum-right-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.58</ind> <dep>1.00</dep></entry>
-					<entry><ind>0.82</ind> <dep>1.50</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/hum-left-p</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.58</ind> <dep>1.00</dep></entry>
-					<entry><ind>0.82</ind> <dep>1.50</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/hum-right-p</prop>
-    </output>
-</filter>
-
 <!-- lowspool -->
 <filter>
     <type>gain</type>
@@ -503,12 +140,14 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.31</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.50</ind> <dep>0.464</dep></entry>
-					<entry><ind>0.69</ind> <dep>0.240</dep></entry>
-					<entry><ind>0.764</ind><dep>0.205</dep></entry>
-					<entry><ind>0.88</ind> <dep>0.043</dep></entry>
+                    <entry><ind>0.101</ind> <dep>0.000</dep></entry>
+                    <entry><ind>0.214</ind> <dep>0.290</dep></entry>
+					<entry><ind>0.514</ind> <dep>0.531</dep></entry>
+					<entry><ind>0.695</ind> <dep>0.545</dep></entry>
+					<entry><ind>0.784</ind> <dep>0.414</dep></entry>
+					<entry><ind>0.859</ind> <dep>0.297</dep></entry>
+					<entry><ind>0.912</ind> <dep>0.255</dep></entry>
+					<entry><ind>0.960</ind> <dep>0.223</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -535,12 +174,14 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.20</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.31</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.50</ind> <dep>0.464</dep></entry>
-					<entry><ind>0.69</ind> <dep>0.240</dep></entry>
-					<entry><ind>0.764</ind><dep>0.205</dep></entry>
-					<entry><ind>0.88</ind> <dep>0.043</dep></entry>
+                    <entry><ind>0.101</ind> <dep>0.000</dep></entry>
+                    <entry><ind>0.214</ind> <dep>0.290</dep></entry>
+					<entry><ind>0.514</ind> <dep>0.531</dep></entry>
+					<entry><ind>0.695</ind> <dep>0.545</dep></entry>
+					<entry><ind>0.784</ind> <dep>0.414</dep></entry>
+					<entry><ind>0.859</ind> <dep>0.297</dep></entry>
+					<entry><ind>0.912</ind> <dep>0.255</dep></entry>
+					<entry><ind>0.960</ind> <dep>0.223</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -567,8 +208,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.63</dep></entry>
-					<entry><ind>0.95</ind> <dep>2.00</dep></entry>
+                    <entry><ind>0.21</ind> <dep>0.319</dep></entry>
+					<entry><ind>1.00</ind> <dep>1.404</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -595,8 +236,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.63</dep></entry>
-					<entry><ind>0.95</ind> <dep>2.00</dep></entry>
+                    <entry><ind>0.21</ind> <dep>0.319</dep></entry>
+					<entry><ind>1.00</ind> <dep>1.404</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -625,13 +266,13 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.62</ind> <dep>0.40</dep></entry>
-					<entry><ind>0.74</ind> <dep>0.128</dep></entry>
-					<entry><ind>0.78</ind> <dep>0.056</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.056</dep></entry>
-					<entry><ind>0.944</ind><dep>0.04</dep></entry>
-					<entry><ind>0.998</ind><dep>0.04</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.04</dep></entry>
+					<entry><ind>0.62</ind> <dep>0.050</dep></entry>
+					<entry><ind>0.74</ind> <dep>0.350</dep></entry>
+					<entry><ind>0.78</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.84</ind> <dep>0.980</dep></entry>
+					<entry><ind>0.944</ind><dep>0.950</dep></entry>
+					<entry><ind>0.998</ind><dep>0.950</dep></entry>
+					<entry><ind>1.0</ind>  <dep>0.950</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -659,13 +300,13 @@
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.62</ind> <dep>0.40</dep></entry>
-					<entry><ind>0.74</ind> <dep>0.128</dep></entry>
-					<entry><ind>0.78</ind> <dep>0.056</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.056</dep></entry>
-					<entry><ind>0.944</ind><dep>0.04</dep></entry>
-					<entry><ind>0.998</ind><dep>0.04</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.04</dep></entry>
+					<entry><ind>0.62</ind> <dep>0.050</dep></entry>
+					<entry><ind>0.74</ind> <dep>0.350</dep></entry>
+					<entry><ind>0.78</ind> <dep>0.550</dep></entry>
+					<entry><ind>0.84</ind> <dep>0.980</dep></entry>
+					<entry><ind>0.944</ind><dep>0.950</dep></entry>
+					<entry><ind>0.998</ind><dep>0.950</dep></entry>
+					<entry><ind>1.0</ind>  <dep>0.950</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -692,8 +333,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.60</ind> <dep>1.00</dep></entry>
-					<entry><ind>1.00</ind> <dep>2.00</dep></entry>
+                    <entry><ind>0.60</ind> <dep>0.50</dep></entry>
+					<entry><ind>1.00</ind> <dep>1.00</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -720,8 +361,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.60</ind> <dep>1.00</dep></entry>
-					<entry><ind>1.00</ind> <dep>2.00</dep></entry>
+                    <entry><ind>0.60</ind> <dep>0.50</dep></entry>
+					<entry><ind>1.00</ind> <dep>1.00</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -737,131 +378,6 @@
     </output>
 </filter>
 
-<!-- comb2 -->
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.59</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
-					<entry><ind>0.78</ind> <dep>0.4025</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.950</dep></entry>
-					<entry><ind>0.944</ind><dep>0.900</dep></entry>
-					<entry><ind>0.998</ind><dep>0.900</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.900</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/comb2-left-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.59</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
-					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
-					<entry><ind>0.78</ind> <dep>0.4025</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.950</dep></entry>
-					<entry><ind>0.944</ind><dep>0.900</dep></entry>
-					<entry><ind>0.998</ind><dep>0.900</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.900</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/comb2-right-v</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.60</ind> <dep>0.50</dep></entry>
-					<entry><ind>1.00</ind> <dep>1.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/comb2-left-p</prop>
-    </output>
-</filter>
-
-<filter>
-    <type>gain</type>
-    <gain>1</gain>
-    <input>
-		<condition>
-			<property>sim/current-view/internal</property>
-		</condition>
-        <expression>
-            <product>
-                <table>
-                    <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.60</ind> <dep>0.50</dep></entry>
-					<entry><ind>1.00</ind> <dep>1.00</dep></entry>
-                </table>
-            </product>
-        </expression> 
-    </input>
-	<input>
-		<condition>
-			<not><property>sim/current-view/internal</property></not>
-		</condition>
-		<expression><value>0</value></expression>
-	</input>
-    <output>
-        <prop>a320/sound/cockpit/comb2-right-p</prop>
-    </output>
-</filter>
-
 <!-- buzz -->
 <filter>
     <type>gain</type>
@@ -874,8 +390,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.75</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.80</ind> <dep>0.894</dep></entry>
+                    <entry><ind>0.70</ind> <dep>0.000</dep></entry>
+					<entry><ind>0.74</ind> <dep>0.894</dep></entry>
 					<entry><ind>0.87</ind> <dep>0.995</dep></entry>
 					<entry><ind>0.89</ind> <dep>1.000</dep></entry>
 					<entry><ind>0.95</ind> <dep>0.936</dep></entry>
@@ -906,8 +422,8 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.75</ind> <dep>0.000</dep></entry>
-					<entry><ind>0.80</ind> <dep>0.894</dep></entry>
+                    <entry><ind>0.70</ind> <dep>0.000</dep></entry>
+					<entry><ind>0.74</ind> <dep>0.894</dep></entry>
 					<entry><ind>0.87</ind> <dep>0.995</dep></entry>
 					<entry><ind>0.89</ind> <dep>1.000</dep></entry>
 					<entry><ind>0.95</ind> <dep>0.936</dep></entry>
@@ -938,7 +454,7 @@
             <product>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.315</dep></entry>
+                    <entry><ind>0.20</ind> <dep>0.245</dep></entry>
 					<entry><ind>0.95</ind> <dep>1.000</dep></entry>
                 </table>
             </product>
@@ -966,7 +482,7 @@
             <product>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
-                    <entry><ind>0.31</ind> <dep>0.315</dep></entry>
+                    <entry><ind>0.20</ind> <dep>0.245</dep></entry>
 					<entry><ind>0.95</ind> <dep>1.000</dep></entry>
                 </table>
             </product>
