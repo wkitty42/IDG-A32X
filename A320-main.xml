@@ -568,6 +568,10 @@
 			<onbat type="bool">false</onbat>
 			<skip type="bool">0</skip>
 		</adirs>
+		<atc>
+			<system-knob type="int">0</system-knob>
+			<mode-knob type="int">0</mode-knob>
+		</atc>
 		<APU>
 			<fire-btn type="bool">0</fire-btn>
 			<fire-btn-cover type="bool">0</fire-btn-cover>
@@ -767,6 +771,10 @@
 		<acconfig n="0">
 			<autoconfig-running>0</autoconfig-running>
 		</acconfig>
+		<atc>
+			<transponder-code type="string">2000</transponder-code>
+			<failed type="bool">0</failed>
+		</atc>
 		<electrical n="0">
 			<bus n="0">
 				<dc-ess>0</dc-ess>
@@ -972,7 +980,7 @@
 		<tcas><!-- http://wiki.flightgear.org/index.php/TCAS -->
 			<serviceable type="bool">true</serviceable><!-- TCAS ENABLE -->
 			<inputs>
-				<mode type="int">3</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+				<mode type="int">1</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
 			</inputs>
 			<voice>
 				<file-prefix type="string">Sounds/tcas/female/</file-prefix>
@@ -1563,6 +1571,9 @@
 		<acp>
 			<file>Aircraft/IDG-A32X/Nasal/acp.nas</file>
 		</acp>
+		<atc>
+			<file>Aircraft/IDG-A32X/Nasal/atc.nas</file>
+		</atc>
 	</nasal>
 
 </PropertyList>

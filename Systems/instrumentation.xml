@@ -29,6 +29,8 @@
 		<static-pressure>/systems/static/pressure-inhg</static-pressure>
 		<quantum>0</quantum>
 		<tau>0</tau>
+		<encode-mode-c>1</encode-mode-c>
+		<encode-mode-s>1</encode-mode-s>
 	</altimeter>
 	
 	<attitude-indicator>
@@ -134,7 +136,9 @@
 	<transponder>
 		<name>transponder</name>
 		<number>0</number>
+		<mode>2</mode>
 		<mode-c-altitude>/instrumentation/encoder/mode-c-alt-ft</mode-c-altitude>
+		<mode-s-altitude>/instrumentation/encoder/mode-s-alt-ft</mode-s-altitude>
 	</transponder>
 	
 	<turn-indicator>
@@ -156,6 +160,11 @@
 	<tcas>
 		<name>tcas</name>
 		<number>0</number>
+		<!--<vertical-range>9900</vertical-range>
+		<lateral-range>30</lateral-range>
+		<intruder-use-self-alt>1</intruder-use-self-alt>
+		<intruder-inhb-alt>380</intruder-inhb-alt>
+		<intruder-self-alt>1700</intruder-self-alt> uncomment for 2019.3 -->
 	</tcas>
 	
 	<radar>
