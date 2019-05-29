@@ -266,6 +266,8 @@ var colddark = func {
 		setprop("/controls/lighting/taxi-light-switch", 0.0);
 		setprop("/controls/switches/landing-lights-l", 0.0);
 		setprop("/controls/switches/landing-lights-r", 0.0);
+		setprop("/controls/atc/mode-knob", 0);
+		atc.transponderPanel.modeSwitch(1);
 		libraries.systemsInit();
 		failReset();
 		if (getprop("/engines/engine[1]/n2-actual") < 2) {
@@ -447,6 +449,8 @@ var taxi_b = func {
 	setprop("/controls/radio/rmp[0]/on", 1);
 	setprop("/controls/radio/rmp[1]/on", 1);
 	setprop("/controls/radio/rmp[2]/on", 1);
+	setprop("/controls/atc/mode-knob", 2);
+	atc.transponderPanel.modeSwitch(3);
 	setprop("/systems/fadec/power-avail", 1);
 	setprop("/systems/fadec/powered-time", -310);
 	setprop("/controls/lighting/turnoff-light-switch", 1);
@@ -495,6 +499,8 @@ var takeoff = func {
 				setprop("/controls/flight/flap-lever", 1);
 				setprop("/controls/flight/flap-pos", 2);
 				setprop("/controls/flight/flap-txt", "1+F");
+				setprop("/controls/atc/mode-knob", 4);
+				atc.transponderPanel.modeSwitch(5);
 				libraries.flaptimer.start();
 				setprop("/controls/flight/elevator-trim", -0.07);
 				systems.arm_autobrake(3);

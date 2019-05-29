@@ -217,6 +217,7 @@ var systemsInit = func {
 	rmp.init();
 	acp.init();
 	ecam.ECAM_controller.init();
+	atc.init();
 }
 
 setlistener("/sim/signals/fdm-initialized", func {
