@@ -160,11 +160,11 @@
 	<tcas>
 		<name>tcas</name>
 		<number>0</number>
-		<!--<vertical-range>9900</vertical-range>
-		<lateral-range>30</lateral-range>
-		<intruder-use-self-alt>1</intruder-use-self-alt>
-		<intruder-inhb-alt>380</intruder-inhb-alt>
-		<intruder-self-alt>1700</intruder-self-alt> uncomment for 2019.3 -->
+		<!--<vertical-range-ft>9900</vertical-range-ft>
+		<lateral-range-nm>30</lateral-range-nm>
+		<intruder-use-own-alt>1</intruder-use-own-alt>
+		<intruder-inhibit-alt-ft>380</intruder-inhibit-alt-ft>
+		<intruder-minimum-own-alt-ft>1700</intruder-minimum-own-alt-ft> uncomment for 2019.3 -->
 	</tcas>
 	
 	<radar>
