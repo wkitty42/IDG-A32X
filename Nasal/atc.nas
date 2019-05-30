@@ -238,6 +238,10 @@ setlistener("/instrumentation/transponder/id-code", func {
 	}
 }, 0, 0);
 
+setlistener("controls/atc/mode-knob", func {
+
+}, 0, 0);
+
 var Transponders = std.Vector.new([Transponder.new("/systems/electrical/bus/ac-ess-shed", 1), Transponder.new("/systems/electrical/bus/ac2", 2)]);
 	
 var transponderTimer = maketimer(0.1, func() {
