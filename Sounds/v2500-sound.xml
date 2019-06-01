@@ -312,8 +312,8 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>45</inner-angle>
-			<outer-angle>315</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>60</reference-dist>
@@ -343,135 +343,11 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>45</inner-angle>
-			<outer-angle>315</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>60</reference-dist>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_idle_distant_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-idleDist.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/idle-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/idle-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>210</inner-angle>
-			<outer-angle>150</outer-angle>
-			<outer-gain>0.90</outer-gain>
-		</orientation>
-		<reference-dist>500</reference-dist>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_idle_distant_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-idleDist.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/idle-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/idle-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>210</inner-angle>
-			<outer-angle>150</outer-angle>
-			<outer-gain>0.90</outer-gain>
-		</orientation>
-		<reference-dist>500</reference-dist>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_idle_distant_side_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-idleDistSide.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/idle-left-v</property> <!-- not a bug, uses same curves -->
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/idle-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>255</inner-angle>
-			<outer-angle>105</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>300</reference-dist>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_idle_distant_side_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-idleDistSide.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/idle-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/idle-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>255</inner-angle>
-			<outer-angle>105</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>300</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -500,7 +376,7 @@
 			<z>0</z>
 			<inner-angle>270</inner-angle>
 			<outer-angle>90</outer-angle>
-			<outer-gain>0.30</outer-gain>
+			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
 		<position>
@@ -531,7 +407,7 @@
 			<z>0</z>
 			<inner-angle>270</inner-angle>
 			<outer-angle>90</outer-angle>
-			<outer-gain>0.30</outer-gain>
+			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>30</reference-dist>
 		<position>
@@ -557,11 +433,11 @@
 			<offset>0</offset>
 		</pitch>
 		<orientation>
-			<x>0</x>
-			<y>1</y>
+			<x>-1</x>
+			<y>0</y>
 			<z>0</z>
-			<inner-angle>195</inner-angle>
-			<outer-angle>345</outer-angle>
+			<inner-angle>225</inner-angle>
+			<outer-angle>135</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
@@ -588,11 +464,11 @@
 			<offset>0</offset>
 		</pitch>
 		<orientation>
-			<x>0</x>
-			<y>-1</y>
+			<x>-1</x>
+			<y>0</y>
 			<z>0</z>
-			<inner-angle>15</inner-angle>
-			<outer-angle>165</outer-angle>
+			<inner-angle>225</inner-angle>
+			<outer-angle>135</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>90</reference-dist>
@@ -611,22 +487,22 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/spool-left-v</property> <!-- not a bug, uses same curve -->
+			<property>a320/sound/external/lowspool-left-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/spool-left-p</property>
+			<property>a320/sound/external/spool-left-p</property> <!-- not a bug, uses same curves -->
 			<offset>0</offset>
 		</pitch>
 		<orientation>
 			<x>-1</x>
 			<y>1</y>
 			<z>0</z>
-			<inner-angle>150</inner-angle>
-			<outer-angle>120</outer-angle>
+			<inner-angle>180</inner-angle>
+			<outer-angle>90</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>90</reference-dist>
+		<reference-dist>120</reference-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -642,146 +518,22 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/spool-right-v</property>
+			<property>a320/sound/external/lowspool-right-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/spool-right-p</property>
+			<property>a320/sound/external/spool-right-p</property> <!-- not a bug, uses same curves -->
 			<offset>0</offset>
 		</pitch>
 		<orientation>
 			<x>-1</x>
 			<y>-1</y>
 			<z>0</z>
-			<inner-angle>240</inner-angle>
-			<outer-angle>210</outer-angle>
+			<inner-angle>270</inner-angle>
+			<outer-angle>180</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>90</reference-dist>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_spool_close_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-spoolClose.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/spool-left-v</property> <!-- not a bug, uses same curve -->
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/spool-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>225</inner-angle>
-			<outer-angle>135</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>30</reference-dist>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_spool_close_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-spoolClose.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/spool-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/spool-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>-1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>225</inner-angle>
-			<outer-angle>135</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>30</reference-dist>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_spool_closeRear_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-spoolCloseRear.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/spool-left-v</property> <!-- not a bug, uses same curve -->
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/spool-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>45</inner-angle>
-			<outer-angle>315</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>30</reference-dist>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_spool_closeRear_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-spoolCloseRear.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/spool-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/spool-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>45</inner-angle>
-			<outer-angle>315</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>30</reference-dist>
+		<reference-dist>120</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -808,11 +560,11 @@
 			<x>-1</x>
 			<y>1</y>
 			<z>0</z>
-			<inner-angle>258.5</inner-angle>
-			<outer-angle>11.5</outer-angle>
+			<inner-angle>257.5</inner-angle>
+			<outer-angle>10.5</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>100</reference-dist>
+		<reference-dist>150</reference-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -839,11 +591,11 @@
 			<x>-1</x>
 			<y>-1</y>
 			<z>0</z>
-			<inner-angle>348.5</inner-angle>
-			<outer-angle>101.5</outer-angle>
+			<inner-angle>101.5</inner-angle>
+			<outer-angle>348.5</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>100</reference-dist>
+		<reference-dist>150</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -859,7 +611,7 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/buzz-left-v</property> <!-- not a bug, uses same curve -->
+			<property>a320/sound/external/buzz-left-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
@@ -874,7 +626,7 @@
 			<outer-angle>90</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>250</reference-dist>
+		<reference-dist>150</reference-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -905,7 +657,7 @@
 			<outer-angle>90</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>250</reference-dist>
+		<reference-dist>150</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -921,11 +673,11 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/rumbleD-left-v</property>
+			<property>a320/sound/external/rumble-left-v</property> <!-- not a bug, uses same curve -->
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/rumbleD-left-p</property>
+			<property>a320/sound/external/rumble-left-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -933,7 +685,7 @@
 			<y>0</y>
 			<z>0</z>
 		</orientation>
-		<reference-dist>1000</reference-dist>
+		<reference-dist>1500</reference-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -949,11 +701,11 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/rumbleD-right-v</property>
+			<property>a320/sound/external/rumble-right-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/rumbleD-right-p</property>
+			<property>a320/sound/external/rumble-right-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -961,7 +713,69 @@
 			<y>0</y>
 			<z>0</z>
 		</orientation>
-		<reference-dist>1000</reference-dist>
+		<reference-dist>1500</reference-dist>
+		<position>
+			<x>00</x>
+			<y>-20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_external_rumble_left</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumble.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/external/rumble-left-v</property> <!-- not a bug, uses same curve -->
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/external/rumble-left-p</property>
+			<offset>0</offset>
+		</pitch>
+		<orientation>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+			<inner-angle>60</inner-angle>
+			<outer-angle>300</outer-angle>
+			<outer-gain>0.01</outer-gain>
+		</orientation>
+		<reference-dist>200</reference-dist>
+		<position>
+			<x>00</x>
+			<y>20</y>
+			<z>00</z>
+		</position>
+	</engine>
+	
+	<engine>
+		<name>a320_external_rumble_right</name>
+		<mode>looped</mode>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumble.wav</path>
+		<condition>
+			<property>/sim/sound/suppress-warning</property>
+		</condition>
+		<volume>
+			<property>a320/sound/external/rumble-right-v</property>
+			<offset>0</offset>
+		</volume>
+		<pitch>
+			<property>a320/sound/external/rumble-right-p</property>
+			<offset>0</offset>
+		</pitch>
+		<orientation>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+			<inner-angle>60</inner-angle>
+			<outer-angle>300</outer-angle>
+			<outer-gain>0.01</outer-gain>
+		</orientation>
+		<reference-dist>200</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1003,7 +817,7 @@
 	<engine>
 		<name>a320_external_rumble_side_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumbleSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/v2500-rumbleSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1032,68 +846,6 @@
 	</engine>
 	
 	<engine>
-		<name>a320_external_rumble_left</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumble.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/rumble-left-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/rumble-left-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>60</inner-angle>
-			<outer-angle>300</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>120</reference-dist>
-		<position>
-			<x>00</x>
-			<y>20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
-		<name>a320_external_rumble_right</name>
-		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumble.wav</path>
-		<condition>
-			<property>/sim/sound/suppress-warning</property>
-		</condition>
-		<volume>
-			<property>a320/sound/external/rumble-right-v</property>
-			<offset>0</offset>
-		</volume>
-		<pitch>
-			<property>a320/sound/external/rumble-right-p</property>
-			<offset>0</offset>
-		</pitch>
-		<orientation>
-			<x>1</x>
-			<y>0</y>
-			<z>0</z>
-			<inner-angle>60</inner-angle>
-			<outer-angle>300</outer-angle>
-			<outer-gain>0.01</outer-gain>
-		</orientation>
-		<reference-dist>120</reference-dist>
-		<position>
-			<x>00</x>
-			<y>-20</y>
-			<z>00</z>
-		</position>
-	</engine>
-	
-	<engine>
 		<name>a320_external_rumble2_left</name>
 		<mode>looped</mode>
 		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumble.wav</path>
@@ -1101,22 +853,22 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>a320/sound/external/rumble-left-v</property>
+			<property>a320/sound/external/rumble-left-v</property> <!-- not a bug, uses same curve -->
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/rumble-left-p</property>
+			<property>a320/sound/external/rumble2-left-p</property> <!-- not a bug, uses different curve -->
 			<offset>0</offset>
 		</pitch>
 		<orientation>
 			<x>0</x>
 			<y>1</y>
 			<z>0</z>
-			<inner-angle>100</inner-angle>
-			<outer-angle>80</outer-angle>
+			<inner-angle>95</inner-angle>
+			<outer-angle>85</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>120</reference-dist>
+		<reference-dist>110</reference-dist>
 		<position>
 			<x>00</x>
 			<y>20</y>
@@ -1136,18 +888,18 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>a320/sound/external/rumble-right-p</property>
+			<property>a320/sound/external/rumble2-right-p</property> <!-- not a bug, uses different curve -->
 			<offset>0</offset>
 		</pitch>
 		<orientation>
 			<x>0</x>
 			<y>-1</y>
 			<z>0</z>
-			<inner-angle>280</inner-angle>
-			<outer-angle>260</outer-angle>
+			<inner-angle>275</inner-angle>
+			<outer-angle>265</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
-		<reference-dist>120</reference-dist>
+		<reference-dist>110</reference-dist>
 		<position>
 			<x>00</x>
 			<y>-20</y>
@@ -1174,8 +926,8 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>10</inner-angle>
-			<outer-angle>350</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
@@ -1205,8 +957,8 @@
 			<x>1</x>
 			<y>0</y>
 			<z>0</z>
-			<inner-angle>10</inner-angle>
-			<outer-angle>350</outer-angle>
+			<inner-angle>5</inner-angle>
+			<outer-angle>355</outer-angle>
 			<outer-gain>0.01</outer-gain>
 		</orientation>
 		<reference-dist>500</reference-dist>
@@ -1216,9 +968,6 @@
 			<z>00</z>
 		</position>
 	</engine>
-	
-	
-	
 	
 	
 	
