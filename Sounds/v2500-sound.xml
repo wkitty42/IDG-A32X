@@ -817,7 +817,7 @@
 	<engine>
 		<name>a320_external_rumble_side_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/v2500-rumbleSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/V2500/external/v2500-rumbleSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
