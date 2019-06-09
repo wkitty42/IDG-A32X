@@ -3,7 +3,6 @@
 <!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
 
 <PropertyList>
-
 	<sim>
 
 		<author>Immersive Design Group: Joshua Davidson (Octal450), Jonathan Redpath (legoboyvdlp), Thorsten Herrmann (TH-555)</author>
@@ -159,6 +158,13 @@
 			<!-- 10 is sound -->
 		</systems>
 
+		<sound>
+			<wingview-aft type="bool">0</wingview-aft>
+			<wingview-fwd type="bool">0</wingview-fwd>
+			<internal-custom type="bool">0</internal-custom>
+			<suppress-warning type="bool">1</suppress-warning>
+		</sound>
+		
 		<sounde>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
 			<no-smoking-sign type="bool">0</no-smoking-sign>
@@ -168,6 +174,7 @@
 			<knb1 type="bool">0</knb1>
 			<oh-btn type="bool">0</oh-btn>
 			<switch1 type="bool">0</switch1>
+			<flaps-click type="bool">0</flaps-click>
 		</sounde>
 
 		<instrumentation>

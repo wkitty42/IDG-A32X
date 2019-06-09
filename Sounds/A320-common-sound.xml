@@ -5,45 +5,45 @@
 		<apu>
 			<name>apu_in</name>
 			<mode>looped</mode>
-			<path>apu/apu_inside.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320.wav</path>
 			<condition>
 				<property>sim/current-view/internal</property>
 			</condition>
 			<volume>
 				<property>/systems/apu/rpm</property>
 				<factor>0.005</factor>
-				<min>0</min>
+				<max>0.25</max>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
-				<factor>0.01</factor>
-				<offset>0</offset>
+				<factor>0.05</factor>
+				<offset>-2</offset>
 			</pitch>
 		</apu>
 	
 		<apu>
 			<name>apu_out</name>
 			<mode>looped</mode>
-			<path>apu/turbine.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/x320_apu.wav</path>
 			<condition>
 				<not><property>sim/current-view/internal</property></not>
 			</condition>
 			<volume>
 				<property>/systems/apu/rpm</property>
 				<factor>0.005</factor>
-				<min>0</min>
 			</volume>
 			<pitch>
 				<property>/systems/apu/rpm</property>
 				<factor>0.01</factor>
 				<offset>0</offset>
 			</pitch>
+			<reference-dist>60</reference-dist>
 		</apu>
 		
 		<hyd-yellow>
 			<name>yellowHydPump</name>
 			<mode>looped</mode>
-			<path>yellowHydPump.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/yellowHydPump.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -76,7 +76,7 @@
 		<announcement>
 			<name>PurserSnacks</name>
 			<mode>once</mode>
-			<path>purserSnacks.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/purserSnacks.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/cabinCall</property>
@@ -93,7 +93,7 @@
 		<announcement>
 			<name>MechCall</name>
 			<mode>once</mode>
-			<path>mechCall.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/mechCall.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/mechCall</property>
@@ -110,7 +110,7 @@
 		<announcement>
 			<name>EmerCall</name>
 			<mode>once</mode>
-			<path>tripleBelt.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/tripleBelt.wav</path>
 			<condition>
 				<equals>
 					<property>/controls/switches/emerCall</property>
@@ -127,7 +127,7 @@
 		<callout>
 			<name>V1</name>
 			<mode>once</mode>
-			<path>V1.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/V1.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -890,7 +890,7 @@
 		<gear>
 			<name>gear0</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[0]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -900,7 +900,7 @@
 		<gear>
 			<name>gear1</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[1]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -910,7 +910,7 @@
 		<gear>
 			<name>gear2</name>
 			<mode>in-transit</mode>
-			<path>FL2070/320gear.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_gear.wav</path>
 			<property>gear/gear[2]/position-norm</property>
 			<volume>
 				<property>sim/sounde/gear-vol</property>
@@ -918,7 +918,24 @@
 		</gear>
 		
 		<wind>
-			<path>FL2070/320wind.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/wind_cockpit.wav</path>
+			<mode>looped</mode>
+			<name>wind</name>
+			<condition>
+				<property>sim/current-view/internal</property>
+			</condition>
+			<volume>
+				<property>sim/sound/other/cockpit-wind</property>
+				<offset>0</offset>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/windp</property>
+				<offset>0</offset>
+			</pitch>
+		</wind>
+		
+		<wind>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/wind_cabin.wav</path>
 			<mode>looped</mode>
 			<name>wind</name>
 			<condition>
@@ -934,10 +951,23 @@
 			</pitch>
 		</wind>
 		
+		<ac>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_aircond.wav</path>
+			<mode>looped</mode>
+			<name>air conditioning</name>
+			<condition>
+				<property>sim/current-view/internal</property>
+			</condition>
+			<volume>
+				<property>sim/sound/other/air-con</property>
+				<offset>0.2</offset>
+			</volume>
+		</ac>
+		
 		<wow>
 			<mode>once</mode>
 			<name>wow0</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Nose.wav</path>
 			<condition>
 				<property>gear/gear[0]/wow</property>
 			</condition>
@@ -946,7 +976,7 @@
 		<wow>
 			<mode>once</mode>
 			<name>wow1</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Main.wav</path>
 			<condition>
 				<property>gear/gear[1]/wow</property>
 			</condition>
@@ -955,11 +985,92 @@
 		<wow>
 			<mode>once</mode>
 			<name>wow2</name>
-			<path>FL2070/320touch.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Touch-Main.wav</path>
 			<condition>
 				<property>gear/gear[2]/wow</property>
 			</condition>
 		</wow>
+		
+		<roll>
+			<name>roll1c</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[0]/wow</property>
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
+		
+		<roll>
+			<name>roll2c</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[1]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
+		
+		<roll>
+			<name>roll3c</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Cockpit_Roll.wav</path>
+			<property>gear/gear[2]/wow</property>
+			<volume>
+				<property>sim/sound/other/cockpit-roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
+		
+		
+		<roll>
+			<name>roll1</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
+			<property>gear/gear[0]/wow</property>
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
+		
+		<roll>
+			<name>roll2</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
+			<property>gear/gear[1]/wow</property>
+			
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+		</roll>
+		
+		<roll>
+			<name>roll3</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/Roll.wav</path>
+			<property>gear/gear[2]/wow</property>
+			<volume>
+				<property>sim/sound/other/roll</property>
+				<factor>1</factor>
+			</volume>
+			<pitch>
+				<property>sim/sound/other/rollp</property>
+			</pitch>
+		</roll>
 		
 		<detenta>
 			<mode>once</mode>
@@ -1296,6 +1407,32 @@
 			</volume>
 		</switch>
 		
+		<switch>
+			<name>Flaps Lever</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flaplever.wav</path>
+			<condition>
+				<and>
+					<property>/sim/sounde/flaps-click</property>
+					<property>/sim/current-view/internal</property>
+				</and>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
+		<switch>
+			<name>Flaps Motor</name>
+			<mode>in-transit</mode>
+			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flapmotor.wav</path>
+			<property>/surface-positions/flap-pos-norm</property>
+			<volume>
+				<property>/sim/sound/other/flaps</property>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
 		<cvrtone>
 			<name>CVRtone</name>
 			<mode>once</mode>
@@ -1383,7 +1520,7 @@
 		<relay>
 			<name>Avionics</name>
 			<mode>looped</mode>
-			<path>Aircraft/IDG-A32X/Sounds/FL2070/320efis.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/320efis.wav</path>
 			<condition>
 				<and>
 					<property>sim/current-view/internal</property>
@@ -1407,7 +1544,7 @@
 		<announcements>
 			<name>welcomeFA</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/welcome.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/welcome.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/welcomefa</property>
@@ -1422,7 +1559,7 @@
 		<announcements>
 			<name>welcomeCA</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/captwelcome.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/captwelcome.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/welcomecapt</property>
@@ -1437,7 +1574,7 @@
 		<announcements>
 			<name>doorsDep</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/doorsdepart.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/doorsdepart.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/doors</property>
@@ -1452,7 +1589,7 @@
 		<announcements>
 			<name>PrepTo</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/takeoff.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/takeoff.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/prepareto</property>
@@ -1467,7 +1604,7 @@
 		<announcements>
 			<name>seatbeltOff</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/belt10k.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/belt10k.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/seatbelt-10k</property>
@@ -1482,7 +1619,7 @@
 		<announcements>
 			<name>safety</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/safety.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Announce/safety.wav</path>
 			<condition>
 				<equals>
 					<property>/sim/sounde/safety</property>
@@ -1544,6 +1681,5 @@
 			<reference-dist>10</reference-dist>
 			<max-dist>100.0</max-dist>
 		</stall-voice>
-
 	  </fx>
 </PropertyList>
