@@ -4082,7 +4082,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.APPanel.ALTPull();</script>
+				<script>libraries.APPanel.ALTPush();</script>
 			</binding>
 			<binding>
 				<command>nasal</command>
@@ -4094,7 +4094,7 @@
 			<repeatable>false</repeatable>
 			<binding>
 				<command>nasal</command>
-				<script>libraries.APPanel.ALTPush();</script>
+				<script>libraries.APPanel.ALTPull();</script>
 			</binding>
 			<binding>
 				<command>nasal</command>
