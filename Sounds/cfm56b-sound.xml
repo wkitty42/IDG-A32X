@@ -6,7 +6,7 @@
 	<engine>
 		<name>a320_cockpit_idle_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -28,7 +28,7 @@
 	<engine>
 		<name>a320_cockpit_idle_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -50,7 +50,7 @@
 	<engine>
 		<name>a320_cockpit_idle2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -72,7 +72,7 @@
 	<engine>
 		<name>a320_cockpit_idle2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -94,7 +94,7 @@
 	<engine>
 		<name>a320_cockpit_lowspool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -116,7 +116,7 @@
 	<engine>
 		<name>a320_cockpit_lowspool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -138,7 +138,7 @@
 	<engine>
 		<name>a320_cockpit_spool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -160,7 +160,7 @@
 	<engine>
 		<name>a320_cockpit_spool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -182,7 +182,7 @@
 	<engine>
 		<name>a320_cockpit_hum_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -204,7 +204,7 @@
 	<engine>
 		<name>a320_cockpit_hum_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -226,7 +226,7 @@
 	<engine>
 		<name>a320_cockpit_comb_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -248,7 +248,7 @@
 	<engine>
 		<name>a320_cockpit_comb_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -270,7 +270,7 @@
 	<engine>
 		<name>a320_cockpit_comb2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -292,7 +292,7 @@
 	<engine>
 		<name>a320_cockpit_comb2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -314,7 +314,7 @@
 	<engine>
 		<name>a320_cockpit_buzz_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -336,7 +336,7 @@
 	<engine>
 		<name>a320_cockpit_buzz_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -358,7 +358,7 @@
 	<engine>
 		<name>a320_cockpit_reverse_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -380,7 +380,7 @@
 	<engine>
 		<name>a320_cockpit_reverse_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/cockpit/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/cockpit/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -410,7 +410,7 @@
 	<engine>
 		<name>a320_external_idle_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -441,7 +441,7 @@
 	<engine>
 		<name>a320_external_idle_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -472,7 +472,7 @@
 	<engine>
 		<name>a320_external_idle_rear_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleRear.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleRear.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -503,7 +503,7 @@
 	<engine>
 		<name>a320_external_idle_rear_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleRear.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleRear.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -534,7 +534,7 @@
 	<engine>
 		<name>a320_external_idle_distant_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -565,7 +565,7 @@
 	<engine>
 		<name>a320_external_idle_distant_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -596,7 +596,7 @@
 	<engine>
 		<name>a320_external_idle_distant_side_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleDistSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleDistSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -627,7 +627,7 @@
 	<engine>
 		<name>a320_external_idle_distant_side_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleDistSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleDistSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -658,7 +658,7 @@
 	<engine>
 		<name>a320_external_idle_close_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleClose.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleClose.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -689,7 +689,7 @@
 	<engine>
 		<name>a320_external_idle_close_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-idleClose.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-idleClose.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -720,7 +720,7 @@
 	<engine>
 		<name>a320_external_spool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -751,7 +751,7 @@
 	<engine>
 		<name>a320_external_spool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -782,7 +782,7 @@
 	<engine>
 		<name>a320_external_lowspool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -813,7 +813,7 @@
 	<engine>
 		<name>a320_external_lowspool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -844,7 +844,7 @@
 	<engine>
 		<name>a320_external_spool_close_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spoolClose.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spoolClose.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -875,7 +875,7 @@
 	<engine>
 		<name>a320_external_spool_close_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spoolClose.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spoolClose.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -906,7 +906,7 @@
 	<engine>
 		<name>a320_external_spool_closeRear_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spoolCloseRear.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spoolCloseRear.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -937,7 +937,7 @@
 	<engine>
 		<name>a320_external_spool_closeRear_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-spoolCloseRear.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-spoolCloseRear.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -968,7 +968,7 @@
 	<engine>
 		<name>a320_external_buzz_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -999,7 +999,7 @@
 	<engine>
 		<name>a320_external_buzz_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1030,7 +1030,7 @@
 	<engine>
 		<name>a320_external_buzz_distant_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-buzzDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-buzzDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1061,7 +1061,7 @@
 	<engine>
 		<name>a320_external_buzz_distant_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-buzzDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-buzzDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1092,7 +1092,7 @@
 	<engine>
 		<name>a320_external_rumble_distant_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumbleDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumbleDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1120,7 +1120,7 @@
 	<engine>
 		<name>a320_external_rumble_distant_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumbleDist.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumbleDist.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1148,7 +1148,7 @@
 	<engine>
 		<name>a320_external_rumble_side_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumbleSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumbleSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1179,7 +1179,7 @@
 	<engine>
 		<name>a320_external_rumble_side_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumbleSide.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumbleSide.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1210,7 +1210,7 @@
 	<engine>
 		<name>a320_external_rumble_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumble.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumble.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1241,7 +1241,7 @@
 	<engine>
 		<name>a320_external_rumble_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumble.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumble.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1272,7 +1272,7 @@
 	<engine>
 		<name>a320_external_rumble2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumble.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumble.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1303,7 +1303,7 @@
 	<engine>
 		<name>a320_external_rumble2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-rumble.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-rumble.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1334,7 +1334,7 @@
 	<engine>
 		<name>a320_external_reverse_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1365,7 +1365,7 @@
 	<engine>
 		<name>a320_external_reverse_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/external/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/external/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1402,7 +1402,7 @@
 	<engine>
 		<name>a320_wingaft_idle_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1424,7 +1424,7 @@
 	<engine>
 		<name>a320_wingaft_idle_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1446,7 +1446,7 @@
 	<engine>
 		<name>a320_wingaft_idle2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1468,7 +1468,7 @@
 	<engine>
 		<name>a320_wingaft_idle2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1490,7 +1490,7 @@
 	<engine>
 		<name>a320_wingaft_lowspool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1512,7 +1512,7 @@
 	<engine>
 		<name>a320_wingaft_lowspool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1534,7 +1534,7 @@
 	<engine>
 		<name>a320_wingaft_spool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1556,7 +1556,7 @@
 	<engine>
 		<name>a320_wingaft_spool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1578,7 +1578,7 @@
 	<engine>
 		<name>a320_wingaft_hum_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1600,7 +1600,7 @@
 	<engine>
 		<name>a320_wingaft_hum_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1622,7 +1622,7 @@
 	<engine>
 		<name>a320_wingaft_humfull_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-humfull.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-humfull.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1644,7 +1644,7 @@
 	<engine>
 		<name>a320_wingaft_humfull_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-humfull.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-humfull.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1666,7 +1666,7 @@
 	<engine>
 		<name>a320_wingaft_comb_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1688,7 +1688,7 @@
 	<engine>
 		<name>a320_wingaft_comb_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1710,7 +1710,7 @@
 	<engine>
 		<name>a320_wingaft_comb2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1732,7 +1732,7 @@
 	<engine>
 		<name>a320_wingaft_comb2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1754,7 +1754,7 @@
 	<engine>
 		<name>a320_wingaft_buzz_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1776,7 +1776,7 @@
 	<engine>
 		<name>a320_wingaft_buzz_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1798,7 +1798,7 @@
 	<engine>
 		<name>a320_wingaft_reverse_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1820,7 +1820,7 @@
 	<engine>
 		<name>a320_wingaft_reverse_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingaft/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingaft/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1853,7 +1853,7 @@
 	<engine>
 		<name>a320_wingfwd_idle_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1875,7 +1875,7 @@
 	<engine>
 		<name>a320_wingfwd_idle_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-idle.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-idle.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1897,7 +1897,7 @@
 	<engine>
 		<name>a320_wingfwd_idle2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1919,7 +1919,7 @@
 	<engine>
 		<name>a320_wingfwd_idle2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-idle2.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-idle2.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1941,7 +1941,7 @@
 	<engine>
 		<name>a320_wingfwd_lowspool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1963,7 +1963,7 @@
 	<engine>
 		<name>a320_wingfwd_lowspool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -1985,7 +1985,7 @@
 	<engine>
 		<name>a320_wingfwd_spool_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2007,7 +2007,7 @@
 	<engine>
 		<name>a320_wingfwd_spool_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-lowspool.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-lowspool.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2029,7 +2029,7 @@
 	<engine>
 		<name>a320_wingfwd_hum_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2051,7 +2051,7 @@
 	<engine>
 		<name>a320_wingfwd_hum_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-hum.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-hum.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2073,7 +2073,7 @@
 	<engine>
 		<name>a320_wingfwd_comb_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2095,7 +2095,7 @@
 	<engine>
 		<name>a320_wingfwd_comb_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-comb.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-comb.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2117,7 +2117,7 @@
 	<engine>
 		<name>a320_wingfwd_comb2_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2139,7 +2139,7 @@
 	<engine>
 		<name>a320_wingfwd_comb2_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-comb-full.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-comb-full.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2161,7 +2161,7 @@
 	<engine>
 		<name>a320_wingfwd_buzz_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2183,7 +2183,7 @@
 	<engine>
 		<name>a320_wingfwd_buzz_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-buzz.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-buzz.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2205,7 +2205,7 @@
 	<engine>
 		<name>a320_wingfwd_reverse_left</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
@@ -2227,7 +2227,7 @@
 	<engine>
 		<name>a320_wingfwd_reverse_right</name>
 		<mode>looped</mode>
-		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56/wingfwd/cfm-reverse.wav</path>
+		<path>Aircraft/IDG-A32X/Sounds/SASA/CFM56B/wingfwd/cfm-reverse.wav</path>
 		<condition>
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
