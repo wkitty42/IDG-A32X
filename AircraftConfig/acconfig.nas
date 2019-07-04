@@ -85,7 +85,6 @@ setprop("/systems/acconfig/out-of-date", 0);
 setprop("/systems/acconfig/mismatch-code", "0x000");
 setprop("/systems/acconfig/mismatch-reason", "XX");
 setprop("/systems/acconfig/options/keyboard-mode", 0);
-setprop("/systems/acconfig/options/laptop-mode", 0);
 setprop("/systems/acconfig/options/adirs-skip", 0);
 setprop("/systems/acconfig/options/welcome-skip", 0);
 setprop("/systems/acconfig/options/no-rendering-warn", 0);
@@ -215,7 +214,6 @@ var renderingSettings = {
 var readSettings = func {
 	io.read_properties(getprop("/sim/fg-home") ~ "/Export/IDG-A32X-config.xml", "/systems/acconfig/options");
 	setprop("/options/system/keyboard-mode", getprop("/systems/acconfig/options/keyboard-mode"));
-	setprop("/options/system/laptop-mode", getprop("/systems/acconfig/options/laptop-mode"));
 	setprop("/controls/adirs/skip", getprop("/systems/acconfig/options/adirs-skip"));
 	setprop("/sim/model/autopush/route/show", getprop("/systems/acconfig/options/autopush/show-route"));
 	setprop("/sim/model/autopush/route/show-wingtip", getprop("/systems/acconfig/options/autopush/show-wingtip"));
@@ -224,7 +222,6 @@ var readSettings = func {
 
 var writeSettings = func {
 	setprop("/systems/acconfig/options/keyboard-mode", getprop("/options/system/keyboard-mode"));
-	setprop("/systems/acconfig/options/laptop-mode", getprop("/options/system/laptop-mode"));
 	setprop("/systems/acconfig/options/adirs-skip", getprop("/controls/adirs/skip"));
 	setprop("/systems/acconfig/options/autopush/show-route", getprop("/sim/model/autopush/route/show"));
 	setprop("/systems/acconfig/options/autopush/show-wingtip", getprop("/sim/model/autopush/route/show-wingtip"));
