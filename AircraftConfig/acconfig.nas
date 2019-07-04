@@ -110,6 +110,7 @@ var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dia
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A32X/AircraftConfig/groundservices.xml");
 var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A32X/AircraftConfig/du-quality.xml");
 var rendering_dlg = gui.Dialog.new("sim/gui/dialogs/rendering/dialog", "Aircraft/IDG-A32X/AircraftConfig/rendering.xml");
+
 spinning.start();
 init_dlg.open();
 

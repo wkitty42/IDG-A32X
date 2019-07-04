@@ -15,6 +15,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -48,6 +49,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -138,6 +140,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -172,6 +175,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -263,6 +267,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -297,6 +302,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -388,6 +394,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -420,6 +427,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -509,6 +517,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
 				<property>/engines/engine[0]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
@@ -539,6 +548,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/interior-volume</property>
 				<property>/engines/engine[1]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
@@ -629,6 +639,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.14</ind> <dep>0.000</dep></entry>
@@ -663,6 +674,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.14</ind> <dep>0.000</dep></entry>
@@ -697,6 +709,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
 					<entry><ind>0.58</ind>    <dep>1.00</dep></entry>
@@ -754,6 +767,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.14</ind> <dep>0.000</dep></entry>
@@ -788,6 +802,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.14</ind> <dep>0.000</dep></entry>
@@ -879,6 +894,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.12</ind> <dep>0.000</dep></entry>
@@ -911,6 +927,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.12</ind> <dep>0.000</dep></entry>
@@ -1000,6 +1017,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
@@ -1029,6 +1047,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.60</ind> <dep>0.000</dep></entry>
@@ -1171,6 +1190,8 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
+				<property>/engines/engine[0]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -1199,6 +1220,8 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
+				<property>/engines/engine[0]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -1284,6 +1307,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.128</ind> <dep>0.000</dep></entry>
@@ -1318,6 +1342,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.128</ind> <dep>0.000</dep></entry>
@@ -1409,6 +1434,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -1443,6 +1469,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -1478,6 +1505,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.702</ind> <dep>0.000</dep></entry>
@@ -1508,6 +1536,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/exterior-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.702</ind> <dep>0.000</dep></entry>
@@ -1609,6 +1638,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -1642,6 +1672,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -1732,6 +1763,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -1766,6 +1798,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -1857,6 +1890,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -1891,6 +1925,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -1982,6 +2017,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.31</ind> <dep>0.00</dep></entry>
@@ -2014,6 +2050,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.31</ind> <dep>0.00</dep></entry>
@@ -2103,6 +2140,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.15</ind> <dep>0.00</dep></entry>
@@ -2136,6 +2174,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.15</ind> <dep>0.00</dep></entry>
@@ -2226,6 +2265,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
 				<property>/engines/engine[0]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
@@ -2256,6 +2296,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
 				<property>/engines/engine[1]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
@@ -2354,6 +2395,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -2387,6 +2429,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.19</ind>     <dep>0.000</dep></entry>
@@ -2477,6 +2520,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -2511,6 +2555,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.101</ind> <dep>0.000</dep></entry>
@@ -2602,6 +2647,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -2636,6 +2682,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
@@ -2727,6 +2774,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.31</ind> <dep>0.00</dep></entry>
@@ -2759,6 +2807,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.31</ind> <dep>0.00</dep></entry>
@@ -2848,6 +2897,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -2880,6 +2930,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
                     <entry><ind>0.70</ind> <dep>0.000</dep></entry>
@@ -2969,6 +3020,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
 				<property>/engines/engine[0]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value></product>
@@ -2999,6 +3051,7 @@
 		</condition>
         <expression>
             <product>
+				<property>/sim/sound/wing-volume</property>
 				<property>/engines/engine[1]/reverser-pos-norm</property>
                 <table>
                     <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value></product>
@@ -3095,6 +3148,7 @@
                     <entry><ind>22.0</ind> <dep>0.10</dep></entry>
                 </table>
             <property>sim/sound/internal-custom</property>
+			<property>/sim/sound/mechanical-volume</property>
             </product>
         </expression> 
     </input>
@@ -3115,6 +3169,7 @@
                     <entry><ind>301</ind>  <dep>0.00</dep></entry>
                 </table>
                 <property>sim/current-view/internal</property>
+			<property>/sim/sound/avionics-volume</property>
             </product>
         </expression> 
     </input>
@@ -3135,6 +3190,7 @@
                     <entry><ind>-12</ind>  <dep>1.00</dep></entry>
                 </table>
             <property>sim/current-view/internal</property>
+			<property>/sim/sound/avionics-volume</property>
             </product>
         </expression> 
     </input>
@@ -3158,6 +3214,7 @@
                     <entry><ind>550</ind>  <dep>0.30</dep></entry>
                 </table>
                 <property>sim/current-view/internal</property>
+			    <property>/sim/sound/effects-volume</property>
             </product>
         </expression> 
     </input>
@@ -3178,6 +3235,7 @@
 		</condition>
         <expression>
             <product>
+			    <property>/sim/sound/effects-volume</property>
                 <table>
                     <product><property>/velocities/groundspeed-kt</property><value>1</value>  </product>
                     <entry><ind>0.00</ind> <dep>0.0001</dep></entry>
@@ -3235,15 +3293,18 @@
 			<property>sim/current-view/internal</property>
 		</condition>
 		<expression>
-			<table>
-				<product>
-					<property>/velocities/groundspeed-kt</property>
-					<value>1</value>  
-				</product>
-				<entry><ind>010</ind>  <dep>0.00</dep></entry>
-				<entry><ind>110</ind>  <dep>0.50</dep></entry>
-				<entry><ind>140</ind>  <dep>1.00</dep></entry>
-			</table>
+			<product>
+				<table>
+					<product>
+						<property>/velocities/groundspeed-kt</property>
+						<value>1</value>  
+					</product>
+					<entry><ind>010</ind>  <dep>0.00</dep></entry>
+					<entry><ind>110</ind>  <dep>0.50</dep></entry>
+					<entry><ind>140</ind>  <dep>1.00</dep></entry>
+				</table>
+				<property>/sim/sound/effects-volume</property>
+			</product>
 		</expression> 
     </input>
 	<input>
@@ -3268,15 +3329,18 @@
 			</or>
 		</condition>
 		<expression>
-			<table>
-				<product>
-					<property>/velocities/groundspeed-kt</property>
-					<value>1</value>  
-				</product>
-				<entry><ind>010</ind>  <dep>0.00</dep></entry>
-				<entry><ind>110</ind>  <dep>0.50</dep></entry>
-				<entry><ind>140</ind>  <dep>1.00</dep></entry>
-			</table>
+			<product>
+				<table>
+					<product>
+						<property>/velocities/groundspeed-kt</property>
+						<value>1</value>  
+					</product>
+					<entry><ind>010</ind>  <dep>0.00</dep></entry>
+					<entry><ind>110</ind>  <dep>0.50</dep></entry>
+					<entry><ind>140</ind>  <dep>1.00</dep></entry>
+				</table>
+				<property>/sim/sound/effects-volume</property>
+			</product>
 		</expression> 
     </input>
 	<input>
@@ -3307,7 +3371,12 @@
 				<property>sim/sound/wingview-fwd</property>
 			</or>
 		</condition>
-		<value>1</value>
+		<expression>
+			<product>
+				<value>1</value>
+				<property>/sim/sound/mechanical-volume</property>
+			</product>
+		</expression>
     </input>
 	<input>
 		<condition>
@@ -3366,6 +3435,7 @@
 		<expression>
 			<product>
 				<property>/systems/pneumatic/pack-psi</property>
+				<property>/sim/sound/effects-volume</property>
 				<value>0.025</value>
 			</product>
 		</expression> 
@@ -3380,6 +3450,23 @@
 		<prop>sim/sound/other/air-con</prop>
     </output>
 </filter>
+
+<filter>
+    <type>gain</type>
+    <gain>1</gain>
+    <input>
+		<expression>
+			<product>
+				<property>/systems/apu/rpm</property>
+				<property>/sim/sound/effects-volume</property>
+			</product>
+		</expression> 
+    </input>
+    <output>
+		<prop>sim/sound/other/apu</prop>
+    </output>
+</filter>
+
 
 <!-- wing view properties -->
 

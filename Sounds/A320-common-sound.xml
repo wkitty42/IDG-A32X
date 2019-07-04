@@ -10,7 +10,7 @@
 				<property>sim/current-view/internal</property>
 			</condition>
 			<volume>
-				<property>/systems/apu/rpm</property>
+				<property>sim/sound/other/apu</property>
 				<factor>0.005</factor>
 				<max>0.25</max>
 			</volume>
@@ -29,7 +29,7 @@
 				<not><property>sim/current-view/internal</property></not>
 			</condition>
 			<volume>
-				<property>/systems/apu/rpm</property>
+				<property>sim/sound/other/apu</property>
 				<factor>0.005</factor>
 			</volume>
 			<pitch>
@@ -56,6 +56,9 @@
 					</equals>
 				</and>
 			</condition>
+			<volume>
+				<property>/sim/sound/mechanical-volume</property>
+			</volume>
 		</hyd-yellow>
 		
 		<!-- Disabled until proper PTU system implemented, to not annoy people -->
@@ -67,6 +70,7 @@
 				<property>/systems/hydraulic/ptu-active</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/mechanical-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -153,6 +157,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -189,6 +194,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -223,6 +229,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -257,6 +264,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -291,6 +299,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -325,6 +334,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -359,6 +369,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -393,6 +404,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -427,6 +439,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -461,6 +474,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -495,6 +509,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -529,6 +544,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -563,6 +579,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -611,6 +628,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -657,6 +675,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -692,6 +711,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -726,6 +746,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -806,6 +827,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -837,6 +859,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -866,6 +889,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -883,6 +907,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -960,7 +985,6 @@
 			</condition>
 			<volume>
 				<property>sim/sound/other/air-con</property>
-				<offset>0.2</offset>
 			</volume>
 		</ac>
 		
@@ -971,6 +995,9 @@
 			<condition>
 				<property>gear/gear[0]/wow</property>
 			</condition>
+			<volume>
+				<property>/sim/sound/effects-volume</property>
+			</volume>
 		</wow>
 		
 		<wow>
@@ -980,6 +1007,9 @@
 			<condition>
 				<property>gear/gear[1]/wow</property>
 			</condition>
+			<volume>
+				<property>/sim/sound/effects-volume</property>
+			</volume>
 		</wow>
 		
 		<wow>
@@ -989,6 +1019,9 @@
 			<condition>
 				<property>gear/gear[2]/wow</property>
 			</condition>
+			<volume>
+				<property>/sim/sound/effects-volume</property>
+			</volume>
 		</wow>
 		
 		<roll>
@@ -1083,7 +1116,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1098,7 +1131,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1113,7 +1146,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1128,7 +1161,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1143,7 +1176,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1158,7 +1191,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1173,7 +1206,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1188,7 +1221,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1203,7 +1236,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1218,7 +1251,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1233,7 +1266,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1248,7 +1281,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1263,7 +1296,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1278,7 +1311,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1293,7 +1326,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1308,7 +1341,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1326,7 +1359,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</sb>
 		<ns>
@@ -1343,7 +1376,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects/volume</property>
+				<property>/sim/sound/effects-volume</property>
 			</volume>
 		</ns>
 		
@@ -1355,6 +1388,7 @@
 				<property>/sim/sounde/btn1</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1367,6 +1401,7 @@
 				<property>/sim/sounde/oh-btn</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1379,6 +1414,7 @@
 				<property>/sim/sounde/btn3</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1391,6 +1427,7 @@
 				<property>/sim/sounde/knb1</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</switch>
@@ -1403,6 +1440,7 @@
 				<property>/sim/sounde/switch1</property>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1418,6 +1456,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1447,6 +1486,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</cvrtone>
@@ -1462,6 +1502,7 @@
 				</greater-than>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.80</factor>
 			</volume>
 		</relay>
@@ -1477,6 +1518,7 @@
 				</greater-than>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.80</factor>
 			</volume>
 		</relay>
@@ -1498,6 +1540,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
@@ -1513,6 +1556,7 @@
 				</equals>
 			</condition>
 			<volume>
+				<property>/sim/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
@@ -1537,6 +1581,7 @@
 				</and>
 			</condition>
 			<volume>
+				<property>/sim/sound/avionics-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
@@ -1640,7 +1685,7 @@
 				<property>/sim/sound/warnings/chime</property>
 			</condition>
 			<volume>
-				<property>sim/sound/effects/volume</property>
+				<property>sim/sound/avionics-volume</property>
 			</volume>
 			<reference-dist>10</reference-dist>
 			<max-dist>100</max-dist>
@@ -1656,7 +1701,7 @@
 				<property>/sim/sound/warnings/crc</property>
 			</condition>
 			<volume>
-				<property>sim/sound/effects/volume</property>
+				<property>sim/sound/avionics-volume</property>
 			</volume>
 			<reference-dist>10</reference-dist>
 			<max-dist>100</max-dist>
@@ -1671,7 +1716,7 @@
 				<property>warnings/stall/active</property>
 			</condition>
 			<volume>
-				<property>sim/sound/effects/volume</property>
+				<property>sim/sound/avionics-volume</property>
 				<factor>3</factor>
 				<!--offset>1</offset-->
 				<min>1</min>
