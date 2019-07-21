@@ -1468,7 +1468,7 @@
 			<property>/surface-positions/flap-pos-norm</property>
 			<volume>
 				<property>/sim/sound/other/flaps</property>
-				<factor>0.9</factor>
+				<factor>1.00</factor>
 			</volume>
 		</switch>
 		
