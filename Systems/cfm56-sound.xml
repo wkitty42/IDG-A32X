@@ -766,10 +766,10 @@
 					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
 					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
 					<entry><ind>0.78</ind> <dep>0.4025</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.950</dep></entry>
-					<entry><ind>0.944</ind><dep>0.900</dep></entry>
-					<entry><ind>0.998</ind><dep>0.900</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.900</dep></entry>
+					<entry><ind>0.84</ind> <dep>0.980</dep></entry>
+					<entry><ind>0.944</ind><dep>1.000</dep></entry>
+					<entry><ind>0.998</ind><dep>1.000</dep></entry>
+					<entry><ind>1.0</ind>  <dep>1.000</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -801,10 +801,10 @@
 					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
 					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
 					<entry><ind>0.78</ind> <dep>0.4025</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.950</dep></entry>
-					<entry><ind>0.944</ind><dep>0.900</dep></entry>
-					<entry><ind>0.998</ind><dep>0.900</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.900</dep></entry>
+					<entry><ind>0.84</ind> <dep>0.980</dep></entry>
+					<entry><ind>0.944</ind><dep>1.000</dep></entry>
+					<entry><ind>0.998</ind><dep>1.000</dep></entry>
+					<entry><ind>1.0</ind>  <dep>1.000</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -3001,10 +3001,10 @@
 					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
 					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
 					<entry><ind>0.78</ind> <dep>0.5025</dep></entry>
-					<entry><ind>0.84</ind> <dep>1.000</dep></entry>
-					<entry><ind>0.944</ind><dep>0.950</dep></entry>
-					<entry><ind>0.998</ind><dep>0.950</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.950</dep></entry>
+					<entry><ind>0.84</ind> <dep>1.100</dep></entry>
+					<entry><ind>0.944</ind><dep>1.000</dep></entry>
+					<entry><ind>0.998</ind><dep>1.000</dep></entry>
+					<entry><ind>1.0</ind>  <dep>1.000</dep></entry>
                 </table>
             </product>
         </expression> 
@@ -3035,11 +3035,11 @@
                     <entry><ind>0.59</ind> <dep>0.00</dep></entry>
 					<entry><ind>0.62</ind> <dep>0.00</dep></entry>
 					<entry><ind>0.74</ind> <dep>0.013</dep></entry>
-					<entry><ind>0.78</ind> <dep>0.4025</dep></entry>
-					<entry><ind>0.84</ind> <dep>0.950</dep></entry>
-					<entry><ind>0.944</ind><dep>0.900</dep></entry>
-					<entry><ind>0.998</ind><dep>0.900</dep></entry>
-					<entry><ind>1.0</ind>  <dep>0.900</dep></entry>
+					<entry><ind>0.78</ind> <dep>0.5025</dep></entry>
+					<entry><ind>0.84</ind> <dep>1.100</dep></entry>
+					<entry><ind>0.944</ind><dep>1.000</dep></entry>
+					<entry><ind>0.998</ind><dep>1.000</dep></entry>
+					<entry><ind>1.0</ind>  <dep>1.000</dep></entry>
                 </table>
             </product>
         </expression> 
