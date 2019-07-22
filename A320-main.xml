@@ -157,19 +157,6 @@
 			</autopilot>
 			<!-- 10 is sound -->
 		</systems>
-
-		<sound>
-			<wingview-aft type="bool">0</wingview-aft>
-			<wingview-fwd type="bool">0</wingview-fwd>
-			<internal-custom type="bool">0</internal-custom>
-			<suppress-warning type="bool">1</suppress-warning>
-			<exterior-volume type="double">1.0</exterior-volume>
-			<interior-volume type="double">1.0</interior-volume>
-			<wing-volume type="double">1.0</wing-volume>
-			<avionics-volume type="double">1.0</avionics-volume>
-			<effects-volume type="double">1.0</effects-volume>
-			<mechanical-volume type="double">1.0</mechanical-volume>
-		</sound>
 		
 		<sounde>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
@@ -368,8 +355,10 @@
 					<item>
 						<label>Adjust Sound Volumes</label>
 						<binding>
-							<command>dialog-show</command>
-							<dialog-name>sound-config</dialog-name>
+							<command>nasal</command>
+							<script>
+							acconfig.sound_config_dlg.open();
+							</script>
 						</binding>
 					</item>
 					<item>

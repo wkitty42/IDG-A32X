@@ -93,6 +93,12 @@ setprop("/systems/acconfig/options/nd-rate", 1);
 setprop("/systems/acconfig/options/uecam-rate", 1);
 setprop("/systems/acconfig/options/lecam-rate", 1);
 setprop("/systems/acconfig/options/iesi-rate", 1);
+setprop("/systems/acconfig/options/sound/interior-volume", 1);
+setprop("/systems/acconfig/options/sound/exterior-volume", 1);
+setprop("/systems/acconfig/options/sound/wing-volume", 1);
+setprop("/systems/acconfig/options/sound/avionics-volume", 1);
+setprop("/systems/acconfig/options/sound/effects-volume", 1);
+setprop("/systems/acconfig/options/sound/mechanical-volume", 1);
 setprop("/systems/acconfig/options/autopush/show-route", 1);
 setprop("/systems/acconfig/options/autopush/show-wingtip", 1);
 var main_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/main/dialog", "Aircraft/IDG-A32X/AircraftConfig/main.xml");
@@ -110,6 +116,7 @@ var error_mismatch = gui.Dialog.new("sim/gui/dialogs/acconfig/error/mismatch/dia
 var groundservices_dlg = gui.Dialog.new("sim/gui/dialogs/acconfig/groundsrvc/dialog", "Aircraft/IDG-A32X/AircraftConfig/groundservices.xml");
 var du_quality = gui.Dialog.new("sim/gui/dialogs/acconfig/du-quality/dialog", "Aircraft/IDG-A32X/AircraftConfig/du-quality.xml");
 var rendering_dlg = gui.Dialog.new("sim/gui/dialogs/rendering/dialog", "Aircraft/IDG-A32X/AircraftConfig/rendering.xml");
+var sound_config_dlg = gui.Dialog.new("sim/gui/dialogs/sound-config/dialog", "Aircraft/IDG-A32X/AircraftConfig/sound-config.xml");
 
 spinning.start();
 init_dlg.open();

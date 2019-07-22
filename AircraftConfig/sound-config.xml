@@ -22,6 +22,12 @@
 			<legend>X</legend>
 			<key>Esc</key>
 			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.writeSettings();
+				</script>
+			</binding>
+			<binding>
 				<command>dialog-close</command>
 			</binding>
 		</button>
@@ -45,7 +51,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Cockpit Volume</label>
-			<property>/sim/sound/interior-volume</property>
+			<property>/systems/acconfig/options/sound/interior-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -59,7 +65,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Exterior Volume</label>
-			<property>/sim/sound/exterior-volume</property>
+			<property>/systems/acconfig/options/sound/exterior-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -74,7 +80,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Wing Volume</label>
-			<property>/sim/sound/wing-volume</property>
+			<property>/systems/acconfig/options/sound/wing-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -104,7 +110,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Avionics Volume</label>
-			<property>/sim/sound/avionics-volume</property>
+			<property>/systems/acconfig/options/sound/avionics-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -118,7 +124,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Effects Volume</label>
-			<property>/sim/sound/effects-volume</property>
+			<property>/systems/acconfig/options/sound/effects-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -133,7 +139,7 @@
 		<slider>
 			<halign>left</halign>
 			<label>Mechanical Volume</label>
-			<property>/sim/sound/mechanical-volume</property>
+			<property>/systems/acconfig/options/sound/mechanical-volume</property>
 			<min>0.0</min>
 			<max>1.5</max>
 			<x>10</x>
@@ -154,6 +160,12 @@
 			<halign>left</halign>
 			<legend>Close</legend>
 			<pref-width>210</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>
+				acconfig.writeSettings();
+				</script>
+			</binding>
 			<binding>
 				<command>dialog-close</command>
 			</binding>
