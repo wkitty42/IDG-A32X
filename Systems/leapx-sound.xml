@@ -10,7 +10,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.00</ind> <dep>0.00</dep></entry>
@@ -33,7 +33,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.00</ind> <dep>0.50</dep></entry>
@@ -122,7 +122,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.06</ind> <dep>0.00</dep></entry>
@@ -144,7 +144,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.06</ind> <dep>0.00</dep></entry>
@@ -166,7 +166,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.32</ind> <dep>0.00</dep></entry>
@@ -188,7 +188,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.32</ind> <dep>0.00</dep></entry>
@@ -210,7 +210,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[0]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.65</ind> <dep>0.00</dep></entry>
@@ -231,7 +231,7 @@
   <input>
     <expression>
       <product>
-		<property>/sim/sound/interior-volume</property>
+		<property>/systems/acconfig/options/sound/interior-volume</property>
         <table>
           <product><property>/engines/engine[1]/n1-actual</property><value>0.01</value>  </product>
 			<entry><ind>0.65</ind> <dep>0.00</dep></entry>
@@ -456,7 +456,7 @@
 			<entry><ind>22.0</ind> <dep>0.10</dep></entry>
         </table>
 		<property>sim/current-view/internal</property>
-		<property>/sim/sound/mechanical-volume</property>
+		<property>/systems/acconfig/options/sound/mechanical-volume</property>
       </product>
     </expression> 
   </input>
@@ -477,7 +477,7 @@
 			<entry><ind>301</ind>  <dep>0.00</dep></entry>
         </table>
 		<property>sim/current-view/internal</property>
-		<property>/sim/sound/avionics-volume</property>
+		<property>/systems/acconfig/options/sound/avionics-volume</property>
       </product>
     </expression> 
   </input>
@@ -498,7 +498,7 @@
 			<entry><ind>-12</ind>  <dep>1.00</dep></entry>
         </table>
 		<property>sim/current-view/internal</property>
-		<property>/sim/sound/avionics-volume</property>
+		<property>/systems/acconfig/options/sound/avionics-volume</property>
       </product>
     </expression> 
   </input>
@@ -522,7 +522,7 @@
                     <entry><ind>550</ind>  <dep>0.30</dep></entry>
                 </table>
                 <property>sim/current-view/internal</property>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
             </product>
         </expression> 
     </input>
@@ -543,7 +543,7 @@
 		</condition>
         <expression>
             <product>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
                 <table>
                     <product><property>/velocities/groundspeed-kt</property><value>1</value>  </product>
                     <entry><ind>0.00</ind> <dep>0.0001</dep></entry>
@@ -611,7 +611,7 @@
 					<entry><ind>110</ind>  <dep>0.50</dep></entry>
 					<entry><ind>140</ind>  <dep>1.00</dep></entry>
 				</table>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</product>
 		</expression> 
     </input>
@@ -647,7 +647,7 @@
 					<entry><ind>110</ind>  <dep>0.50</dep></entry>
 					<entry><ind>140</ind>  <dep>1.00</dep></entry>
 				</table>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</product>
 		</expression> 
     </input>
@@ -682,7 +682,7 @@
 		<expression>
 			<product>
 				<value>1</value>
-				<property>/sim/sound/mechanical-volume</property>
+				<property>/systems/acconfig/options/sound/mechanical-volume</property>
 			</product>
 		</expression>
     </input>
@@ -743,7 +743,7 @@
 		<expression>
 			<product>
 				<property>/systems/pneumatic/pack-psi</property>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<value>0.025</value>
 			</product>
 		</expression> 

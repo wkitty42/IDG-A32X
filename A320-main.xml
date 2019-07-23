@@ -158,6 +158,10 @@
 			<!-- 10 is sound -->
 		</systems>
 		
+		<sound>
+			<suppress-warning type="bool">1</suppress-warning>
+		</sound>
+	
 		<sounde>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
 			<no-smoking-sign type="bool">0</no-smoking-sign>
@@ -597,6 +601,12 @@
 		<electric>
 			<avionics-switch type="bool">true</avionics-switch>
 		</electric>
+		<electrical>
+			<idg>
+				<left-idg-disc type="bool">false</left-idg-disc>
+				<right-idg-disc type="bool">false</right-idg-disc>
+			</idg>
+		</electrical>
 		<engines>
 			<engine-start-switch type="int">1</engine-start-switch>
 			<engine n="0">

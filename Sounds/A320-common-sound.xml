@@ -57,7 +57,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/mechanical-volume</property>
+				<property>/systems/acconfig/options/sound/mechanical-volume</property>
 			</volume>
 		</hyd-yellow>
 		
@@ -70,7 +70,7 @@
 				<property>/systems/hydraulic/ptu-active</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/mechanical-volume</property>
+				<property>/systems/acconfig/options/sound/mechanical-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -157,7 +157,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -194,7 +194,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -229,7 +229,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -264,7 +264,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -299,7 +299,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -334,7 +334,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -369,7 +369,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -404,7 +404,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -439,7 +439,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -474,7 +474,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -509,7 +509,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -544,7 +544,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -579,7 +579,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -628,7 +628,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -675,7 +675,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -711,7 +711,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -746,7 +746,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -827,7 +827,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -859,7 +859,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -889,7 +889,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -907,7 +907,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -996,7 +996,7 @@
 				<property>gear/gear[0]/wow</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</wow>
 		
@@ -1008,7 +1008,7 @@
 				<property>gear/gear[1]/wow</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</wow>
 		
@@ -1020,7 +1020,7 @@
 				<property>gear/gear[2]/wow</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</wow>
 		
@@ -1116,7 +1116,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1131,7 +1131,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1146,7 +1146,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1161,7 +1161,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1176,7 +1176,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1191,7 +1191,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1206,7 +1206,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1221,7 +1221,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1236,7 +1236,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1251,7 +1251,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1266,7 +1266,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1281,7 +1281,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1296,7 +1296,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1311,7 +1311,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1326,7 +1326,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detenta>
 		
@@ -1341,7 +1341,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</detentb>
 		
@@ -1359,7 +1359,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</sb>
 		<ns>
@@ -1376,7 +1376,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 			</volume>
 		</ns>
 		
@@ -1388,7 +1388,7 @@
 				<property>/sim/sounde/btn1</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1401,7 +1401,7 @@
 				<property>/sim/sounde/oh-btn</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1414,7 +1414,7 @@
 				<property>/sim/sounde/btn3</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1427,7 +1427,7 @@
 				<property>/sim/sounde/knb1</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</switch>
@@ -1440,7 +1440,7 @@
 				<property>/sim/sounde/switch1</property>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1456,7 +1456,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.75</factor>
 			</volume>
 		</switch>
@@ -1486,7 +1486,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</cvrtone>
@@ -1502,7 +1502,7 @@
 				</greater-than>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.80</factor>
 			</volume>
 		</relay>
@@ -1518,7 +1518,7 @@
 				</greater-than>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.80</factor>
 			</volume>
 		</relay>
@@ -1540,7 +1540,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
@@ -1556,7 +1556,7 @@
 				</equals>
 			</condition>
 			<volume>
-				<property>/sim/sound/effects-volume</property>
+				<property>/systems/acconfig/options/sound/effects-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
@@ -1581,7 +1581,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>/sim/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>
