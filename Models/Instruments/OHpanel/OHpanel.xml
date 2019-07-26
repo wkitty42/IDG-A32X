@@ -6161,40 +6161,28 @@
 		<object-name>Eng1FireCover</object-name>
 		<object-name>Eng1FireBtn</object-name>
 		<action>
-			<button>1</button>
-			<repeatable>false</repeatable>
+			<button>0</button>
+			<repeatable>true</repeatable>
 			<binding>
+				<condition>
+					<property>devices/status/keyboard/shift</property>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/engines/engine[0]/fire-btn-cover</property>
 				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<condition>
+			<binding>
+				<condition>
+					<and>
+						<not>
+							<property>devices/status/keyboard/shift</property>
+						</not>
 						<equals>
 							<property>controls/engines/engine[0]/fire-btn</property>
 							<value>0</value>
 						</equals>
-					</condition>
-					<command>property-assign</command>
-					<property>controls/engines/engine[0]/fire-btn-cover</property>
-					<value>0</value>
-				</binding>
-			</mod-up>
-		</action>
-		<action>
-			<button>3</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-assign</command>
-				<property>controls/engines/engine[0]/fire-btn-cover</property>
-				<value>1</value>
-			</binding>
-		</action>
-		<action>
-			<button>4</button>
-			<repeatable>false</repeatable>
-			<binding>
+					</and>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/engines/engine[0]/fire-btn-cover</property>
 				<value>0</value>
@@ -6438,40 +6426,28 @@
 		<object-name>APUFireCover</object-name>
 		<object-name>APUFireBtn</object-name>
 		<action>
-			<button>1</button>
-			<repeatable>false</repeatable>
+			<button>0</button>
+			<repeatable>true</repeatable>
 			<binding>
+				<condition>
+					<property>devices/status/keyboard/shift</property>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/APU/fire-btn-cover</property>
 				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<condition>
+			<binding>
+				<condition>
+					<and>
+						<not>
+							<property>devices/status/keyboard/shift</property>
+						</not>
 						<equals>
 							<property>controls/APU/fire-btn</property>
 							<value>0</value>
 						</equals>
-					</condition>
-					<command>property-assign</command>
-					<property>controls/APU/fire-btn-cover</property>
-					<value>0</value>
-				</binding>
-			</mod-up>
-		</action>
-		<action>
-			<button>3</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-assign</command>
-				<property>controls/APU/fire-btn-cover</property>
-				<value>1</value>
-			</binding>
-		</action>
-		<action>
-			<button>4</button>
-			<repeatable>false</repeatable>
-			<binding>
+					</and>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/APU/fire-btn-cover</property>
 				<value>0</value>
@@ -6613,40 +6589,28 @@
 		<object-name>Eng2FireCover</object-name>
 		<object-name>Eng2FireBtn</object-name>
 		<action>
-			<button>1</button>
-			<repeatable>false</repeatable>
+			<button>0</button>
+			<repeatable>true</repeatable>
 			<binding>
+				<condition>
+					<property>devices/status/keyboard/shift</property>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/engines/engine[1]/fire-btn-cover</property>
 				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<condition>
+			<binding>
+				<condition>
+					<and>
+						<not>
+							<property>devices/status/keyboard/shift</property>
+						</not>
 						<equals>
 							<property>controls/engines/engine[1]/fire-btn</property>
 							<value>0</value>
 						</equals>
-					</condition>
-					<command>property-assign</command>
-					<property>controls/engines/engine[1]/fire-btn-cover</property>
-					<value>0</value>
-				</binding>
-			</mod-up>
-		</action>
-		<action>
-			<button>3</button>
-			<repeatable>false</repeatable>
-			<binding>
-				<command>property-assign</command>
-				<property>controls/engines/engine[1]/fire-btn-cover</property>
-				<value>1</value>
-			</binding>
-		</action>
-		<action>
-			<button>4</button>
-			<repeatable>false</repeatable>
-			<binding>
+					</and>
+				</condition>
 				<command>property-assign</command>
 				<property>controls/engines/engine[1]/fire-btn-cover</property>
 				<value>0</value>
