@@ -432,7 +432,7 @@
 					</and>
 				</condition>
 				<command>property-assign</command>
-				<property>controls/OH/protectors/fwddisch</property>
+				<property>controls/OH/protectors/aftdisch</property>
 				<value>0</value>
 			</binding>
 			<binding>
