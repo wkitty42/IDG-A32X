@@ -6182,6 +6182,24 @@
 				</binding>
 			</mod-up>
 		</action>
+		<action>
+			<button>3</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[0]/fire-btn-cover</property>
+				<value>1</value>
+			</binding>
+		</action>
+		<action>
+			<button>4</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[0]/fire-btn-cover</property>
+				<value>0</value>
+			</binding>
+		</action>
 	</animation>
 	
 	<animation>
@@ -6441,6 +6459,24 @@
 				</binding>
 			</mod-up>
 		</action>
+		<action>
+			<button>3</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/APU/fire-btn-cover</property>
+				<value>1</value>
+			</binding>
+		</action>
+		<action>
+			<button>4</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/APU/fire-btn-cover</property>
+				<value>0</value>
+			</binding>
+		</action>
 	</animation>
 	
 	<animation>
@@ -6597,6 +6633,24 @@
 					<value>0</value>
 				</binding>
 			</mod-up>
+		</action>
+		<action>
+			<button>3</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[1]/fire-btn-cover</property>
+				<value>1</value>
+			</binding>
+		</action>
+		<action>
+			<button>4</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/engines/engine[1]/fire-btn-cover</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
