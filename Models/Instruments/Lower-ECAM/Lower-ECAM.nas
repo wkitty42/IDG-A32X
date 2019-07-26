@@ -1268,7 +1268,7 @@ var canvas_lowerECAM_elec = {
 		# TODO add correct A
 		if (dc1.getValue() < 25) {
 			me["ESSTR-group"].show();
-			me["ESSTR-Volt"].setText(sprintf("%s", math.round(dc_essgetValue())));
+			me["ESSTR-Volt"].setText(sprintf("%s", math.round(dc_ess.getValue())));
 
 			if (dc_ess.getValue() < 25 or dc_ess.getValue() > 31) {
 				me["ESSTR-Volt"].setColor(0.7333,0.3803,0);
