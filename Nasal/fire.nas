@@ -689,7 +689,7 @@ setlistener("/controls/fire/test-btn-2", func() {
 
 setlistener("/controls/fire/apu-test-btn", func() {
 	if (getprop("/systems/failures/apu-fire")) { return; }
-	if (cargoTestBtn.getValue() == 1) {
+	if (apuTestBtn.getValue() == 1) {
 		if (dcbatNode.getValue() > 25 or dcessNode.getValue() > 25) {
 			apuFireWarn.setBoolValue(1);
 		}
