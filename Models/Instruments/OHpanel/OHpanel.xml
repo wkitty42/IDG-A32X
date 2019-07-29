@@ -455,33 +455,14 @@
 			<button>0</button>
 			<repeatable>true</repeatable>
 			<binding>
-				<condition>
-					<property>devices/status/keyboard/shift</property>
-				</condition>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/fwddisch</property>
-				<value>1</value>
 			</binding>
 			<binding>
 				<condition>
 					<not>
-						<property>devices/status/keyboard/shift</property>
+						<property>controls/OH/protectors/fwddisch</property>
 					</not>
-				</condition>
-				<command>property-assign</command>
-				<property>controls/OH/protectors/fwddisch</property>
-				<value>0</value>
-			</binding>
-			<binding>
-				<condition>
-					<and>
-						<not>
-							<property>devices/status/keyboard/shift</property>
-						</not>
-						<not>
-							<property>controls/OH/protectors/fwddisch</property>
-						</not>
-					</and>
 				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-cover", 1);</script>
@@ -496,33 +477,14 @@
 			<button>0</button>
 			<repeatable>true</repeatable>
 			<binding>
-				<condition>
-					<property>devices/status/keyboard/shift</property>
-				</condition>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/aftdisch</property>
-				<value>1</value>
 			</binding>
 			<binding>
 				<condition>
 					<not>
-						<property>devices/status/keyboard/shift</property>
+						<property>controls/OH/protectors/aftdisch</property>
 					</not>
-				</condition>
-				<command>property-assign</command>
-				<property>controls/OH/protectors/aftdisch</property>
-				<value>0</value>
-			</binding>
-			<binding>
-				<condition>
-					<and>
-						<not>
-							<property>devices/status/keyboard/shift</property>
-						</not>
-						<not>
-							<property>controls/OH/protectors/aftdisch</property>
-						</not>
-					</and>
 				</condition>
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-cover", 1);</script>
@@ -2040,6 +2002,29 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/ratman</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dcbat</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc-ess</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/ratman</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -2047,23 +2032,20 @@
 		<type>pick</type>
 		<object-name>RATManGuard</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/ratman</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/ratman</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
+			<binding>
+				<condition>
+					<not>
+						<property>controls/OH/protectors/ratman</property>
+					</not>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-cover", 1);</script>
+			</binding>
 		</action>
 	</animation>
 	
@@ -3579,6 +3561,29 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<and>
+						<equals>
+							<property>controls/OH/protectors/elecratman</property>
+							<value>1</value>
+						</equals>
+						<or>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dcbat</property>
+								<value>25</value>
+							</greater-than-equals>
+							<greater-than-equals>
+								<property>systems/electrical/bus/dc-ess</property>
+								<value>25</value>
+							</greater-than-equals>
+						</or>
+					</and>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/elecratman</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -3586,23 +3591,20 @@
 		<type>pick</type>
 		<object-name>EmerManOnGuard</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/elecratman</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/elecratman</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
+			<binding>
+				<condition>
+					<not>
+						<property>controls/OH/protectors/elecratman</property>
+					</not>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-cover", 1);</script>
+			</binding>
 		</action>
 	</animation>
 	
@@ -4349,6 +4351,17 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/ramair</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/ramair</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -4358,24 +4371,12 @@
 		<object-name>RamAirBtn2O</object-name>
 		<object-name>RamAirBtnProt</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/ramair</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/ramair</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
 		</action>
 	</animation>
 	
@@ -4618,6 +4619,17 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/ditching</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/ditching</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -4628,24 +4640,12 @@
 		<object-name>DitchBtn2O</object-name>
 		<object-name>DitchProt</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/ditching</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/ditching</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
 		</action>
 	</animation>
 	
@@ -5555,6 +5555,17 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/eng1-manstart</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/eng1-manstart</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -5565,24 +5576,21 @@
 		<object-name>Eng1ManStartBtn2O</object-name>
 		<object-name>Eng1ManStartProt</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/eng1-manstart</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/eng1-manstart</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
+			<binding>
+				<condition>
+					<not>
+						<property>controls/OH/protectors/eng1-manstart</property>
+					</not>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-cover", 1);</script>
+			</binding>
 		</action>
 	</animation>
 	
@@ -5652,6 +5660,17 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/eng2-manstart</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/eng2-manstart</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -5662,24 +5681,21 @@
 		<object-name>Eng2ManStartBtn2O</object-name>
 		<object-name>Eng2ManStartProt</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<repeatable>false</repeatable>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/eng2-manstart</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/eng2-manstart</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
+			<binding>
+				<condition>
+					<not>
+						<property>controls/OH/protectors/eng2-manstart</property>
+					</not>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-cover", 1);</script>
+			</binding>
 		</action>
 	</animation>
 	
@@ -6471,12 +6487,11 @@
 				<condition>
 					<equals>
 						<property>controls/APU/fire-btn</property>
-						<value>0</value>
+						<value>1</value>
 					</equals>
 				</condition>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/APU/fire-btn-cover</property>
-				<value>0</value>
 			</binding>
 		</action>
 	</animation>
@@ -6484,33 +6499,17 @@
 	<animation>
 		<type>pick</type>
 		<object-name>APUFireCover</object-name>
-		<object-name>APUFireBtn</object-name>
 		<action>
 			<button>0</button>
-			<repeatable>true</repeatable>
+			<repeatable>false</repeatable>
 			<binding>
-				<condition>
-					<property>devices/status/keyboard/shift</property>
-				</condition>
 				<command>property-assign</command>
-				<property>controls/APU/fire-btn-cover</property>
-				<value>1</value>
+				<property>controls/APU/fire-btn</property>
+				<value>0</value>
 			</binding>
 			<binding>
-				<condition>
-					<and>
-						<not>
-							<property>devices/status/keyboard/shift</property>
-						</not>
-						<equals>
-							<property>controls/APU/fire-btn</property>
-							<value>0</value>
-						</equals>
-					</and>
-				</condition>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/APU/fire-btn-cover</property>
-				<value>0</value>
 			</binding>
 		</action>
 	</animation>
@@ -7106,6 +7105,17 @@
 				<command>nasal</command>
 				<script>setprop("/sim/sounde/oh-btn", 1);</script>
 			</binding>
+			<binding>
+				<condition>
+					<equals>
+						<property>controls/OH/protectors/maskman</property>
+						<value>1</value>
+					</equals>
+				</condition>
+				<command>property-assign</command>
+				<property>controls/OH/protectors/maskman</property>
+				<value>0</value>
+			</binding>
 		</action>
 	</animation>
 	
@@ -7113,23 +7123,20 @@
 		<type>pick</type>
 		<object-name>MaskManOnGuard</object-name>
 		<action>
-			<button>1</button>
+			<button>0</button>
 			<binding>
-				<command>property-assign</command>
+				<command>property-toggle</command>
 				<property>controls/OH/protectors/maskman</property>
-				<value>1</value>
 			</binding>
-			<mod-up>
-				<binding>
-					<command>property-assign</command>
-					<property>controls/OH/protectors/maskman</property>
-					<value>0</value>
-				</binding>
-				<binding>
-					<command>nasal</command>
-					<script>setprop("/sim/sounde/oh-cover", 1);</script>
-				</binding>
-			</mod-up>
+			<binding>
+				<condition>
+					<not>
+						<property>controls/OH/protectors/maskman</property>
+					</not>
+				</condition>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/oh-cover", 1);</script>
+			</binding>
 		</action>
 	</animation>
 	
