@@ -1,9 +1,6 @@
 # A3XX ND Canvas
-# Joshua Davidson (it0uchpods) and Nikolai V. Chr.
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Joshua Davidson (Octal450)
 
 io.include("A3XX_ND.nas");
 
@@ -382,7 +379,7 @@ setlistener("/flight-management/control/capture-leg", func(n) {
 }, 0, 0);
 
 var showNd = func(nd = nil) {
-	if(nd == nil) nd = "main";
-	var dlg = canvas.Window.new([512, 512], "dialog");
+	if (nd == nil) nd = "main";
+	var dlg = canvas.Window.new([512, 512], "dialog").set("resize", 1);
 	dlg.setCanvas(nd_display[nd]);
 }

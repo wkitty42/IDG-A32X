@@ -1,19 +1,16 @@
 <?xml version="1.0"?>
 
-<!--
-############################
-# Copyright (c) merspieler #
-############################
--->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
 
 <PropertyList>
 
-	<path>res/Audio1.ac</path>
+	<path>res/Audio.ac</path>
 
 	<!-- INT/RAD switch -->
 	<animation>
 		<type>pick</type>
 		<object-name>audio_int_rad</object-name>
+		<object-name>audio_int_rad.mark</object-name>
 		<action>
 			<button>0</button>
 			<binding>
@@ -41,6 +38,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_int_rad</object-name>
+		<object-name>audio_int_rad.mark</object-name>
 		<property>controls/audio/acp[0]/int-rad</property>
 		<interpolation>
 			<entry>
@@ -116,10 +114,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>vhf1</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf1</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf1</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -137,10 +162,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>vhf2</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf2</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf2</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -158,10 +210,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>vhf3</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf3</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>vhf3</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -179,10 +258,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>hf1</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>hf1</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>hf1</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -200,10 +306,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>hf2</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>hf2</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>hf2</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -221,10 +354,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>mech</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>mech</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>mech</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -242,10 +402,37 @@
 				<property>systems/audio/acp[0]/call_chan</property>
 				<value>att</value>
 				<condition>
-					<greater-than-equals>
-						<property>systems/electrical/bus/dc-ess</property>
-						<value>25</value>
-					</greater-than-equals>
+					<and>
+						<not-equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>att</value>
+						</not-equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
+				</condition>
+			</binding>
+		</action>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>systems/audio/acp[0]/call_chan</property>
+				<value></value>
+				<condition>
+					<and>
+						<equals>
+							<property>systems/audio/acp[0]/call_chan</property>
+							<value>att</value>
+						</equals>
+						<greater-than-equals>
+							<property>systems/electrical/bus/dc-ess</property>
+							<value>25</value>
+						</greater-than-equals>
+					</and>
 				</condition>
 			</binding>
 		</action>
@@ -275,6 +462,7 @@
 	<animation>
 		<type>pick</type>
 		<object-name>audio_vhf1</object-name>
+		<object-name>audio_vhf1_glare</object-name>
 		<action>
 			<button>0</button>
 			<repeatable>false</repeatable>
@@ -943,6 +1131,26 @@
 	</animation>
 	
 	<animation>
+		<name>Panel lighting</name>
+		<type>material</type>
+		<object-name>audio_body</object-name>
+		<object-name>audio_int_rad</object-name>
+		<emission>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+			<factor-prop>sim/model/lights/dome-light</factor-prop>
+		</emission>
+	</animation>
+
+	<effect>
+		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
+		<object-name>audio_body</object-name>
+		<object-name>audio_glare</object-name>
+		<object-name>audio_int_rad</object-name>
+	</effect>
+	
+	<animation>
 		<type>select</type>
 		<object-name>audio_hf1_led</object-name>
 		<condition>
@@ -1062,6 +1270,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_vhf1</object-name>
+		<object-name>audio_vhf1_glare</object-name>
 		<property>controls/audio/acp[0]/vhf1-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1073,6 +1282,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_vhf1</object-name>
+		<object-name>audio_vhf1_glare</object-name>
 		<property>controls/audio/acp[0]/vhf1-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1086,6 +1296,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_vhf2</object-name>
+		<object-name>audio_vhf2_glare</object-name>
 		<property>controls/audio/acp[0]/vhf2-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1097,6 +1308,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_vhf2</object-name>
+		<object-name>audio_vhf2_glare</object-name>
 		<property>controls/audio/acp[0]/vhf2-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1110,6 +1322,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_vhf3</object-name>
+		<object-name>audio_vhf3_glare</object-name>
 		<property>controls/audio/acp[0]/vhf3-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1121,6 +1334,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_vhf3</object-name>
+		<object-name>audio_vhf3_glare</object-name>
 		<property>controls/audio/acp[0]/vhf3-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1134,6 +1348,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_hf1</object-name>
+		<object-name>audio_hf1_glare</object-name>
 		<property>controls/audio/acp[0]/hf1-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1145,6 +1360,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_hf1</object-name>
+		<object-name>audio_hf1_glare</object-name>
 		<property>controls/audio/acp[0]/hf1-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1158,6 +1374,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_hf2</object-name>
+		<object-name>audio_hf2_glare</object-name>
 		<property>controls/audio/acp[0]/hf2-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1169,6 +1386,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_hf2</object-name>
+		<object-name>audio_hf2_glare</object-name>
 		<property>controls/audio/acp[0]/hf2-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1182,6 +1400,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_int</object-name>
+		<object-name>audio_int_glare</object-name>
 		<property>controls/audio/acp[0]/int-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1193,6 +1412,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_int</object-name>
+		<object-name>audio_int_glare</object-name>
 		<property>controls/audio/acp[0]/int-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1206,6 +1426,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_cab</object-name>
+		<object-name>audio_cab_glare</object-name>
 		<property>controls/audio/acp[0]/cab-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1217,6 +1438,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_cab</object-name>
+		<object-name>audio_cab_glare</object-name>
 		<property>controls/audio/acp[0]/cab-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1230,6 +1452,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_pa_rot</object-name>
+		<object-name>audio_pa_glare</object-name>
 		<property>controls/audio/acp[0]/pa-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1241,6 +1464,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_pa_rot</object-name>
+		<object-name>audio_pa_glare</object-name>
 		<property>controls/audio/acp[0]/pa-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1254,6 +1478,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_vor1</object-name>
+		<object-name>audio_vor1_glare</object-name>
 		<property>controls/audio/acp[0]/vor1-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1265,6 +1490,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_vor1</object-name>
+		<object-name>audio_vor1_glare</object-name>
 		<property>controls/audio/acp[0]/vor1-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1278,6 +1504,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_vor2</object-name>
+		<object-name>audio_vor2_glare</object-name>
 		<property>controls/audio/acp[0]/vor2-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1289,6 +1516,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_vor2</object-name>
+		<object-name>audio_vor2_glare</object-name>
 		<property>controls/audio/acp[0]/vor2-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1302,6 +1530,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_mkr</object-name>
+		<object-name>audio_mkr_glare</object-name>
 		<property>controls/audio/acp[0]/mkr-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1313,6 +1542,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_mkr</object-name>
+		<object-name>audio_mkr_glare</object-name>
 		<property>controls/audio/acp[0]/mkr-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1326,6 +1556,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_ils</object-name>
+		<object-name>audio_ils_glare</object-name>
 		<property>controls/audio/acp[0]/ils-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1337,6 +1568,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_ils</object-name>
+		<object-name>audio_ils_glare</object-name>
 		<property>controls/audio/acp[0]/ils-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1350,6 +1582,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_mls</object-name>
+		<object-name>audio_mls_glare</object-name>
 		<property>controls/audio/acp[0]/mls-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1361,6 +1594,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_mls</object-name>
+		<object-name>audio_mls_glare</object-name>
 		<property>controls/audio/acp[0]/mls-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1374,6 +1608,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_adf1</object-name>
+		<object-name>audio_adf1_glare</object-name>
 		<property>controls/audio/acp[0]/adf1-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1385,6 +1620,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_adf1</object-name>
+		<object-name>audio_adf1_glare</object-name>
 		<property>controls/audio/acp[0]/adf1-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1398,6 +1634,7 @@
 	<animation>
 		<type>translate</type>
 		<object-name>audio_adf2</object-name>
+		<object-name>audio_adf2_glare</object-name>
 		<property>controls/audio/acp[0]/adf2-recive</property>
 		<factor>0.01</factor>
 		<axis>
@@ -1409,6 +1646,7 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>audio_adf2</object-name>
+		<object-name>audio_adf2_glare</object-name>
 		<property>controls/audio/acp[0]/adf2-volume</property>
 		<interpolation>
 			<entry><ind>0</ind><dep>-129</dep></entry>
@@ -1418,5 +1656,4 @@
 			<object-name>audio_adf2.axis</object-name>
 		</axis>
 	</animation>
-
 </PropertyList>

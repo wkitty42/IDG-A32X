@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!--
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
--->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
 
 <PropertyList>
-
 	<sim>
 
-		<author>it0uchpods Design Group: Joshua Davidson (it0uchpods), Jonathan Redpath (legoboyvdlp), Thorsten Herrmann (TH-555)</author>
+		<author>Immersive Design Group: Joshua Davidson (Octal450), Jonathan Redpath (legoboyvdlp), Thorsten Herrmann (TH-555)</author>
 		
 		<status>Pre V1.0</status>
 		
@@ -27,33 +22,34 @@
 		</hud>
 
 		<model>
-			<pushback>
+			<autopush>
+				<connected type="bool">0</connected>
 				<position-norm type="double">0</position-norm>
 				<enabled type="int"/>
 				<available type="int">1</available>
-				<chocks alias="/controls/gear/wheel-chocks"/>
-				<steer-cmd-norm alias="/controls/flight/rudder"/>
-				<yaw alias="/gear/gear[0]/steering-norm"/>
+				<chocks alias="/services/chokes/nose"/>
+				<steer-cmd-norm alias="/fdm/jsbsim/hydraulics/tiller/autopush-cmd"/>
+				<yaw alias="/fdm/jsbsim/fcs/steer-deg"/>
 				<yaw-mult type="float">1.0</yaw-mult>
 				<target-speed-km_h type="float">0.0</target-speed-km_h>
-				<K_p type="float">1.0</K_p>
-				<F_p type="float">0.1</F_p>
-				<K_i type="float">0.01</K_i>
-				<F_i type="float">2.0</F_i>
+				<K_p type="float">0.5</K_p>
+				<F_p type="float">0.15</F_p>
+				<K_i type="float">0.25</K_i>
+				<F_i type="float">0.1</F_i>
 				<K_d type="float">0.0</K_d>
 				<F_d type="float">0.0</F_d>
+				<pitch-deg type="float">0.0</pitch-deg>
+				<min-turn-radius-m type="float">15</min-turn-radius-m>
+				<stopping-distance-m type="float">5.0</stopping-distance-m>
 				<driver>
-					<K_V type="float">5.5</K_V>
 					<F_V type="float">5.5</F_V>
-					<D_min-m type="float">5.0</D_min-m>
 					<K_psi type="float">0.03</K_psi>
-					<debug type="bool">true</debug>
 				</driver>
 				<route>
 					<show type="bool"/>
-					<view type="string">Model View</view>
 				</route>
-			</pushback>
+				<debug type="bool">false</debug>
+			</autopush>
 			<icing>
 				<iceable>
 					<name>Wing</name>
@@ -161,7 +157,11 @@
 			</autopilot>
 			<!-- 10 is sound -->
 		</systems>
-
+		
+		<sound>
+			<suppress-warning type="bool">1</suppress-warning>
+		</sound>
+	
 		<sounde>
 			<seatbelt-sign type="bool">0</seatbelt-sign>
 			<no-smoking-sign type="bool">0</no-smoking-sign>
@@ -171,6 +171,7 @@
 			<knb1 type="bool">0</knb1>
 			<oh-btn type="bool">0</oh-btn>
 			<switch1 type="bool">0</switch1>
+			<flaps-click type="bool">0</flaps-click>
 		</sounde>
 
 		<instrumentation>
@@ -183,40 +184,12 @@
 
 		<menubar>
 			<default>
-				<!-- Force disable Route Manager dialogs, bindings are changed just in case the item is not grayed out properly -->
-				<!-- Uncomment when route manager can be replaced by MCDU -->
-				<!--menu n="3">
-					<item n="1">
-						<enabled type="bool" n="0">false</enabled>
-						<binding n="0">
-							<command n="0">nasal</command>
-							<script n="0">
-							gui.popupTip("You must use the MCDU to manage your route.");
-							</script>
-						</binding>
-					</item>
-					<item n="2">
-						<enabled type="bool" n="0">false</enabled>
-						<binding n="0">
-							<command n="0">nasal</command>
-							<script n="0">
-							gui.popupTip("You must use the MCDU to manage your route.");
-							</script>
-						</binding>
-					</item>
-					<item n="3">
-						<enabled type="bool" n="0">false</enabled>
-						<binding n="0">
-							<command n="0">nasal</command>
-							<script n="0">
-							gui.popupTip("You must use the MCDU to manage your route.");
-							</script>
-						</binding>
-					</item>
-				</menu-->
 				<menu n="100">
-					<label>IDG-A32X</label>
-					<enabled type="bool">true</enabled>
+					<label>|</label>
+					<enabled type="bool">false</enabled>
+				</menu>
+				<menu n="101">
+					<label>System</label>
 					<item>
 						<label>Aircraft Config</label>
 						<binding>
@@ -236,9 +209,109 @@
 						</binding>
 					</item>
 				</menu>
-				<menu n="101">
+				<menu n="102">
+					<label>FMGC</label>
+					<item>
+						<label>FCU Autoflight</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>autopilot</dialog-name>
+						</binding>
+					</item>
+					<item>
+						<label>Route Manager</label>
+						<binding>
+							<command>dialog-show</command>
+							<dialog-name>route-manager</dialog-name>
+						</binding>
+					</item>
+				</menu>
+				<menu n="103">
+					<label>DU</label>
+					<item>
+						<label>Captain's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>First Officer's PFD</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_pfd.showPFD2();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Captain's ND</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_nd.showNd();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>First Officer's ND</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_nd.showNd('right');
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Upper ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showUpperECAM();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Lower ECAM</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_ecam.showLowerECAM();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>IESI</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_iesi.showIESI();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Left MCDU</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_mcdu.showMCDU1();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Right MCDU</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							canvas_mcdu.showMCDU2();
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="104">
 					<label>Utilities</label>
-					<enabled type="bool">true</enabled>
 					<item>
 						<label>Select Livery</label>
 						<binding>
@@ -270,10 +343,8 @@
 					<item>
 						<label>Pushback</label>
 						<binding>
-							<command>nasal</command>
-							<script>
-							acconfig.autopush_dlg.open();
-							</script>
+							<command>dialog-show</command>
+							<dialog-name>autopush</dialog-name>
 						</binding>
 					</item>
 					<item>
@@ -286,6 +357,15 @@
 						</binding>
 					</item>
 					<item>
+						<label>Adjust Sound Volumes</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+							acconfig.sound_config_dlg.open();
+							</script>
+						</binding>
+					</item>
+					<item>
 						<label>Skip ADIRS</label>
 						<binding>
 							<command>property-assign</command>
@@ -293,91 +373,10 @@
 							<value>1</value>
 						</binding>
 					</item>
-					<item>
-						<label>Show Captain's PFD</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_pfd.showPFD1();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show First Officer's PFD</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_pfd.showPFD2();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show Captain's ND</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_nd.showNd();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show First Officer's ND</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_nd.showNd('right');
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show Upper ECAM</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_ecam.showUpperECAM();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show Lower ECAM</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_ecam.showLowerECAM();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show IESI</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_iesi.showIESI();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show Left MCDU</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_mcdu.showMCDU1();
-							</script>
-						</binding>
-					</item>
-					<item>
-						<label>Show Right MCDU</label>
-						<binding>
-							<command>nasal</command>
-							<script>
-							canvas_mcdu.showMCDU2();
-							</script>
-						</binding>
-					</item>
 				</menu>
 			</default>
 		</menubar>
-
+		
 		<!-- Multiplayer properties -->
 		<multiplay>
 			<generic>
@@ -408,7 +407,7 @@
 		
 		<flight-recorder include="Systems/flight-recorder.xml"/>
 		
-		<gui n="0" include="Systems/it-gui.xml"/>
+		<gui n="0" include="gui/it-gui.xml"/>
 		
 		<current-view>
 			<z-offset-default type="float">80.0</z-offset-default>
@@ -418,7 +417,7 @@
 		
 		 <minimum-fg-version>2018.1.0</minimum-fg-version>
 	</sim>
-
+	
 	<consumables>
 		<fuel>
 			<tank n="0">
@@ -443,9 +442,9 @@
 		<jsbsim>
 			<external_reactions>
 				<tractor>
-					<magnitude alias="/sim/model/pushback/force-lbf"/>
-					<x alias="/sim/model/pushback/force-x"/>
-					<y alias="/sim/model/pushback/force-y"/>
+					<magnitude alias="/sim/model/autopush/force-lbf"/>
+					<x alias="/sim/model/autopush/force-x"/>
+					<y alias="/sim/model/autopush/force-y"/>
 				</tractor>
 			</external_reactions>
 		</jsbsim>
@@ -459,22 +458,40 @@
 			<max-lb type="double">440</max-lb>
 		</weight>
 		<weight n="1">
-			<name>Passengers</name>
+			<name>Forward Cabin</name>
 			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
 			<min-lb type="double">0</min-lb>
-			<max-lb type="double">24360</max-lb>
+			<max-lb type="double">4649</max-lb>
 		</weight>
 		<weight n="2">
-			<name>Forward Cargo</name>
+			<name>Center Cabin</name>
 			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
 			<min-lb type="double">0</min-lb>
-			<max-lb type="double">9400</max-lb>
+			<max-lb type="double">13949</max-lb>
 		</weight>
 		<weight n="3">
-			<name>Aft Cargo</name>
+			<name>Aft Cabin</name>
 			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
 			<min-lb type="double">0</min-lb>
-			<max-lb type="double">9400</max-lb>
+			<max-lb type="double">10462</max-lb>
+		</weight>
+		<weight n="4">
+			<name>Forward Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">5000</max-lb>
+		</weight>
+		<weight n="5">
+			<name>Aft Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">6662</max-lb>
+		</weight>
+		<weight n="6">
+			<name>Aft Bulk Cargo</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">3285</max-lb>
 		</weight>
 	</payload>
 	
@@ -564,6 +581,10 @@
 			<onbat type="bool">false</onbat>
 			<skip type="bool">0</skip>
 		</adirs>
+		<atc>
+			<system-knob type="int">0</system-knob>
+			<mode-knob type="int">0</mode-knob>
+		</atc>
 		<APU>
 			<fire-btn type="bool">0</fire-btn>
 			<fire-btn-cover type="bool">0</fire-btn-cover>
@@ -580,6 +601,12 @@
 		<electric>
 			<avionics-switch type="bool">true</avionics-switch>
 		</electric>
+		<electrical>
+			<idg>
+				<left-idg-disc type="bool">false</left-idg-disc>
+				<right-idg-disc type="bool">false</right-idg-disc>
+			</idg>
+		</electrical>
 		<engines>
 			<engine-start-switch type="int">1</engine-start-switch>
 			<engine n="0">
@@ -621,6 +648,7 @@
 			<brake-parking type="bool">0</brake-parking>
 			<tiller-cmd-norm type="double">0</tiller-cmd-norm>
 			<tiller-enabled type="bool">0</tiller-enabled>
+			<nws-switch type="double">1</nws-switch>
 		</gear>
 		<lighting>
 			<DU>
@@ -643,6 +671,8 @@
 			<landing-lights n="0" type="double">0</landing-lights>
 			<landing-lights n="1" type="double">0</landing-lights>
 			<landing-lights n="2" type="double">0</landing-lights>
+			<ped-flood-knb type="double">0</ped-flood-knb>
+			<ped-flood-norm type="double">0</ped-flood-norm>
 			<main-flood-knb type="double">0</main-flood-knb>
 			<main-flood-norm type="double">0</main-flood-norm>
 			<main-panel-knb type="double">0</main-panel-knb>
@@ -687,6 +717,10 @@
 			<windowprobeheat type="double">0.5</windowprobeheat>
 			<qnh-knb>100000</qnh-knb>
 			<strobe type="double">0.0</strobe>
+			<beacon type="bool">0</beacon>
+			<wing-lights type="bool">0</wing-lights>
+			<landing-lights-l type="float">0.0</landing-lights-l>
+			<landing-lights-r type="float">0.0</landing-lights-r>
 		</switches>
 		<tray n="0">
 			<lefttrayext type="double">0</lefttrayext>
@@ -753,6 +787,13 @@
 	</services>
 	
 	<systems>
+		<acconfig n="0">
+			<autoconfig-running>0</autoconfig-running>
+		</acconfig>
+		<atc>
+			<transponder-code type="string">2000</transponder-code>
+			<failed type="bool">0</failed>
+		</atc>
 		<electrical n="0">
 			<bus n="0">
 				<dc-ess>0</dc-ess>
@@ -813,6 +854,21 @@
 	</options>
 	
 	<instrumentation n="0">
+		<chrono n="0">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
+
+		<chrono n="1">
+			<started type="bool">0</started>
+			<paused type="bool">0</paused>
+			<text type="string">0' 00'</text>
+			<started-at type="int">0</started-at>
+			<elapsed-time type="int">0</elapsed-time>
+		</chrono>
 		
 		<comm n="0">
 			<frequencies>
@@ -882,6 +938,10 @@
 			<volume type="double">0</volume>
 		</dme>
 		
+		<groundradar>
+			<range type="double">1.0</range>
+		</groundradar>
+		
 		<nav n="0">
 			<frequencies>
 				<selected-mhz type="double">111.15</selected-mhz>
@@ -939,7 +999,7 @@
 		<tcas><!-- http://wiki.flightgear.org/index.php/TCAS -->
 			<serviceable type="bool">true</serviceable><!-- TCAS ENABLE -->
 			<inputs>
-				<mode type="int">3</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+				<mode type="int">1</mode><!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
 			</inputs>
 			<voice>
 				<file-prefix type="string">Sounds/tcas/female/</file-prefix>
@@ -951,11 +1011,7 @@
 				<volume> 0.8 </volume> <!-- Volume at reference distance -->
 			</speaker>
 		</tcas>
-		<nav-compass>
-			<nav-display n="0" type="int">0</nav-display>
-			<nav-display n="1" type="int">0</nav-display>
-		</nav-compass>
-
+		
 		<!-- See http://wiki.flightgear.org/index.php/GPWS -->
 		<mk-viii n="0">
 			<serviceable type="bool">true</serviceable>
@@ -987,27 +1043,6 @@
 				<file-prefix>Aircraft/IDG-A32X/Sounds/GPWS/</file-prefix>
 			</voice>
 		</mk-viii>
-		
-		<groundradar>
-			<range type="double">1.0</range>
-		</groundradar>
-		
-		<chrono n="0">
-			<started type="bool">0</started>
-			<paused type="bool">0</paused>
-			<text type="string">0' 00'</text>
-			<started-at type="int">0</started-at>
-			<elapsed-time type="int">0</elapsed-time>
-		</chrono>
-
-		<chrono n="1">
-			<started type="bool">0</started>
-			<paused type="bool">0</paused>
-			<text type="string">0' 00'</text>
-			<started-at type="int">0</started-at>
-			<elapsed-time type="int">0</elapsed-time>
-		</chrono>
-		
 	</instrumentation>
 	
 	<modes>
@@ -1067,11 +1102,7 @@
 				<desc>Autothrottle Disconnect</desc>
 				<binding>
 					<command>nasal</command>
-					<script>
-						if (getprop("/it-autoflight/output/athr") == 1) {
-							setprop("/it-autoflight/input/athr", 0);
-						}
-					</script>
+					<script>libraries.APPanel.ATDisc();</script>
 				</binding>
 			</key>
 			<key n="6">
@@ -1310,14 +1341,7 @@
 				<desc>Autopilot Disconnect</desc>
 				<binding>
 					<command>nasal</command>
-					<script>
-						if (getprop("/it-autoflight/output/ap1") == 1) {
-							setprop("/it-autoflight/input/ap1", 0);
-						}
-						if (getprop("/it-autoflight/output/ap2") == 1) {
-							setprop("/it-autoflight/input/ap2", 0);
-						}
-					</script>
+					<script>libraries.APPanel.APDisc();</script>
 				</binding>
 			</key>
 			<key n="70">
@@ -1454,6 +1478,16 @@
 					<value>0</value>
 				</binding>
 			</key>
+			<key n="108">
+				<name>l</name>
+				<desc>Flashlight</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>sim/rendering/als-secondary-lights/use-flashlight</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+			</key>
 		</keyboard>
 	</input>
 	
@@ -1504,7 +1538,6 @@
 		</fmgc>
 		<mcdu>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/MCDU.nas</file>
-			<file>Aircraft/IDG-A32X/Nasal/MCDU/F-PLNA.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITA.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/INITB.nas</file>
 			<file>Aircraft/IDG-A32X/Nasal/MCDU/PERFCLB.nas</file>
@@ -1532,7 +1565,9 @@
 			<file>Aircraft/IDG-A32X/Models/Instruments/MCDU/MCDU.nas</file>
 		</canvas_mcdu>
 		<ecam>
-			<file>Aircraft/IDG-A32X/Nasal/ECAM-controller.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/ECAM/ECAM-controller.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/ECAM/ECAM-logic.nas</file>
+			<file>Aircraft/IDG-A32X/Nasal/ECAM/ECAM-messages.nas</file>
 		</ecam>
 		<icing>
 			<file>Aircraft/IDG-A32X/Nasal/icing.nas</file>
@@ -1555,6 +1590,9 @@
 		<acp>
 			<file>Aircraft/IDG-A32X/Nasal/acp.nas</file>
 		</acp>
+		<atc>
+			<file>Aircraft/IDG-A32X/Nasal/atc.nas</file>
+		</atc>
 	</nasal>
 
 </PropertyList>

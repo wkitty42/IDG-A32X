@@ -1,9 +1,7 @@
 # IDG Tablet
-# Joshua Davidson (it0uchpods)
+# Joshua Davidson (Octal450)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Joshua Davidson (Octal450)
 
 var Tablet1 = nil;
 var Tablet_1 = nil;

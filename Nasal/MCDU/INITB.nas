@@ -1,8 +1,6 @@
-# A3XX mCDU by Joshua Davidson (it0uchpods) and Jonathan Redpath
+# A3XX mCDU by Joshua Davidson (Octal450) and Jonathan Redpath
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Joshua Davidson (Octal450)
 
 var initInputB = func(key, i) {
 	var scratchpad = getprop("/MCDU[" ~ i ~ "]/scratchpad");
@@ -48,7 +46,7 @@ var initInputB = func(key, i) {
 		if (scratchpad == "CLR") {
 			setprop("/FMGC/internal/block", 0.0);
 			setprop("/FMGC/internal/block-set", 0);
-			setprop("/MCDU[" ~ i ~ "]/scratchpad-msg", "0");
+			setprop("/MCDU[" ~ i ~ "]/scratchpad-msg", 0);
 			setprop("/MCDU[" ~ i ~ "]/scratchpad", "");
 		} else {
 			var tfs = size(scratchpad);

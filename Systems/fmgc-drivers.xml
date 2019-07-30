@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 
-<!--
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
--->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
 
 <!-- IT-AUTOFLIGHT -->
 
@@ -510,6 +506,16 @@
 		<max-rate-of-change>
 			<condition>
 				<and>
+					<or>
+						<equals>
+							<property>/it-autoflight/output/ap1</property>
+							<value>1</value>
+						</equals>
+						<equals>
+							<property>/it-autoflight/output/ap2</property>
+							<value>1</value>
+						</equals>
+					</or>
 					<equals>
 						<property>/it-autoflight/output/vert</property>
 						<value>1</value>
@@ -574,16 +580,6 @@
 							<property>/it-autoflight/output/vert</property>
 							<value>7</value>
 						</equals>
-						<and>
-							<equals>
-								<property>/it-autoflight/output/vert</property>
-								<value>8</value>
-							</equals>
-							<equals>
-								<property>/it-autoflight/output/vert-mng</property>
-								<value>4</value>
-							</equals>
-						</and>
 					</or>
 					<or>
 						<equals>
@@ -732,10 +728,10 @@
 		<gain>1.0</gain>
 		<input>
 			<condition>
-				<greater-than>
+				<greater-than-equals>
 					<property>/it-autoflight/internal/heading-predicted-cmd</property>
-					<value>360</value>
-				</greater-than>
+					<value>360.5</value>
+				</greater-than-equals>
 			</condition>
 			<expression>
 				<dif>
@@ -748,7 +744,7 @@
 			<condition>
 				<less-than>
 					<property>/it-autoflight/internal/heading-predicted-cmd</property>
-					<value>1</value>
+					<value>0.5</value>
 				</less-than>
 			</condition>
 			<expression>

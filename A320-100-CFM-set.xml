@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!--
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
--->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
 
 <PropertyList include="A320-main.xml">
 
 	<sim>
 	
 		<sound>
-			<path>Aircraft/IDG-A32X/Sounds/cfm56-sound.xml</path>
+			<path>Aircraft/IDG-A32X/Sounds/cfm56a-sound.xml</path>
 		</sound>
 		<checklists include="A32X-Checklists.xml"/>
 		<description>Airbus A320-111 (CFM56-5A1)</description>

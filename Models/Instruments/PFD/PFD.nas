@@ -1,9 +1,6 @@
 # A3XX PFD
-# Joshua Davidson (it0uchpods)
 
-##############################################
-# Copyright (c) Joshua Davidson (it0uchpods) #
-##############################################
+# Copyright (c) 2019 Joshua Davidson (Octal450)
 
 var PFD_1 = nil;
 var PFD_2 = nil;
@@ -22,6 +19,7 @@ var ASItrgtdiff = 0;
 var ASImax = 0;
 var ASItrend = 0;
 var altTens = 0;
+var altPolarity = "";
 
 # Fetch nodes:
 var state1 = props.globals.getNode("/systems/thrust/state1", 1);
@@ -90,7 +88,7 @@ var at_input_spd_kts = props.globals.getNode("/it-autoflight/input/spd-kts", 1);
 var fd_roll = props.globals.getNode("/it-autoflight/fd/roll-bar", 1);
 var fd_pitch = props.globals.getNode("/it-autoflight/fd/pitch-bar", 1);
 var decision = props.globals.getNode("/instrumentation/mk-viii/inputs/arinc429/decision-height", 1);
-var skid_slip = props.globals.getNode("/instrumentation/slip-skid-ball/indicated-slip-skid", 1);
+var slip_skid = props.globals.getNode("/instrumentation/pfd/slip-skid", 1);
 var FMGCphase = props.globals.getNode("/FMGC/status/phase", 1);
 var loc = props.globals.getNode("/instrumentation/nav[0]/heading-needle-deflection-norm", 1);
 var gs = props.globals.getNode("/instrumentation/nav[0]/gs-needle-deflection-norm", 1);
@@ -453,7 +451,6 @@ var canvas_PFD_base = {
 		fbw_curlaw = fbw_law.getValue();
 		me["FMA_combined"].setText(sprintf("%s", pitch_mode_act));
 		
-		
 		if (pitch_mode_act == "LAND" or pitch_mode_act == "FLARE" or pitch_mode_act == "ROLL OUT") {
 			me["FMA_pitch"].hide();
 			me["FMA_roll"].hide();
@@ -735,7 +732,7 @@ var canvas_PFD_base = {
 		me.AI_horizon_ground_rot.setRotation(-roll_cur * D2R, me["AI_center"].getCenter());
 		me.AI_horizon_sky_rot.setRotation(-roll_cur * D2R, me["AI_center"].getCenter());
 		
-		me["AI_slipskid"].setTranslation(math.clamp(skid_slip.getValue(), -7, 7) * -15, 0);
+		me["AI_slipskid"].setTranslation(math.clamp(slip_skid.getValue(), -15, 15) * 7, 0);
 		me["AI_bank"].setRotation(-roll_cur * D2R);
 		
 		if (fbw_law.getValue() == 0) {
@@ -761,7 +758,7 @@ var canvas_PFD_base = {
 		
 		gear_agl_cur = gear_agl.getValue();
 		
-		me["AI_agl"].setText(sprintf("%s", math.round(gear_agl_cur)));
+		me["AI_agl"].setText(sprintf("%s", math.round(math.clamp(gear_agl_cur, 0, 2500))));
 		
 		if (gear_agl_cur <= decision.getValue()) {
 			me["AI_agl"].setColor(0.7333,0.3803,0);
@@ -810,7 +807,12 @@ var canvas_PFD_base = {
 		me["ALT_two"].setText(sprintf("%03d", abs(me.middleAltText-5)));
 		me["ALT_one"].setText(sprintf("%03d", abs(me.middleAltText-10)));
 		
-		me["ALT_digits"].setText(sprintf("%s", altitude_pfd.getValue()));
+		if (altitude.getValue() < 0) {
+			altPolarity = "-";
+		} else {
+			altPolarity = "";
+		}
+		me["ALT_digits"].setText(sprintf("%s%d", altPolarity, altitude_pfd.getValue()));
 		altTens = num(right(sprintf("%02d", altitude.getValue()), 2));
 		me["ALT_tens"].setTranslation(0, altTens * 1.392);
 		
