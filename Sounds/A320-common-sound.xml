@@ -837,7 +837,7 @@
 		<apoff>
 			<name>apoff-looped</name>
 			<mode>looped</mode>
-			<path>Aircraft/IDG-A32X/Sounds/apoff.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Cockpit/calvary-charge-loop.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -867,7 +867,7 @@
 		<apoff>
 			<name>apoff-single</name>
 			<mode>once</mode>
-			<path>Aircraft/IDG-A32X/Sounds/apoff.wav</path>
+			<path>Aircraft/IDG-A32X/Sounds/Cockpit/calvary-charge-once.wav</path>
 			<condition>
 				<and>
 					<equals>
@@ -1697,11 +1697,16 @@
 			<mode>looped</mode>
 			<type>avionics</type>
 			<condition>
-				<property>/ECAM/warnings/master-warning-light</property>
-				<property>/sim/sound/warnings/crc</property>
+				<and>
+					<property>/ECAM/warnings/master-warning-light</property>
+					<property>/sim/sound/warnings/crc</property>
+				</and>
 			</condition>
 			<volume>
-				<property>/systems/acconfig/options/sound/avionics-volume</property>
+				<product>
+					<property>/systems/acconfig/options/sound/avionics-volume</property>
+					<value>0.8</value>
+				</product>
 			</volume>
 			<reference-dist>10</reference-dist>
 			<max-dist>100</max-dist>

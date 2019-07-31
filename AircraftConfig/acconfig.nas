@@ -73,6 +73,8 @@ var failReset = func {
 	setprop("/systems/failures/fuelmode", 0);
 	setprop("/systems/failures/cargo-aft-fire", 0);
 	setprop("/systems/failures/cargo-fwd-fire", 0);
+	setprop("/systems/failures/engine-left-fire", 0);
+	setprop("/systems/failures/engine-right-fire", 0);
 }
 
 failReset();

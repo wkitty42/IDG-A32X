@@ -122,6 +122,85 @@
 		<object-name>vu112_dfdr</object-name>
 	</effect>
 	
+	<animation>
+		<type>select</type>
+		<object-name>engine_fire_1</object-name>
+		<condition>
+			<property>systems/fire/engine1/warning-active</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>engine_fire_1</object-name>
+		<condition>
+			<property>systems/fire/engine1/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>engine_fault_1</object-name>
+		<condition>
+			<property>systems/unused/unused-ped</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>engine_fire_1</object-name>
+		<condition>
+			<property>systems/fire/engine1/warning-active</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>engine_fire_1</object-name>
+		<condition>
+			<property>systems/fire/engine1/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>engine_fault_2</object-name>
+		<condition>
+			<property>systems/unused/unused-ped</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>engine_fire_2</object-name>
+		<condition>
+			<property>systems/fire/engine2/warning-active</property>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>engine_fire_2</object-name>
+		<condition>
+			<property>systems/fire/engine2/warning-active</property>
+		</condition>
+		<emission>
+			<red>1.0</red>
+			<green>1.0</green>
+			<blue>1.0</blue>
+		</emission>
+	</animation>
+	
 	<effect>
 		<inherits-from>Aircraft/IDG-A32X/Models/Effects/cockpit-irradiance</inherits-from>
 		<object-name>atc_0</object-name>

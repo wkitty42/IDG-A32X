@@ -5175,6 +5175,17 @@
 						<value>25</value>
 					</greater-than-equals>
 				</condition>
+				<command>property-assign</command>
+				<property>sim/sound/warnings/crc</property>
+				<value>0</value>
+			</binding>
+			<binding>
+				<condition>
+					<greater-than-equals>
+						<property>systems/electrical/bus/dc-ess</property>
+						<value>25</value>
+					</greater-than-equals>
+				</condition>
 				<command>nasal</command>
 				<script>
 					if (getprop("/it-autoflight/output/ap-warning") == 1) {
@@ -5217,10 +5228,6 @@
 				<script>
 					if (getprop("/it-autoflight/output/athr-warning") == 1) {
 						setprop("/it-autoflight/output/athr-warning", 0);
-					}
-					
-					if (getprop("/sim/sound/warnings/chime") == 1) {
-						setprop("/sim/sound/warnings/chime", 0);
 					}
 				</script>
 			</binding>
