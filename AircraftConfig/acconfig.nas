@@ -98,7 +98,7 @@ setprop("/systems/acconfig/options/iesi-rate", 1);
 setprop("/systems/acconfig/options/sound/interior-volume", 1);
 setprop("/systems/acconfig/options/sound/exterior-volume", 1);
 setprop("/systems/acconfig/options/sound/wing-volume", 1);
-setprop("/sim/sound/avionics-volume", 1);
+setprop("/systems/acconfig/options/sound/avionics-volume", 1);
 setprop("/systems/acconfig/options/sound/effects-volume", 1);
 setprop("/systems/acconfig/options/sound/mechanical-volume", 1);
 setprop("/systems/acconfig/options/autopush/show-route", 1);
