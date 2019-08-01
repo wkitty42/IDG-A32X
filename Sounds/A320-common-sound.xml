@@ -157,7 +157,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -194,7 +194,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -229,7 +229,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -264,7 +264,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -299,7 +299,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -334,7 +334,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -369,7 +369,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -404,7 +404,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -439,7 +439,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -474,7 +474,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -509,7 +509,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -544,7 +544,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -579,7 +579,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -628,7 +628,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -675,7 +675,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -711,7 +711,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -746,7 +746,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -827,7 +827,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>8</factor>
 			</volume>
 			<reference-dist>20.0</reference-dist>
@@ -859,7 +859,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -889,7 +889,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>40.0</factor>
 			</volume>
 		</apoff>
@@ -1563,7 +1563,7 @@
 				</and>
 			</condition>
 			<volume>
-				<property>//systems/acconfig/options/sound/avionics-volume</property>
+				<property>/systems/acconfig/options/sound/avionics-volume</property>
 				<factor>0.60</factor>
 			</volume>
 		</relay>

@@ -3169,7 +3169,7 @@
                     <entry><ind>301</ind>  <dep>0.00</dep></entry>
                 </table>
                 <property>sim/current-view/internal</property>
-			<property>/sim/sound/avionics-volume</property>
+			<property>/systems/acconfig/options/sound/avionics-volume</property>
             </product>
         </expression> 
     </input>
@@ -3190,7 +3190,7 @@
                     <entry><ind>-12</ind>  <dep>1.00</dep></entry>
                 </table>
             <property>sim/current-view/internal</property>
-			<property>/sim/sound/avionics-volume</property>
+			<property>/systems/acconfig/options/sound/avionics-volume</property>
             </product>
         </expression> 
     </input>
