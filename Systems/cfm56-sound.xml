@@ -4903,10 +4903,6 @@
 				</equals>
 				<equals>
 					<property>/sim/current-view/view-number</property>
-					<value>1</value>
-				</equals>
-				<equals>
-					<property>/sim/current-view/view-number</property>
 					<value>13</value>
 				</equals>
 				<equals>
