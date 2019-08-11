@@ -167,6 +167,9 @@
 				<path>Aircraft/IDG-A32X/Systems/pfd.xml</path>
 			</autopilot>
 			<!-- 10 is sound -->
+			<autopilot n="11">
+				<path>Aircraft/IDG-A32X/Systems/sound-common.xml</path>
+			</autopilot>
 		</systems>
 		
 		<sound>
