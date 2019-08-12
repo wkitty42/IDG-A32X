@@ -35,7 +35,6 @@
 			<pitch>
 				<property>/systems/apu/rpm</property>
 				<factor>0.01</factor>
-				<offset>0</offset>
 			</pitch>
 			<reference-dist>60</reference-dist>
 		</apu>
@@ -909,11 +908,9 @@
 			</condition>
 			<volume>
 				<property>/sim/sound/other/cockpit-wind-v</property>
-				<offset>0</offset>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/wind-p</property>
-				<offset>0</offset>
 			</pitch>
 		</wind>
 		
@@ -926,11 +923,9 @@
 			</condition>
 			<volume>
 				<property>/sim/sound/other/wind-v</property>
-				<offset>0</offset>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/wind-p</property>
-				<offset>0</offset>
 			</pitch>
 		</wind>
 		
@@ -980,7 +975,6 @@
 			<property>gear/gear[0]/wow</property>
 			<volume>
 				<property>/sim/sound/other/cockpit-roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -994,7 +988,6 @@
 			<property>gear/gear[1]/wow</property>
 			<volume>
 				<property>/sim/sound/other/cockpit-roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -1008,7 +1001,6 @@
 			<property>gear/gear[2]/wow</property>
 			<volume>
 				<property>/sim/sound/other/cockpit-roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -1023,7 +1015,6 @@
 			<property>gear/gear[0]/wow</property>
 			<volume>
 				<property>/sim/sound/other/roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -1037,7 +1028,6 @@
 			<property>gear/gear[1]/wow</property>
 			<volume>
 				<property>/sim/sound/other/roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -1051,7 +1041,6 @@
 			<property>gear/gear[2]/wow</property>
 			<volume>
 				<property>/sim/sound/other/roll-v</property>
-				<factor>1</factor>
 			</volume>
 			<pitch>
 				<property>/sim/sound/other/roll-p</property>
@@ -1359,6 +1348,15 @@
 			<mode>in-transit</mode>
 			<path>Aircraft/IDG-A32X/Sounds/SASA/A320_flapmotor.wav</path>
 			<property>/surface-positions/flap-pos-norm</property>
+			<condition>
+				<or>
+					<property>sim/sound/wingview-aft</property>
+					<property>sim/sound/wingview-fwd</property>
+				</or>
+			</condition>
+			<volume>
+				<property>/sim/sound/other/flaps</property>
+			</volume>
 		</switch>
 		
 		<cvrtone>
@@ -1597,11 +1595,6 @@
 			<condition>
 				<property>warnings/stall/active</property>
 			</condition>
-			<volume>
-				<factor>3</factor>
-				<min>1</min>
-				<max>6</max>
-			</volume>
 			<reference-dist>10</reference-dist>
 			<max-dist>100.0</max-dist>
 		</stall-voice>
