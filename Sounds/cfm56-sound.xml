@@ -481,7 +481,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/idleR-1-p</property>
+			<property>/sim/sound/external/idle-1-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -512,7 +512,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/idleR-2-p</property>
+			<property>/sim/sound/external/idle-2-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -601,7 +601,7 @@
 			<property>/sim/sound/suppress-warning</property>
 		</condition>
 		<volume>
-			<property>/sim/sound/external/idle-1-v</property> <!-- not a bug, uses same curves -->
+			<property>/sim/sound/external/idle-1-v</property>
 			<offset>0</offset>
 		</volume>
 		<pitch>
@@ -667,7 +667,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/idleC-1-p</property>
+			<property>/sim/sound/external/idle-1-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -698,7 +698,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/idleC-2-p</property>
+			<property>/sim/sound/external/idle-2-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -1101,7 +1101,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/rumbleD-1-p</property>
+			<property>/sim/sound/external/rumble-1-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
@@ -1129,7 +1129,7 @@
 			<offset>0</offset>
 		</volume>
 		<pitch>
-			<property>/sim/sound/external/rumbleD-2-p</property>
+			<property>/sim/sound/external/rumble-2-p</property>
 			<offset>0</offset>
 		</pitch>
 		<orientation>
