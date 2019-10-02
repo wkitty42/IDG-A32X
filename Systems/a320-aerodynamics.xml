@@ -424,7 +424,7 @@
 				<property>aero/qbar-psf</property>
 				<property>metrics/Sw-sqft</property>
 				<toradians><property>hydraulics/rudder/final-deg</property></toradians>
-				<value>0.2653</value>
+				<value>-0.2653</value>
 			</product>
 		</function>
 	
